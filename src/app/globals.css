@@ -1,53 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
-  --accent: #d9ff4a;
+  --black: #0a0a0a;
+  --white: #fafaf8;
+  --gray: #888888;
+  --border: 1px solid rgba(10, 10, 10, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-geist-sans);
+  --color-brand-black: var(--black);
+  --color-brand-white: var(--white);
+  --color-brand-gray: var(--gray);
+  --color-brand-border: rgba(10, 10, 10, 0.12);
+  --font-display: var(--font-syne);
+  --font-mono: var(--font-dm-mono);
 }
 
 html {
-  scroll-behavior: smooth;
+  background: var(--white);
+  scroll-padding-top: 4rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  color: var(--black);
+  overflow-x: hidden;
+  cursor: none;
+  font-family: var(--font-syne), sans-serif;
+}
+
+* {
+  cursor: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--black);
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--foreground);
-}
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 600ms ease, transform 600ms ease;
-}
-
-.fade-up.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.marquee-track {
-  animation: marquee 22s linear infinite;
-}
-
-.mouse-trail-dot {
-  animation: trail-pop 1000ms ease-out forwards;
-  transform: translate(-50%, -50%);
+  background: var(--black);
+  color: var(--white);
 }
 
 @keyframes marquee {
@@ -60,16 +55,17 @@ body {
   }
 }
 
-@keyframes trail-pop {
-  from {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1);
-  }
+.animate-marquee {
+  animation: marquee var(--marquee-speed, 30s) linear infinite;
+}
 
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(4);
-  }
+.animate-marquee-reverse {
+  animation: marquee var(--marquee-speed, 30s) linear infinite reverse;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--black);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,14 +76,5 @@ body {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-  }
-
-  .fade-up {
-    opacity: 1;
-    transform: none;
-  }
-
-  .marquee-track {
-    animation: none;
   }
 }
