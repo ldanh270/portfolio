@@ -1,7 +1,7 @@
 # Viktor Oddy Landing Page Implementation Plan
 
 Date: 2026-05-09
-Status: Draft for review
+Status: Approved — implementing
 Scope: Single-page Viktor Oddy creative studio landing page
 Default stack decision: keep current Next 16.2.6 App Router unless user explicitly approves Vite conversion.
 
@@ -16,13 +16,13 @@ Default stack decision: keep current Next 16.2.6 App Router unless user explicit
 
 | Phase | File | Status | Progress |
 | --- | --- | --- | --- |
-| 00 | [Stack decision gate](./phase-00-stack-decision-gate.md) | Pending user review | 0% |
-| 01 | [Next docs and dependency prep](./phase-01-next-docs-and-dependency-prep.md) | Pending | 0% |
-| 02 | [Content architecture and component map](./phase-02-content-architecture-and-component-map.md) | Pending | 0% |
-| 03 | [Global theme and motion foundation](./phase-03-global-theme-and-motion-foundation.md) | Pending | 0% |
-| 04 | [Landing page sections](./phase-04-landing-page-sections.md) | Pending | 0% |
-| 05 | [Interactive motion components](./phase-05-interactive-motion-components.md) | Pending | 0% |
-| 06 | [QA accessibility and build validation](./phase-06-qa-accessibility-and-build-validation.md) | Pending | 0% |
+| 00 | [Stack decision gate](./phase-00-stack-decision-gate.md) | Approved | 100% |
+| 01 | [Next docs and dependency prep](./phase-01-next-docs-and-dependency-prep.md) | Complete | 100% |
+| 02 | [Content architecture and component map](./phase-02-content-architecture-and-component-map.md) | Complete | 100% |
+| 03 | [Global theme and motion foundation](./phase-03-global-theme-and-motion-foundation.md) | Complete | 100% |
+| 04 | [Landing page sections](./phase-04-landing-page-sections.md) | Complete | 100% |
+| 05 | [Interactive motion components](./phase-05-interactive-motion-components.md) | Complete | 100% |
+| 06 | [QA accessibility and build validation](./phase-06-qa-accessibility-and-build-validation.md) | Complete with notes | 90% |
 
 ## Default recommendation
 
@@ -41,6 +41,6 @@ Confirm phase 00 stack choice before implementation: keep Next, or convert to Vi
 
 ## Unresolved questions
 
-- Should implementation keep Next 16 despite Vite request?
-- Can user provide `public/PPMondwest-Regular.woff2`?
-- Should reduced-motion fully stop auto carousel or only shorten transitions?
+- Can user provide licensed `public/PPMondwest-Regular.woff2` if exact brand font needed?
+- Should placeholder LinkedIn URL become final Viktor Oddy profile URL?
+- Browser visual QA could not be completed with screenshot tooling; local page responds `200` on existing dev server.
