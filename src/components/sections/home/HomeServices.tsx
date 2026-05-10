@@ -6,7 +6,7 @@ export function HomeServices() {
   return (
     <section>
       <div className="border-y border-brand-border py-8">
-        <MarqueeText text="Services." size="lg" direction="right" />
+        <MarqueeText text="Services." size="lg" direction="left" />
       </div>
       <div className="grid md:grid-cols-3">
         {services.slice(0, 3).map((service) => (
