@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { navLinks, site } from "@/data/site";
+import Image from "next/image";
 
 export function Footer() {
 	return (
 		<footer className="grid gap-6 border-t border-brand-border px-6 py-8 sm:px-12 lg:grid-cols-[auto_1fr_auto] lg:items-center">
 			{/* Logo */}
-			<Link
-				href="/"
-				className="font-display text-lg font-extrabold tracking-tight"
-			>
-				{site.shortName}
+			<Link href="/">
+				<Image
+					src="/logo.svg"
+					alt={site.name}
+					width={60}
+					height={60}
+				/>
 			</Link>
 
 			{/* Navigation Links */}
