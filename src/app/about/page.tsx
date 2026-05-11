@@ -2,159 +2,159 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AboutAwards } from "@/components/sections/about/AboutAwards";
 import { AboutCertificates } from "@/components/sections/about/AboutCertificates";
-import { AboutExperience } from "@/components/sections/about/AboutExperience";
+import { AboutTimeline } from "@/components/sections/about/AboutTimeline";
 import { AboutGrid } from "@/components/sections/about/AboutGrid";
+import { FadeIn } from "@/components/ui/FadeIn";
 import { MarqueeText } from "@/components/ui/MarqueeText";
+import { PageFade } from "@/components/ui/PageFade";
+import { RevealLine } from "@/components/ui/RevealLine";
+import AboutHero from "@/components/sections/about/AboutHero";
+import AboutSkills from "@/components/sections/about/AboutSkills";
 
 export const metadata: Metadata = {
-  title: "About — Le Duc Anh",
-  description: "About Le Duc Anh, software engineer and designer in Da Nang, Vietnam.",
+	title: "About — Le Duc Anh",
+	description: "About Le Duc Anh, software engineer and designer in Da Nang, Vietnam.",
 };
 
-type Skills = Record<string, string[]>;
-
-type Education = {
-  degree: string;
-  university: string;
-  period: string;
-  gpa: string;
-  highlights: string[];
+type Interest = {
+	label: string;
+	title: string;
+	description: string;
+	tag: string;
 };
 
-const skills: Skills = {
-  Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Figma"],
-  Backend: ["Node.js", "Go", "PostgreSQL", "Redis", "AWS", "Docker", "Kafka"],
-  Mobile: ["React Native", "Expo", "Flutter"],
-  "AI / LLM": ["LangChain", "RAG Pipeline", "OpenAI API", "Vector DB", "Prompt Engineering"],
-  DevOps: ["Docker", "CI/CD", "Nginx", "Linux", "Git"],
-  Tools: ["Figma", "Postman", "VS Code", "Notion"],
-};
-
-const education: Education = {
-  degree: "Bachelor of Software Engineering",
-  university: "[University Name]",
-  period: "2021 — 2025",
-  gpa: "3.X / 4.0",
-  highlights: [
-    "Algorithms & Data Structures",
-    "Database Systems",
-    "Software Architecture",
-    "Artificial Intelligence",
-    "Operating Systems",
-  ],
-};
+const interests: Interest[] = [
+	{
+		label: "When I'm not coding",
+		title: "[Your hobby/interest]",
+		description:
+			"[One line about it — e.g. 'Competitive chess keeps my pattern recognition sharp.']",
+		tag: "[HOBBY TAG]",
+	},
+	{
+		label: "How I recharge",
+		title: "[Another interest]",
+		description: "[e.g. 'Long rides through Da Nang at 5am — best time to think.']",
+		tag: "[TAG]",
+	},
+	{
+		label: "What drives me",
+		title: "[Philosophy/Motivation]",
+		description: "[e.g. 'I believe the best software is invisible — you only notice bad UX.']",
+		tag: "[TAG]",
+	},
+];
 
 const closingCta = {
-  label: "Available for",
-  title: "Freelance Projects.",
-  titleSecondLine: "Full-time Roles.",
-  description:
-    "Whether you need a web app, a mobile product, or an AI-powered solution — I'm ready to build it. Let's talk about your project.",
-  primaryHref: "/contact",
-  primaryLabel: "Get in touch →",
-  secondaryHref: "/cv.pdf",
-  secondaryLabel: "Download CV ↓",
+	label: "Available for",
+	title: "Freelance Projects.",
+	titleSecondLine: "Full-time Roles.",
+	description:
+		"Whether you need a web app, a mobile product, or an AI-powered solution — I'm ready to build it. Let's talk about your project.",
+	primaryHref: "/contact",
+	primaryLabel: "Get in touch →",
+	secondaryHref: "/cv.pdf",
+	secondaryLabel: "Download CV ↓",
 };
 
 export default function AboutPage() {
-  return (
-    <main className="pt-16">
-      <div className="border-y border-brand-border py-8">
-        <MarqueeText text="About me." size="lg" direction="right" />
-      </div>
+	return (
+		<PageFade className="pt-16">
+			{/* Marquee */}
+			<div className="border-y border-brand-border py-8">
+				<MarqueeText
+					text="About me."
+					size="lg"
+					direction="right"
+				/>
+			</div>
 
-      <section className="grid border-b border-brand-border lg:grid-cols-2">
-        <div className="border-b border-brand-border px-6 py-16 sm:px-12 lg:border-b-0 lg:border-r">
-          <h1 className="mb-10 text-[clamp(1.8rem,3.5vw,3rem)] font-bold leading-tight tracking-tight">
-            Software engineer focused on building products that scale — technically and visually.
-          </h1>
-          <Link href="/contact" className="inline-flex rounded-full border border-brand-border px-6 py-4 text-sm font-semibold tracking-wide transition hover:bg-[rgba(10,10,10,0.02)]">
-            Let&apos;s work together →
-          </Link>
-        </div>
-        <div className="flex flex-col justify-between gap-8 px-6 py-16 text-sm leading-8 text-[#444] sm:px-12">
-          <p>I&apos;m Le Duc Anh, a software engineer and designer based in Da Nang, Vietnam. I bridge the gap between robust backend engineering and thoughtful interface design.</p>
-          <p>With experience across the full stack, I specialise in architecting performant applications that hold up under real-world conditions. Every project starts with understanding people — their goals, constraints, and workflows.</p>
-        </div>
-      </section>
+			<AboutHero />
 
-      <AboutGrid />
+			<AboutGrid />
 
-      <div className="border-y border-brand-border py-8">
-        <MarqueeText text="Skills." size="lg" />
-      </div>
-      <section className="grid border-b border-brand-border lg:grid-cols-2">
-        {Object.entries(skills).map(([group, items]) => (
-          <div key={group} className="border-r border-brand-border">
-            <h2 className="px-6 py-8 text-2xl font-bold tracking-tight sm:px-12">{group}</h2>
-            {items.map((skill, index) => (
-              <div key={skill} className="flex justify-between border-b border-brand-border px-6 py-4 text-sm font-medium sm:px-12">
-                <span>{skill}</span>
-                <span className="font-mono text-xs text-brand-gray">{String(index + 1).padStart(2, "0")}</span>
-              </div>
-            ))}
-          </div>
-        ))}
-      </section>
+			<AboutSkills />
 
-      <AboutExperience />
+			<RevealLine />
+			<AboutTimeline />
 
-      <div className="border-y border-brand-border py-8">
-        <MarqueeText text="Education." size="lg" direction="left" />
-      </div>
-      <section className="grid border-b border-brand-border lg:grid-cols-2">
-        <div className="border-b border-brand-border px-6 py-12 sm:px-12 lg:border-b-0 lg:border-r">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-brand-gray">{education.period}</p>
-          <h2 className="mb-4 text-[clamp(1.8rem,3vw,2.8rem)] font-extrabold leading-tight tracking-tighter">
-            {education.university}
-          </h2>
-          <p className="text-lg font-bold tracking-tight">{education.degree}</p>
-          <p className="mt-4 font-mono text-xs uppercase tracking-widest text-brand-gray">GPA · {education.gpa}</p>
-        </div>
-        <div>
-          {education.highlights.map((highlight, index) => (
-            <div key={highlight} className="flex justify-between border-b border-brand-border px-6 py-4 text-sm font-medium sm:px-12">
-              <span>{highlight}</span>
-              <span className="font-mono text-xs text-brand-gray">{String(index + 1).padStart(2, "0")}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+			
+			<AboutAwards />
+			<AboutCertificates />
 
-      <AboutAwards />
-      <AboutCertificates />
+			<div className="border-y border-brand-border py-8">
+				<MarqueeText
+					text="Beyond Code."
+					size="lg"
+					direction="left"
+				/>
+			</div>
+			<section className="grid border-b border-brand-border sm:grid-cols-2 lg:grid-cols-3">
+				{interests.map((item, index) => (
+					<FadeIn
+						key={item.title}
+						delay={index * 0.1}
+						y={20}
+					>
+						<div className="group flex flex-col gap-4 border-b border-r border-brand-border px-6 py-10 transition-colors duration-300 hover:bg-[rgba(10,10,10,0.015)] sm:px-10 lg:border-b-0">
+							<span className="font-mono text-[10px] uppercase tracking-widest text-brand-gray">
+								{item.label}
+							</span>
+							<h3 className="text-xl font-bold leading-snug tracking-tight transition-transform duration-200 group-hover:translate-x-1">
+								{item.title}
+							</h3>
+							<p className="text-sm leading-7 text-[#444]">{item.description}</p>
+							<span className="mt-auto self-start rounded-full border border-brand-border px-3 py-1 font-mono text-[10px] uppercase tracking-widest">
+								{item.tag}
+							</span>
+						</div>
+					</FadeIn>
+				))}
+			</section>
 
-      <div className="border-y border-brand-border py-8">
-        <MarqueeText text="Available." size="lg" direction="right" />
-      </div>
-      <section className="grid border-b border-brand-border lg:grid-cols-2">
-        <div className="border-b border-brand-border px-6 py-16 sm:px-12 lg:border-b-0 lg:border-r">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-brand-gray">{closingCta.label}</p>
-          <h2 className="text-[clamp(1.8rem,3vw,2.8rem)] font-extrabold leading-tight tracking-tighter">
-            {closingCta.title}
-            <br />
-            {closingCta.titleSecondLine}
-          </h2>
-        </div>
-        <div className="flex flex-col justify-center gap-4 px-6 py-16 sm:px-12">
-          <p className="text-sm leading-8 text-[#444]">{closingCta.description}</p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link
-              href={closingCta.primaryHref}
-              className="inline-flex rounded-full bg-[#0a0a0a] px-6 py-3 text-sm font-semibold tracking-wide text-[#fafaf8] transition hover:opacity-80"
-            >
-              {closingCta.primaryLabel}
-            </Link>
-            <a
-              href={closingCta.secondaryHref}
-              download
-              className="inline-flex rounded-full border border-brand-border px-6 py-3 text-sm font-semibold tracking-wide transition hover:bg-[rgba(10,10,10,0.02)]"
-            >
-              {closingCta.secondaryLabel}
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+			<section className="grid border-b border-brand-border px-6 py-14 sm:px-12 lg:grid-cols-[0.42fr_1fr] lg:gap-16">
+				<FadeIn
+					className="mb-10 lg:mb-0"
+					y={32}
+				>
+					<p className="mb-6 font-mono text-[10px] uppercase leading-5 tracking-tight text-brand-gray">
+						{closingCta.label}
+					</p>
+					<h2 className="text-[clamp(3rem,8vw,7rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.08em]">
+						Available
+					</h2>
+				</FadeIn>
+				<FadeIn
+					y={20}
+					className="grid items-center gap-6 border-b border-brand-border bg-brand-black px-5 py-7 text-brand-white lg:grid-cols-[1fr_auto]"
+				>
+					<div>
+						<h3 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold uppercase leading-none tracking-tighter">
+							{closingCta.title}
+							<br />
+							{closingCta.titleSecondLine}
+						</h3>
+						<p className="mt-5 max-w-2xl text-sm leading-8 text-brand-white">
+							{closingCta.description}
+						</p>
+					</div>
+					<div className="flex flex-wrap gap-3 lg:justify-end">
+						<Link
+							href={closingCta.primaryHref}
+							className="inline-flex rounded-full border border-brand-white px-6 py-3 text-sm font-semibold tracking-wide text-brand-white transition hover:bg-brand-white hover:text-brand-black"
+						>
+							{closingCta.primaryLabel}
+						</Link>
+						<a
+							href={closingCta.secondaryHref}
+							download
+							className="inline-flex rounded-full border border-brand-white px-6 py-3 text-sm font-semibold tracking-wide text-brand-white transition hover:bg-brand-white hover:text-brand-black"
+						>
+							{closingCta.secondaryLabel}
+						</a>
+					</div>
+				</FadeIn>
+			</section>
+		</PageFade>
+	);
 }

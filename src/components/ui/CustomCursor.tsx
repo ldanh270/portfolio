@@ -26,8 +26,9 @@ export function CustomCursor() {
 				transform: `translate(${position.x}px, ${position.y}px) translate(-50%, -50%) scale(${isHovering ? 0.72 : 1})`,
 			}}
 		>
-			<svg
-				viewBox="0 0 128 128"
+			{/* Text Path */}
+			{/* <svg
+				viewBox="0 0 24 24"
 				className="absolute inset-0 size-full animate-spin [animation-duration:16s]"
 			>
 				<defs>
@@ -47,9 +48,10 @@ export function CustomCursor() {
 						MODERN . SCALABLE . INNOVATIVE .
 					</textPath>
 				</text>
-			</svg>
+			</svg> */}
 
-			<div className="grid size-12 animate-spin place-items-center rounded-full [animation-duration:8s] bg-white text-brand-black">
+			{/* Inner Circle */}
+			<div className="grid size-3 place-items-center rounded-full bg-white text-brand-black">
 				<svg
 					viewBox="0 0 48 48"
 					className="size-10"
@@ -57,7 +59,7 @@ export function CustomCursor() {
 					stroke="currentColor"
 					strokeWidth="2"
 				>
-					<circle
+					{/* <circle
 						cx="24"
 						cy="24"
 						r="17"
@@ -66,7 +68,7 @@ export function CustomCursor() {
 					<path d="M24 7c5 5 7.5 10.7 7.5 17S29 36 24 41" />
 					<path d="M24 7c-5 5-7.5 10.7-7.5 17S19 36 24 41" />
 					<path d="M11.5 14.5c3.2 2 7.5 3.2 12.5 3.2s9.3-1.2 12.5-3.2" />
-					<path d="M11.5 33.5c3.2-2 7.5-3.2 12.5-3.2s9.3 1.2 12.5 3.2" />
+					<path d="M11.5 33.5c3.2-2 7.5-3.2 12.5-3.2s9.3 1.2 12.5 3.2" /> */}
 				</svg>
 			</div>
 		</div>
