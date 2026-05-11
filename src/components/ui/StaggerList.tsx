@@ -3,19 +3,21 @@
 import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 const container: Variants = {
 	hidden: {},
 	show: {
 		transition: {
-			staggerChildren: 0.07,
-			delayChildren: 0.1,
+			staggerChildren: 0.08,
+			delayChildren: 0.08,
 		},
 	},
 };
 
 const item: Variants = {
-	hidden: { opacity: 0, y: 16 },
-	show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+	hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+	show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.65, ease } },
 };
 
 type StaggerProps = {
@@ -29,8 +31,8 @@ export function StaggerList({ children, className }: StaggerProps) {
 			variants={container}
 			initial="hidden"
 			whileInView="show"
-			viewport={{ once: true, margin: "-60px" }}
-			className={`grid grid-auto-rows ${className}`}
+			viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+			className={`grid grid-auto-rows ${className ?? ""}`}
 		>
 			{children}
 		</motion.div>
@@ -41,7 +43,7 @@ export function StaggerItem({ children, className }: StaggerProps) {
 	return (
 		<motion.div
 			variants={item}
-			className={`h-full ${className}`}
+			className={`h-full ${className ?? ""}`}
 		>
 			{children}
 		</motion.div>

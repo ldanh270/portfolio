@@ -1,24 +1,30 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 type RevealTextProps = {
-  delay?: number;
-  className?: string;
-  children: ReactNode;
+	delay?: number;
+	className?: string;
+	children: ReactNode;
 };
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export function RevealText({ delay = 0, className, children }: RevealTextProps) {
-  return (
-    <motion.span
-      className={className}
-      initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
-      whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
-      transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1], delay }}
-      viewport={{ once: true }}
-    >
-      {children}
-    </motion.span>
-  );
+	const shouldReduceMotion = useReducedMotion();
+
+	return (
+		<span className={`inline-block overflow-hidden ${className ?? ""}`}>
+			<motion.span
+				className="inline-block"
+				initial={shouldReduceMotion ? { opacity: 1 } : { y: "115%", rotate: 2, opacity: 0 }}
+				whileInView={{ y: "0%", rotate: 0, opacity: 1 }}
+				transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease, delay }}
+				viewport={{ once: true, margin: "-10% 0px" }}
+			>
+				{children}
+			</motion.span>
+		</span>
+	);
 }

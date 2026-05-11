@@ -1,15 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function RevealLine({ className }: { className?: string }) {
-  return (
-    <motion.div
-      initial={{ scaleX: 0, originX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`h-px bg-brand-border ${className ?? ""}`}
-    />
-  );
+	const shouldReduceMotion = useReducedMotion();
+
+	return (
+		<motion.div
+			initial={shouldReduceMotion ? { scaleX: 1 } : { scaleX: 0, originX: 0 }}
+			whileInView={{ scaleX: 1 }}
+			viewport={{ once: true, margin: "-80px" }}
+			transition={{ duration: shouldReduceMotion ? 0 : 1, ease }}
+			className={`h-px bg-brand-border ${className ?? ""}`}
+		/>
+	);
 }

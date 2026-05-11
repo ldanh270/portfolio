@@ -1,5 +1,5 @@
 import { FadeIn } from "@/components/ui/FadeIn";
-import { HoverRow } from "@/components/ui/HoverRow";
+import { RadialHover } from "@/components/ui/RadialHover";
 import { StaggerItem, StaggerList } from "@/components/ui/StaggerList";
 
 type Skills = Record<string, string[]>;
@@ -33,36 +33,37 @@ export default function AboutSkills() {
 			{/* Skill Items */}
 			<StaggerList className="grid auto-rows-fr">
 				{Object.entries(skills).map(([group, items], groupIndex) => {
-					const isFeatured = false;
-
 					return (
 						<StaggerItem key={group}>
-							<HoverRow
-								movex={0}
-								featured={isFeatured}
-								className={`group relative grid h-full min-h-24 cursor-default items-center gap-10 overflow-hidden ${groupIndex < Object.keys(skills).length - 1 ? "border-b" : ""} border-brand-border px-5 py-6 transition-colors lg:grid-cols-[auto_0.75fr_1fr] hover:text-brand-white`}
+							<RadialHover
+								as="div"
+								shape="parallelVertical"
 							>
-								{/* Group Number */}
-								<span
-									className={`relative z-10 font-mono text-xs font-bold uppercase tracking-widest ${isFeatured ? "text-brand-white" : "text-brand-gray group-hover:text-brand-white"}`}
-								>
-									{String(groupIndex + 1).padStart(2, "0")}.
-								</span>
-
-								{/* Group Title */}
-								<h3 className="relative z-10 text-[clamp(2rem,3vw,4.2rem)] font-bold uppercase leading-tight tracking-tight">
-									{group}
-								</h3>
-
-								{/* Skill Items */}
 								<div
-									className={`relative z-10 grid gap-1 font-mono text-[10px] uppercase leading-5 tracking-tight lg:grid-cols-2 ${isFeatured ? "text-brand-white" : "text-brand-white group-hover:text-brand-white"}`}
+									className={`group relative grid h-full min-h-24 cursor-default items-center gap-10 overflow-hidden ${groupIndex < Object.keys(skills).length - 1 ? "border-b" : ""} border-brand-border px-5 py-6 transition-colors lg:grid-cols-[auto_0.75fr_1fr] lg:grid-rows-1 hover:text-brand-white`}
 								>
-									{items.map((skill) => (
-										<span key={skill}>{skill}</span>
-									))}
+									{/* Group Number */}
+									<span
+										className={`relative z-10 font-mono text-xs font-bold uppercase tracking-widest text-brand-gray group-hover:text-brand-white`}
+									>
+										{String(groupIndex + 1).padStart(2, "0")}.
+									</span>
+
+									{/* Group Title */}
+									<h3 className="relative z-10 text-[clamp(2rem,3vw,4.2rem)] font-bold uppercase leading-tight tracking-tight">
+										{group}
+									</h3>
+
+									{/* Skill Items */}
+									<div
+										className={`relative z-10 grid gap-1 font-mono text-[10px] uppercase leading-5 tracking-tight lg:grid-cols-2 text-brand-white group-hover:text-brand-white`}
+									>
+										{items.map((skill) => (
+											<span key={skill}>{skill}</span>
+										))}
+									</div>
 								</div>
-							</HoverRow>
+							</RadialHover>
 						</StaggerItem>
 					);
 				})}

@@ -1,76 +1,58 @@
 "use client";
 
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const interactiveSelector = "a, button, .work-item, input, textarea, select";
+const interactiveSelector = "a, button, .work-item, input, textarea, select, [data-cursor]";
 
 export function CustomCursor() {
-	const [position, setPosition] = useState({ x: -100, y: -100 });
+	const cursorX = useMotionValue(-100);
+	const cursorY = useMotionValue(-100);
+	const smoothX = useSpring(cursorX, { stiffness: 520, damping: 42, mass: 0.6 });
+	const smoothY = useSpring(cursorY, { stiffness: 520, damping: 42, mass: 0.6 });
+	const [cursorLabel, setCursorLabel] = useState("");
 	const [isHovering, setIsHovering] = useState(false);
+
+	const scale = useTransform(smoothX, () => (isHovering ? 0.74 : 1));
 
 	useEffect(() => {
 		const onMouseMove = (event: MouseEvent) => {
-			setPosition({ x: event.clientX, y: event.clientY });
-			setIsHovering(Boolean((event.target as Element | null)?.closest(interactiveSelector)));
+			const target = (event.target as Element | null)?.closest(interactiveSelector);
+			cursorX.set(event.clientX);
+			cursorY.set(event.clientY);
+			setIsHovering(Boolean(target));
+			setCursorLabel(target?.getAttribute("data-cursor") ?? "");
 		};
 
 		window.addEventListener("mousemove", onMouseMove, { passive: true });
 		return () => window.removeEventListener("mousemove", onMouseMove);
-	}, []);
+	}, [cursorX, cursorY]);
 
 	return (
-		<div
+		<motion.div
 			aria-hidden="true"
-			className="pointer-events-none fixed left-0 top-0 z-9999 hidden size-24 place-items-center rounded-full bg-black text-brand-white mix-blend-difference transition-transform duration-200 ease-out md:grid"
+			className="pointer-events-none fixed left-0 top-0 z-9999 hidden size-24 place-items-center rounded-full bg-black text-brand-white mix-blend-difference md:grid"
 			style={{
-				transform: `translate(${position.x}px, ${position.y}px) translate(-50%, -50%) scale(${isHovering ? 0.72 : 1})`,
+				x: smoothX,
+				y: smoothY,
+				scale,
+				translateX: "-50%",
+				translateY: "-50%",
 			}}
 		>
-			{/* Text Path */}
-			{/* <svg
-				viewBox="0 0 24 24"
-				className="absolute inset-0 size-full animate-spin [animation-duration:16s]"
+			<motion.span
+				initial={false}
+				animate={{ opacity: cursorLabel ? 1 : 0, y: cursorLabel ? 0 : 4 }}
+				transition={{ duration: 0.18 }}
+				className="font-mono text-[9px] uppercase tracking-[0.22em]"
 			>
-				<defs>
-					<path
-						id="cursor-text-path"
-						d="M 64 64 m -50 0 a 50 50 0 1 1 100 0 a 50 50 0 1 1 -100 0"
-					/>
-				</defs>
-				<text
-					className="font-mono text-[10px] uppercase tracking-[0.36em]"
-					fill="currentColor"
-				>
-					<textPath
-						href="#cursor-text-path"
-						startOffset="0%"
-					>
-						MODERN . SCALABLE . INNOVATIVE .
-					</textPath>
-				</text>
-			</svg> */}
-
-			{/* Inner Circle */}
-			<div className="grid size-3 place-items-center rounded-full bg-white text-brand-black">
-				<svg
-					viewBox="0 0 48 48"
-					className="size-10"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-				>
-					{/* <circle
-						cx="24"
-						cy="24"
-						r="17"
-					/>
-					<path d="M7 24h34" />
-					<path d="M24 7c5 5 7.5 10.7 7.5 17S29 36 24 41" />
-					<path d="M24 7c-5 5-7.5 10.7-7.5 17S19 36 24 41" />
-					<path d="M11.5 14.5c3.2 2 7.5 3.2 12.5 3.2s9.3-1.2 12.5-3.2" />
-					<path d="M11.5 33.5c3.2-2 7.5-3.2 12.5-3.2s9.3 1.2 12.5 3.2" /> */}
-				</svg>
-			</div>
-		</div>
+				{cursorLabel}
+			</motion.span>
+			<motion.div
+				className="absolute size-2 rounded-full bg-white"
+				animate={{ scale: isHovering ? 0 : 1 }}
+				transition={{ duration: 0.18 }}
+			/>
+		</motion.div>
 	);
 }
