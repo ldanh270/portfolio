@@ -18,88 +18,78 @@ type CareerEntry = {
 	place: string;
 	description: string;
 	lane: number;
-	startOffset: number;
-	endOffset: number;
 };
+
+const years = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "Now"];
+const YEAR_WIDTH = 400; // px per year
 
 const careerEntries: CareerEntry[] = [
 	{
 		type: "education",
-		start: "2023",
-		end: "2025",
-		title: "Software Engineering",
-		place: "FUDN",
+		start: "2020",
+		end: "2023",
+		title: "High School Student",
+		place: "Hoang Hoa Tham High School Da Nang",
 		description:
-			"Systems, algorithms, databases, AI fundamentals, and software architecture foundation.",
+			"Advanced math class. Coursework in physics, computer science, and English. Graduated with honors.",
 		lane: 0,
-		startOffset: 0,
-		endOffset: 62,
 	},
 	{
 		type: "experience",
-		start: "2024",
+		start: "2026",
 		end: "Now",
-		title: "Internship Developer",
-		place: "OUTFIZ · Ohtez project",
+		title: "Full-stack Developer",
+		place: "OUTFIZ",
 		description:
 			"Production frontend work across real product flows, interface details, and feature delivery.",
 		lane: 1,
-		startOffset: 38,
-		endOffset: 100,
-	},
-	{
-		type: "experience",
-		start: "2024",
-		end: "2024",
-		title: "Smart PC Store",
-		place: "Side Project",
-		description: "Commerce interface for PC discovery, product browsing, and configuration flow.",
-		lane: 2,
-		startOffset: 32,
-		endOffset: 58,
-	},
-	{
-		type: "experience",
-		start: "2024",
-		end: "2024",
-		title: "BluPass OCR",
-		place: "Side Project",
-		description:
-			"OCR workflow for extracting, checking, and structuring document data from images.",
-		lane: 3,
-		startOffset: 52,
-		endOffset: 78,
 	},
 	{
 		type: "education",
-		start: "2024",
+		start: "2023",
 		end: "Now",
-		title: "Certifications",
-		place: "Google Certified Educator, etc.",
+		title: "University Student - Software Engineering",
+		place: "FPT University Da Nang",
 		description:
-			"Professional learning signals across education, product thinking, and technical practice.",
-		lane: 4,
-		startOffset: 66,
-		endOffset: 100,
+			"Comprehensive software engineering curriculum. Coursework in data structures, algorithms, databases, and web development.",
+		lane: 2,
+	},
+	{
+		type: "experience",
+		start: "2026",
+		end: "Now",
+		title: "Freelance Software Developer",
+		place: "VieTech Solutions",
+		description:
+			"Full-stack development for various clients, delivering tailored software solutions to meet specific business needs.",
+		lane: 3,
 	},
 ];
 
-const years = ["2023", "2024", "2025", "Now"];
+function getStartOffset(year: string): number {
+	const index = years.indexOf(year);
+	return index >= 0 ? index * YEAR_WIDTH : 0;
+}
+
+function getEndOffset(year: string): number {
+	const index = years.indexOf(year);
+	return index >= 0 ? index * YEAR_WIDTH : years.length * YEAR_WIDTH;
+}
 
 function getLaneWidth(entry: CareerEntry) {
-	return `${entry.endOffset - entry.startOffset}%`;
+	return `${getEndOffset(entry.end) - getStartOffset(entry.start)}px`;
 }
 
 function TimelinePopup({ entry }: { entry: CareerEntry }) {
-	const opensDown = entry.lane < 3;
+	const opensDown = entry.lane < 2;
 	const positionClass =
 		opensDown ?
 			"top-[calc(100%+1.75rem)] group-hover:translate-y-1"
-		:	"bottom-[calc(100%+1.75rem)] group-hover:-translate-y-1";
+		: 	"bottom-[calc(100%+1.75rem)] group-hover:-translate-y-1";
 
 	return (
 		<article
-			className={`pointer-events-none absolute left-0 z-60 w-72 border border-brand-border bg-brand-white p-5 opacity-0 shadow-[8px_8px_0_#0a0a0a] transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100 ${positionClass}`}
+			className={`pointer-events-none absolute left-0 z-60 w-fit border border-brand-border bg-brand-white p-5 opacity-0 shadow-[8px_8px_0_#0a0a0a] transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100 ${positionClass}`}
 		>
 			<header className="mb-4 flex items-start justify-between gap-4">
 				<p className="font-mono text-[10px] uppercase tracking-widest text-brand-gray">
@@ -109,7 +99,7 @@ function TimelinePopup({ entry }: { entry: CareerEntry }) {
 					{entry.start} — {entry.end}
 				</time>
 			</header>
-			<h3 className="text-xl font-extrabold uppercase leading-tight tracking-tighter">
+			<h3 className="text-xl w-fit font-extrabold uppercase leading-tight tracking-tighter">
 				{entry.title}
 			</h3>
 			<p className="mt-3 font-mono text-[10px] uppercase leading-5 tracking-widest text-brand-gray">
@@ -126,7 +116,7 @@ function TimelineLane({ entry }: { entry: CareerEntry }) {
 			className="group absolute z-10 h-11 hover:z-50 focus-within:z-50"
 			style={
 				{
-					left: `${entry.startOffset}%`,
+					left: `${getStartOffset(entry.start)}px`,
 					top: `${entry.lane * 4.25}rem`,
 					width: getLaneWidth(entry),
 				} as CSSProperties
@@ -178,17 +168,40 @@ export function AboutTimeline() {
 					</FadeIn>
 				</header>
 
-				<div className="h-auto min-h-136 overflow-x-auto overflow-y-visible pb-8 scrollbar-thin">
+				<div
+					className="relative overflow-x-auto overflow-y-hidden no-scrollbar"
+					style={{
+						minHeight: `${careerEntries.length * 66 + 180}px`,
+						WebkitOverflowScrolling: "touch",
+					}}
+				>
+					<div className="pointer-events-none absolute inset-x-0 top-10 h-px bg-brand-border" />
+					<TimelineRevealLine className="pointer-events-none absolute inset-x-0 top-10 h-px bg-brand-black" />
 					<motion.div
 						drag="x"
-						dragConstraints={{ left: -520, right: 0 }}
+						dragConstraints={{
+							left: -((years.length - 1) * YEAR_WIDTH - years.length * 48 * 2),
+							right: 0,
+						}}
 						dragElastic={0.08}
-						className="relative min-h-136 min-w-260 cursor-grab active:cursor-grabbing"
+						className="relative cursor-grab active:cursor-grabbing flex-none"
+						style={{
+							minHeight: `${careerEntries.length * 66 + 180}px`,
+							width: `${years.length * YEAR_WIDTH}px`,
+							flexShrink: 0,
+							display: "block",
+						}}
 					>
-						<div className="absolute left-0 right-0 top-10 h-px bg-brand-border" />
-						<TimelineRevealLine className="absolute left-0 right-0 top-10 h-px bg-brand-black" />
-
-						<div className="absolute left-0 right-0 top-0 grid min-h-136 grid-cols-4">
+						<div
+							className="absolute left-0 top-0"
+							style={{
+								minHeight: `${careerEntries.length * 66 + 180}px`,
+								display: "grid",
+								gridTemplateColumns: `repeat(${years.length}, ${YEAR_WIDTH}px)`,
+								gridTemplateRows: 1,
+								width: `${years.length * YEAR_WIDTH}px`,
+							}}
+						>
 							{years.map((year) => (
 								<div
 									key={year}

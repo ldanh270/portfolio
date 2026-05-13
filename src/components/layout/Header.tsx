@@ -17,6 +17,7 @@ export function Header() {
 				<Link href="/">
 					<Image
 						src="/logo.svg"
+						loading="eager"
 						alt={site.name}
 						width={60}
 						height={60}

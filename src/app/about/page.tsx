@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AboutAwards } from "@/components/sections/about/AboutAwards";
 import { AboutCertificates } from "@/components/sections/about/AboutCertificates";
 import { AboutTimeline } from "@/components/sections/about/AboutTimeline";
+import { AboutExperience } from "@/components/sections/about/AboutExperience";
 import { AboutGrid } from "@/components/sections/about/AboutGrid";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { MarqueeText } from "@/components/ui/MarqueeText";
@@ -78,7 +79,6 @@ export default function AboutPage() {
 			<RevealLine />
 			<AboutTimeline />
 
-			
 			<AboutAwards />
 			<AboutCertificates />
 
