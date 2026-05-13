@@ -56,7 +56,7 @@ const careerEntries: CareerEntry[] = [
 	},
 	{
 		type: "experience",
-		start: "2026",
+		start: "2025",
 		end: "Now",
 		title: "Freelancer",
 		place: "Self-employed",
@@ -162,8 +162,7 @@ export function AboutTimeline() {
 						className="max-w-2xl lg:self-end"
 					>
 						<p className="text-sm leading-8 text-[#444]">
-							Drag horizontally to explore. Each compact lane maps its own start and end time; hover
-							to open details.
+							Bridging the gap between university classrooms and production environments. Discover the milestones that shape my career evolution.
 						</p>
 					</FadeIn>
 				</header>
