@@ -32,6 +32,7 @@ export function Hero() {
 				<Image
 					src="/avatar.png"
 					fill
+					sizes="(max-width: 768px) 86vw, (max-width: 800px) 70vw, 33vw"
 					alt="Le Duc Anh"
 					className="object-contain object-bottom"
 					priority
