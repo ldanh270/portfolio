@@ -202,6 +202,7 @@ function CertCard({
 	return (
 		<button
 			type="button"
+			data-cursor="view"
 			onClick={(e) => {
 				if (isDragging) {
 					e.preventDefault();

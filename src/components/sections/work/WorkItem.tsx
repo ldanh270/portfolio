@@ -12,9 +12,9 @@ export function WorkItem({ project }: { project: Project }) {
 	return (
 		<Link
 			href={`/work/${project.slug}`}
+				data-cursor="view"
 			className="work-item group block overflow-hidden border-b border-brand-border"
-			data-cursor="View"
-		>
+					>
 			<motion.article
 				className="relative grid gap-6 px-6 py-10 transition-colors sm:px-12 md:grid-cols-[80px_1fr_auto] md:gap-8 md:py-12"
 				whileHover={

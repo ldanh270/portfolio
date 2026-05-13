@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AboutCertificates } from "@/components/sections/about/AboutCertificates";
 import { AboutTimeline } from "@/components/sections/about/AboutTimeline";
 import { AboutGrid } from "@/components/sections/about/AboutGrid";
-import { FadeIn } from "@/components/ui/FadeIn";
 import { MarqueeText } from "@/components/ui/MarqueeText";
 import { PageFade } from "@/components/ui/PageFade";
 import { RevealLine } from "@/components/ui/RevealLine";
@@ -26,7 +24,7 @@ export default function AboutPage() {
 					direction="right"
 				/>
 			</div>
-			
+
 			<AboutHero />
 			<AboutGrid />
 			<AboutSkills />
