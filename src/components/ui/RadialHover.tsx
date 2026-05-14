@@ -90,7 +90,7 @@ export function RadialHover({
 		initial: "rest",
 		whileHover: "hover",
 		whileFocus: "hover",
-		whileTap: shouldReduceMotion ? undefined : { scale: 0.995 },
+		whileTap: "hover" as const,
 		className: `group relative overflow-hidden text-left ${className ?? ""}`,
 	};
 	const content = (
@@ -100,7 +100,7 @@ export function RadialHover({
 				shouldReduceMotion={shouldReduceMotion}
 			/>
 			<span
-				className={`relative z-10 block transition-colors duration-300 group-hover:text-brand-white group-focus-visible:text-brand-white ${contentClassName ?? ""}`}
+				className={`relative z-10 block transition-colors duration-300 group-hover:text-brand-white group-active:text-brand-white group-focus-visible:text-brand-white ${contentClassName ?? ""}`}
 			>
 				{children}
 			</span>
