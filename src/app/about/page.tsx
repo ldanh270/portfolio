@@ -6,6 +6,7 @@ import { MarqueeText } from "@/components/ui/MarqueeText";
 import { PageFade } from "@/components/ui/PageFade";
 import { RevealLine } from "@/components/ui/RevealLine";
 import AboutHero from "@/components/sections/about/AboutHero";
+import AboutAwards from "@/components/sections/about/AboutAwards";
 import AboutSkills from "@/components/sections/about/AboutSkills";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function AboutPage() {
 			<RevealLine />
 			<AboutTimeline />
 			<AboutCertificates />
+			<AboutAwards />
 		</PageFade>
 	);
 }
