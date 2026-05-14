@@ -8,10 +8,11 @@ import { FadeIn } from "@/components/ui/FadeIn";
 
 type Award = {
 	title: string;
-	organization: string;
+	position: string;
 	date: string;
 	description: string;
 	category: string;
+	tags: string[];
 	url?: string;
 };
 
@@ -19,47 +20,103 @@ type Award = {
 
 const awards: Award[] = [
 	{
-		title: "Best Innovation Award",
-		organization: "FPT University Da Nang",
-		date: "2025",
+		title: "City-level Excellent Student Contest in Informatics 2020 (Grade C3)",
+		position: "Third Prize",
+		date: "2020",
 		description:
-			"Recognized for developing an innovative AI-powered code review tool that streamlined the development workflow for student teams across the university.",
-		category: "Innovation",
-		url: "#",
+			"Competed against top high-school students citywide in algorithmic problem-solving. Tasks covered graph theory, dynamic programming, and greedy strategies under strict time limits.",
+		category: "Algorithm Competition",
+		tags: ["C++", "Algorithm", "Graph Theory", "Dynamic Programming"],
 	},
 	{
-		title: "Dean's List Honor",
-		organization: "FPT University",
-		date: "2024",
+		title: "City-level Informatics Contest",
+		position: "Third Prize",
+		date: "2020",
 		description:
-			"Awarded for maintaining exceptional academic performance in Software Engineering with a GPA in the top 5% of the cohort.",
-		category: "Academic",
+			"Solved a set of challenging competitive programming problems focused on data structures and efficient search techniques. Strengthened foundational skills in time-complexity optimization.",
+		category: "Algorithm Competition",
+		tags: ["Data Structures", "Binary Search", "Sorting", "C++"],
 	},
 	{
-		title: "1st Place — National Hackathon",
-		organization: "Vietnam Developer Summit",
-		date: "2025",
+		title: "Central Highlands & Central Vietnam Informatics Olympic – 3rd Edition",
+		position: "Third Prize",
+		date: "2022",
 		description:
-			"Led a team of four to build a real-time collaborative design tool in 48 hours, winning first place among 120+ participating teams.",
-		category: "Competition",
-		url: "#",
+			"Regional-scale olympiad bringing together the strongest student programmers from central Vietnam. Tackled advanced problems involving number theory, combinatorics, and segment trees across two contest rounds.",
+		category: "Regional Olympiad",
+		tags: ["Number Theory", "Combinatorics", "Segment Tree", "Competitive Programming"],
 	},
 	{
-		title: "Outstanding Community Contributor",
-		organization: "Open Source Vietnam",
-		date: "2024",
+		title: "City-level Youth Informatics Contest – 25th Edition",
+		position: "Third Prize",
+		date: "2022",
 		description:
-			"Recognized for significant contributions to open-source projects in the Vietnamese developer community, including maintaining three widely-used libraries.",
-		category: "Open Source",
+			"Annual city contest with a legacy of 25 editions. Demonstrated consistent growth in competitive programming with problems spanning string processing, recursion, and brute-force optimization.",
+		category: "Algorithm Competition",
+		tags: ["String Processing", "Recursion", "Optimization", "Problem Solving"],
 	},
 	{
-		title: "Best UI/UX Design Project",
-		organization: "FPT Edu Design Awards",
-		date: "2025",
+		title: "D3 Regional Round – National Youth Informatics Contest - 29th Edition",
+		position: "Consolation Prize",
+		date: "2023",
 		description:
-			"Portfolio website recognized for exceptional visual design, accessibility compliance, and creative use of micro-interactions and animations.",
-		category: "Design",
-		url: "#",
+			"Participated in the regional qualifying round of Vietnam's most prestigious youth informatics contest. Gained valuable experience competing at national-level difficulty with problems in graph algorithms and advanced DP.",
+		category: "National Contest",
+		tags: ["National Level", "Graph Algorithms", "Advanced DP", "C++"],
+	},
+	{
+		title: "D3 City-level Youth Informatics Contest - 28th Edition",
+		position: "Second Prize",
+		date: "2023",
+		description:
+			"Achieved runner-up position among city participants. Excelled in problems requiring creative algorithmic design, including shortest-path variants and tree-based computations.",
+		category: "Algorithm Competition",
+		tags: ["Shortest Path", "Tree Algorithms", "Algorithm Design", "Silver Medal"],
+	},
+	{
+		title: "Provincial Science and Technology Contest for High School Students",
+		position: "Third Prize",
+		date: "2023",
+		description:
+			"Presented a research project applying technology to solve real-world problems. Combined software development skills with scientific methodology to deliver a working prototype judged by academic professionals.",
+		category: "Science & Technology",
+		tags: ["Research", "Prototype", "Innovation", "Scientific Method"],
+	},
+	{
+		title: "City-level Informatics Excellent Student Contest",
+		position: "Consolation Prize",
+		date: "2023",
+		description:
+			"Competed in an elite-tier contest reserved for top-performing informatics students. Problems demanded deep understanding of computational geometry and advanced data structures.",
+		category: "Algorithm Competition",
+		tags: ["Computational Geometry", "Advanced Data Structures", "Elite Tier"],
+	},
+	{
+		title: "NAI Challenge Cup – Hue ICT Challenge",
+		position: "Third Prize",
+		date: "2023",
+		description:
+			"Inter-city ICT challenge hosted in Hue, combining algorithmic contests with practical software development tasks. Balanced speed-coding with solution architecture under competition pressure.",
+		category: "ICT Challenge",
+		tags: ["ICT", "Speed Coding", "Software Development", "Inter-City"],
+	},
+	{
+		title: "D2 Central Highlands & Central Vietnam Informatics Olympiad – 4th Edition",
+		position: "Bronze Medal",
+		date: "2023",
+		description:
+			"Earned a bronze medal in the upgraded D2 division of the regional olympiad. Faced harder problem sets involving heavy implementation, math-based algorithms, and multi-step reasoning under a 5-hour session.",
+		category: "Regional Olympiad",
+		tags: ["Bronze Medal", "Heavy Implementation", "Math Algorithms", "5-Hour Contest"],
+	},
+	{
+		title: "City-level Science and Technology Contest",
+		position: "Third Prize",
+		date: "2023",
+		description:
+			"Developed and presented a technology-driven solution addressing local community needs. Project evaluated on innovation, feasibility, and technical execution by a panel of industry and academic judges.",
+		category: "Science & Technology",
+		tags: ["Community Impact", "Feasibility", "Technical Execution", "Presentation"],
 	},
 ];
 
@@ -89,7 +146,10 @@ function AwardRow({
 	const shouldReduceMotion = useReducedMotion();
 
 	return (
-		<FadeIn y={20} delay={index * 0.06}>
+		<FadeIn
+			y={20}
+			delay={index * 0.06}
+		>
 			<div className="border-b border-brand-border">
 				<button
 					type="button"
@@ -108,7 +168,7 @@ function AwardRow({
 							{award.title}
 						</span>
 						<span className="mt-1 block font-mono text-[10px] uppercase tracking-widest text-brand-gray">
-							{award.organization}
+							{award.position}
 						</span>
 					</span>
 
@@ -140,16 +200,10 @@ function AwardRow({
 					{isOpen && (
 						<motion.div
 							initial={
-								shouldReduceMotion
-									? { height: "auto", opacity: 1 }
-									: { height: 0, opacity: 0 }
+								shouldReduceMotion ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
 							}
 							animate={{ height: "auto", opacity: 1 }}
-							exit={
-								shouldReduceMotion
-									? { height: "auto", opacity: 1 }
-									: { height: 0, opacity: 0 }
-							}
+							exit={shouldReduceMotion ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
 							transition={{
 								duration: shouldReduceMotion ? 0 : 0.5,
 								ease,
@@ -163,9 +217,19 @@ function AwardRow({
 								</span>
 
 								<div className="max-w-xl">
-									<p className="text-sm leading-7 text-[#444]">
-										{award.description}
-									</p>
+									<p className="text-sm leading-7 text-[#444]">{award.description}</p>
+
+									{/* Tags */}
+									<div className="mt-4 flex flex-wrap gap-2">
+										{award.tags.map((tag) => (
+											<span
+												key={tag}
+												className="rounded-full border border-brand-border px-3 py-1 font-mono text-[10px] uppercase tracking-widest"
+											>
+												{tag}
+											</span>
+										))}
+									</div>
 
 									{/* Mobile meta */}
 									<div className="mt-3 flex items-center gap-3 sm:hidden">
@@ -238,9 +302,8 @@ export default function AboutAwards() {
 					className="w-full max-w-2xl"
 				>
 					<p className="text-sm leading-8 text-[#444] lg:text-center">
-						Milestones of recognition across competitions,
-						academics, and open-source contributions that fuel my
-						drive to build better software.
+						Milestones of recognition across competitions, academics, and open-source contributions
+						that fuel my drive to build better software.
 					</p>
 				</FadeIn>
 			</header>
