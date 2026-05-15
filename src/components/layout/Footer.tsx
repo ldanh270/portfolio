@@ -4,6 +4,7 @@ import Link from "next/link";
 import { navLinks, site, socialLinks } from "@/data/site";
 import Image from "next/image";
 import { HighlightedText } from "@/components/ui/HighlightedText";
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -20,13 +21,16 @@ export function Footer() {
 		>
 			{/* Animated Background Grid */}
 			<div className="pointer-events-none absolute inset-0 opacity-[0.03]">
-				<div className="absolute inset-0" style={{
-					backgroundImage: `
+				<div
+					className="absolute inset-0"
+					style={{
+						backgroundImage: `
 						linear-gradient(var(--black) 1px, transparent 1px),
 						linear-gradient(90deg, var(--black) 1px, transparent 1px)
 					`,
-					backgroundSize: "60px 60px"
-				}} />
+						backgroundSize: "60px 60px",
+					}}
+				/>
 			</div>
 
 			<div className="relative z-10 mx-auto max-w-7xl">
@@ -47,22 +51,20 @@ export function Footer() {
 						transition={{ duration: 0.6, ease, delay: 0.3 }}
 						className="mt-8"
 					>
-						<Link
+						<AnimatedButton
+							variant="slide-right"
 							href="/contact"
-							className="group inline-flex items-center gap-4 font-mono text-xs uppercase tracking-[0.2em] transition-all hover:gap-6"
+							className="flex items-center uppercase justify-center my-5 gap-4 border border-brand-black"
 						>
-							<span className="relative">
-								Get In Touch
-								<span className="absolute -bottom-1 left-0 h-px w-0 bg-brand-black transition-all duration-300 group-hover:w-full" />
-							</span>
+							<span>Get In Touch</span>
 							<motion.span
-								className="text-2xl"
+								className="ml-2 self-center mask-center"
 								animate={{ x: [0, 5, 0] }}
 								transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
 							>
 								→
 							</motion.span>
-						</Link>
+						</AnimatedButton>
 					</motion.div>
 				</motion.div>
 
@@ -75,7 +77,10 @@ export function Footer() {
 						transition={{ duration: 0.6, ease, delay: 0.4 }}
 						className="lg:col-span-4"
 					>
-						<Link href="/" className="group inline-block">
+						<Link
+							href="/"
+							className="group inline-block"
+						>
 							<motion.div
 								whileHover={{ scale: 1.05, rotate: 5 }}
 								transition={{ duration: 0.3, ease }}
@@ -91,7 +96,10 @@ export function Footer() {
 							</motion.div>
 						</Link>
 						<div className="font-mono text-sm uppercase tracking-[0.2em] text-brand-black">
-							<HighlightedText delay={0.5} duration={1}>
+							<HighlightedText
+								delay={0.5}
+								duration={1}
+							>
 								Le Duc Anh
 							</HighlightedText>
 						</div>

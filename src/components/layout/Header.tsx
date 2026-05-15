@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { navLinks, site } from "@/data/site";
 import Image from "next/image";
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 
 export function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -37,12 +38,13 @@ export function Header() {
 					))}
 				</div>
 
-				<Link
+				<AnimatedButton
+					variant="arc-bottom"
 					href="/contact"
-					className="hidden rounded-full bg-brand-black px-5 py-2 text-xs font-semibold tracking-wide text-brand-white transition hover:opacity-70 md:inline-flex"
+					className="hidden rounded-full border border-brand-black bg-brand-white px-2 py text-xs font-semibold tracking-wide text-brand-black md:inline-flex"
 				>
 					Get in touch ↗
-				</Link>
+				</AnimatedButton>
 
 				<button
 					className="font-mono text-xs uppercase tracking-widest md:hidden"

@@ -1,5 +1,5 @@
 import { MarqueeText } from "@/components/ui/MarqueeText";
-import Link from "next/link";
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 
 export default function GetInTouch() {
 	return (
@@ -19,18 +19,20 @@ export default function GetInTouch() {
 					Let&apos;s build something great.
 				</p>
 				<div className="flex flex-row gap-4 lg:justify-end">
-					<Link
+					<AnimatedButton
+						variant="arc-bottom"
 						href="/contact"
-						className="rounded-full h-fit bg-brand-black px-6 py-4 text-sm font-semibold tracking-wide text-brand-white transition hover:opacity-75"
+						className="h-fit rounded-full border border-brand-black bg-brand-black text-brand-white"
 					>
 						Send an email ↗
-					</Link>
-					<Link
+					</AnimatedButton>
+					<AnimatedButton
+						variant="arc-bottom"
 						href="/work"
-						className="rounded-full h-fit border border-brand-border px-6 py-4 text-sm font-semibold tracking-wide transition hover:bg-[rgba(10,10,10,0.02)]"
+						className="h-fit rounded-full border border-brand-border"
 					>
 						View work →
-					</Link>
+					</AnimatedButton>
 				</div>
 			</div>
 		</section>
