@@ -40,11 +40,11 @@ export default function AboutSkills() {
 								shape="parallelVertical"
 							>
 								<div
-									className={`group relative grid h-full min-h-24 cursor-default items-center gap-10 overflow-hidden ${groupIndex < Object.keys(skills).length - 1 ? "border-b" : ""} border-brand-border px-5 py-6 transition-colors lg:grid-cols-[auto_0.75fr_1fr] lg:grid-rows-1 hover:text-brand-white`}
+									className={`group relative grid h-full min-h-24 cursor-default items-center gap-10 overflow-hidden ${groupIndex < Object.keys(skills).length - 1 ? "border-b" : ""} border-brand-border px-5 py-6 transition-colors lg:grid-cols-[auto_0.75fr_1fr] lg:grid-rows-1 hover:text-brand-white active:text-brand-white`}
 								>
 									{/* Group Number */}
 									<span
-										className={`relative z-10 font-mono text-xs font-bold uppercase tracking-widest text-brand-gray group-hover:text-brand-white`}
+										className={`relative z-10 font-mono text-xs font-bold uppercase tracking-widest text-brand-gray group-hover:text-brand-white group-active:text-brand-white`}
 									>
 										{String(groupIndex + 1).padStart(2, "0")}.
 									</span>

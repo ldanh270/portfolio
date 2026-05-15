@@ -16,7 +16,8 @@ export default function AboutHero() {
 				>
 					<Link
 						href="/contact"
-						className="inline-flex rounded-full border border-brand-border px-6 py-4 text-sm font-semibold tracking-wide transition hover:bg-[rgba(10,10,10,0.02)]"
+							data-cursor="view"
+									className="inline-flex rounded-full border border-brand-border px-6 py-4 text-sm font-semibold tracking-wide transition hover:bg-[rgba(10,10,10,0.02)]"
 					>
 						Let&apos;s work together →
 					</Link>

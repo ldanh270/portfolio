@@ -5,9 +5,19 @@
 	--white: #fafaf8;
 	--gray: #888888;
 	--border: 1px solid rgba(10, 10, 10, 0.12);
+	--black: #0a0a0a;
+	--white: #fafaf8;
+	--gray: #888888;
+	--border: 1px solid rgba(10, 10, 10, 0.12);
 }
 
 @theme inline {
+	--color-brand-black: var(--black);
+	--color-brand-white: var(--white);
+	--color-brand-gray: var(--gray);
+	--color-brand-border: rgba(10, 10, 10, 0.12);
+	--font-display: var(--font-syne);
+	--font-mono: var(--font-dm-mono);
 	--color-brand-black: var(--black);
 	--color-brand-white: var(--white);
 	--color-brand-gray: var(--gray);
@@ -19,9 +29,15 @@
 html {
 	background: var(--white);
 	scroll-padding-top: 4rem;
+	background: var(--white);
+	scroll-padding-top: 4rem;
 }
 
 body {
+	color: var(--black);
+	overflow-x: hidden;
+	cursor: none;
+	font-family: var(--font-syne), sans-serif;
 	color: var(--black);
 	overflow-x: hidden;
 	cursor: none;
@@ -30,17 +46,22 @@ body {
 
 * {
 	cursor: none !important;
+	cursor: none !important;
 }
 
 ::-webkit-scrollbar {
+	width: 3px;
 	width: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: var(--black);
+	background: var(--black);
 }
 
 ::selection {
+	background: var(--black);
+	color: var(--white);
 	background: var(--black);
 	color: var(--white);
 }
@@ -49,7 +70,13 @@ body {
 	from {
 		transform: translateX(0);
 	}
+	from {
+		transform: translateX(0);
+	}
 
+	to {
+		transform: translateX(-50%);
+	}
 	to {
 		transform: translateX(-50%);
 	}
@@ -57,15 +84,24 @@ body {
 
 .animate-marquee {
 	animation: marquee var(--marquee-speed, 30s) linear infinite;
+	animation: marquee var(--marquee-speed, 30s) linear infinite;
 }
 
 .animate-marquee-reverse {
+	animation: marquee var(--marquee-speed, 30s) linear infinite reverse;
 	animation: marquee var(--marquee-speed, 30s) linear infinite reverse;
 }
 
 .text-outline {
 	color: transparent;
 	-webkit-text-stroke: 1px var(--black);
+	color: transparent;
+	-webkit-text-stroke: 1px var(--black);
+}
+
+.text-outline-white {
+	color: transparent;
+	-webkit-text-stroke: 1px var(--white);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -76,6 +112,24 @@ body {
 		transition-duration: 0.01ms !important;
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
+	}
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
 }
 
