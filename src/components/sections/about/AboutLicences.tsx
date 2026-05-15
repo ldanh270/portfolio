@@ -200,7 +200,7 @@ function CertCard({
 	onClick: () => void;
 }) {
 	return (
-		<button
+		<motion.button
 			type="button"
 			data-cursor="view"
 			onClick={(e) => {
@@ -210,9 +210,44 @@ function CertCard({
 				}
 				onClick();
 			}}
-			className="group flex h-full w-full flex-col border border-brand-border px-8 py-8 text-left transition-colors duration-300 hover:bg-[rgba(10,10,10,0.015)] hover:border-black/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
+			whileHover="hover"
+			className="group relative flex h-full w-full flex-col overflow-hidden border border-brand-border px-8 py-8 text-left transition-colors duration-300 hover:bg-[rgba(10,10,10,0.015)] hover:border-brand-black/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
 		>
-			<header className="mb-3 flex items-center gap-3">
+			{/* Border Sweep Effect */}
+			<motion.span
+				className="absolute left-0 top-0 h-full w-[0.5px] bg-brand-black"
+				initial={{ height: 0 }}
+				variants={{
+					hover: { height: "100%" },
+				}}
+				transition={{ duration: 0.2, ease: "easeOut" }}
+			/>
+			<motion.span
+				className="absolute left-0 top-0 h-[0.5px] w-full bg-brand-black"
+				initial={{ width: 0 }}
+				variants={{
+					hover: { width: "100%" },
+				}}
+				transition={{ duration: 0.2, delay: 0.2, ease: "easeOut" }}
+			/>
+			<motion.span
+				className="absolute bottom-0 right-0 h-full w-px bg-brand-black"
+				initial={{ height: 0 }}
+				variants={{
+					hover: { height: "100%" },
+				}}
+				transition={{ duration: 0.2, delay: 0.4, ease: "easeOut" }}
+			/>
+			<motion.span
+				className="absolute bottom-0 right-0 h-[0.5px] w-full bg-brand-black"
+				initial={{ width: 0 }}
+				variants={{
+					hover: { width: "100%" },
+				}}
+				transition={{ duration: 0.2, delay: 0.6, ease: "easeOut" }}
+			/>
+
+			<header className="relative z-10 mb-3 flex items-center gap-3">
 				<span className="min-w-0 truncate font-mono text-[10px] uppercase tracking-widest text-brand-gray">
 					{cert.issuer}
 				</span>
@@ -220,11 +255,13 @@ function CertCard({
 					{cert.label}
 				</span>
 			</header>
-			<h3 className="text-xl font-bold leading-snug tracking-tight transition-transform duration-200 group-hover:translate-x-0.5">
+			<h3 className="relative z-10 text-xl font-bold leading-snug tracking-tight transition-transform duration-200 group-hover:translate-x-0.5">
 				{cert.title}
 			</h3>
-			<p className="mt-3 text-sm leading-7 text-[#444] line-clamp-2">{cert.description}</p>
-			<div className="mt-auto overflow-x-auto no-scrollbar pt-5">
+			<p className="relative z-10 mt-3 text-sm leading-7 text-[#444] line-clamp-2">
+				{cert.description}
+			</p>
+			<div className="relative z-10 mt-auto overflow-x-auto no-scrollbar pt-5">
 				<div className="flex items-center gap-2">
 					{cert.tags.map((t) => (
 						<span
@@ -236,13 +273,13 @@ function CertCard({
 					))}
 				</div>
 			</div>
-		</button>
+		</motion.button>
 	);
 }
 
 // ── Main Component ────────────────────────────────────────────────
 
-export function AboutCertificates() {
+export function AboutLicences() {
 	const [isDragging, setIsDragging] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [containerWidth, setContainerWidth] = useState(0);
@@ -276,7 +313,10 @@ export function AboutCertificates() {
 						mark my evolution as a developer.
 					</p>
 				</FadeIn>
-				<FadeIn y={24} className="order-1 lg:order-2">
+				<FadeIn
+					y={24}
+					className="order-1 lg:order-2"
+				>
 					<p className="mb-5 font-mono text-[10px] uppercase leading-5 tracking-[0.24em] text-brand-gray lg:text-right">
 						Verified Credentials
 					</p>

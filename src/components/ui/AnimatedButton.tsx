@@ -287,9 +287,9 @@ export function AnimatedButton({
 	if (href) {
 		return (
 			<Link
-				href={href}
 				className="group"
 				{...(props as React.ComponentPropsWithoutRef<typeof Link>)}
+				href={href}
 			>
 				<motion.span
 					className={`${baseClasses} ${className} inline-block`}

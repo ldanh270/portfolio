@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AboutCertificates } from "@/components/sections/about/AboutCertificates";
+import { AboutLicences } from "@/components/sections/about/AboutLicences";
 import { AboutTimeline } from "@/components/sections/about/AboutTimeline";
 import { AboutGrid } from "@/components/sections/about/AboutGrid";
 import { MarqueeText } from "@/components/ui/MarqueeText";
@@ -31,7 +31,7 @@ export default function AboutPage() {
 			<AboutSkills />
 			<RevealLine />
 			<AboutTimeline />
-			<AboutCertificates />
+			<AboutLicences />
 			<AboutAwards />
 		</PageFade>
 	);
