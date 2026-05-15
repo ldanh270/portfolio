@@ -21,7 +21,7 @@ type CareerEntry = {
 };
 
 const years = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "Now"];
-const YEAR_WIDTH = 400; // px per year
+const YEAR_WIDTH = 350; // px per year
 
 const careerEntries: CareerEntry[] = [
 	{
@@ -56,10 +56,10 @@ const careerEntries: CareerEntry[] = [
 	},
 	{
 		type: "experience",
-		start: "2025",
+		start: "2026",
 		end: "Now",
-		title: "Freelancer",
-		place: "Self-employed",
+		title: "Freelance Software Developer",
+		place: "VieTech Solutions",
 		description:
 			"Full-stack development for various clients, delivering tailored software solutions to meet specific business needs.",
 		lane: 3,
@@ -85,7 +85,7 @@ function TimelinePopup({ entry }: { entry: CareerEntry }) {
 	const positionClass =
 		opensDown ?
 			"top-[calc(100%+1.75rem)] group-hover:translate-y-1"
-		:	"bottom-[calc(100%+1.75rem)] group-hover:-translate-y-1";
+		: 	"bottom-[calc(100%+1.75rem)] group-hover:-translate-y-1";
 
 	return (
 		<article
