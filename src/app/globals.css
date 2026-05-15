@@ -68,6 +68,11 @@ body {
 	-webkit-text-stroke: 1px var(--black);
 }
 
+.text-outline-white {
+	color: transparent;
+	-webkit-text-stroke: 1px var(--white);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
