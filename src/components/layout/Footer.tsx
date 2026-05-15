@@ -38,7 +38,7 @@ export function Footer() {
 					className="mb-20 border-b border-brand-border pb-20"
 				>
 					<h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.04em]">
-						<span className="block">Let's Create</span>
+						<span className="block">Let&apos;s Create</span>
 						<span className="block text-outline">Something Great</span>
 					</h2>
 					<motion.div
