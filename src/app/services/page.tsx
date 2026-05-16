@@ -25,28 +25,28 @@ export default function ServicesPage() {
 				/>
 			</div>
 
-			{/* Section 1: Services */}
+			{/* Services Grid */}
 			<SectionLabel
 				label="What I offer"
 				description="From idea to execution — smart digital solutions tailored to your goals."
 			/>
 			<ServiceGrid />
 
-			{/* Section 2: Approach */}
-			<SectionLabel
-				label="How I work"
-				description="A structured process that turns ambiguous ideas into reliable, scalable products."
-			/>
-			<ApproachList />
-
-			{/* Section 3: Tech Stack */}
+			{/* Tech Stack */}
 			<SectionLabel
 				label="Tools of the trade"
 				description="Technologies I rely on to ship fast, maintainable, production-ready software."
 			/>
 			<TechStackSection categories={techStack} />
 
-			{/* Section 5: FAQ */}
+			{/* Approach List */}
+			<SectionLabel
+				label="How I work"
+				description="A structured process that turns ambiguous ideas into reliable, scalable products."
+			/>
+			<ApproachList />
+
+			{/* FAQ */}
 			<SectionLabel
 				label="Common questions"
 				description="Answers to what most clients ask before we get started."

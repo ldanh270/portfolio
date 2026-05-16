@@ -15,9 +15,9 @@ function TechCategoryCard({ category, index }: TechCategoryCardProps) {
       y={20}
       className="border-b border-brand-border px-6 py-10 sm:px-12 md:odd:border-r"
     >
-      <p className="mb-6 font-mono text-[10px] uppercase tracking-widest text-brand-gray">
+      <h3 className="mb-6 font-display font-bold text-[20px] uppercase tracking-widest text-brand-black/80">
         {category.category}
-      </p>
+      </h3>
       <div className="flex flex-wrap gap-2">
         {category.tools.map((tool) => (
           <span
