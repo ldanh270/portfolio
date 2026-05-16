@@ -7,9 +7,7 @@ export default function GetInTouch() {
 			<div className="border-y border-brand-border py-8">
 				<MarqueeText
 					text="Get in touch."
-					size="xl"
-					speed={15}
-					outlined
+					size="lg"
 					direction="right"
 				/>
 			</div>

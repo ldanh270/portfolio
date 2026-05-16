@@ -4,13 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ContactForm } from "@/components/sections/contact/ContactForm";
 import { MarqueeText } from "@/components/ui/MarqueeText";
-import { site } from "@/data/site";
-
-const contactLinks = [
-	{ label: "Email", value: site.email, href: `mailto:${site.email}` },
-	{ label: "LinkedIn", value: "/in/leducanh", href: "https://www.linkedin.com/in/leducanh" },
-	{ label: "GitHub", value: "github.com/leducanh", href: "https://github.com/leducanh" },
-];
+import { socialLinks } from "@/data/site.ts";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -24,9 +18,8 @@ export function ContactContent() {
 				className="border-y border-brand-border py-8"
 			>
 				<MarqueeText
-					text="Get in touch."
+					text="Contact."
 					size="xl"
-					outlined
 				/>
 			</motion.div>
 			<section className="grid min-h-[60vh] border-b border-brand-border lg:grid-cols-2">
@@ -48,7 +41,7 @@ export function ContactContent() {
 						Let&apos;s build something great together.
 					</motion.h1>
 					<div>
-						{contactLinks.map((link, i) => (
+						{socialLinks.map((link, i) => (
 							<motion.div
 								key={link.label}
 								initial={{ opacity: 0, x: -20 }}
@@ -57,6 +50,8 @@ export function ContactContent() {
 							>
 								<Link
 									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
 									className="group flex items-center justify-between border-t border-brand-border py-5 text-sm font-medium"
 								>
 									<span>

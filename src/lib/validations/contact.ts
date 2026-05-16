@@ -14,10 +14,7 @@ export const ContactSchema = z.object({
 		.string()
 		.min(10, "Phone number must be at least 10 digits")
 		.max(15, "Phone number too long"),
-	title: z
-		.string()
-		.min(5, "Title must be at least 5 characters")
-		.max(100, "Title too long"),
+	title: z.string().min(3, "Title must be at least 3 characters").max(100, "Title too long"),
 	message: z
 		.string()
 		.min(10, "Message must be at least 10 characters")

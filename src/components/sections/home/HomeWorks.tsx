@@ -10,7 +10,7 @@ export function HomeWorks() {
 				<MarqueeText
 					text="Our work."
 					size="lg"
-          direction="right"
+					direction="right"
 				/>
 			</div>
 			<SectionLabel

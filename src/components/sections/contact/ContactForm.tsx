@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { ContactSchema, type ContactInput } from "@/lib/validations/contact";
-import { sendEmail } from "@/app/actions/contact";
+import { sendEmail } from "@/lib/contact.ts";
 import { cn } from "@/lib/utils";
 
 const itemVariants = {
@@ -26,6 +26,8 @@ export function ContactForm() {
 		formState: { errors, isSubmitting },
 	} = useForm<ContactInput>({
 		resolver: zodResolver(ContactSchema),
+		mode: "onBlur",
+		reValidateMode: "onBlur",
 		defaultValues: {
 			name: "",
 			email: "",
@@ -80,7 +82,7 @@ export function ContactForm() {
 					id="name"
 					className={cn(
 						"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
-						errors.name && "border-red-500 focus:border-red-500"
+						errors.name && "border-red-500 focus:border-red-500",
 					)}
 					placeholder="Name"
 					disabled={isSubmitting}
@@ -103,7 +105,7 @@ export function ContactForm() {
 						type="email"
 						className={cn(
 							"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
-							errors.email && "border-red-500 focus:border-red-500"
+							errors.email && "border-red-500 focus:border-red-500",
 						)}
 						placeholder="Email"
 						disabled={isSubmitting}
@@ -125,7 +127,7 @@ export function ContactForm() {
 						type="tel"
 						className={cn(
 							"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
-							errors.phone && "border-red-500 focus:border-red-500"
+							errors.phone && "border-red-500 focus:border-red-500",
 						)}
 						placeholder="Phone"
 						disabled={isSubmitting}
@@ -147,7 +149,7 @@ export function ContactForm() {
 					id="title"
 					className={cn(
 						"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
-						errors.title && "border-red-500 focus:border-red-500"
+						errors.title && "border-red-500 focus:border-red-500",
 					)}
 					placeholder="Project Title / Subject"
 					disabled={isSubmitting}
@@ -168,7 +170,7 @@ export function ContactForm() {
 					id="message"
 					className={cn(
 						"min-h-40 w-full resize-none border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
-						errors.message && "border-red-500 focus:border-red-500"
+						errors.message && "border-red-500 focus:border-red-500",
 					)}
 					placeholder="Tell me about your project"
 					disabled={isSubmitting}
@@ -187,7 +189,7 @@ export function ContactForm() {
 					variant="slide-right"
 					className={cn(
 						"w-full rounded-sm border border-brand-black bg-transparent py-5 font-semibold tracking-wide text-brand-black uppercase transition-all hover:text-brand-white",
-						isSubmitting && "pointer-events-none opacity-50"
+						isSubmitting && "pointer-events-none opacity-50",
 					)}
 					type="submit"
 					disabled={isSubmitting}

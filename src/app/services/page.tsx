@@ -21,7 +21,7 @@ export default function ServicesPage() {
 			<div className="border-y border-brand-border py-8">
 				<MarqueeText
 					text="Services."
-					size="lg"
+					size="xl"
 				/>
 			</div>
 

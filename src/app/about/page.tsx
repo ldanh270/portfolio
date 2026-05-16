@@ -21,7 +21,7 @@ export default function AboutPage() {
 			<div className="border-y border-brand-border py-8">
 				<MarqueeText
 					text="About me."
-					size="lg"
+					size="xl"
 					direction="right"
 				/>
 			</div>
