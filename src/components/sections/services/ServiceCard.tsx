@@ -3,15 +3,46 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import type { Service } from "@/data/services";
-import { RadialHover } from "@/components/ui/RadialHover.tsx";
 
 type ServiceCardProps = {
 	service: Service;
 	index: number;
 };
 
+const ease = [0.22, 1, 0.36, 1] as const;
+const tagDelayStep = 0.04;
+
+const cardVariants = {
+	rest: { y: 0, boxShadow: "0 0 0 rgba(10,10,10,0)" },
+	hover: {
+		y: -6,
+		boxShadow: "0 18px 45px rgba(10,10,10,0.08)",
+	},
+};
+
+const surfaceVariants = {
+	rest: { opacity: 0, scale: 0.985 },
+	hover: { opacity: 1, scale: 1 },
+};
+
+const lineVariants = {
+	rest: { scaleX: 0 },
+	hover: { scaleX: 1 },
+};
+
+const titleVariants = {
+	rest: { x: 0 },
+	hover: { x: 6 },
+};
+
+const arrowVariants = {
+	rest: { x: -6, rotate: -30, opacity: 0.45 },
+	hover: { x: 0, rotate: 0, opacity: 1 },
+};
+
 export function ServiceCard({ service, index }: ServiceCardProps) {
 	const shouldReduceMotion = useReducedMotion();
+	const motionEnabled = !shouldReduceMotion;
 
 	return (
 		<FadeIn
@@ -19,113 +50,105 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
 			y={24}
 			className="group relative border-b border-brand-border"
 		>
-			<RadialHover
-				className="relative h-full cursor-default overflow-hidden px-6 py-12 sm:px-36"
-				as="div"
-				shape="parallelVertical"
+			<motion.article
+				initial="rest"
+				whileHover="hover"
+				whileTap={motionEnabled ? { scale: 0.996 } : undefined}
+				variants={cardVariants}
+				transition={{ duration: motionEnabled ? 0.45 : 0, ease }}
+				className="relative isolate overflow-hidden bg-brand-white px-8 py-12 sm:px-16 md:px-24 lg:px-32"
 			>
-				{/* Watermark number — drifts right on hover */}
 				<motion.p
 					aria-hidden="true"
-					className="pointer-events-none absolute right-24 top-4 select-none font-extrabold leading-none tracking-tighter"
-					style={{ fontSize: "clamp(6rem,14vw,11rem)" }}
-					variants={{
-						rest: { x: 0, color: "rgba(10,10,10,0.06)" },
-						hover: shouldReduceMotion ? {} : { x: 32, color: "rgba(255,255,255,0.07)" },
-					}}
-					transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-				>
-					{service.number}
-				</motion.p>
+					variants={surfaceVariants}
+					transition={{ duration: motionEnabled ? 0.32 : 0, ease }}
+					className="absolute inset-3 z-0 border border-brand-border bg-[rgba(10,10,10,0.02)]"
+				/>
+				<motion.span
+					aria-hidden="true"
+					variants={lineVariants}
+					transition={{ duration: motionEnabled ? 0.38 : 0, ease }}
+					className="absolute left-8 right-8 top-0 z-10 h-px origin-left bg-brand-black/70 sm:left-16 sm:right-16 md:left-24 md:right-24 lg:left-32 lg:right-32"
+				/>
 
-				{/* Content */}
-				<div className="relative z-10">
-					{/* Number label */}
-					<motion.p
-						className="mb-6 font-mono text-[10px] uppercase tracking-widest"
-						variants={{
-							rest: { color: "rgba(100,100,100,1)" },
-							hover: shouldReduceMotion ? {} : { color: "rgba(255,255,255,0.4)" },
-						}}
-						transition={{ duration: 0.3 }}
-					>
-						{service.number}
-					</motion.p>
+				<div className="relative z-10 grid gap-8 lg:grid-cols-[15rem_1fr] lg:gap-12">
+					<div className="flex items-start justify-between gap-4 lg:block">
+						<div>
+							<p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-gray">
+								{service.number}
+							</p>
+							<motion.span
+								aria-hidden="true"
+								variants={lineVariants}
+								transition={{ duration: motionEnabled ? 0.3 : 0, ease }}
+								className="mt-4 hidden h-px w-10 origin-left bg-brand-black/30 lg:block"
+							/>
+						</div>
 
-					{/* Title + arrow row */}
-					<div className="mb-4 flex items-baseline justify-between gap-4">
 						<motion.h3
-							className="font-extrabold uppercase leading-[0.92] tracking-tighter"
-							style={{ fontSize: "clamp(1.4rem,2.5vw,2rem)" }}
-							variants={{
-								rest: { color: "#0a0a0a" },
-								hover: shouldReduceMotion ? {} : { color: "#ffffff" },
-							}}
-							transition={{ duration: 0.3 }}
+							className="max-w-[18rem] text-2xl font-bold leading-[0.95] tracking-tight text-brand-black sm:text-3xl"
+							variants={titleVariants}
+							transition={{ duration: motionEnabled ? 0.35 : 0, ease }}
 						>
 							{service.title}
 						</motion.h3>
-
-						{/* Arrow — slides in from left */}
-						<motion.span
-							aria-hidden="true"
-							className="shrink-0 font-mono text-lg text-brand-white"
-							variants={{
-								rest: { opacity: 0, x: -20 },
-								hover: shouldReduceMotion ? {} : { opacity: 1, x: 0 },
-							}}
-							transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-						>
-							↗
-						</motion.span>
 					</div>
 
-					{/* Underline sweep */}
-					<div className="mb-5 h-px w-full overflow-hidden bg-transparent">
+					<div>
 						<motion.div
-							className="h-px bg-[rgba(255,255,255,0.15)]"
 							variants={{
-								rest: { scaleX: 0, originX: 0 },
-								hover: shouldReduceMotion ? {} : { scaleX: 1, originX: 0 },
+								rest: { y: 0 },
+								hover: { y: -2 },
 							}}
-							transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-						/>
-					</div>
+							transition={{ duration: motionEnabled ? 0.35 : 0, ease }}
+						>
+							<div className="mb-5 flex flex-wrap items-start justify-between gap-4">
+								{service.tags.length > 0 && (
+									<div className="flex flex-wrap gap-2">
+										{service.tags.map((tag, i) => (
+											<motion.span
+												key={tag}
+												className="border border-brand-border bg-brand-white px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-brand-gray"
+												variants={{
+													rest: { opacity: 0.82 },
+													hover: { opacity: 1 },
+												}}
+												transition={{
+													duration: motionEnabled ? 0.22 : 0,
+													delay: i * tagDelayStep,
+													ease,
+												}}
+											>
+												{tag}
+											</motion.span>
+										))}
+									</div>
+								)}
 
-					{/* Description */}
-					<motion.p
-						className="max-w-sm text-sm leading-7"
-						variants={{
-							rest: { color: "#555555" },
-							hover: shouldReduceMotion ? {} : { color: "rgba(255,255,255,0.65)" },
-						}}
-						transition={{ duration: 0.3 }}
-					>
-						{service.description}
-					</motion.p>
-
-					{/* Tags */}
-					{service.tags.length > 0 && (
-						<div className="mt-6 flex flex-wrap gap-2">
-							{service.tags.map((tag, i) => (
 								<motion.span
-									key={tag}
-									className="border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest"
-									variants={{
-										rest: { borderColor: "rgba(229,229,229,1)", color: "rgba(100,100,100,1)" },
-										hover: shouldReduceMotion
-											? {}
-											: { borderColor: "rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.45)" },
-									}}
-									transition={{ duration: 0.25, delay: i * 0.04 }}
+									aria-hidden="true"
+									variants={arrowVariants}
+									transition={{ duration: motionEnabled ? 0.35 : 0, ease }}
+									className="grid size-9 shrink-0 place-items-center rounded-full border border-brand-border bg-brand-white font-mono text-sm text-brand-black shadow-[0_1px_0_rgba(10,10,10,0.04)]"
 								>
-									{tag}
+									↗
 								</motion.span>
-							))}
-						</div>
-					)}
+							</div>
+
+							<div className="h-px overflow-hidden bg-brand-border">
+								<motion.div
+									aria-hidden="true"
+									variants={lineVariants}
+									transition={{ duration: motionEnabled ? 0.38 : 0, ease }}
+									className="h-full origin-left bg-brand-black"
+								/>
+							</div>
+
+							<p className="mt-5 max-w-3xl text-sm leading-7 text-[#555]">{service.description}</p>
+						</motion.div>
+					</div>
 				</div>
-			</RadialHover>
+			</motion.article>
 		</FadeIn>
 	);
 }
