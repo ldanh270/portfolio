@@ -72,8 +72,8 @@ const certificates: Certification[] = [
 			"Web Development Tools",
 			"Web Content",
 		],
-		url: "https://coursera.org/verify/front-end",
-		issuer: "Meta",
+		url: "https://www.coursera.org/account/accomplishments/specialization/certificate/463Z20U8VUU2",
+		issuer: "University of Michigan",
 	},
 	{
 		label: "12/2025",
