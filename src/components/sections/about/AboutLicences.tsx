@@ -213,7 +213,7 @@ function CertCard({
 			whileHover="hover"
 			className="group relative flex h-full w-full flex-col overflow-hidden border border-brand-border px-8 py-8 text-left transition-colors duration-300 hover:bg-[rgba(10,10,10,0.015)] hover:border-brand-black/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
 		>
-			{/* Border Sweep Effect */}
+			{/* Left Border */}
 			<motion.span
 				className="absolute left-0 top-0 h-full w-[0.5px] bg-brand-black"
 				initial={{ height: 0 }}
@@ -222,6 +222,7 @@ function CertCard({
 				}}
 				transition={{ duration: 0.2, ease: "easeOut" }}
 			/>
+			{/* Top Border */}
 			<motion.span
 				className="absolute left-0 top-0 h-[0.5px] w-full bg-brand-black"
 				initial={{ width: 0 }}
@@ -230,6 +231,8 @@ function CertCard({
 				}}
 				transition={{ duration: 0.2, delay: 0.2, ease: "easeOut" }}
 			/>
+
+			{/* Right Border */}
 			<motion.span
 				className="absolute bottom-0 right-0 h-full w-px bg-brand-black"
 				initial={{ height: 0 }}
@@ -238,8 +241,10 @@ function CertCard({
 				}}
 				transition={{ duration: 0.2, delay: 0.4, ease: "easeOut" }}
 			/>
+
+			{/* Bottom Border */}
 			<motion.span
-				className="absolute bottom-0 right-0 h-[0.5px] w-full bg-brand-black"
+				className="absolute bottom-0 right-0 h-px w-full bg-brand-black"
 				initial={{ width: 0 }}
 				variants={{
 					hover: { width: "100%" },
@@ -321,7 +326,7 @@ export function AboutLicences() {
 						Verified Credentials
 					</p>
 					<h2 className="text-[clamp(2.6rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.07em] lg:text-right">
-						Licenses
+						Certificates
 					</h2>
 				</FadeIn>
 			</header>
