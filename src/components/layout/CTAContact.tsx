@@ -6,7 +6,7 @@ import { RadialHover } from "@/components/ui/RadialHover";
 
 export function CTAContact() {
 	return (
-		<section className="border-t border-brand-border px-6 py-24 sm:px-12">
+		<section className="px-6 py-24 sm:px-12">
 			<FadeIn y={28}>
 				<div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
 					{/* Text */}

@@ -22,10 +22,10 @@ function FAQItem({ faq, index, isOpen, onToggle }: FAQItemProps) {
 				<button
 					type="button"
 					onClick={onToggle}
-					className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left sm:px-12"
+					className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left sm:px-48"
 					aria-expanded={isOpen}
 				>
-					<span className="font-bold uppercase tracking-tight">{faq.question}</span>
+					<h3 className="font-bold uppercase tracking-tight">{faq.question}</h3>
 					<motion.span
 						animate={{ rotate: isOpen ? 45 : 0 }}
 						transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
@@ -46,7 +46,7 @@ function FAQItem({ faq, index, isOpen, onToggle }: FAQItemProps) {
 							transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
 							style={{ overflow: "hidden" }}
 						>
-							<p className="px-6 pb-8 text-sm leading-8 text-[#555] sm:px-12">{faq.answer}</p>
+							<p className="px-6 pb-8 text-sm leading-8 text-[#555] sm:px-48">{faq.answer}</p>
 						</motion.div>
 					)}
 				</AnimatePresence>
