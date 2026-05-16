@@ -17,7 +17,7 @@ export function Footer() {
 	return (
 		<footer
 			ref={footerRef}
-			className="relative overflow-hidden border-t border-brand-border bg-brand-white px-6 py-24 sm:px-12"
+			className="relative overflow-hidden border-t border-brand-border bg-brand-white px-6 py-12 sm:px-12"
 		>
 			{/* Animated Background Grid */}
 			<div className="pointer-events-none absolute inset-0 opacity-[0.03]">
