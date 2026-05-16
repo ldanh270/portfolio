@@ -187,6 +187,27 @@ const CARD_W = 550;
 const CARD_W_MOBILE = 320;
 const ROWS = 2;
 const GAP = 32;
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const certCardVariants = {
+	rest: { y: 0, boxShadow: "0 0 0 rgba(10,10,10,0)" },
+	hover: { y: -6, boxShadow: "0 20px 55px rgba(10,10,10,0.09)" },
+};
+
+const certSurfaceVariants = {
+	rest: { opacity: 0, scale: 0.985 },
+	hover: { opacity: 1, scale: 1 },
+};
+
+const certLineVariants = {
+	rest: { scaleX: 0 },
+	hover: { scaleX: 1 },
+};
+
+const certTitleVariants = {
+	rest: { x: 0 },
+	hover: { x: 6 },
+};
 
 // ── Card ──────────────────────────────────────────────────────────
 
@@ -211,45 +232,22 @@ function CertCard({
 				onClick();
 			}}
 			whileHover="hover"
-			className="group relative flex h-full w-full flex-col overflow-hidden border border-brand-border px-8 py-8 text-left transition-colors duration-300 hover:bg-[rgba(10,10,10,0.015)] hover:border-brand-black/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
+			initial="rest"
+			variants={certCardVariants}
+			transition={{ duration: 0.38, ease }}
+			className="group relative flex h-full w-full flex-col overflow-hidden border border-brand-border bg-brand-white px-8 py-8 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
 		>
-			{/* Left Border */}
 			<motion.span
-				className="absolute left-0 top-0 h-full w-[0.5px] bg-brand-black"
-				initial={{ height: 0 }}
-				variants={{
-					hover: { height: "100%" },
-				}}
-				transition={{ duration: 0.2, ease: "easeOut" }}
+				aria-hidden="true"
+				variants={certSurfaceVariants}
+				transition={{ duration: 0.28, ease }}
+				className="absolute inset-3 z-0 border border-brand-border bg-[rgba(10,10,10,0.018)]"
 			/>
-			{/* Top Border */}
 			<motion.span
-				className="absolute left-0 top-0 h-[0.5px] w-full bg-brand-black"
-				initial={{ width: 0 }}
-				variants={{
-					hover: { width: "100%" },
-				}}
-				transition={{ duration: 0.2, delay: 0.2, ease: "easeOut" }}
-			/>
-
-			{/* Right Border */}
-			<motion.span
-				className="absolute bottom-0 right-0 h-full w-px bg-brand-black"
-				initial={{ height: 0 }}
-				variants={{
-					hover: { height: "100%" },
-				}}
-				transition={{ duration: 0.2, delay: 0.4, ease: "easeOut" }}
-			/>
-
-			{/* Bottom Border */}
-			<motion.span
-				className="absolute bottom-0 right-0 h-px w-full bg-brand-black"
-				initial={{ width: 0 }}
-				variants={{
-					hover: { width: "100%" },
-				}}
-				transition={{ duration: 0.2, delay: 0.6, ease: "easeOut" }}
+				aria-hidden="true"
+				variants={certLineVariants}
+				transition={{ duration: 0.34, ease }}
+				className="absolute left-8 right-8 top-0 z-10 h-px origin-left bg-brand-black"
 			/>
 
 			<header className="relative z-10 mb-3 flex items-center gap-3">
@@ -260,21 +258,30 @@ function CertCard({
 					{cert.label}
 				</span>
 			</header>
-			<h3 className="relative z-10 text-xl font-bold leading-snug tracking-tight transition-transform duration-200 group-hover:translate-x-0.5">
+			<motion.h3
+				variants={certTitleVariants}
+				transition={{ duration: 0.3, ease }}
+				className="relative z-10 text-xl font-bold leading-snug tracking-tight"
+			>
 				{cert.title}
-			</h3>
+			</motion.h3>
 			<p className="relative z-10 mt-3 text-sm leading-7 text-[#444] line-clamp-2">
 				{cert.description}
 			</p>
 			<div className="relative z-10 mt-auto overflow-x-auto no-scrollbar pt-5">
 				<div className="flex items-center gap-2">
-					{cert.tags.map((t) => (
-						<span
+					{cert.tags.map((t, index) => (
+						<motion.span
 							key={t}
-							className="flex-none rounded-full border border-brand-border px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-colors duration-200 group-hover:border-black/40"
+							variants={{
+								rest: { y: 0, opacity: 0.78 },
+								hover: { y: -2, opacity: 1 },
+							}}
+							transition={{ duration: 0.22, delay: index * 0.02, ease }}
+							className="flex-none border border-brand-border bg-brand-white px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-brand-gray transition-colors duration-200 group-hover:border-black/30 group-hover:text-brand-black"
 						>
 							{t}
-						</span>
+						</motion.span>
 					))}
 				</div>
 			</div>
@@ -334,7 +341,7 @@ export function AboutLicences() {
 			{/* ── Desktop: 2-row scrollable with gap ────── */}
 			<div
 				ref={containerRef}
-				className="relative hidden overflow-x-auto overflow-y-hidden no-scrollbar lg:block"
+				className="relative -my-8 hidden overflow-x-auto overflow-y-hidden py-8 no-scrollbar lg:block"
 			>
 				<motion.div
 					drag="x"

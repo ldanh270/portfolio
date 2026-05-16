@@ -26,19 +26,25 @@ export default function TimelinePopup({
 	}, [isHovered, entry.lane, triggerRef]);
 
 	const opensDown = entry.lane < 2;
+	const visibilityClass =
+		isHovered
+			? `pointer-events-auto opacity-100 ${opensDown ? "translate-y-0" : "-translate-y-full"}`
+			: `opacity-0 ${opensDown ? "-translate-y-2" : "-translate-y-[calc(100%-0.5rem)]"}`;
 
 	if (typeof window === "undefined") return null;
 
 	return createPortal(
 		<article
-			className={`pointer-events-none fixed z-9999 w-fit border border-brand-border bg-brand-white p-5 shadow-[8px_8px_0_#0a0a0a] transition-opacity duration-300 ${
-				isHovered ? "pointer-events-auto opacity-100" : "opacity-0"
-			} ${opensDown ? "" : "-translate-y-full"}`}
+			className={`pointer-events-none fixed z-9999 w-[min(28rem,calc(100vw-2rem))] border border-brand-border bg-brand-white p-5 shadow-[0_18px_50px_rgba(10,10,10,0.12)] transition duration-300 ${visibilityClass}`}
 			style={{
 				top: `${position.top}px`,
 				left: `${position.left}px`,
 			}}
 		>
+			<span
+				aria-hidden="true"
+				className="absolute left-5 right-5 top-0 h-px bg-brand-black"
+			/>
 			<header className="mb-4 flex items-start justify-between gap-4">
 				<p className="font-mono text-[10px] uppercase tracking-widest text-brand-gray">
 					{entry.type}
