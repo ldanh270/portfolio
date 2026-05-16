@@ -4,7 +4,6 @@ import Link from "next/link";
 import { navLinks, site, socialLinks } from "@/data/site";
 import Image from "next/image";
 import { HighlightedText } from "@/components/ui/HighlightedText";
-import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { CTAContact } from "./CTAContact.tsx";

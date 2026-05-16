@@ -1,9 +1,7 @@
-import { label } from "framer-motion/client";
-
 export const site = {
   name: "Le Duc Anh",
   shortName: "LDA",
-  email: "leducanh@gmail.com",
+  email: "ducanhle.dn@gmail.com",
   location: "Da Nang, Vietnam",
 } as const;
 

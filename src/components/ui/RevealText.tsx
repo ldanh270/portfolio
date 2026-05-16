@@ -17,7 +17,10 @@ export function RevealText({ delay = 0, className, children }: RevealTextProps) 
 	const [isReady, setIsReady] = useState(false);
 
 	useEffect(() => {
-		setIsReady(true);
+		const raf = requestAnimationFrame(() => {
+			setIsReady(true);
+		});
+		return () => cancelAnimationFrame(raf);
 	}, []);
 
 	return (

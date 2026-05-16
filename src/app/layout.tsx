@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { PageTransition } from "@/components/ui/PageTransition";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const syne = Syne({
@@ -36,6 +37,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			className={`${syne.variable} ${dmMono.variable}`}
 		>
 			<body className="bg-brand-white font-display text-brand-black antialiased">
+				<Toaster
+					position="top-center"
+					richColors
+				/>
 				<SmoothScroll>
 					<CustomCursor />
 					<Header />
