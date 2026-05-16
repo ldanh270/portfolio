@@ -39,7 +39,7 @@ export function Header() {
 				</div>
 
 				<AnimatedButton
-					variant="arc-bottom"
+					variant="slide-top"
 					href="/contact"
 					className="hidden rounded-full border border-brand-black bg-brand-white px-2 py text-xs font-semibold tracking-wide text-brand-black md:inline-flex"
 				>

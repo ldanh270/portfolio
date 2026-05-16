@@ -4,7 +4,6 @@ import { HomeServices } from "@/components/sections/home/HomeServices";
 import { HomeWorks } from "@/components/sections/home/HomeWorks";
 import { MarqueeText } from "@/components/ui/MarqueeText";
 import { tags } from "@/data/site";
-import GetInTouch from "@/components/sections/home/GetInTouch";
 
 export const metadata: Metadata = {
 	title: "Home — Le Duc Anh",
@@ -26,7 +25,6 @@ export default function HomePage() {
 			</section>
 			<HomeWorks />
 			<HomeServices />
-			<GetInTouch />
 		</main>
 	);
 }
