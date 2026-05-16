@@ -1,3 +1,5 @@
+import { label } from "framer-motion/client";
+
 export const site = {
   name: "Le Duc Anh",
   shortName: "LDA",
@@ -30,8 +32,8 @@ export const socialLinks = [
 ] as const;
 
 export const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Works", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Approach", href: "/approach" },
 ] as const;

@@ -7,6 +7,7 @@ import { HighlightedText } from "@/components/ui/HighlightedText";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { CTAContact } from "./CTAContact.tsx";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -35,38 +36,7 @@ export function Footer() {
 
 			<div className="relative z-10 mx-auto max-w-7xl">
 				{/* Top Section - Large CTA */}
-				<motion.div
-					initial={{ opacity: 0, y: 40 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.8, ease }}
-					className="mb-20 border-b border-brand-border pb-20"
-				>
-					<h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.04em]">
-						<span className="block">Let&apos;s Create</span>
-						<span className="block text-outline">Something Great</span>
-					</h2>
-					<motion.div
-						initial={{ opacity: 0, x: -20 }}
-						animate={isInView ? { opacity: 1, x: 0 } : {}}
-						transition={{ duration: 0.6, ease, delay: 0.3 }}
-						className="mt-8"
-					>
-						<AnimatedButton
-							variant="slide-right"
-							href="/contact"
-							className="flex items-center uppercase justify-center my-5 gap-4 border border-brand-black"
-						>
-							<span>Get In Touch</span>
-							<motion.span
-								className="ml-2 self-center mask-center"
-								animate={{ x: [0, 5, 0] }}
-								transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-							>
-								→
-							</motion.span>
-						</AnimatedButton>
-					</motion.div>
-				</motion.div>
+				<CTAContact />
 
 				{/* Middle Section - Grid Layout */}
 				<div className="mb-16 grid gap-12 lg:grid-cols-12">

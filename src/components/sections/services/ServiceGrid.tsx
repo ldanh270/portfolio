@@ -1,16 +1,19 @@
-import { services } from "@/data/services";
+"use client";
 
-export function ServiceGrid({ limit }: { limit?: number }) {
-  const visibleServices = typeof limit === "number" ? services.slice(0, limit) : services;
+import { services } from "@/data/services";
+import { ServiceCard } from "./ServiceCard";
+
+type ServiceGridProps = {
+  limit?: number;
+};
+
+export function ServiceGrid({ limit }: ServiceGridProps) {
+  const visible = typeof limit === "number" ? services.slice(0, limit) : services;
 
   return (
     <div className="grid md:grid-cols-2">
-      {visibleServices.map((service) => (
-        <article key={service.number} className="border-b border-brand-border px-6 py-12 transition hover:bg-[rgba(10,10,10,0.02)] sm:px-12 md:odd:border-r">
-          <p className="mb-6 font-mono text-xs tracking-wide text-brand-gray">{service.number}</p>
-          <h2 className="mb-3 text-2xl font-bold tracking-tight">{service.title}</h2>
-          <p className="text-sm leading-relaxed text-[#555]">{service.description}</p>
-        </article>
+      {visible.map((service, index) => (
+        <ServiceCard key={service.id} service={service} index={index} />
       ))}
     </div>
   );
