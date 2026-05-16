@@ -10,6 +10,7 @@ type RadialHoverProps = {
 	ariaLabel?: string;
 	shape?: "circle" | "horizontal" | "parallelHorizontal" | "parallelVertical";
 	as?: "button" | "div";
+	disableTapState?: boolean;
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -84,13 +85,14 @@ export function RadialHover({
 	ariaLabel,
 	shape = "circle",
 	as = "button",
+	disableTapState = false,
 }: RadialHoverProps) {
 	const shouldReduceMotion = useReducedMotion();
 	const sharedProps = {
 		initial: "rest",
 		whileHover: "hover",
 		whileFocus: "hover",
-		whileTap: "hover" as const,
+		...(disableTapState ? {} : { whileTap: "hover" as const }),
 		className: `group relative overflow-hidden text-left ${className ?? ""}`,
 	};
 	const content = (

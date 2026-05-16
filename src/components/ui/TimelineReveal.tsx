@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import type { CSSProperties, ReactNode } from "react";
+import { forwardRef, type CSSProperties, type ReactNode } from "react";
 
 const ease = [0.36, 1, 0.36, 1] as const;
 
@@ -29,6 +29,8 @@ type TimelineRevealProps = {
 	children: ReactNode;
 	className?: string;
 	style?: CSSProperties;
+	onMouseEnter?: () => void;
+	onMouseLeave?: () => void;
 };
 
 export function TimelineReveal({ children, className }: TimelineRevealProps) {
@@ -45,17 +47,24 @@ export function TimelineReveal({ children, className }: TimelineRevealProps) {
 	);
 }
 
-export function TimelineRevealItem({ children, className, style }: TimelineRevealProps) {
-	return (
-		<motion.div
-			variants={timelineItem}
-			className={className}
-			style={style}
-		>
-			{children}
-		</motion.div>
-	);
-}
+export const TimelineRevealItem = forwardRef<HTMLDivElement, TimelineRevealProps>(
+	({ children, className, style, onMouseEnter, onMouseLeave }, ref) => {
+		return (
+			<motion.div
+				ref={ref}
+				variants={timelineItem}
+				className={className}
+				style={style}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+			>
+				{children}
+			</motion.div>
+		);
+	},
+);
+
+TimelineRevealItem.displayName = "TimelineRevealItem";
 
 export function TimelineRevealLine({ className }: { className?: string }) {
 	return (
