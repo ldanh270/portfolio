@@ -38,8 +38,20 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 		>
 			<body className="bg-brand-white font-display text-brand-black antialiased">
 				<Toaster
-					position="top-center"
-					richColors
+					position="bottom-right"
+					offset={24}
+					gap={10}
+					visibleToasts={3}
+					toastOptions={{
+						duration: 4200,
+						classNames: {
+							toast: "portfolio-toast",
+							title: "portfolio-toast-title",
+							description: "portfolio-toast-description",
+							icon: "portfolio-toast-icon",
+							closeButton: "portfolio-toast-close",
+						},
+					}}
 				/>
 				<SmoothScroll>
 					<CustomCursor />

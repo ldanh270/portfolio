@@ -45,8 +45,12 @@ export function HighlightedText({
 				style={{ backgroundColor: highlightColor }}
 			/>
 			<motion.span
-				initial={{ color: "inherit" }}
-				animate={isInView ? { color: "var(--color-brand-white)" } : { color: "inherit" }}
+				initial={{ color: "var(--color-brand-black)" }}
+				animate={
+					isInView ?
+						{ color: "var(--color-brand-white)" }
+					:	{ color: "var(--color-brand-black)" }
+				}
 				transition={{
 					duration: duration * 0.5,
 					delay: delay + duration * 0.2,

@@ -42,14 +42,20 @@ export function ContactForm() {
 			const result = await sendEmail(data);
 
 			if (result.success) {
-				toast.success("Message sent! I'll get back to you soon.");
+				toast.success("Message sent", {
+					description: "I'll get back to you soon.",
+				});
 				reset(); // Only reset on absolute success
 			} else {
-				toast.error(result.error || "Failed to send message.");
+				toast.error("Failed to send message.", {
+					description: result.error || "Please try again.",
+				});
 			}
 		} catch (error) {
 			console.error("Form submission error:", error);
-			toast.error("An unexpected error occurred. Please try again.");
+			toast.error("An unexpected error occurred", {
+				description: "Please try again.",
+			});
 		}
 	};
 

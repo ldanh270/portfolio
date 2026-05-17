@@ -133,6 +133,76 @@ body {
 	}
 }
 
+[data-sonner-toaster] {
+	--normal-bg: var(--white);
+	--normal-border: rgba(10, 10, 10, 0.12);
+	--normal-text: var(--black);
+	--success-bg: var(--white);
+	--success-border: rgba(10, 10, 10, 0.12);
+	--success-text: var(--black);
+	--info-bg: var(--white);
+	--info-border: rgba(10, 10, 10, 0.12);
+	--info-text: var(--black);
+	--warning-bg: var(--white);
+	--warning-border: rgba(10, 10, 10, 0.12);
+	--warning-text: var(--black);
+	--error-bg: var(--white);
+	--error-border: rgba(10, 10, 10, 0.12);
+	--error-text: var(--black);
+}
+
+.portfolio-toast {
+	border-radius: 0.125rem;
+	border: 1px solid rgba(10, 10, 10, 0.12);
+	background: var(--white);
+	padding: 0.95rem 1rem;
+	box-shadow: 8px 8px 0 var(--black);
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		border-color 180ms ease;
+}
+
+.portfolio-toast:hover {
+	transform: translate(-1px, -1px);
+	box-shadow: 10px 10px 0 var(--black);
+	border-color: rgba(10, 10, 10, 0.28);
+}
+
+.portfolio-toast-title {
+	font-family: var(--font-dm-mono), monospace;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.portfolio-toast-description {
+	margin-top: 0.25rem;
+	font-family: var(--font-syne), sans-serif;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: rgba(10, 10, 10, 0.72);
+}
+
+.portfolio-toast-icon {
+	margin-right: 0.25rem;
+}
+
+.portfolio-toast-close {
+	border-radius: 9999px;
+	border-color: rgba(10, 10, 10, 0.12);
+	background: var(--white);
+	color: var(--black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.portfolio-toast {
+		transition: none;
+	}
+}
+
 @layer utilities {
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;

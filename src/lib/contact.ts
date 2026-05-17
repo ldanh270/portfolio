@@ -43,7 +43,7 @@ export async function sendEmail(data: ContactInput) {
 				replyTo: validatedData.email,
 				subject: `New Inquiry: ${validatedData.title}`,
 				html: `
-          <div style="font-family: sans-serif; color: #333;">
+          <div style="font-family: sans-serif; color: #0a0a0a0a;">
             <h2>New Inquiry from ${validatedData.name}</h2>
             <p><strong>Title:</strong> ${validatedData.title}</p>
             <p><strong>Email:</strong> ${validatedData.email}</p>

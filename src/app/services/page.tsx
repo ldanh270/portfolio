@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { MarqueeText } from "@/components/ui/MarqueeText";
 import { PageFade } from "@/components/ui/PageFade";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ServiceGrid } from "@/components/sections/services/ServiceGrid";
