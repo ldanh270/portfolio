@@ -42,9 +42,9 @@ const contentVariants = {
 	hover: { y: -3 },
 };
 
-function getStepLabel(index: number): string {
+const getStepLabel = (index: number): string => {
 	return `Phase ${String(index + 1).padStart(2, "0")}`;
-}
+};
 
 export function ApproachStepCard({ step, index, isLast }: ApproachStepCardProps) {
 	const shouldReduceMotion = useReducedMotion();
@@ -82,7 +82,7 @@ export function ApproachStepCard({ step, index, isLast }: ApproachStepCardProps)
 					aria-hidden="true"
 					variants={markerVariants}
 					transition={{ duration: motionEnabled ? 0.28 : 0, ease }}
-					className="absolute -left-[3.24rem] top-9 hidden size-3 rounded-full border border-brand-black lg:block"
+					className="absolute left-[-3.24rem] top-9 hidden size-3 rounded-full border border-brand-black lg:block"
 				/>
 
 				<div className="relative z-10 mb-8 flex items-start justify-between gap-6 lg:mb-0 lg:block">
@@ -131,7 +131,9 @@ export function ApproachStepCard({ step, index, isLast }: ApproachStepCardProps)
 						/>
 					</div>
 
-					<p className="mt-5 max-w-3xl text-sm leading-7 text-[#555]">{step.description}</p>
+					<p className="mt-5 max-w-3xl text-sm leading-7 text-[#555]">
+						{step.description}
+					</p>
 
 					{step.deliverables.length > 0 && (
 						<div className="mt-6 flex flex-wrap gap-2">

@@ -1,7 +1,7 @@
 "use client";
 
 import { SERVICES } from "@/data/services";
-import { ServiceCard } from "./ServiceCard";
+import ServiceCard from "./service/ServiceCard";
 
 type ServiceGridProps = {
 	limit?: number;

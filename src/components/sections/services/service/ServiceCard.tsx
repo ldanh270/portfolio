@@ -40,7 +40,7 @@ const arrowVariants = {
 	hover: { x: 0, rotate: 0, opacity: 1 },
 };
 
-export function ServiceCard({ service, index }: ServiceCardProps) {
+export default function ServiceCard({ service, index }: ServiceCardProps) {
 	const shouldReduceMotion = useReducedMotion();
 	const motionEnabled = !shouldReduceMotion;
 
@@ -144,7 +144,9 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
 								/>
 							</div>
 
-							<p className="mt-5 max-w-3xl text-sm leading-7 text-[#555]">{service.description}</p>
+							<p className="mt-5 max-w-3xl text-sm leading-7 text-[#555]">
+								{service.description}
+							</p>
 						</motion.div>
 					</div>
 				</div>

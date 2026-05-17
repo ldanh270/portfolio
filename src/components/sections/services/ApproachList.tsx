@@ -1,7 +1,7 @@
 "use client";
 
 import { APPROACH_STEPS } from "@/data/services";
-import { ApproachStepCard } from "./ApproachStepCard";
+import { ApproachStepCard } from "./approach/ApproachStepCard";
 
 export function ApproachList() {
 	return (
