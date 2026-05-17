@@ -2,18 +2,12 @@
 
 import { CountUp } from "@/components/ui/CountUp";
 import { FadeIn } from "@/components/ui/FadeIn";
-
-const stats = [
-	{ number: 4, suffix: "+", label: "Years Learning" },
-	{ number: 10, suffix: "+", label: "Projects Built" },
-	{ number: 9, suffix: "", label: "Certifications" },
-	{ number: 5, suffix: "+", label: "Technologies" },
-] as const;
+import { STATS } from "@/data/about";
 
 export function AboutGrid() {
 	return (
 		<div className="grid border-b border-brand-border sm:grid-cols-2 lg:grid-cols-4">
-			{stats.map(({ number, suffix, label }, index) => (
+			{STATS.map(({ number, suffix, label }, index) => (
 				<FadeIn
 					key={label}
 					delay={index * 0.08}

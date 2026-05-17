@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { AboutLicences } from "@/components/sections/about/AboutLicences";
 import { AboutTimeline } from "@/components/sections/about/AboutTimeline";
 import { AboutGrid } from "@/components/sections/about/AboutGrid";
 import { MarqueeText } from "@/components/ui/MarqueeText";
@@ -8,6 +7,7 @@ import { RevealLine } from "@/components/ui/RevealLine";
 import AboutHero from "@/components/sections/about/AboutHero";
 import AboutAwards from "@/components/sections/about/AboutAwards";
 import AboutSkills from "@/components/sections/about/AboutSkills";
+import AboutCertificates from "@/components/sections/about/AboutCertificates";
 
 export const metadata: Metadata = {
 	title: "About — Le Duc Anh",
@@ -31,7 +31,7 @@ export default function AboutPage() {
 			<AboutSkills />
 			<RevealLine />
 			<AboutTimeline />
-			<AboutLicences />
+			<AboutCertificates />
 			<AboutAwards />
 		</PageFade>
 	);
