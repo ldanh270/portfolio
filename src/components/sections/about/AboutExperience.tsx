@@ -46,7 +46,8 @@ const experiences: Experience[] = [
 		role: "Full-stack Developer",
 		company: "OUTFIZ",
 		type: "Full-time",
-		description: "Production frontend work across real product flows, interface details, and feature delivery.",
+		description:
+			"Production frontend work across real product flows, interface details, and feature delivery.",
 		tags: ["React", "TypeScript", "Tailwind"],
 		startYear: 2,
 		durationYears: 1,
@@ -56,7 +57,8 @@ const experiences: Experience[] = [
 		role: "Senior Fullstack Engineer",
 		company: "TechCorp",
 		type: "Full-time",
-		description: "Building scalable, modern applications with a strong eye for interface detail and long-term maintainability.",
+		description:
+			"Building scalable, modern applications with a strong eye for interface detail and long-term maintainability.",
 		tags: ["React", "Node.js", "TypeScript", "AWS"],
 		startYear: 3,
 		durationYears: 2,
@@ -105,7 +107,9 @@ function ExperienceCard({ experience }: { experience: Experience }) {
 				<p className="mt-2 font-mono text-[10px] uppercase leading-5 tracking-widest text-brand-gray">
 					{experience.company}
 				</p>
-				<p className="mt-3 text-sm leading-6 text-[#444] max-w-sm">{experience.description}</p>
+				<p className="mt-3 text-sm leading-6 text-[#444] max-w-sm">
+					{experience.description}
+				</p>
 				<div className="mt-3 flex flex-wrap gap-2">
 					{experience.tags.map((tag) => (
 						<span
@@ -153,22 +157,26 @@ export function AboutExperience() {
 					className="max-w-2xl lg:self-end"
 				>
 					<p className="text-sm leading-8 text-[#444]">
-						Drag horizontally to explore my work journey. Hover over each card to see details and technologies used.
+						Drag horizontally to explore my work journey. Hover over each card to see
+						details and technologies used.
 					</p>
 				</FadeIn>
 			</header>
 
-			<div className="overflow-x-auto overflow-y-hidden no-scrollbar" style={{ minHeight: "320px", WebkitOverflowScrolling: "touch" }}>
+			<div
+				className="overflow-x-auto overflow-y-hidden no-scrollbar"
+				style={{ minHeight: "320px", WebkitOverflowScrolling: "touch" }}
+			>
 				<motion.div
 					drag="x"
 					dragConstraints={{ left: -(years.length * YEAR_WIDTH - 800), right: 0 }}
 					dragElastic={0.08}
 					className="relative cursor-grab active:cursor-grabbing flex-none"
-					style={{ 
-						minHeight: "320px", 
+					style={{
+						minHeight: "320px",
 						width: `${years.length * YEAR_WIDTH}px`,
 						flexShrink: 0,
-						display: "block"
+						display: "block",
 					}}
 				>
 					<div className="absolute left-0 right-0 top-10 h-px bg-brand-border" />

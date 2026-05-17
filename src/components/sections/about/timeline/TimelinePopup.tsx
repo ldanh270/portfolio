@@ -1,4 +1,4 @@
-import { CareerEntry } from "@/data/about";
+import { type CareerEntry } from "@/data/about";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -27,9 +27,9 @@ export default function TimelinePopup({
 
 	const opensDown = entry.lane < 2;
 	const visibilityClass =
-		isHovered
-			? `pointer-events-auto opacity-100 ${opensDown ? "translate-y-0" : "-translate-y-full"}`
-			: `opacity-0 ${opensDown ? "-translate-y-2" : "-translate-y-[calc(100%-0.5rem)]"}`;
+		isHovered ?
+			`pointer-events-auto opacity-100 ${opensDown ? "translate-y-0" : "-translate-y-full"}`
+		:	`opacity-0 ${opensDown ? "-translate-y-2" : "-translate-y-[calc(100%-0.5rem)]"}`;
 
 	if (typeof window === "undefined") return null;
 

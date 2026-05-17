@@ -1,11 +1,11 @@
-export const site = {
+export const SITE = {
 	name: "Le Duc Anh",
 	shortName: "LDA",
 	email: "ducanhle.dn@gmail.com",
 	location: "Da Nang, Vietnam",
 } as const;
 
-export const tags = [
+export const TAGS = [
 	"Web Development",
 	"Mobile Apps",
 	"UI/UX Design",
@@ -14,10 +14,10 @@ export const tags = [
 	"Software Engineering",
 ] as const;
 
-export const socialLinks = [
+export const SOCIAL_LINKS = [
 	{
 		label: "Email",
-		value: site.email,
+		value: "ducanhle.dn@gmail.com",
 		href: "mailto:ducanhle.dn@gmail.com",
 	},
 	{
@@ -32,9 +32,9 @@ export const socialLinks = [
 	},
 ] as const;
 
-export const navLinks = [
+export const NAV_LINKS = [
 	{ label: "Home", href: "/" },
 	{ label: "Works", href: "/work" },
-	{ label: "About", href: "/about" },
 	{ label: "Services", href: "/services" },
+	{ label: "About", href: "/about" },
 ] as const;

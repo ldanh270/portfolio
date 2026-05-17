@@ -242,10 +242,16 @@ function AwardRow({
 					{isOpen && (
 						<motion.div
 							initial={
-								shouldReduceMotion ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
+								shouldReduceMotion ?
+									{ height: "auto", opacity: 1 }
+								:	{ height: 0, opacity: 0 }
 							}
 							animate={{ height: "auto", opacity: 1 }}
-							exit={shouldReduceMotion ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+							exit={
+								shouldReduceMotion ?
+									{ height: "auto", opacity: 1 }
+								:	{ height: 0, opacity: 0 }
+							}
 							transition={{
 								duration: shouldReduceMotion ? 0 : 0.5,
 								ease,
@@ -258,7 +264,9 @@ function AwardRow({
 								</span>
 
 								<div className="max-w-xl">
-									<p className="text-sm leading-7 text-[#444]">{award.description}</p>
+									<p className="text-sm leading-7 text-[#444]">
+										{award.description}
+									</p>
 
 									<div className="mt-4 flex flex-wrap gap-2">
 										{award.tags.map((tag) => (
@@ -341,8 +349,8 @@ export default function AboutAwards() {
 					className="w-full max-w-2xl"
 				>
 					<p className="text-sm leading-8 text-[#444] lg:text-center">
-						Milestones of recognition across competitions, academics, and open-source contributions
-						that fuel my drive to build better software.
+						Milestones of recognition across competitions, academics, and open-source
+						contributions that fuel my drive to build better software.
 					</p>
 				</FadeIn>
 			</header>

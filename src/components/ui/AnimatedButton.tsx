@@ -25,6 +25,7 @@ type AnimatedButtonProps = {
 	children: ReactNode;
 	variant?: ButtonVariant;
 	className?: string;
+	wrapperClassName?: string;
 	href?: string;
 } & (
 	| ({ href: string } & Omit<React.ComponentPropsWithoutRef<typeof Link>, "href">)
@@ -36,6 +37,7 @@ export function AnimatedButton({
 	variant = "slide-right",
 	color = "black",
 	className = "",
+	wrapperClassName = "",
 	href,
 	...props
 }: AnimatedButtonProps) {
@@ -290,7 +292,7 @@ export function AnimatedButton({
 	if (href) {
 		return (
 			<Link
-				className="group"
+				className={`group ${wrapperClassName}`}
 				{...(props as React.ComponentPropsWithoutRef<typeof Link>)}
 				href={href}
 			>

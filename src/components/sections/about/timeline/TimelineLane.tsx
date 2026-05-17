@@ -1,5 +1,5 @@
 import { TimelineRevealItem } from "@/components/ui/TimelineReveal.tsx";
-import { CareerEntry, TIMELINE_YEARS, YEAR_WIDTH } from "@/data/about.ts";
+import { type CareerEntry, TIMELINE_YEARS, YEAR_WIDTH } from "@/data/about.ts";
 import { motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic.js";
 import { CSSProperties, useRef, useState } from "react";

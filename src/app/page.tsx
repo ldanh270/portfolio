@@ -3,7 +3,7 @@ import { Hero } from "@/components/sections/home/Hero";
 import { HomeServices } from "@/components/sections/home/HomeServices";
 import { HomeWorks } from "@/components/sections/home/HomeWorks";
 import { MarqueeText } from "@/components/ui/MarqueeText";
-import { tags } from "@/data/site";
+import { TAGS } from "@/data/site";
 
 export const metadata: Metadata = {
 	title: "Home — Le Duc Anh",
@@ -17,10 +17,9 @@ export default function HomePage() {
 			<Hero />
 			<section className="overflow-hidden border-y border-brand-black bg-brand-black py-5 text-brand-white">
 				<MarqueeText
-					text={tags.join(" · ")}
+					text={TAGS.join(" • ")}
 					size="sm"
-					speed={25}
-					direction="left"
+					speed={15}
 				/>
 			</section>
 			<HomeWorks />

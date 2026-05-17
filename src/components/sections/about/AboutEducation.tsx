@@ -26,7 +26,10 @@ const education: Education = {
 export default function AboutEducation() {
 	return (
 		<section className="grid border-b border-brand-border px-6 py-12 sm:px-12 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
-			<FadeIn className="mb-10 lg:mb-0" y={28}>
+			<FadeIn
+				className="mb-10 lg:mb-0"
+				y={28}
+			>
 				<p className="mb-5 font-mono text-[10px] uppercase leading-5 tracking-[0.24em] text-brand-gray">
 					Study
 				</p>
@@ -34,12 +37,16 @@ export default function AboutEducation() {
 					Education
 				</h2>
 				<p className="mt-5 max-w-xs text-sm leading-7 text-[#444]">
-					Software engineering foundation with systems, architecture, algorithms, and AI coursework.
+					Software engineering foundation with systems, architecture, algorithms, and AI
+					coursework.
 				</p>
 			</FadeIn>
 
 			<div className="border-t border-brand-border">
-				<FadeIn className="group grid gap-5 border-b border-brand-border bg-brand-black px-5 py-7 text-brand-white md:grid-cols-[92px_28px_1fr]" y={20}>
+				<FadeIn
+					className="group grid gap-5 border-b border-brand-border bg-brand-black px-5 py-7 text-brand-white md:grid-cols-[92px_28px_1fr]"
+					y={20}
+				>
 					<time className="font-mono text-[10px] uppercase leading-5 tracking-widest text-brand-white/60">
 						{education.period}
 					</time>
@@ -55,11 +62,13 @@ export default function AboutEducation() {
 						<h3 className="text-2xl font-extrabold uppercase leading-tight tracking-tight sm:text-3xl">
 							{education.university}
 						</h3>
-						<p className="mt-3 max-w-2xl text-sm leading-7 text-brand-white/75">{education.degree}</p>
+						<p className="mt-3 max-w-2xl text-sm leading-7 text-brand-white/75">
+							{education.degree}
+						</p>
 					</div>
 				</FadeIn>
 
-				<StaggerList className="relative before:absolute before:left-[92px] before:top-0 before:hidden before:h-full before:w-px before:bg-brand-border md:before:block">
+				<StaggerList className="relative before:absolute before:left-23 before:top-0 before:hidden before:h-full before:w-px before:bg-brand-border md:before:block">
 					{education.highlights.map((highlight, index) => (
 						<StaggerItem key={highlight}>
 							<div className="group grid gap-5 border-b border-brand-border py-5 transition-colors duration-300 hover:bg-brand-black hover:px-5 hover:text-brand-white md:grid-cols-[92px_28px_1fr]">

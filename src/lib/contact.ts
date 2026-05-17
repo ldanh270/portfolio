@@ -1,6 +1,6 @@
 "use server";
 
-import { site } from "@/data/site";
+import { SITE } from "@/data/site";
 import { Resend } from "resend";
 import { redis } from "@/lib/redis";
 import { ContactSchema, type ContactInput } from "@/lib/validations/contact";
@@ -39,7 +39,7 @@ export async function sendEmail(data: ContactInput) {
 			// Task B: Send Email (Non-critical / Graceful degradation)
 			resend.emails.send({
 				from: "Portfolio Contact <onboarding@resend.dev>",
-				to: [site.email],
+				to: [SITE.email],
 				replyTo: validatedData.email,
 				subject: `New Inquiry: ${validatedData.title}`,
 				html: `

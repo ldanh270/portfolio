@@ -6,7 +6,8 @@ import { ServiceGrid } from "@/components/sections/services/ServiceGrid";
 import { ApproachList } from "@/components/sections/services/ApproachList";
 import { TechStackSection } from "@/components/sections/services/TechStackSection";
 import { FAQSection } from "@/components/sections/services/FAQSection";
-import { techStack, faqs } from "@/data/services";
+import { FAQS, TECH_STACKS } from "@/data/services";
+import PageMarqueeText from "@/components/common/PageMarqueeText";
 
 export const metadata: Metadata = {
 	title: "Services — Le Duc Anh",
@@ -18,12 +19,7 @@ export default function ServicesPage() {
 	return (
 		<PageFade className="pt-16">
 			{/* Marquee header */}
-			<div className="border-y border-brand-border py-8">
-				<MarqueeText
-					text="Services."
-					size="xl"
-				/>
-			</div>
+			<PageMarqueeText text="Our work." />
 
 			{/* Services Grid */}
 			<SectionLabel
@@ -37,7 +33,7 @@ export default function ServicesPage() {
 				label="Tools of the trade"
 				description="Technologies I rely on to ship fast, maintainable, production-ready software."
 			/>
-			<TechStackSection categories={techStack} />
+			<TechStackSection categories={TECH_STACKS} />
 
 			{/* Approach List */}
 			<SectionLabel
@@ -51,7 +47,7 @@ export default function ServicesPage() {
 				label="Common questions"
 				description="Answers to what most clients ask before we get started."
 			/>
-			<FAQSection faqs={faqs} />
+			<FAQSection faqs={FAQS} />
 		</PageFade>
 	);
 }

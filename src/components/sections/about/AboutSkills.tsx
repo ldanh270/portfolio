@@ -134,8 +134,8 @@ export default function AboutSkills() {
 					Skills
 				</h2>
 				<p className="mt-8 max-w-[18rem] font-mono text-[10px] uppercase leading-5 tracking-tight text-brand-gray">
-					Fullstack engineering toolkit for product interfaces, server systems, mobile builds, AI
-					workflows, and deployment.
+					Fullstack engineering toolkit for product interfaces, server systems, mobile
+					builds, AI workflows, and deployment.
 				</p>
 			</FadeIn>
 

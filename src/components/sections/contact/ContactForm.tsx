@@ -66,7 +66,7 @@ export function ContactForm() {
 					},
 				},
 			}}
-			className="grid gap-6"
+			className="grid gap-6 px-6 py-16 sm:px-12"
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			{/* Name Field */}
@@ -87,7 +87,9 @@ export function ContactForm() {
 					placeholder="Name"
 					disabled={isSubmitting}
 				/>
-				{errors.name && <p className="mt-1 text-[10px] text-red-500">{errors.name.message}</p>}
+				{errors.name && (
+					<p className="mt-1 text-[10px] text-red-500">{errors.name.message}</p>
+				)}
 			</motion.div>
 
 			<div className="grid gap-6 sm:grid-cols-2">
@@ -110,7 +112,9 @@ export function ContactForm() {
 						placeholder="Email"
 						disabled={isSubmitting}
 					/>
-					{errors.email && <p className="mt-1 text-[10px] text-red-500">{errors.email.message}</p>}
+					{errors.email && (
+						<p className="mt-1 text-[10px] text-red-500">{errors.email.message}</p>
+					)}
 				</motion.div>
 
 				{/* Phone Field */}
@@ -132,7 +136,9 @@ export function ContactForm() {
 						placeholder="Phone"
 						disabled={isSubmitting}
 					/>
-					{errors.phone && <p className="mt-1 text-[10px] text-red-500">{errors.phone.message}</p>}
+					{errors.phone && (
+						<p className="mt-1 text-[10px] text-red-500">{errors.phone.message}</p>
+					)}
 				</motion.div>
 			</div>
 
@@ -154,7 +160,9 @@ export function ContactForm() {
 					placeholder="Project Title / Subject"
 					disabled={isSubmitting}
 				/>
-				{errors.title && <p className="mt-1 text-[10px] text-red-500">{errors.title.message}</p>}
+				{errors.title && (
+					<p className="mt-1 text-[10px] text-red-500">{errors.title.message}</p>
+				)}
 			</motion.div>
 
 			{/* Message Field */}

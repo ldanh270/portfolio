@@ -321,8 +321,8 @@ export function AboutLicences() {
 					className="order-2 w-full max-w-2xl lg:order-1 lg:ml-auto lg:self-end"
 				>
 					<p className="text-sm leading-8 text-[#444] lg:text-right">
-						Transforming academic knowledge into verified expertise. Explore the credentials that
-						mark my evolution as a developer.
+						Transforming academic knowledge into verified expertise. Explore the
+						credentials that mark my evolution as a developer.
 					</p>
 				</FadeIn>
 				<FadeIn

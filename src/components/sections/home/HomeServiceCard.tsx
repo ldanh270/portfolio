@@ -33,7 +33,7 @@ export function HomeServiceCard({ service }: HomeServiceCardProps) {
 	return (
 		<Link
 			href="/services"
-			className="group block h-full focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-black"
+			className="group block h-full focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-black"
 		>
 			<motion.article
 				initial="rest"
@@ -41,9 +41,10 @@ export function HomeServiceCard({ service }: HomeServiceCardProps) {
 				whileTap={shouldReduceMotion ? undefined : { scale: 0.992 }}
 				variants={{
 					rest: { y: 0, boxShadow: "0 0 0 rgba(10,10,10,0)" },
-					hover: shouldReduceMotion
-						? {}
-						: {
+					hover:
+						shouldReduceMotion ?
+							{}
+						:	{
 								y: -6,
 								boxShadow: "0 22px 55px rgba(10,10,10,0.1)",
 							},
