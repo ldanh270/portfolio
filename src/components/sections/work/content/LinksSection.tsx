@@ -15,6 +15,10 @@ const LINK_ICONS: Record<ProjectLink["type"], string> = {
 	other: "→",
 };
 
+function getProjectLinkKey(link: ProjectLink, index: number): string {
+	return `${link.type}-${link.label}-${link.href}-${index}`;
+}
+
 export function LinksSection({ data }: LinksSectionProps) {
 	const shouldReduceMotion = useReducedMotion();
 
@@ -30,7 +34,7 @@ export function LinksSection({ data }: LinksSectionProps) {
 				<div className="flex flex-wrap gap-3">
 					{data.map((link, i) => (
 						<motion.a
-							key={link.href}
+							key={getProjectLinkKey(link, i)}
 							href={link.href}
 							target="_blank"
 							rel="noopener noreferrer"
