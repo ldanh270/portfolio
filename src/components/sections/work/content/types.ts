@@ -18,6 +18,15 @@ export type ResultMetric = {
 	value: string;
 };
 
+export type ProjectScreenshot = {
+	title: string;
+	description?: string;
+	image?: string;
+	variant?: "dashboard" | "commerce" | "mobile" | "system";
+};
+
+export type ScreenshotEntry = ProjectScreenshot | string;
+
 export type ProjectLink = {
 	label: string;
 	href: string;
@@ -32,6 +41,6 @@ export type ProjectContent = {
 	challengeSolution?: ChallengeSolution;
 	results?: ResultMetric[];
 	lessons?: string[];
-	screenshots?: string[];
+	screenshots?: ScreenshotEntry[];
 	links?: ProjectLink[];
 };

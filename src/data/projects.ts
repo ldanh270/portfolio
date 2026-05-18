@@ -94,6 +94,20 @@ export const PROJECTS: Project[] = [
 				"Typed query builders that enforce tenant scope at compile time pay back their cost in security audit time within one quarter.",
 				"Load test with realistic tenant distributions. Synthetic uniform traffic missed the flash-sale spike profile entirely.",
 			],
+			screenshots: [
+				{
+					title: "Merchant Command Center",
+					description:
+						"Tenant-aware operations view for orders, revenue, inventory pressure, and fulfilment exceptions.",
+					variant: "dashboard",
+				},
+				{
+					title: "Checkout Flow",
+					description:
+						"Fast purchase path with resilient cart state, stock validation, and payment handoff.",
+					variant: "commerce",
+				},
+			],
 			links: [
 				{ label: "Live Demo", href: "#", type: "live" },
 				{ label: "GitHub", href: "#", type: "github" },
@@ -144,7 +158,8 @@ export const PROJECTS: Project[] = [
 				},
 				{
 					title: "Scheduled Reports",
-					description: "Email and Slack delivery of scheduled report snapshots with configurable frequency and recipient lists.",
+					description:
+						"Email and Slack delivery of scheduled report snapshots with configurable frequency and recipient lists.",
 				},
 			],
 			techStack: [
@@ -177,6 +192,20 @@ export const PROJECTS: Project[] = [
 				"Pre-aggregation is a product decision, not just a technical one. The 60s staleness window needed explicit sign-off — skipping that conversation caused friction during QA.",
 				"Typed chart abstractions compound. The effort to build the first abstraction paid back on every subsequent chart.",
 				"Distributed tracing from day one would have saved two weeks of profiling work. Instrument first, optimize second.",
+			],
+			screenshots: [
+				{
+					title: "Executive Overview",
+					description:
+						"Pre-aggregated KPIs, live event health, and query-backed product insights in one workspace.",
+					variant: "dashboard",
+				},
+				{
+					title: "Report Builder",
+					description:
+						"Composable reporting surface for saved dashboards, chart configuration, and team sharing.",
+					variant: "system",
+				},
 			],
 			links: [
 				{ label: "Live Product", href: "#", type: "live" },
@@ -263,6 +292,20 @@ export const PROJECTS: Project[] = [
 				"Phased rollout gates must be automated. Manual gates get skipped under launch pressure.",
 				"Test biometric auth on actual Android OEM devices. Samsung One UI keyboard overlays break flows that pass all simulator tests.",
 			],
+			screenshots: [
+				{
+					title: "Account Snapshot",
+					description:
+						"Mobile-first balance, transfer, and transaction entry points optimized for repeat banking tasks.",
+					variant: "mobile",
+				},
+				{
+					title: "Transaction Detail",
+					description:
+						"Receipt-focused flow with confirmation states, export actions, and clear trust cues.",
+					variant: "mobile",
+				},
+			],
 			links: [
 				{ label: "App Store", href: "#", type: "live" },
 				{ label: "Google Play", href: "#", type: "live" },
@@ -347,6 +390,20 @@ export const PROJECTS: Project[] = [
 				"Token naming is product design. Bad token names get ignored; good names make the right choice obvious.",
 				"Adoption needs champions, not mandates. Find the engineers who care about quality and give them ownership.",
 				"Accessibility enforced in CI is worth more than any audit. Audits are snapshots; CI enforcement is continuous.",
+			],
+			screenshots: [
+				{
+					title: "Component Matrix",
+					description:
+						"Library overview showing component states, variants, token alignment, and documentation readiness.",
+					variant: "system",
+				},
+				{
+					title: "Token Inspector",
+					description:
+						"Semantic token review surface for validating themes, contrast, and product-level overrides.",
+					variant: "dashboard",
+				},
 			],
 			links: [
 				{ label: "Storybook Docs", href: "#", type: "live" },
