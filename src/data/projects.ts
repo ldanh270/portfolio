@@ -596,7 +596,7 @@ export const PROJECTS: Project[] = [
 		year: "2026",
 		role: "IoT & Backend Developer",
 		link: "https://github.com/ldanh270/smart-glass-iot",
-		image: "/work-placeholder.svg",
+		image: "/images/works/smart-glass/banner.png",
 		content: {
 			overview:
 				"Smart Glass focuses on realtime text visualization for wearable or near-eye display use cases. The embedded app receives incoming text chunks, queues them safely, renders readable text on an OLED display, and scrolls long messages smoothly. The backend provides REST endpoints and a WebSocket channel for live translation and navigation data.",
@@ -680,15 +680,24 @@ export const PROJECTS: Project[] = [
 			],
 			screenshots: [
 				{
-					title: "OLED Translation Display",
+					title: "Circuit Diagram",
 					description:
-						"Near-eye display flow for listening state, short text rendering, and long-text scrolling.",
+						"Wiring layout for the ESP32 microcontroller, OLED display, and power management components.",
+					image: "/images/works/smart-glass/circuit.png",
 					variant: "system",
 				},
 				{
-					title: "Realtime Server",
+					title: "Flow Diagram",
 					description:
-						"HTTP and WebSocket service for navigation state and translation stream delivery.",
+						"Data flow between the translation source, Node.js server, WebSocket channel, and ESP32 display service.",
+					image: "/images/works/smart-glass/flow.png",
+					variant: "dashboard",
+				},
+				{
+					title: "Hardware Assembly",
+					description:
+						"Visual representation of the physical assembly of the smart glass device.",
+					image: "/images/works/smart-glass/hardware.png",
 					variant: "dashboard",
 				},
 			],
