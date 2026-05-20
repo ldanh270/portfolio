@@ -16,399 +16,606 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
 	{
-		slug: "e-commerce-platform",
+		slug: "smart-pc-store",
 		number: "01",
-		title: "E-Commerce Platform",
+		title: "Smart PC Store",
 		summary:
-			"High-performance, multi-tenant e-commerce built on microservices architecture. Handles 50k+ concurrent users.",
+			"Full-stack PC hardware commerce platform with admin operations, JWT auth, QR checkout, analytics, AI chat, and price forecasting.",
 		description:
-			"A scalable commerce system designed for tenant isolation, fast catalogue operations, resilient checkout flows, and operational clarity under real traffic.",
-		tags: ["React", "Node.js", "Microservices", "PostgreSQL", "Redis"],
-		year: "2024",
-		role: "Full-Stack Engineer",
+			"Smart PC Store is a complete e-commerce system for PC components and gaming gear. The platform combines a Next.js storefront, a Java Jakarta EE backend, and a Python AI microservice for product advice and price prediction.",
+		tags: ["Next.js", "Java", "PostgreSQL", "FastAPI", "AI"],
+		year: "2026",
+		role: "Lead Developer, Project Manager, Code Reviewer",
+		link: "https://github.com/ldanh270/smart-pc-store",
+		image: "/work-placeholder.svg",
 		content: {
 			overview:
-				"A fast-scaling retailer needed a commerce platform that could survive flash-sale traffic spikes without degrading checkout reliability across multiple merchant tenants. The existing monolith was a single shared system — one slow query could bring down every storefront simultaneously.",
+				"Smart PC Store was built as a production-style commerce platform for PC components, gaming gear, suppliers, stock movement, and order management. The system is split into focused services: a modern customer/admin frontend, an enterprise Java REST API, and an AI server that enriches the buying experience with market-aware recommendations and price forecasts.",
 			roleDetail:
-				"Led the full-stack architecture from initial audit through production rollout. Owned the frontend architecture in React, designed and built the microservice boundaries, implemented the Redis cart system, and enforced tenant isolation via PostgreSQL row-level security. Also drove the phased rollout strategy and post-migration performance monitoring.",
+				"Led the project direction, backend architecture, frontend integration, code review, and delivery planning. The work included defining API boundaries, shaping the admin workflows, implementing authentication flows, coordinating AI integration, and keeping the multi-repo system deployable and documented.",
 			features: [
 				{
-					title: "Multi-Tenant Isolation",
+					title: "Customer Storefront",
 					description:
-						"Row-level security in PostgreSQL ensures zero cross-tenant data leakage, even if application logic has a bug.",
+						"Product catalog, product detail pages, cart flow, checkout, QR payment path, and account pages built with Next.js App Router and React 19.",
 				},
 				{
-					title: "Redis Cart Engine",
+					title: "Admin Operations",
 					description:
-						"Distributed cart state with TTL-based sessions. Reduced cart operation latency from 140ms to 8ms average.",
+						"Admin panel for products, categories, orders, users, suppliers, stock imports, and operational analytics.",
 				},
 				{
-					title: "Microservice Architecture",
+					title: "JWT Authentication",
 					description:
-						"Six independent services — catalogue, checkout, inventory, auth, notifications, payments — each owning its own schema and deployable independently.",
+						"Access-token and refresh-token flow with Axios interceptors, silent refresh, and race-condition-safe token rotation.",
 				},
 				{
-					title: "Strangler Fig Migration",
+					title: "Enterprise Backend API",
 					description:
-						"Zero-downtime live migration from monolith to microservices using feature flags. No big-bang rewrite.",
+						"Jakarta EE backend with layered controllers, services, DAOs, DTOs, JPA/Hibernate entities, RBAC, and PostgreSQL persistence.",
 				},
 				{
-					title: "Real-Time Inventory",
+					title: "AI Shopping Assistant",
 					description:
-						"Event-driven inventory updates via Redis pub/sub. Prevents overselling during concurrent flash-sale traffic.",
+						"FastAPI microservice that answers product questions, reads product data, and returns suggested products for the storefront chat widget.",
 				},
 				{
-					title: "Admin Dashboard",
+					title: "Price Forecasting",
 					description:
-						"Multi-tenant admin panel with per-merchant analytics, order management, and inventory controls.",
+						"Forecast endpoint that uses supplier quotation history and Markov-style prediction to power 7-day price trend charts.",
 				},
 			],
 			techStack: [
 				{
 					category: "Frontend",
-					tools: ["React", "TypeScript", "Tailwind CSS", "React Query"],
+					tools: [
+						"Next.js 16",
+						"React 19",
+						"TypeScript",
+						"Tailwind CSS v4",
+						"shadcn/ui",
+						"TanStack Query",
+						"Zustand",
+						"Recharts",
+					],
 				},
 				{
 					category: "Backend",
-					tools: ["Node.js", "Express", "PostgreSQL", "Redis", "Prisma"],
+					tools: [
+						"Java 17",
+						"Jakarta EE",
+						"Hibernate",
+						"PostgreSQL",
+						"Maven",
+						"Tomcat",
+						"JWT",
+						"Docker",
+					],
 				},
 				{
-					category: "Infrastructure",
-					tools: ["Docker", "GitHub Actions", "AWS ECS", "Nginx"],
+					category: "AI Service",
+					tools: [
+						"Python",
+						"FastAPI",
+						"Supabase",
+						"OpenAI-compatible API",
+						"FPT Cloud AI",
+						"NumPy",
+						"Vercel",
+					],
 				},
 			],
 			challengeSolution: {
 				challenge:
-					"The monolith buckled under flash-sale load. Tenant data leaked between namespaces during high concurrency. Cart state was lost on server restarts. Re-architecture had to happen live — zero downtime, with real customers transacting throughout the migration.",
+					"The project needed to support both customer shopping flows and internal inventory operations while also connecting a separate AI service to live product and supplier-pricing data. Keeping authentication, admin CRUD, checkout, analytics, and AI responses consistent across three repositories was the main complexity.",
 				solution:
-					"Extracted services one at a time behind feature flags using the strangler fig pattern. Moved cart state to Redis with TTL-based sessions, eliminating both the latency and persistence problems simultaneously. Enforced tenant isolation at the PostgreSQL layer with row-level security — making data leaks a database-level guarantee, not an application assumption.",
+					"Separated the system by responsibility: Next.js owns UX and client state, Jakarta EE owns commerce rules and persistence, and FastAPI owns AI chat plus forecasting. The frontend talks to stable domain services, the backend exposes role-aware REST endpoints, and the AI server periodically syncs product and price-history data for grounded recommendations.",
 			},
 			results: [
-				{ metric: "Concurrent Users", value: "50000" },
-				{ metric: "Cart Latency (ms)", value: "8" },
-				{ metric: "Uptime (%)", value: "99.9" },
-				{ metric: "Services Deployed", value: "6" },
+				{ metric: "Repos", value: "3" },
+				{ metric: "Admin Domains", value: "6" },
+				{ metric: "Backend Layers", value: "5" },
+				{ metric: "Forecast Window", value: "7" },
 			],
 			lessons: [
-				"Strangler fig works — but requires disciplined feature-flag hygiene. Every flag is tech debt with an expiry date.",
-				"Typed query builders that enforce tenant scope at compile time pay back their cost in security audit time within one quarter.",
-				"Load test with realistic tenant distributions. Synthetic uniform traffic missed the flash-sale spike profile entirely.",
+				"Multi-repo products need clear ownership boundaries early; otherwise frontend, backend, and AI changes become tightly coupled.",
+				"Admin workflows are easier to maintain when every domain owns a narrow service, store, and type contract.",
+				"AI features work better as product infrastructure when they return structured data, not only natural-language answers.",
 			],
 			screenshots: [
 				{
-					title: "Merchant Command Center",
+					title: "Customer Storefront",
 					description:
-						"Tenant-aware operations view for orders, revenue, inventory pressure, and fulfilment exceptions.",
-					variant: "dashboard",
-				},
-				{
-					title: "Checkout Flow",
-					description:
-						"Fast purchase path with resilient cart state, stock validation, and payment handoff.",
+						"Commerce experience for browsing PC hardware, reviewing product detail, adding to cart, and checking out.",
 					variant: "commerce",
 				},
+				{
+					title: "Admin Command Center",
+					description:
+						"Operational workspace for products, orders, users, suppliers, stock imports, and revenue charts.",
+					variant: "dashboard",
+				},
 			],
 			links: [
-				{ label: "Live Demo", href: "#", type: "live" },
-				{ label: "GitHub", href: "#", type: "github" },
+				{
+					label: "Backend Repository",
+					href: "https://github.com/ldanh270/smart-pc-store",
+					type: "github",
+				},
+				{
+					label: "Frontend Repository",
+					href: "https://github.com/ldanh270/smart-pc-store-frontend",
+					type: "github",
+				},
+				{
+					label: "AI Repository",
+					href: "https://github.com/ldanh270/smart-pc-store-ai",
+					type: "github",
+				},
 			],
 		},
 	},
 	{
-		slug: "saas-analytics-dashboard",
+		slug: "youth-for-change",
 		number: "02",
-		title: "SaaS Analytics Dashboard",
+		title: "Youth for Change",
 		summary:
-			"End-to-end analytics platform with real-time streaming, custom reporting, and multi-org support.",
+			"SDG-focused landing page, learning hub, and Notion-powered blog platform for the Youth for Change initiative at UD-UFLS.",
 		description:
-			"A data-heavy SaaS product built for teams that need fast insight without fragile reporting workflows. Typed dashboards, real-time event streams, org-level permissions, and visual reporting patterns that stay usable at scale.",
-		tags: ["Next.js", "TypeScript", "Kafka", "D3.js", "AWS"],
-		year: "2024",
-		role: "Lead Engineer",
+			"Youth for Change is a Next.js platform for communicating the 17 United Nations Sustainable Development Goals through a landing page, SDG learning pages, team storytelling, a flipbook, and a Notion-backed blog system.",
+		tags: ["Next.js", "TypeScript", "Notion", "Tailwind CSS", "SEO"],
+		year: "2026",
+		role: "Frontend Developer",
+		link: "https://github.com/ldanh270/youth-for-change",
+		image: "/work-placeholder.svg",
 		content: {
 			overview:
-				"Product teams were exporting CSVs and building reports in spreadsheets because the analytics tools available couldn't surface org-level insights fast enough. The goal: any query a PM or growth engineer could imagine returns in under two seconds — regardless of org size or event volume.",
+				"Youth for Change turns SDG education into a structured digital experience. The homepage introduces the initiative, the SDG section explains all 17 goals with official color mapping, and the blog system lets the team publish updates from Notion without changing code.",
 			roleDetail:
-				"Led a team of three engineers. Owned architectural decisions end-to-end: Kafka event pipeline design, pre-aggregation strategy, D3 chart abstraction layer, and org permission graph. Also drove the design system for the dashboard UI and set up the CI/CD and monitoring infrastructure.",
+				"Built the Next.js application structure, reusable UI sections, SDG data model, Notion content pipeline, blog routes, theme behavior, and responsive layouts. The work balanced editorial clarity with maintainable frontend architecture.",
 			features: [
 				{
-					title: "Real-Time Event Streaming",
+					title: "SDG Landing Experience",
 					description:
-						"Kafka-powered event ingestion with 60-second pre-aggregation. Dashboards always feel live without hammering the primary DB.",
+						"Homepage with hero slider, SDG carousel, impact statistics, latest posts, sticky navigation, and mission-oriented sections.",
 				},
 				{
-					title: "Custom Report Builder",
+					title: "Notion Blog CMS",
 					description:
-						"Drag-and-drop report builder with 12 chart types. Non-technical users can build and save custom dashboards without engineering support.",
+						"Notion API integration maps database pages into typed blog cards and detail pages with markdown conversion.",
 				},
 				{
-					title: "Multi-Org Permission Graph",
+					title: "Static Blog Detail Pages",
 					description:
-						"Recursive directed permission graph supporting nested team hierarchies. Enterprise orgs can model complex access control without workarounds.",
+						"Blog posts generate static params and metadata for fast loading, shareable pages, and better search visibility.",
 				},
 				{
-					title: "Typed D3 Chart Abstractions",
+					title: "SDG Filtering",
 					description:
-						"Chart type → data contract abstraction. Designers change visual output; D3 internals never need to be touched.",
+						"Blog list supports SDG badge filters through URL query state so readers can explore content by goal.",
 				},
 				{
-					title: "Sub-2s Dashboard Loads",
+					title: "Design System",
 					description:
-						"Pre-aggregated summary tables replace raw event queries. Load time is independent of event volume — scales to billions of events.",
+						"Typography, brand colors, light/dark mode, and official UN SDG colors are centralized in documented style files and CSS tokens.",
 				},
 				{
-					title: "Scheduled Reports",
+					title: "Team and Flipbook Pages",
 					description:
-						"Email and Slack delivery of scheduled report snapshots with configurable frequency and recipient lists.",
+						"About page presents project members and mission, while the flipbook route embeds external campaign material.",
 				},
 			],
 			techStack: [
 				{
-					category: "Frontend",
-					tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
+					category: "Application",
+					tools: ["Next.js 16", "React 19", "TypeScript", "App Router"],
 				},
 				{
-					category: "Backend",
-					tools: ["Node.js", "Kafka", "PostgreSQL", "Redis"],
+					category: "Content",
+					tools: ["Notion API", "notion-to-md", "next-mdx-remote", "date-fns"],
 				},
 				{
-					category: "Infrastructure",
-					tools: ["AWS", "Docker", "GitHub Actions", "Datadog"],
+					category: "Interface",
+					tools: [
+						"Tailwind CSS v4",
+						"Radix UI",
+						"lucide-react",
+						"framer-motion",
+						"next-themes",
+					],
 				},
 			],
 			challengeSolution: {
 				challenge:
-					"Fan-out query explosion at scale: a single dashboard load triggered 40+ independent DB queries, one per widget per org. As orgs grew their event volume, dashboard load times grew linearly — hitting 14 seconds for larger accounts. The real-time feed was polling every 5 seconds, creating a thundering herd against the primary DB during peak hours.",
+					"The site had to feel like a campaign platform, a learning hub, and a blog at the same time. Content needed to be easy for non-developers to update while still supporting SEO, SDG filtering, official color usage, and consistent responsive layouts.",
 				solution:
-					"Moved real-time event ingestion off the primary DB onto Kafka, with a consumer service pre-aggregating events into materialized summary tables every 60 seconds. Dashboard queries hit summaries — query time became independent of event volume. Batched 40+ widget queries into 4 typed query groups, and redesigned the permission system as a recursive CTE with a 30s cache.",
+					"Used Notion as the editorial source, converted pages into typed blog models, and kept SDG metadata centralized. The frontend uses reusable sections and token-driven styling so campaign pages, SDG cards, and blog content stay visually aligned.",
 			},
 			results: [
-				{ metric: "Dashboard Load (s)", value: "1.2" },
-				{ metric: "DB CPU Drop (%)", value: "60" },
-				{ metric: "Query Cost Down (%)", value: "74" },
-				{ metric: "Orgs Supported", value: "200" },
+				{ metric: "SDGs Covered", value: "17" },
+				{ metric: "Core Routes", value: "5" },
+				{ metric: "CMS Source", value: "1" },
+				{ metric: "Theme Modes", value: "2" },
 			],
 			lessons: [
-				"Pre-aggregation is a product decision, not just a technical one. The 60s staleness window needed explicit sign-off — skipping that conversation caused friction during QA.",
-				"Typed chart abstractions compound. The effort to build the first abstraction paid back on every subsequent chart.",
-				"Distributed tracing from day one would have saved two weeks of profiling work. Instrument first, optimize second.",
+				"Editorial platforms stay maintainable when content, metadata, and visual tokens are separate concerns.",
+				"URL-based filters make content discovery shareable and easier to reason about than hidden component state.",
+				"Documenting typography and color decisions reduces design drift as new pages are added.",
 			],
 			screenshots: [
 				{
-					title: "Executive Overview",
+					title: "SDG Homepage",
 					description:
-						"Pre-aggregated KPIs, live event health, and query-backed product insights in one workspace.",
-					variant: "dashboard",
+						"Campaign landing page with rotating stories, SDG carousel, impact metrics, and recent Notion posts.",
+					variant: "system",
 				},
 				{
-					title: "Report Builder",
+					title: "Blog Detail",
 					description:
-						"Composable reporting surface for saved dashboards, chart configuration, and team sharing.",
-					variant: "system",
+						"SEO-ready article page with cover image, breadcrumbs, SDG badge, metadata, and markdown content.",
+					variant: "dashboard",
 				},
 			],
 			links: [
-				{ label: "Live Product", href: "#", type: "live" },
-				{ label: "GitHub", href: "#", type: "github" },
+				{
+					label: "GitHub Repository",
+					href: "https://github.com/ldanh270/youth-for-change",
+					type: "github",
+				},
 			],
 		},
 	},
 	{
-		slug: "mobile-banking-app",
+		slug: "smart-glass",
 		number: "03",
-		title: "Mobile Banking App",
+		title: "Smart Glass",
 		summary:
-			"Fintech mobile app for payments and account management. 99.9% uptime, built with React Native + Go.",
+			"Realtime smart-glass system with an ESP32 OLED display pipeline and a TypeScript WebSocket server for live translation streams.",
 		description:
-			"A mobile banking experience focused on trust, speed, and reliability. Work spanned interaction design, React Native implementation, GraphQL integration, Go services, release hardening, and production incident prevention.",
-		tags: ["React Native", "Go", "GraphQL", "Firebase"],
-		year: "2023",
-		role: "Mobile Engineer & Designer",
+			"Smart Glass combines embedded display firmware and a Node.js backend to support low-latency text streaming for wearable translation scenarios. The IoT side handles queueing, buffer management, and OLED scrolling; the server owns HTTP state and WebSocket delivery.",
+		tags: ["ESP32", "C++", "TypeScript", "WebSocket", "IoT"],
+		year: "2026",
+		role: "IoT & Backend Developer",
+		link: "https://github.com/ldanh270/smart-glass-iot",
+		image: "/work-placeholder.svg",
 		content: {
 			overview:
-				"A regional bank's Cordova-based mobile app had a 2.1-star App Store rating. Users complained about slow load times, frequent crashes mid-transaction, and a UI unchanged since 2018. The mandate: replace the app entirely, maintain 99.9% uptime during migration, and pass regulatory compliance requirements.",
+				"Smart Glass focuses on realtime text visualization for wearable or near-eye display use cases. The embedded app receives incoming text chunks, queues them safely, renders readable text on an OLED display, and scrolls long messages smoothly. The backend provides REST endpoints and a WebSocket channel for live translation and navigation data.",
 			roleDetail:
-				"Handled the full product lifecycle: interaction design and Figma prototyping, React Native implementation, the Go gateway service design, GraphQL schema, biometric auth hardening, and phased rollout strategy. Also ran usability testing sessions and owned the App Store submission process.",
+				"Built the embedded display service, queue-driven rendering loop, OLED scrolling behavior, and backend WebSocket lifecycle. The work required balancing readable UX on constrained hardware with reliable low-latency server communication.",
 			features: [
 				{
-					title: "Biometric Authentication",
+					title: "Realtime Text Ingestion",
 					description:
-						"FaceID on iOS, Fingerprint on Android — using platform secure enclave. Tested across 14 Android OEM profiles including Samsung One UI and OPPO.",
+						"Incoming text is accepted through a push API, buffered through a queue, and consumed on a controlled display loop.",
 				},
 				{
-					title: "Instant Transfers",
+					title: "OLED Scroll Renderer",
 					description:
-						"P2P transfers complete in under 1.5 seconds end-to-end via the Go gateway. Real-time balance updates via GraphQL subscriptions.",
+						"Long messages are measured in pixels and rendered as a seamless horizontal scrolling loop with configurable gap spacing.",
 				},
 				{
-					title: "Bill Payment",
+					title: "Bounded Display Buffer",
 					description:
-						"Scheduled and one-time bill payments with confirmation receipts and push notification delivery.",
+						"Sliding-window trimming keeps the display buffer within memory limits while preserving recent readable content.",
 				},
 				{
-					title: "Transaction History",
+					title: "ESP32 PlatformIO Build",
 					description:
-						"Paginated, searchable, filterable transaction history with export to PDF. Offline-capable with local cache.",
+						"Firmware targets a Freenove ESP32-S3 WROOM board with Arduino, Adafruit GFX, SSD1306, ArduinoJson, and ArduinoWebsockets.",
 				},
 				{
-					title: "Go API Gateway",
+					title: "WebSocket Translation Channel",
 					description:
-						"Translates legacy SOAP backend into a typed GraphQL API. Owns rate limiting, auth token refresh, and mobile-optimized response shaping.",
+						"Express server attaches a WebSocket server at /ws and initializes translation handling for each connection.",
 				},
 				{
-					title: "Phased Rollout",
+					title: "Graceful Server Shutdown",
 					description:
-						"5% → 20% → 50% → 100% rollout via Firebase Remote Config with automated gates on crash-free rate and p95 transaction completion.",
+						"Shutdown handler closes active WebSocket clients, the WebSocket server, and the HTTP server to avoid orphaned connections.",
 				},
 			],
 			techStack: [
 				{
-					category: "Mobile",
-					tools: ["React Native", "Expo", "Reanimated", "Zustand"],
+					category: "Firmware",
+					tools: [
+						"C++",
+						"PlatformIO",
+						"Arduino",
+						"ESP32-S3",
+						"Adafruit GFX",
+						"Adafruit SSD1306",
+					],
 				},
 				{
 					category: "Backend",
-					tools: ["Go", "GraphQL", "gRPC", "SOAP (legacy)"],
+					tools: ["Node.js", "TypeScript", "Bun", "Express", "ws", "Socket.IO", "dotenv"],
 				},
 				{
-					category: "Platform",
-					tools: ["Firebase", "Fastlane", "GitHub Actions"],
-				},
-			],
-			challengeSolution: {
-				challenge:
-					"Cordova's WebView had a memory leak crashing the app after 8–12 minutes of use — exactly the duration of a typical session. Biometric auth was inconsistent across Android OEM keyboards. The backend was a SOAP service with no versioning strategy, making mobile-friendly API design impossible without a gateway layer.",
-				solution:
-					"Rebuilt entirely in React Native. Built a Go gateway service that translated SOAP into a typed GraphQL API — decoupling mobile development from legacy backend constraints entirely. Implemented biometric auth via platform secure enclaves with a PIN fallback. Phased rollout with automated crash-rate gates caught one edge case at 20% before it reached 80% of users.",
-			},
-			results: [
-				{ metric: "App Store Rating", value: "4.6" },
-				{ metric: "Uptime (%)", value: "99.9" },
-				{ metric: "Payload Down (%)", value: "52" },
-				{ metric: "Session Up (%)", value: "34" },
-			],
-			lessons: [
-				"Prototype before code in fintech. Every hour of Figma usability testing saved at least a day of post-launch bug fixing.",
-				"Phased rollout gates must be automated. Manual gates get skipped under launch pressure.",
-				"Test biometric auth on actual Android OEM devices. Samsung One UI keyboard overlays break flows that pass all simulator tests.",
-			],
-			screenshots: [
-				{
-					title: "Account Snapshot",
-					description:
-						"Mobile-first balance, transfer, and transaction entry points optimized for repeat banking tasks.",
-					variant: "mobile",
-				},
-				{
-					title: "Transaction Detail",
-					description:
-						"Receipt-focused flow with confirmation states, export actions, and clear trust cues.",
-					variant: "mobile",
-				},
-			],
-			links: [
-				{ label: "App Store", href: "#", type: "live" },
-				{ label: "Google Play", href: "#", type: "live" },
-			],
-		},
-	},
-	{
-		slug: "design-system",
-		number: "04",
-		title: "Open Source Design System",
-		summary:
-			"Scalable component library used across 3 enterprise products. 80+ components with full Figma integration.",
-		description:
-			"A design engineering initiative that aligned product teams around accessible primitives, durable tokens, Storybook documentation, and Figma-ready component contracts.",
-		tags: ["Design System", "Storybook", "Figma", "WCAG 2.1"],
-		year: "2023",
-		role: "Design Engineer",
-		content: {
-			overview:
-				"Three product teams at the same company were building the same Button component in three different ways. A design audit found 47 distinct button implementations across the codebase. Engineers were spending 30% of sprint time resolving visual inconsistencies instead of shipping features.",
-			roleDetail:
-				"Sole design engineer on the project. Defined the three-tier token architecture, built all 80+ components, wrote the Storybook documentation, wired Figma Code Connect, implemented the CI accessibility enforcement pipeline, and ran the adoption program across three product teams.",
-			features: [
-				{
-					title: "Three-Tier Token System",
-					description:
-						"Primitives → semantics → component overrides. Dark mode shipped in 3 days after tokens were in place. Zero component code changes.",
-				},
-				{
-					title: "80+ Accessible Components",
-					description:
-						"Button, Input, Select, Modal, Drawer, Toast, Tabs, Accordion, and more. Every component WCAG 2.1 AA compliant out of the box.",
-				},
-				{
-					title: "Figma Code Connect",
-					description:
-						"Every component in the Figma library linked to its Storybook story. Click a component in Figma → jump to live interactive docs.",
-				},
-				{
-					title: "CI Accessibility Enforcement",
-					description:
-						"Contrast-checking script in CI fails builds when token changes violate AA ratios. axe-core integrated into Storybook for interactive checks.",
-				},
-				{
-					title: "Storybook Documentation",
-					description:
-						"Interactive documentation, visual regression testing, and accessibility reports in one tool the team already knew.",
-				},
-				{
-					title: "Champion-Led Adoption",
-					description:
-						"Per-team design system champions with early access and API influence. 3 teams adopted fully within 4 months, zero forks.",
-				},
-			],
-			techStack: [
-				{
-					category: "Components",
-					tools: ["React", "TypeScript", "Radix UI", "Tailwind CSS"],
-				},
-				{
-					category: "Documentation",
-					tools: ["Storybook", "Figma", "Figma Code Connect"],
-				},
-				{
-					category: "Quality",
-					tools: ["axe-core", "Chromatic", "GitHub Actions"],
+					category: "Realtime",
+					tools: [
+						"WebSocket",
+						"Picovoice Cheetah",
+						"Google Cloud Speech",
+						"Axios",
+						"Multer",
+					],
 				},
 			],
 			challengeSolution: {
 				challenge:
-					"Design systems fail at adoption, not at construction. The previous attempt at a shared library was abandoned after 6 months because it was too rigid — teams couldn't customize without forking. The new system had to be opinionated enough to enforce consistency, flexible enough that forking was never necessary.",
+					"Wearable displays have tight memory, timing, and readability constraints. Incoming translation text can arrive faster than the display should update, and long sentences must remain readable on a small OLED without flicker or heap pressure.",
 				solution:
-					"Built a three-tier token system where theming required changing only the semantic → primitive mapping. Components had a documented extension pattern for customization without forking. Adoption was driven through champions rather than mandates — each team had a designated engineer with early access and influence over the API design.",
+					"Decoupled producers from rendering with a queue, used fixed pop and render intervals, kept the text buffer bounded, and measured pixel width before enabling scrolling. On the server, WebSocket connection handling is isolated from REST state and includes explicit cleanup paths.",
 			},
 			results: [
-				{ metric: "Components Built", value: "80" },
-				{ metric: "Products Covered", value: "3" },
-				{ metric: "WCAG AA (%)", value: "100" },
-				{ metric: "Adoption (months)", value: "4" },
+				{ metric: "Repos", value: "2" },
+				{ metric: "Display Mode", value: "OLED" },
+				{ metric: "Realtime Channel", value: "WS" },
+				{ metric: "Board Target", value: "ESP32" },
 			],
 			lessons: [
-				"Token naming is product design. Bad token names get ignored; good names make the right choice obvious.",
-				"Adoption needs champions, not mandates. Find the engineers who care about quality and give them ownership.",
-				"Accessibility enforced in CI is worth more than any audit. Audits are snapshots; CI enforcement is continuous.",
+				"Embedded UI needs timing discipline; rendering on every incoming message creates flicker and unnecessary CPU load.",
+				"Bounded buffers and explicit queue drops are better than hidden memory growth on constrained hardware.",
+				"Realtime servers should close sockets intentionally during shutdown, especially when devices reconnect automatically.",
 			],
 			screenshots: [
 				{
-					title: "Component Matrix",
+					title: "OLED Translation Display",
 					description:
-						"Library overview showing component states, variants, token alignment, and documentation readiness.",
+						"Near-eye display flow for listening state, short text rendering, and long-text scrolling.",
 					variant: "system",
 				},
 				{
-					title: "Token Inspector",
+					title: "Realtime Server",
 					description:
-						"Semantic token review surface for validating themes, contrast, and product-level overrides.",
+						"HTTP and WebSocket service for navigation state and translation stream delivery.",
 					variant: "dashboard",
 				},
 			],
 			links: [
-				{ label: "Storybook Docs", href: "#", type: "live" },
-				{ label: "GitHub", href: "#", type: "github" },
-				{ label: "Figma Library", href: "#", type: "other" },
+				{
+					label: "IoT Repository",
+					href: "https://github.com/ldanh270/smart-glass-iot",
+					type: "github",
+				},
+				{
+					label: "Server Repository",
+					href: "https://github.com/ldanh270/smart-glass-server",
+					type: "github",
+				},
+			],
+		},
+	},
+	{
+		slug: "movie-on",
+		number: "04",
+		title: "MovieOn",
+		summary:
+			"Movie browsing interface built with Next.js 15, Supabase, Tailwind CSS v4, semantic theme tokens, and accessible UI primitives.",
+		description:
+			"MovieOn is a modern movie web interface focused on theming, accessibility, and clean frontend architecture. It uses Next.js App Router, TypeScript, Tailwind CSS v4, optimized fonts, and a Supabase-ready dependency stack.",
+		tags: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS", "Design System"],
+		year: "2025",
+		role: "Fullstack Developer",
+		link: "https://github.com/ldanh270/movie-on",
+		image: "/images/works/movie-on/banner.png",
+		content: {
+			overview:
+				"MovieOn explores a cinematic browsing experience with a strong foundation for theme switching, reusable tokens, optimized typography, and future content integration. The README emphasizes design-system quality as much as page implementation.",
+			roleDetail:
+				"Built the frontend architecture, theme provider, Tailwind token system, font setup, and reusable UI direction. The project was structured to make visual iteration fast without scattering colors or typography across components.",
+			features: [
+				{
+					title: "Semantic Color Tokens",
+					description:
+						"Background, foreground, primary, muted, card, border, and focus-ring variants are centralized in Tailwind CSS v4 theme definitions.",
+				},
+				{
+					title: "Optimized Typography",
+					description:
+						"Next.js font optimization wires Oswald, Source Sans 3, and Montserrat Alternates into CSS variables.",
+				},
+				{
+					title: "Modern App Router",
+					description:
+						"Next.js App Router structure keeps root layout, page composition, theme providers, and global styles predictable.",
+				},
+				{
+					title: "Accessible Primitives",
+					description:
+						"Radix UI primitives support dialogs, dropdowns, avatars, labels, popovers, and slots for accessible interaction patterns.",
+				},
+				{
+					title: "Supabase-Ready Stack",
+					description:
+						"Supabase client dependency is included for database-backed movie content, auth, or serverless data features.",
+				},
+			],
+			techStack: [
+				{
+					category: "Framework",
+					tools: ["Next.js 15", "React 19", "TypeScript", "App Router"],
+				},
+				{
+					category: "Styling",
+					tools: ["Tailwind CSS v4", "CSS Variables", "next-themes", "tw-animate-css"],
+				},
+				{
+					category: "UI and Data",
+					tools: ["Radix UI", "lucide-react", "Sonner", "Supabase", "Embla Carousel"],
+				},
+			],
+			challengeSolution: {
+				challenge:
+					"Movie interfaces can quickly become visually inconsistent when theme colors, display fonts, and interactive states are handled component by component. The project needed a clean base for cinematic UI without sacrificing accessibility or developer experience.",
+				solution:
+					"Built the UI around semantic theme tokens, class-based dark mode, optimized font variables, and reusable primitives. This keeps the visual language centralized while allowing pages and components to remain simple.",
+			},
+			lessons: [
+				"Theme systems should start with semantic intent, not raw color names.",
+				"Font roles are easier to maintain when headings, body, and accents map to explicit CSS variables.",
+				"Small UI projects still benefit from production-grade structure when they are meant to grow.",
+			],
+			screenshots: [
+				{
+					title: "Home Page",
+					description:
+						"Cinematic browsing experience with centralized theme tokens, optimized fonts, and accessible UI patterns.",
+					image: "/images/works/movie-on/full_home.png",
+					variant: "system",
+				},
+				{
+					title: "Discover Page",
+					description:
+						"Movie discovery interface with filterable categories, reusable card components, and consistent theming.",
+					image: "/images/works/movie-on/discover.png",
+					variant: "system",
+				},
+				{
+					title: "Movie Details Page",
+					description:
+						"Individual movie view with detailed information, cast, and crew sections.",
+					image: "/images/works/movie-on/movie-watch.png",
+					variant: "system",
+				},
+				{
+					title: "Category Details Page",
+					description:
+						"View movies within a specific category with detailed information and filtering options.",
+					image: "/images/works/movie-on/category-details.png",
+					variant: "system",
+				},
+				{
+					title: "Bookmark Page",
+					description:
+						"View and manage saved movies with detailed information and filtering options.",
+					image: "/images/works/movie-on/bookmark.png",
+					variant: "system",
+				},
+				{
+					title: "Feedback Page",
+					description:
+						"Provide feedback about the application with detailed information and filtering options.",
+					image: "/images/works/movie-on/feedback.png",
+					variant: "system",
+				},
+			],
+			links: [
+				{
+					label: "GitHub Repository",
+					href: "https://github.com/ldanh270/movie-on",
+					type: "github",
+				},
+			],
+		},
+	},
+	{
+		slug: "kiro",
+		number: "05",
+		title: "Kiro",
+		summary:
+			"Contribution to Kiro, an agentic IDE and CLI for spec-driven development, hooks, powers, MCP integrations, and codebase-aware AI workflows.",
+		description:
+			"Kiro is an agentic development environment from kirodotdev that helps developers move from prototype to production through structured specs, natural-language coding assistance, automation hooks, steering files, MCP servers, and powers.",
+		tags: ["TypeScript", "AI", "Developer Tools", "MCP", "CLI"],
+		year: "2026",
+		role: "Open Source Contributor",
+		link: "https://github.com/kirodotdev/Kiro",
+		image: "/work-placeholder.svg",
+		content: {
+			overview:
+				"Kiro is a developer tool built around spec-driven AI workflows. It offers a desktop IDE and CLI, with features that turn prompts into structured implementation plans, automate repeated tasks, and bring project-specific context into agent behavior.",
+			roleDetail:
+				"Contributed to the public repository as part of open-source development. The portfolio value is the exposure to agentic developer-tool workflows, issue-driven collaboration, and the product patterns behind specs, hooks, steering context, MCP servers, and powers.",
+			features: [
+				{
+					title: "Spec-Driven Development",
+					description:
+						"Structured specs break feature work into requirements, design direction, and implementation tasks.",
+				},
+				{
+					title: "Agentic Chat",
+					description:
+						"Natural-language coding assistant works with codebase context instead of isolated prompts.",
+				},
+				{
+					title: "Automation Hooks",
+					description:
+						"Hooks respond to file changes and development events to automate repetitive engineering work.",
+				},
+				{
+					title: "Steering Files",
+					description:
+						"Project-specific markdown instructions guide agent behavior and keep team conventions close to the code.",
+				},
+				{
+					title: "MCP Integrations",
+					description:
+						"Model Context Protocol support connects external tools and data sources to the development workflow.",
+				},
+				{
+					title: "Powers",
+					description:
+						"On-demand specialized context and tools extend agent capabilities for domain-specific work.",
+				},
+			],
+			techStack: [
+				{
+					category: "Product",
+					tools: ["Kiro IDE", "Kiro CLI", "Specs", "Hooks", "Steering"],
+				},
+				{
+					category: "Agent Platform",
+					tools: ["Agentic Chat", "MCP Servers", "Powers", "Codebase Context"],
+				},
+				{
+					category: "Contribution",
+					tools: ["GitHub Issues", "Open Source Workflow", "TypeScript"],
+				},
+			],
+			challengeSolution: {
+				challenge:
+					"AI coding tools need more than chat. Developers need repeatable plans, project-specific rules, automation triggers, privacy-conscious workflows, and integration points for external context.",
+				solution:
+					"Kiro approaches the problem as a full developer environment: specs structure the work, steering files guide behavior, hooks automate repeated tasks, MCP connects external systems, and powers provide targeted capabilities when needed.",
+			},
+			results: [
+				{ metric: "Interfaces", value: "2" },
+				{ metric: "Workflow Primitives", value: "6" },
+				{ metric: "Contribution Type", value: "OSS" },
+				{ metric: "Primary Language", value: "TS" },
+			],
+			lessons: [
+				"Agentic developer tools become more reliable when planning artifacts are explicit and versionable.",
+				"Project-level instructions are a product feature, not just prompt text.",
+				"Good AI tooling reduces context switching by meeting developers inside their normal IDE and CLI workflows.",
+			],
+			screenshots: [
+				{
+					title: "Spec Workflow",
+					description:
+						"Prototype-to-production development flow built around requirements, implementation plans, and task execution.",
+					variant: "system",
+				},
+				{
+					title: "Agent Tooling",
+					description:
+						"IDE and CLI surfaces for chat, hooks, steering context, MCP tools, and powers.",
+					variant: "dashboard",
+				},
+			],
+			links: [
+				{
+					label: "GitHub Repository",
+					href: "https://github.com/kirodotdev/Kiro",
+					type: "github",
+				},
+				{
+					label: "Documentation",
+					href: "https://kiro.dev/docs/",
+					type: "other",
+				},
 			],
 		},
 	},
