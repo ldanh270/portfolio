@@ -16,6 +16,95 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
 	{
+		slug: "kiro",
+		number: "05",
+		title: "Kiro",
+		summary:
+			"Contribution to Kiro, an agentic IDE and CLI for spec-driven development, hooks, powers, MCP integrations, and codebase-aware AI workflows.",
+		description:
+			"Kiro is an agentic development environment from kirodotdev that helps developers move from prototype to production through structured specs, natural-language coding assistance, automation hooks, steering files, MCP servers, and powers.",
+		tags: ["TypeScript", "AI", "Developer Tools", "MCP", "CLI"],
+		year: "2026",
+		role: "Open Source Contributor",
+		link: "https://github.com/kirodotdev/Kiro",
+		image: "/images/works/kiro/banner.png",
+		content: {
+			overview:
+				"Kiro is a developer tool built around spec-driven AI workflows. It offers a desktop IDE and CLI, with features that turn prompts into structured implementation plans, automate repeated tasks, and bring project-specific context into agent behavior.",
+			roleDetail:
+				"Contributed to the public repository as part of open-source development. The portfolio value is the exposure to agentic developer-tool workflows, issue-driven collaboration, and the product patterns behind specs, hooks, steering context, MCP servers, and powers.",
+			features: [
+				{
+					title: "Spec-Driven Development",
+					description:
+						"Structured specs break feature work into requirements, design direction, and implementation tasks.",
+				},
+				{
+					title: "Agentic Chat",
+					description:
+						"Natural-language coding assistant works with codebase context instead of isolated prompts.",
+				},
+				{
+					title: "Automation Hooks",
+					description:
+						"Hooks respond to file changes and development events to automate repetitive engineering work.",
+				},
+				{
+					title: "Steering Files",
+					description:
+						"Project-specific markdown instructions guide agent behavior and keep team conventions close to the code.",
+				},
+				{
+					title: "MCP Integrations",
+					description:
+						"Model Context Protocol support connects external tools and data sources to the development workflow.",
+				},
+				{
+					title: "Powers",
+					description:
+						"On-demand specialized context and tools extend agent capabilities for domain-specific work.",
+				},
+			],
+			techStack: [
+				{
+					category: "Product",
+					tools: ["Kiro IDE", "Kiro CLI", "Specs", "Hooks", "Steering"],
+				},
+				{
+					category: "Agent Platform",
+					tools: ["Agentic Chat", "MCP Servers", "Powers", "Codebase Context"],
+				},
+				{
+					category: "Contribution",
+					tools: ["GitHub Issues", "Open Source Workflow", "TypeScript"],
+				},
+			],
+			challengeSolution: {
+				challenge:
+					"AI coding tools need more than chat. Developers need repeatable plans, project-specific rules, automation triggers, privacy-conscious workflows, and integration points for external context.",
+				solution:
+					"Kiro approaches the problem as a full developer environment: specs structure the work, steering files guide behavior, hooks automate repeated tasks, MCP connects external systems, and powers provide targeted capabilities when needed.",
+			},
+			lessons: [
+				"Agentic developer tools become more reliable when planning artifacts are explicit and versionable.",
+				"Project-level instructions are a product feature, not just prompt text.",
+				"Good AI tooling reduces context switching by meeting developers inside their normal IDE and CLI workflows.",
+			],
+			links: [
+				{
+					label: "GitHub Repository",
+					href: "https://github.com/kirodotdev/Kiro",
+					type: "github",
+				},
+				{
+					label: "My Contribution Issue",
+					href: "https://github.com/kirodotdev/Kiro/issues/2946",
+					type: "case-study",
+				},
+			],
+		},
+	},
+	{
 		slug: "smart-pc-store",
 		number: "01",
 		title: "Smart PC Store",
@@ -506,115 +595,6 @@ export const PROJECTS: Project[] = [
 					label: "GitHub Repository",
 					href: "https://github.com/ldanh270/movie-on",
 					type: "github",
-				},
-			],
-		},
-	},
-	{
-		slug: "kiro",
-		number: "05",
-		title: "Kiro",
-		summary:
-			"Contribution to Kiro, an agentic IDE and CLI for spec-driven development, hooks, powers, MCP integrations, and codebase-aware AI workflows.",
-		description:
-			"Kiro is an agentic development environment from kirodotdev that helps developers move from prototype to production through structured specs, natural-language coding assistance, automation hooks, steering files, MCP servers, and powers.",
-		tags: ["TypeScript", "AI", "Developer Tools", "MCP", "CLI"],
-		year: "2026",
-		role: "Open Source Contributor",
-		link: "https://github.com/kirodotdev/Kiro",
-		image: "/work-placeholder.svg",
-		content: {
-			overview:
-				"Kiro is a developer tool built around spec-driven AI workflows. It offers a desktop IDE and CLI, with features that turn prompts into structured implementation plans, automate repeated tasks, and bring project-specific context into agent behavior.",
-			roleDetail:
-				"Contributed to the public repository as part of open-source development. The portfolio value is the exposure to agentic developer-tool workflows, issue-driven collaboration, and the product patterns behind specs, hooks, steering context, MCP servers, and powers.",
-			features: [
-				{
-					title: "Spec-Driven Development",
-					description:
-						"Structured specs break feature work into requirements, design direction, and implementation tasks.",
-				},
-				{
-					title: "Agentic Chat",
-					description:
-						"Natural-language coding assistant works with codebase context instead of isolated prompts.",
-				},
-				{
-					title: "Automation Hooks",
-					description:
-						"Hooks respond to file changes and development events to automate repetitive engineering work.",
-				},
-				{
-					title: "Steering Files",
-					description:
-						"Project-specific markdown instructions guide agent behavior and keep team conventions close to the code.",
-				},
-				{
-					title: "MCP Integrations",
-					description:
-						"Model Context Protocol support connects external tools and data sources to the development workflow.",
-				},
-				{
-					title: "Powers",
-					description:
-						"On-demand specialized context and tools extend agent capabilities for domain-specific work.",
-				},
-			],
-			techStack: [
-				{
-					category: "Product",
-					tools: ["Kiro IDE", "Kiro CLI", "Specs", "Hooks", "Steering"],
-				},
-				{
-					category: "Agent Platform",
-					tools: ["Agentic Chat", "MCP Servers", "Powers", "Codebase Context"],
-				},
-				{
-					category: "Contribution",
-					tools: ["GitHub Issues", "Open Source Workflow", "TypeScript"],
-				},
-			],
-			challengeSolution: {
-				challenge:
-					"AI coding tools need more than chat. Developers need repeatable plans, project-specific rules, automation triggers, privacy-conscious workflows, and integration points for external context.",
-				solution:
-					"Kiro approaches the problem as a full developer environment: specs structure the work, steering files guide behavior, hooks automate repeated tasks, MCP connects external systems, and powers provide targeted capabilities when needed.",
-			},
-			results: [
-				{ metric: "Interfaces", value: "2" },
-				{ metric: "Workflow Primitives", value: "6" },
-				{ metric: "Contribution Type", value: "OSS" },
-				{ metric: "Primary Language", value: "TS" },
-			],
-			lessons: [
-				"Agentic developer tools become more reliable when planning artifacts are explicit and versionable.",
-				"Project-level instructions are a product feature, not just prompt text.",
-				"Good AI tooling reduces context switching by meeting developers inside their normal IDE and CLI workflows.",
-			],
-			screenshots: [
-				{
-					title: "Spec Workflow",
-					description:
-						"Prototype-to-production development flow built around requirements, implementation plans, and task execution.",
-					variant: "system",
-				},
-				{
-					title: "Agent Tooling",
-					description:
-						"IDE and CLI surfaces for chat, hooks, steering context, MCP tools, and powers.",
-					variant: "dashboard",
-				},
-			],
-			links: [
-				{
-					label: "GitHub Repository",
-					href: "https://github.com/kirodotdev/Kiro",
-					type: "github",
-				},
-				{
-					label: "Documentation",
-					href: "https://kiro.dev/docs/",
-					type: "other",
 				},
 			],
 		},

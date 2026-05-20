@@ -43,25 +43,25 @@ const valueVariants = {
 	hover: { x: -8 },
 };
 
-function formatResultNumber(index: number): string {
+const formatResultNumber = (index: number): string => {
 	return String(index + 1).padStart(2, "0");
-}
+};
 
-function getResultCountLabel(count: number): string {
+const getResultCountLabel = (count: number): string => {
 	const itemLabel = count === 1 ? "Metric" : "Metrics";
 	return `${formatResultNumber(count - 1)} ${itemLabel}`;
-}
+};
 
-function parseMetricValue(value: string): { num: number; suffix: string } {
+const parseMetricValue = (value: string): { num: number; suffix: string } => {
 	const match = value.match(/^(\d+(?:\.\d+)?)(.*)/);
 	if (!match) return { num: 0, suffix: value };
 	return {
 		num: parseFloat(match[1]),
 		suffix: match[2].trim(),
 	};
-}
+};
 
-function ResultMetricRow({ item, index, motionEnabled }: ResultMetricRowProps) {
+const ResultMetricRow = ({ item, index, motionEnabled }: ResultMetricRowProps) => {
 	const { num, suffix } = parseMetricValue(item.value);
 	const metricNumber = formatResultNumber(index);
 
@@ -136,7 +136,7 @@ function ResultMetricRow({ item, index, motionEnabled }: ResultMetricRowProps) {
 			</motion.div>
 		</motion.article>
 	);
-}
+};
 
 export function ResultsSection({ data }: ResultsSectionProps) {
 	const shouldReduceMotion = useReducedMotion();
