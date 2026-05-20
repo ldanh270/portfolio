@@ -111,7 +111,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 						fill
 						alt={project.title}
 						className="object-cover"
-						loading="lazy"
+						priority
 					/>
 				</div>
 			</section>
