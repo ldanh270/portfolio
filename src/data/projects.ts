@@ -105,6 +105,146 @@ export const PROJECTS: Project[] = [
 		},
 	},
 	{
+		slug: "youth-for-change",
+		number: "02",
+		title: "Youth for Change",
+		summary:
+			"SDG-focused landing page, learning hub, and Notion-powered blog platform for the Youth for Change initiative at UD-UFLS.",
+		description:
+			"Youth for Change is a Next.js platform for communicating the 17 United Nations Sustainable Development Goals through a landing page, SDG learning pages, team storytelling, a flipbook, and a Notion-backed blog system.",
+		tags: ["Next.js", "TypeScript", "Notion", "Tailwind CSS", "SEO"],
+		year: "2026",
+		role: "Frontend Developer",
+		link: "https://github.com/ldanh270/youth-for-change",
+		image: "/images/works/youth-for-change/banner.png",
+		content: {
+			overview:
+				"Youth for Change turns SDG education into a structured digital experience. The homepage introduces the initiative, the SDG section explains all 17 goals with official color mapping, and the blog system lets the team publish updates from Notion without changing code.",
+			roleDetail:
+				"Built the Next.js application structure, reusable UI sections, SDG data model, Notion content pipeline, blog routes, theme behavior, and responsive layouts. The work balanced editorial clarity with maintainable frontend architecture.",
+			features: [
+				{
+					title: "SDG Landing Experience",
+					description:
+						"Homepage with hero slider, SDG carousel, impact statistics, latest posts, sticky navigation, and mission-oriented sections.",
+				},
+				{
+					title: "Notion Blog CMS",
+					description:
+						"Notion API integration maps database pages into typed blog cards and detail pages with markdown conversion.",
+				},
+				{
+					title: "Static Blog Detail Pages",
+					description:
+						"Blog posts generate static params and metadata for fast loading, shareable pages, and better search visibility.",
+				},
+				{
+					title: "SDG Filtering",
+					description:
+						"Blog list supports SDG badge filters through URL query state so readers can explore content by goal.",
+				},
+				{
+					title: "Design System",
+					description:
+						"Typography, brand colors, light/dark mode, and official UN SDG colors are centralized in documented style files and CSS tokens.",
+				},
+				{
+					title: "Team and Flipbook Pages",
+					description:
+						"About page presents project members and mission, while the flipbook route embeds external campaign material.",
+				},
+			],
+			techStack: [
+				{
+					category: "Application",
+					tools: ["Next.js 16", "React 19", "TypeScript", "App Router"],
+				},
+				{
+					category: "Content",
+					tools: ["Notion API", "notion-to-md", "next-mdx-remote", "date-fns"],
+				},
+				{
+					category: "Interface",
+					tools: [
+						"Tailwind CSS v4",
+						"Radix UI",
+						"lucide-react",
+						"framer-motion",
+						"next-themes",
+					],
+				},
+			],
+			challengeSolution: {
+				challenge:
+					"The site had to feel like a campaign platform, a learning hub, and a blog at the same time. Content needed to be easy for non-developers to update while still supporting SEO, SDG filtering, official color usage, and consistent responsive layouts.",
+				solution:
+					"Used Notion as the editorial source, converted pages into typed blog models, and kept SDG metadata centralized. The frontend uses reusable sections and token-driven styling so campaign pages, SDG cards, and blog content stay visually aligned.",
+			},
+			results: [
+				{ metric: "SDGs Covered", value: "17" },
+				{ metric: "Core Routes", value: "5" },
+				{ metric: "CMS Source", value: "1" },
+				{ metric: "Theme Modes", value: "2" },
+			],
+			lessons: [
+				"Editorial platforms stay maintainable when content, metadata, and visual tokens are separate concerns.",
+				"URL-based filters make content discovery shareable and easier to reason about than hidden component state.",
+				"Documenting typography and color decisions reduces design drift as new pages are added.",
+			],
+			screenshots: [
+				{
+					title: "SDG Homepage",
+					description:
+						"Campaign landing page with rotating stories, SDG carousel, impact metrics, and recent Notion posts.",
+					image: "/images/works/youth-for-change/home-section.png",
+					variant: "system",
+				},
+				{
+					title: "Blog Detail",
+					description:
+						"SEO-ready article page with cover image, breadcrumbs, SDG badge, metadata, and markdown content.",
+					image: "/images/works/youth-for-change/blog-details.png",
+					variant: "dashboard",
+				},
+				{
+					title: "About Page",
+					description:
+						"Informational page about the organization, its mission, and team members.",
+					image: "/images/works/youth-for-change/about.png",
+					variant: "dashboard",
+				},
+				{
+					title: "Flipbook Page",
+					description:
+						"Interactive flipbook for showcasing campaign materials and impact stories.",
+					image: "/images/works/youth-for-change/flipbook.png",
+					variant: "dashboard",
+				},
+				{
+					title: "SDG Homepage",
+					description:
+						"Campaign landing page with rotating stories, SDG carousel, impact metrics, and recent Notion posts.",
+					image: "/images/works/youth-for-change/home-section.png",
+					variant: "dashboard",
+				},
+				{
+					title: "SDGs Categories",
+					description:
+						"Dedicated pages for each SDG with official color mapping, detailed descriptions, and related content.",
+					image: "/images/works/youth-for-change/sdgs.png",
+					variant: "commerce",
+				},
+			],
+			links: [
+				{
+					label: "GitHub Repository",
+					href: "https://github.com/ldanh270/youth-for-change",
+					type: "github",
+				},
+			],
+		},
+	},
+	{
 		slug: "smart-pc-store",
 		number: "01",
 		title: "Smart PC Store",
@@ -245,110 +385,123 @@ export const PROJECTS: Project[] = [
 		},
 	},
 	{
-		slug: "youth-for-change",
-		number: "02",
-		title: "Youth for Change",
+		slug: "movie-on",
+		number: "04",
+		title: "MovieOn",
 		summary:
-			"SDG-focused landing page, learning hub, and Notion-powered blog platform for the Youth for Change initiative at UD-UFLS.",
+			"Movie browsing interface built with Next.js 15, Supabase, Tailwind CSS v4, semantic theme tokens, and accessible UI primitives.",
 		description:
-			"Youth for Change is a Next.js platform for communicating the 17 United Nations Sustainable Development Goals through a landing page, SDG learning pages, team storytelling, a flipbook, and a Notion-backed blog system.",
-		tags: ["Next.js", "TypeScript", "Notion", "Tailwind CSS", "SEO"],
-		year: "2026",
-		role: "Frontend Developer",
-		link: "https://github.com/ldanh270/youth-for-change",
-		image: "/work-placeholder.svg",
+			"MovieOn is a modern movie web interface focused on theming, accessibility, and clean frontend architecture. It uses Next.js App Router, TypeScript, Tailwind CSS v4, optimized fonts, and a Supabase-ready dependency stack.",
+		tags: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS", "Design System"],
+		year: "2025",
+		role: "Fullstack Developer",
+		link: "https://github.com/ldanh270/movie-on",
+		image: "/images/works/movie-on/banner.png",
 		content: {
 			overview:
-				"Youth for Change turns SDG education into a structured digital experience. The homepage introduces the initiative, the SDG section explains all 17 goals with official color mapping, and the blog system lets the team publish updates from Notion without changing code.",
+				"MovieOn explores a cinematic browsing experience with a strong foundation for theme switching, reusable tokens, optimized typography, and future content integration. The README emphasizes design-system quality as much as page implementation.",
 			roleDetail:
-				"Built the Next.js application structure, reusable UI sections, SDG data model, Notion content pipeline, blog routes, theme behavior, and responsive layouts. The work balanced editorial clarity with maintainable frontend architecture.",
+				"Built the frontend architecture, theme provider, Tailwind token system, font setup, and reusable UI direction. The project was structured to make visual iteration fast without scattering colors or typography across components.",
 			features: [
 				{
-					title: "SDG Landing Experience",
+					title: "Semantic Color Tokens",
 					description:
-						"Homepage with hero slider, SDG carousel, impact statistics, latest posts, sticky navigation, and mission-oriented sections.",
+						"Background, foreground, primary, muted, card, border, and focus-ring variants are centralized in Tailwind CSS v4 theme definitions.",
 				},
 				{
-					title: "Notion Blog CMS",
+					title: "Optimized Typography",
 					description:
-						"Notion API integration maps database pages into typed blog cards and detail pages with markdown conversion.",
+						"Next.js font optimization wires Oswald, Source Sans 3, and Montserrat Alternates into CSS variables.",
 				},
 				{
-					title: "Static Blog Detail Pages",
+					title: "Modern App Router",
 					description:
-						"Blog posts generate static params and metadata for fast loading, shareable pages, and better search visibility.",
+						"Next.js App Router structure keeps root layout, page composition, theme providers, and global styles predictable.",
 				},
 				{
-					title: "SDG Filtering",
+					title: "Accessible Primitives",
 					description:
-						"Blog list supports SDG badge filters through URL query state so readers can explore content by goal.",
+						"Radix UI primitives support dialogs, dropdowns, avatars, labels, popovers, and slots for accessible interaction patterns.",
 				},
 				{
-					title: "Design System",
+					title: "Supabase-Ready Stack",
 					description:
-						"Typography, brand colors, light/dark mode, and official UN SDG colors are centralized in documented style files and CSS tokens.",
-				},
-				{
-					title: "Team and Flipbook Pages",
-					description:
-						"About page presents project members and mission, while the flipbook route embeds external campaign material.",
+						"Supabase client dependency is included for database-backed movie content, auth, or serverless data features.",
 				},
 			],
 			techStack: [
 				{
-					category: "Application",
-					tools: ["Next.js 16", "React 19", "TypeScript", "App Router"],
+					category: "Framework",
+					tools: ["Next.js 15", "React 19", "TypeScript", "App Router"],
 				},
 				{
-					category: "Content",
-					tools: ["Notion API", "notion-to-md", "next-mdx-remote", "date-fns"],
+					category: "Styling",
+					tools: ["Tailwind CSS v4", "CSS Variables", "next-themes", "tw-animate-css"],
 				},
 				{
-					category: "Interface",
-					tools: [
-						"Tailwind CSS v4",
-						"Radix UI",
-						"lucide-react",
-						"framer-motion",
-						"next-themes",
-					],
+					category: "UI and Data",
+					tools: ["Radix UI", "lucide-react", "Sonner", "Supabase", "Embla Carousel"],
 				},
 			],
 			challengeSolution: {
 				challenge:
-					"The site had to feel like a campaign platform, a learning hub, and a blog at the same time. Content needed to be easy for non-developers to update while still supporting SEO, SDG filtering, official color usage, and consistent responsive layouts.",
+					"Movie interfaces can quickly become visually inconsistent when theme colors, display fonts, and interactive states are handled component by component. The project needed a clean base for cinematic UI without sacrificing accessibility or developer experience.",
 				solution:
-					"Used Notion as the editorial source, converted pages into typed blog models, and kept SDG metadata centralized. The frontend uses reusable sections and token-driven styling so campaign pages, SDG cards, and blog content stay visually aligned.",
+					"Built the UI around semantic theme tokens, class-based dark mode, optimized font variables, and reusable primitives. This keeps the visual language centralized while allowing pages and components to remain simple.",
 			},
-			results: [
-				{ metric: "SDGs Covered", value: "17" },
-				{ metric: "Core Routes", value: "5" },
-				{ metric: "CMS Source", value: "1" },
-				{ metric: "Theme Modes", value: "2" },
-			],
 			lessons: [
-				"Editorial platforms stay maintainable when content, metadata, and visual tokens are separate concerns.",
-				"URL-based filters make content discovery shareable and easier to reason about than hidden component state.",
-				"Documenting typography and color decisions reduces design drift as new pages are added.",
+				"Theme systems should start with semantic intent, not raw color names.",
+				"Font roles are easier to maintain when headings, body, and accents map to explicit CSS variables.",
+				"Small UI projects still benefit from production-grade structure when they are meant to grow.",
 			],
 			screenshots: [
 				{
-					title: "SDG Homepage",
+					title: "Home Page",
 					description:
-						"Campaign landing page with rotating stories, SDG carousel, impact metrics, and recent Notion posts.",
+						"Cinematic browsing experience with centralized theme tokens, optimized fonts, and accessible UI patterns.",
+					image: "/images/works/movie-on/full_home.png",
 					variant: "system",
 				},
 				{
-					title: "Blog Detail",
+					title: "Discover Page",
 					description:
-						"SEO-ready article page with cover image, breadcrumbs, SDG badge, metadata, and markdown content.",
-					variant: "dashboard",
+						"Movie discovery interface with filterable categories, reusable card components, and consistent theming.",
+					image: "/images/works/movie-on/discover.png",
+					variant: "system",
+				},
+				{
+					title: "Movie Details Page",
+					description:
+						"Individual movie view with detailed information, cast, and crew sections.",
+					image: "/images/works/movie-on/movie-watch.png",
+					variant: "system",
+				},
+				{
+					title: "Category Details Page",
+					description:
+						"View movies within a specific category with detailed information and filtering options.",
+					image: "/images/works/movie-on/category-details.png",
+					variant: "system",
+				},
+				{
+					title: "Bookmark Page",
+					description:
+						"View and manage saved movies with detailed information and filtering options.",
+					image: "/images/works/movie-on/bookmark.png",
+					variant: "system",
+				},
+				{
+					title: "Feedback Page",
+					description:
+						"Provide feedback about the application with detailed information and filtering options.",
+					image: "/images/works/movie-on/feedback.png",
+					variant: "system",
 				},
 			],
 			links: [
 				{
 					label: "GitHub Repository",
-					href: "https://github.com/ldanh270/youth-for-change",
+					href: "https://github.com/ldanh270/movie-on",
 					type: "github",
 				},
 			],
@@ -471,129 +624,6 @@ export const PROJECTS: Project[] = [
 				{
 					label: "Server Repository",
 					href: "https://github.com/ldanh270/smart-glass-server",
-					type: "github",
-				},
-			],
-		},
-	},
-	{
-		slug: "movie-on",
-		number: "04",
-		title: "MovieOn",
-		summary:
-			"Movie browsing interface built with Next.js 15, Supabase, Tailwind CSS v4, semantic theme tokens, and accessible UI primitives.",
-		description:
-			"MovieOn is a modern movie web interface focused on theming, accessibility, and clean frontend architecture. It uses Next.js App Router, TypeScript, Tailwind CSS v4, optimized fonts, and a Supabase-ready dependency stack.",
-		tags: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS", "Design System"],
-		year: "2025",
-		role: "Fullstack Developer",
-		link: "https://github.com/ldanh270/movie-on",
-		image: "/images/works/movie-on/banner.png",
-		content: {
-			overview:
-				"MovieOn explores a cinematic browsing experience with a strong foundation for theme switching, reusable tokens, optimized typography, and future content integration. The README emphasizes design-system quality as much as page implementation.",
-			roleDetail:
-				"Built the frontend architecture, theme provider, Tailwind token system, font setup, and reusable UI direction. The project was structured to make visual iteration fast without scattering colors or typography across components.",
-			features: [
-				{
-					title: "Semantic Color Tokens",
-					description:
-						"Background, foreground, primary, muted, card, border, and focus-ring variants are centralized in Tailwind CSS v4 theme definitions.",
-				},
-				{
-					title: "Optimized Typography",
-					description:
-						"Next.js font optimization wires Oswald, Source Sans 3, and Montserrat Alternates into CSS variables.",
-				},
-				{
-					title: "Modern App Router",
-					description:
-						"Next.js App Router structure keeps root layout, page composition, theme providers, and global styles predictable.",
-				},
-				{
-					title: "Accessible Primitives",
-					description:
-						"Radix UI primitives support dialogs, dropdowns, avatars, labels, popovers, and slots for accessible interaction patterns.",
-				},
-				{
-					title: "Supabase-Ready Stack",
-					description:
-						"Supabase client dependency is included for database-backed movie content, auth, or serverless data features.",
-				},
-			],
-			techStack: [
-				{
-					category: "Framework",
-					tools: ["Next.js 15", "React 19", "TypeScript", "App Router"],
-				},
-				{
-					category: "Styling",
-					tools: ["Tailwind CSS v4", "CSS Variables", "next-themes", "tw-animate-css"],
-				},
-				{
-					category: "UI and Data",
-					tools: ["Radix UI", "lucide-react", "Sonner", "Supabase", "Embla Carousel"],
-				},
-			],
-			challengeSolution: {
-				challenge:
-					"Movie interfaces can quickly become visually inconsistent when theme colors, display fonts, and interactive states are handled component by component. The project needed a clean base for cinematic UI without sacrificing accessibility or developer experience.",
-				solution:
-					"Built the UI around semantic theme tokens, class-based dark mode, optimized font variables, and reusable primitives. This keeps the visual language centralized while allowing pages and components to remain simple.",
-			},
-			lessons: [
-				"Theme systems should start with semantic intent, not raw color names.",
-				"Font roles are easier to maintain when headings, body, and accents map to explicit CSS variables.",
-				"Small UI projects still benefit from production-grade structure when they are meant to grow.",
-			],
-			screenshots: [
-				{
-					title: "Home Page",
-					description:
-						"Cinematic browsing experience with centralized theme tokens, optimized fonts, and accessible UI patterns.",
-					image: "/images/works/movie-on/full_home.png",
-					variant: "system",
-				},
-				{
-					title: "Discover Page",
-					description:
-						"Movie discovery interface with filterable categories, reusable card components, and consistent theming.",
-					image: "/images/works/movie-on/discover.png",
-					variant: "system",
-				},
-				{
-					title: "Movie Details Page",
-					description:
-						"Individual movie view with detailed information, cast, and crew sections.",
-					image: "/images/works/movie-on/movie-watch.png",
-					variant: "system",
-				},
-				{
-					title: "Category Details Page",
-					description:
-						"View movies within a specific category with detailed information and filtering options.",
-					image: "/images/works/movie-on/category-details.png",
-					variant: "system",
-				},
-				{
-					title: "Bookmark Page",
-					description:
-						"View and manage saved movies with detailed information and filtering options.",
-					image: "/images/works/movie-on/bookmark.png",
-					variant: "system",
-				},
-				{
-					title: "Feedback Page",
-					description:
-						"Provide feedback about the application with detailed information and filtering options.",
-					image: "/images/works/movie-on/feedback.png",
-					variant: "system",
-				},
-			],
-			links: [
-				{
-					label: "GitHub Repository",
-					href: "https://github.com/ldanh270/movie-on",
 					type: "github",
 				},
 			],
