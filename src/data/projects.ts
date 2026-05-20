@@ -115,7 +115,7 @@ export const PROJECTS: Project[] = [
 		tags: ["Next.js", "TypeScript", "Notion", "Tailwind CSS", "SEO"],
 		year: "2026",
 		role: "Frontend Developer",
-		link: "https://github.com/ldanh270/youth-for-change",
+		link: "https://youth-for-change-mu.vercel.app/",
 		image: "/images/works/youth-for-change/banner.png",
 		content: {
 			overview:
@@ -255,8 +255,8 @@ export const PROJECTS: Project[] = [
 		tags: ["Next.js", "Java", "PostgreSQL", "FastAPI", "AI"],
 		year: "2026",
 		role: "Lead Developer, Project Manager, Code Reviewer",
-		link: "https://github.com/ldanh270/smart-pc-store",
-		image: "/work-placeholder.svg",
+		link: "https://smartpcstore.vercel.app/",
+		image: "/images/works/smart-pc-store/banner.png",
 		content: {
 			overview:
 				"Smart PC Store was built as a production-style commerce platform for PC components, gaming gear, suppliers, stock movement, and order management. The system is split into focused services: a modern customer/admin frontend, an enterprise Java REST API, and an AI server that enriches the buying experience with market-aware recommendations and price forecasts.",
@@ -353,16 +353,93 @@ export const PROJECTS: Project[] = [
 			],
 			screenshots: [
 				{
-					title: "Customer Storefront",
+					title: "About Page",
+					image: "/images/works/smart-pc-store/about.png",
 					description:
-						"Commerce experience for browsing PC hardware, reviewing product detail, adding to cart, and checking out.",
+						"Informational page about the store, its mission, and the team behind it.",
 					variant: "commerce",
 				},
 				{
-					title: "Admin Command Center",
+					title: "User Cart",
 					description:
-						"Operational workspace for products, orders, users, suppliers, stock imports, and revenue charts.",
-					variant: "dashboard",
+						"Shopping cart interface for managing selected items, quantities, and checkout process.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/cart.png",
+				},
+				{
+					title: "Product Details",
+					description:
+						"Comprehensive view of a product's specifications, reviews, and availability.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/product-details.png",
+				},
+				{
+					title: "Categories",
+					description: "Browse products by category, with filtering and sorting options.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/categories.png",
+				},
+				{
+					title: "Home Section 1",
+					description:
+						"Initial view of the homepage with featured products and promotions.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/home-section-1.png",
+				},
+				{
+					title: "Home Section 2",
+					description:
+						"Secondary view of the homepage with additional featured products and promotions.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/home-section-2.png",
+				},
+				{
+					title: "My Orders",
+					description: "View and manage your order history and details.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/my-orders.png",
+				},
+				{
+					title: "Online Payment",
+					description: "Secure online payment processing for completed orders.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/online-payment.png",
+				},
+				{
+					title: "Profile",
+					description: "Manage your account settings and personal information.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/profile.png",
+				},
+				{
+					title: "Admin Category",
+					description: "Manage product categories in the admin panel.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/admin/category.png",
+				},
+				{
+					title: "Admin Dashboard",
+					description: "View and manage the overall store performance and analytics.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/admin/dashboard.png",
+				},
+				{
+					title: "Admin Orders Management",
+					description: "View and manage orders in the admin panel.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/admin/order.png",
+				},
+				{
+					title: "Admin Products Management",
+					description: "View and manage products in the admin panel.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/admin/product.png",
+				},
+				{
+					title: "Admin Suppliers Management",
+					description: "View and manage suppliers in the admin panel.",
+					variant: "commerce",
+					image: "/images/works/smart-pc-store/admin/suppliers.png",
 				},
 			],
 			links: [
