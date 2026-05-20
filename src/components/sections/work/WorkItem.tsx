@@ -12,15 +12,18 @@ export function WorkItem({ project }: { project: Project }) {
 	return (
 		<Link
 			href={`/work/${project.slug}`}
-				data-cursor="view"
+			data-cursor="view"
 			className="work-item group block overflow-hidden border-b border-brand-border"
-					>
+		>
 			<motion.article
 				className="relative grid gap-6 px-6 py-10 transition-colors sm:px-12 md:grid-cols-[80px_1fr_auto] md:gap-8 md:py-12"
 				whileHover={
-					shouldReduceMotion
-						? undefined
-						: { backgroundColor: "rgba(10,10,10,0.025)", transition: { duration: 0.35, ease } }
+					shouldReduceMotion ? undefined : (
+						{
+							backgroundColor: "rgba(10,10,10,0.025)",
+							transition: { duration: 0.35, ease },
+						}
+					)
 				}
 			>
 				<motion.span
@@ -32,11 +35,17 @@ export function WorkItem({ project }: { project: Project }) {
 				<div>
 					<motion.h2
 						className="mb-3 text-[clamp(1.4rem,2.5vw,2rem)] font-bold leading-tight tracking-[-0.02em]"
-						whileHover={shouldReduceMotion ? undefined : { x: 10, transition: { duration: 0.35, ease } }}
+						whileHover={
+							shouldReduceMotion ? undefined : (
+								{ x: 10, transition: { duration: 0.35, ease } }
+							)
+						}
 					>
 						{project.title}
 					</motion.h2>
-					<p className="mb-5 max-w-xl text-sm leading-relaxed text-[#555]">{project.summary}</p>
+					<p className="mb-5 max-w-xl text-sm leading-relaxed text-[#555]">
+						{project.summary}
+					</p>
 					<div className="flex flex-wrap gap-2">
 						{project.tags.map((tag) => (
 							<span

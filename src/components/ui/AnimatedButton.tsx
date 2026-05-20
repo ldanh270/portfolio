@@ -25,6 +25,7 @@ type AnimatedButtonProps = {
 	children: ReactNode;
 	variant?: ButtonVariant;
 	className?: string;
+	wrapperClassName?: string;
 	href?: string;
 } & (
 	| ({ href: string } & Omit<React.ComponentPropsWithoutRef<typeof Link>, "href">)
@@ -34,7 +35,9 @@ type AnimatedButtonProps = {
 export function AnimatedButton({
 	children,
 	variant = "slide-right",
+	color = "black",
 	className = "",
+	wrapperClassName = "",
 	href,
 	...props
 }: AnimatedButtonProps) {
@@ -70,7 +73,7 @@ export function AnimatedButton({
 			{/* Slide Top */}
 			{variant === "slide-top" && (
 				<motion.span
-					className="absolute inset-0 bg-brand-black"
+					className={`absolute inset-0 bg-brand-${color}`}
 					initial={{ y: "100%" }}
 					variants={{
 						hover: { y: 0 },
@@ -82,7 +85,7 @@ export function AnimatedButton({
 			{/* Slide Bottom */}
 			{variant === "slide-bottom" && (
 				<motion.span
-					className="absolute inset-0 bg-brand-black"
+					className={`absolute inset-0 bg-brand-${color}`}
 					initial={{ y: "-100%" }}
 					variants={{
 						hover: { y: 0 },
@@ -94,7 +97,7 @@ export function AnimatedButton({
 			{/* Circle Center */}
 			{variant === "circle-center" && (
 				<motion.span
-					className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-black"
+					className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "300%", height: "300%" },
@@ -106,7 +109,7 @@ export function AnimatedButton({
 			{/* Circle Corner */}
 			{variant === "circle-corner" && (
 				<motion.span
-					className="absolute -left-1/4 -top-1/4 rounded-full bg-brand-black"
+					className={`absolute -left-1/4 -top-1/4 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "200%", height: "200%" },
@@ -118,7 +121,7 @@ export function AnimatedButton({
 			{/* Circle Left */}
 			{variant === "circle-left" && (
 				<motion.span
-					className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-brand-black"
+					className={`absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "250%", height: "250%" },
@@ -130,7 +133,7 @@ export function AnimatedButton({
 			{/* Circle Right */}
 			{variant === "circle-right" && (
 				<motion.span
-					className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-brand-black"
+					className={`absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "250%", height: "250%" },
@@ -142,7 +145,7 @@ export function AnimatedButton({
 			{/* Circle Top */}
 			{variant === "circle-top" && (
 				<motion.span
-					className="absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-brand-black"
+					className={`absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "250%", height: "250%" },
@@ -154,7 +157,7 @@ export function AnimatedButton({
 			{/* Circle Bottom */}
 			{variant === "circle-bottom" && (
 				<motion.span
-					className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-brand-black"
+					className={`absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "250%", height: "250%" },
@@ -166,7 +169,7 @@ export function AnimatedButton({
 			{/* Arc Bottom - Circle expands from bottom edge upward */}
 			{variant === "arc-bottom" && (
 				<motion.span
-					className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-brand-black"
+					className={`absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-brand-${color}`}
 					initial={{ width: 0, height: 0 }}
 					variants={{
 						hover: { width: "280%", height: "280%" },
@@ -179,7 +182,7 @@ export function AnimatedButton({
 			{variant === "border-sweep" && (
 				<>
 					<motion.span
-						className="absolute left-0 top-0 h-full w-0.5 bg-brand-black"
+						className={`absolute left-0 top-0 h-full w-0.5 bg-brand-${color}`}
 						initial={{ height: 0 }}
 						variants={{
 							hover: { height: "100%" },
@@ -187,7 +190,7 @@ export function AnimatedButton({
 						transition={{ duration: 0.2, ease: "easeOut" }}
 					/>
 					<motion.span
-						className="absolute left-0 top-0 h-0.5 w-full bg-brand-black"
+						className={`absolute left-0 top-0 h-0.5 w-full bg-brand-${color}`}
 						initial={{ width: 0 }}
 						variants={{
 							hover: { width: "100%" },
@@ -195,7 +198,7 @@ export function AnimatedButton({
 						transition={{ duration: 0.2, delay: 0.2, ease: "easeOut" }}
 					/>
 					<motion.span
-						className="absolute bottom-0 right-0 h-full w-0.5 bg-brand-black"
+						className={`absolute bottom-0 right-0 h-full w-0.5 bg-brand-${color}`}
 						initial={{ height: 0 }}
 						variants={{
 							hover: { height: "100%" },
@@ -203,7 +206,7 @@ export function AnimatedButton({
 						transition={{ duration: 0.2, delay: 0.4, ease: "easeOut" }}
 					/>
 					<motion.span
-						className="absolute bottom-0 right-0 h-0.5 w-full bg-brand-black"
+						className={`absolute bottom-0 right-0 h-0.5 w-full bg-brand-${color}`}
 						initial={{ width: 0 }}
 						variants={{
 							hover: { width: "100%" },
@@ -217,14 +220,14 @@ export function AnimatedButton({
 			{variant === "glow-pulse" && (
 				<>
 					<motion.span
-						className="absolute inset-0 bg-brand-black/10"
+						className={`absolute inset-0 bg-brand-${color}/10`}
 						variants={{
 							hover: { opacity: [0.1, 0.3, 0.1] },
 						}}
 						transition={{ duration: 1.5, repeat: Infinity }}
 					/>
 					<motion.span
-						className="absolute inset-0 blur-xl bg-brand-black/20"
+						className={`absolute inset-0 blur-xl bg-brand-${color}/20`}
 						variants={{
 							hover: { scale: [1, 1.2, 1] },
 						}}
@@ -237,7 +240,7 @@ export function AnimatedButton({
 			{variant === "split-horizontal" && (
 				<>
 					<motion.span
-						className="absolute left-0 top-0 h-full w-1/2 bg-brand-black"
+						className={`absolute left-0 top-0 h-full w-1/2 bg-brand-${color}`}
 						initial={{ x: "-100%" }}
 						variants={{
 							hover: { x: 0 },
@@ -245,7 +248,7 @@ export function AnimatedButton({
 						transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
 					/>
 					<motion.span
-						className="absolute right-0 top-0 h-full w-1/2 bg-brand-black"
+						className={`absolute right-0 top-0 h-full w-1/2 bg-brand-${color}`}
 						initial={{ x: "100%" }}
 						variants={{
 							hover: { x: 0 },
@@ -259,7 +262,7 @@ export function AnimatedButton({
 			{variant === "split-vertical" && (
 				<>
 					<motion.span
-						className="absolute left-0 top-0 h-1/2 w-full bg-brand-black"
+						className={`absolute left-0 top-0 h-1/2 w-full bg-brand-${color}`}
 						initial={{ y: "-100%" }}
 						variants={{
 							hover: { y: 0 },
@@ -267,7 +270,7 @@ export function AnimatedButton({
 						transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
 					/>
 					<motion.span
-						className="absolute bottom-0 left-0 h-1/2 w-full bg-brand-black"
+						className={`absolute bottom-0 left-0 h-1/2 w-full bg-brand-${color}`}
 						initial={{ y: "100%" }}
 						variants={{
 							hover: { y: 0 },
@@ -278,7 +281,9 @@ export function AnimatedButton({
 			)}
 
 			{/* Content */}
-			<span className="relative z-10 transition-colors duration-300 group-hover:text-brand-white">
+			<span
+				className={`relative z-10 transition-colors duration-300 group-hover:text-brand-${color === "black" ? "white" : "black"}`}
+			>
 				{children}
 			</span>
 		</>
@@ -287,7 +292,7 @@ export function AnimatedButton({
 	if (href) {
 		return (
 			<Link
-				className="group"
+				className={`group ${wrapperClassName}`}
 				{...(props as React.ComponentPropsWithoutRef<typeof Link>)}
 				href={href}
 			>

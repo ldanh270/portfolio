@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RevealText } from "@/components/ui/RevealText";
-import { socialLinks } from "@/data/site";
+import { SOCIAL_LINKS } from "@/data/site";
 
 export function Hero() {
 	return (
@@ -45,14 +45,14 @@ export function Hero() {
 					Software Engineer / Context Engineer
 				</h2>
 				<p className="text-sm leading-7 text-[#555]">
-					I build scalable, modern applications with a strong eye for interface detail, product
-					clarity and long-term maintainability.
+					I build scalable, modern applications with a strong eye for interface detail,
+					product clarity and long-term maintainability.
 				</p>
 			</div>
 
 			{/* Social Links */}
 			<div className="absolute bottom-8 right-6 z-10 text-right font-mono text-[0.65rem] uppercase leading-6 tracking-tight text-[#555] sm:right-12 lg:right-16">
-				{socialLinks.map((link) => (
+				{SOCIAL_LINKS.map((link) => (
 					<Link
 						key={link.label}
 						href={link.href}
@@ -69,7 +69,9 @@ export function Hero() {
 			{/* Scroll Indicator */}
 			<div className="absolute bottom-8 left-6 z-10 flex items-center gap-4 sm:left-12 lg:left-16">
 				<span className="h-px w-16 bg-brand-black" />
-				<span className="font-mono text-xs uppercase tracking-widest text-[#555]">Scroll</span>
+				<span className="font-mono text-xs uppercase tracking-widest text-[#555]">
+					Scroll
+				</span>
 			</div>
 		</section>
 	);

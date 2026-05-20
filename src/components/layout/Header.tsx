@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { navLinks, site } from "@/data/site";
+import { NAV_LINKS, SITE } from "@/data/site";
 import Image from "next/image";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
+import { ArrowUpRight } from "lucide-react";
 
 export function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -19,14 +20,14 @@ export function Header() {
 					<Image
 						src="/logo.svg"
 						loading="eager"
-						alt={site.name}
+						alt={SITE.name}
 						width={60}
 						height={60}
 					/>
 				</Link>
 
 				<div className="hidden items-center gap-8 md:flex">
-					{navLinks.map((link) => (
+					{NAV_LINKS.map((link) => (
 						<Link
 							key={link.href}
 							href={link.href}
@@ -39,11 +40,19 @@ export function Header() {
 				</div>
 
 				<AnimatedButton
-					variant="arc-bottom"
+					variant="slide-top"
 					href="/contact"
-					className="hidden rounded-full border border-brand-black bg-brand-white px-2 py text-xs font-semibold tracking-wide text-brand-black md:inline-flex"
+					wrapperClassName="hidden rounded-full md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-black/15 focus-visible:ring-offset-2"
+					className="inline-flex h-10 items-center gap-1.5 rounded-full border border-brand-border bg-transparent px-4 py-0 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-brand-black transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-brand-black group-active:translate-y-0"
 				>
-					Get in touch ↗
+					<span className="inline-flex items-center gap-1.5">
+						Get in touch
+						<ArrowUpRight
+							aria-hidden="true"
+							className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+							strokeWidth={1.8}
+						/>
+					</span>
 				</AnimatedButton>
 
 				<button
@@ -62,7 +71,7 @@ export function Header() {
 				className={`fixed right-0 top-16 h-[calc(100vh-4rem)] w-72 border-l border-brand-border bg-brand-white p-8 transition-transform duration-300 md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"}`}
 			>
 				<div className="flex flex-col gap-6">
-					{[...navLinks, { label: "Contact", href: "/contact" }].map((link) => (
+					{[...NAV_LINKS, { label: "Contact", href: "/contact" }].map((link) => (
 						<Link
 							key={link.href}
 							href={link.href}

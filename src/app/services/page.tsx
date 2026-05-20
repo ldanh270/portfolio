@@ -1,28 +1,52 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ServiceGrid } from "@/components/sections/services/ServiceGrid";
-import { MarqueeText } from "@/components/ui/MarqueeText";
+import { PageFade } from "@/components/ui/PageFade";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ServiceGrid } from "@/components/sections/services/ServiceGrid";
+import { ApproachList } from "@/components/sections/services/ApproachList";
+import { TechStackSection } from "@/components/sections/services/TechStackSection";
+import { FAQSection } from "@/components/sections/services/FAQSection";
+import { FAQS, TECH_STACKS } from "@/data/services";
+import PageMarqueeText from "@/components/common/PageMarqueeText";
 
 export const metadata: Metadata = {
-  title: "Services — Le Duc Anh",
-  description: "Strategy, UI/UX design, full-stack development, mobile development, consulting, and support services.",
+	title: "Services — Le Duc Anh",
+	description:
+		"Strategy, design, full-stack development, mobile, consulting and ongoing support. Clean process. Reliable delivery.",
 };
 
 export default function ServicesPage() {
-  return (
-    <main className="pt-16">
-      <div className="border-y border-brand-border py-8">
-        <MarqueeText text="Services." size="lg" />
-      </div>
-      <SectionLabel label="What I do" description="From idea to execution — smart digital solutions tailored to your goals." />
-      <ServiceGrid />
-      <section className="flex flex-col justify-between gap-6 border-t border-brand-border px-6 py-12 sm:px-12 md:flex-row md:items-center">
-        <h2 className="text-2xl font-bold tracking-tight">Built for clarity. Designed for results.</h2>
-        <Link href="/contact" className="rounded-full bg-brand-black px-6 py-4 text-sm font-semibold tracking-wide text-brand-white transition hover:opacity-75">
-          Get in touch ↗
-        </Link>
-      </section>
-    </main>
-  );
+	return (
+		<PageFade className="pt-16">
+			{/* Marquee header */}
+			<PageMarqueeText text="Our work." />
+
+			{/* Services Grid */}
+			<SectionLabel
+				label="What I offer"
+				description="From idea to execution — smart digital solutions tailored to your goals."
+			/>
+			<ServiceGrid />
+
+			{/* Tech Stack */}
+			<SectionLabel
+				label="Tools of the trade"
+				description="Technologies I rely on to ship fast, maintainable, production-ready software."
+			/>
+			<TechStackSection categories={TECH_STACKS} />
+
+			{/* Approach List */}
+			<SectionLabel
+				label="How I work"
+				description="A structured process that turns ambiguous ideas into reliable, scalable products."
+			/>
+			<ApproachList />
+
+			{/* FAQ */}
+			<SectionLabel
+				label="Common questions"
+				description="Answers to what most clients ask before we get started."
+			/>
+			<FAQSection faqs={FAQS} />
+		</PageFade>
+	);
 }

@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Syne, DM_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { SmoothScroll } from "@/components/common/SmoothScroll.tsx";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { PageTransition } from "@/components/ui/PageTransition";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const syne = Syne({
@@ -36,6 +37,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			className={`${syne.variable} ${dmMono.variable}`}
 		>
 			<body className="bg-brand-white font-display text-brand-black antialiased">
+				<Toaster
+					position="bottom-right"
+					offset={24}
+					gap={10}
+					visibleToasts={3}
+					toastOptions={{
+						duration: 4200,
+						classNames: {
+							toast: "portfolio-toast",
+							title: "portfolio-toast-title",
+							description: "portfolio-toast-description",
+							icon: "portfolio-toast-icon",
+							closeButton: "portfolio-toast-close",
+						},
+					}}
+				/>
 				<SmoothScroll>
 					<CustomCursor />
 					<Header />

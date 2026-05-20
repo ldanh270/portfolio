@@ -64,7 +64,10 @@ export function CustomCursor() {
 				if (cursorAttr) {
 					setCursorLabel(cursorAttr);
 					setVariant("link");
-				} else if (interactive.tagName === "BUTTON" || interactive.getAttribute("role") === "button") {
+				} else if (
+					interactive.tagName === "BUTTON" ||
+					interactive.getAttribute("role") === "button"
+				) {
 					setCursorLabel("Click");
 					setVariant("button");
 				} else if (interactive.tagName === "A") {
@@ -109,9 +112,7 @@ export function CustomCursor() {
 		// Fade out particles
 		const fadeParticles = () => {
 			setParticles((prev) =>
-				prev
-					.map((p) => ({ ...p, opacity: p.opacity - 0.05 }))
-					.filter((p) => p.opacity > 0)
+				prev.map((p) => ({ ...p, opacity: p.opacity - 0.05 })).filter((p) => p.opacity > 0),
 			);
 			animationFrame = requestAnimationFrame(fadeParticles);
 		};
@@ -262,7 +263,11 @@ export function CustomCursor() {
 				aria-hidden="true"
 				className="pointer-events-none fixed left-0 top-0 z-9999 hidden md:block"
 				animate={{
-					scale: variant === "default" ? (isPressed ? 1.5 : 1) : 0,
+					scale:
+						variant === "default" ?
+							isPressed ? 1.5
+							:	1
+						:	0,
 					opacity: isVisible ? 1 : 0,
 				}}
 				transition={{
@@ -287,7 +292,12 @@ export function CustomCursor() {
 				className="pointer-events-none fixed left-0 top-0 z-9998 hidden md:block"
 				animate={{
 					scale: variant === "default" ? 1 : 1.8,
-					opacity: isVisible ? (variant === "default" ? 0.1 : 0.15) : 0,
+					opacity:
+						isVisible ?
+							variant === "default" ?
+								0.1
+							:	0.15
+						:	0,
 				}}
 				transition={{
 					type: "spring",

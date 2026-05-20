@@ -10,13 +10,13 @@ type RadialHoverProps = {
 	ariaLabel?: string;
 	shape?: "circle" | "horizontal" | "parallelHorizontal" | "parallelVertical";
 	as?: "button" | "div";
+	disableTapState?: boolean;
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const fillClass = {
-	circle:
-		"absolute left-1/2 top-1/2 aspect-square w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-black",
+	circle: "absolute left-1/2 top-1/2 aspect-square w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-black",
 	horizontal:
 		"absolute left-1/2 top-1/2 h-[260%] w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] bg-brand-black",
 };
@@ -39,12 +39,14 @@ function RadialFill({
 			rest: { [isVertical ? "scaleY" : "scaleX"]: 0, opacity: 0 },
 			hover: { [isVertical ? "scaleY" : "scaleX"]: 1, opacity: 1 },
 		};
-		const firstClass = isVertical
-			? "absolute left-0 top-0 h-full w-1/2 origin-center bg-brand-black"
-			: "absolute left-0 top-0 h-1/2 w-full origin-center bg-brand-black";
-		const secondClass = isVertical
-			? "absolute right-0 top-0 h-full w-1/2 origin-center bg-brand-black"
-			: "absolute bottom-0 left-0 h-1/2 w-full origin-center bg-brand-black";
+		const firstClass =
+			isVertical ?
+				"absolute left-0 top-0 h-full w-1/2 origin-center bg-brand-black"
+			:	"absolute left-0 top-0 h-1/2 w-full origin-center bg-brand-black";
+		const secondClass =
+			isVertical ?
+				"absolute right-0 top-0 h-full w-1/2 origin-center bg-brand-black"
+			:	"absolute bottom-0 left-0 h-1/2 w-full origin-center bg-brand-black";
 
 		return (
 			<>
@@ -84,13 +86,14 @@ export function RadialHover({
 	ariaLabel,
 	shape = "circle",
 	as = "button",
+	disableTapState = false,
 }: RadialHoverProps) {
 	const shouldReduceMotion = useReducedMotion();
 	const sharedProps = {
 		initial: "rest",
 		whileHover: "hover",
 		whileFocus: "hover",
-		whileTap: "hover" as const,
+		...(disableTapState ? {} : { whileTap: "hover" as const }),
 		className: `group relative overflow-hidden text-left ${className ?? ""}`,
 	};
 	const content = (

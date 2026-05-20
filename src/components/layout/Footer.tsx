@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { navLinks, site, socialLinks } from "@/data/site";
+import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/data/site";
 import Image from "next/image";
 import { HighlightedText } from "@/components/ui/HighlightedText";
-import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { CTAContact } from "./footer/CTAContact.tsx";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -17,7 +17,7 @@ export function Footer() {
 	return (
 		<footer
 			ref={footerRef}
-			className="relative overflow-hidden border-t border-brand-border bg-brand-white px-6 py-24 sm:px-12"
+			className="relative overflow-hidden border-t border-brand-border bg-brand-white px-6 py-12 sm:px-12"
 		>
 			{/* Animated Background Grid */}
 			<div className="pointer-events-none absolute inset-0 opacity-[0.03]">
@@ -35,38 +35,7 @@ export function Footer() {
 
 			<div className="relative z-10 mx-auto max-w-7xl">
 				{/* Top Section - Large CTA */}
-				<motion.div
-					initial={{ opacity: 0, y: 40 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.8, ease }}
-					className="mb-20 border-b border-brand-border pb-20"
-				>
-					<h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.04em]">
-						<span className="block">Let&apos;s Create</span>
-						<span className="block text-outline">Something Great</span>
-					</h2>
-					<motion.div
-						initial={{ opacity: 0, x: -20 }}
-						animate={isInView ? { opacity: 1, x: 0 } : {}}
-						transition={{ duration: 0.6, ease, delay: 0.3 }}
-						className="mt-8"
-					>
-						<AnimatedButton
-							variant="slide-right"
-							href="/contact"
-							className="flex items-center uppercase justify-center my-5 gap-4 border border-brand-black"
-						>
-							<span>Get In Touch</span>
-							<motion.span
-								className="ml-2 self-center mask-center"
-								animate={{ x: [0, 5, 0] }}
-								transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-							>
-								→
-							</motion.span>
-						</AnimatedButton>
-					</motion.div>
-				</motion.div>
+				<CTAContact />
 
 				{/* Middle Section - Grid Layout */}
 				<div className="mb-16 grid gap-12 lg:grid-cols-12">
@@ -89,7 +58,7 @@ export function Footer() {
 								<Image
 									src="/logo.svg"
 									loading="eager"
-									alt={site.name}
+									alt={SITE.name}
 									width={56}
 									height={56}
 								/>
@@ -119,23 +88,29 @@ export function Footer() {
 							Navigation
 						</h3>
 						<div className="flex flex-col gap-3">
-							{[...navLinks, { label: "Contact", href: "/contact" }].map((link, i) => (
-								<Link
-									key={link.href}
-									href={link.href}
-									className="group relative inline-block w-fit font-mono text-xs uppercase tracking-[0.2em] text-brand-black transition"
-								>
-									<motion.span
-										initial={{ opacity: 0, x: -10 }}
-										animate={isInView ? { opacity: 1, x: 0 } : {}}
-										transition={{ duration: 0.4, ease, delay: 0.5 + i * 0.05 }}
-										className="relative z-10"
+							{[...NAV_LINKS, { label: "Contact", href: "/contact" }].map(
+								(link, i) => (
+									<Link
+										key={link.href}
+										href={link.href}
+										className="group relative inline-block w-fit font-mono text-xs uppercase tracking-[0.2em] text-brand-black transition"
 									>
-										{link.label}
-									</motion.span>
-									<span className="absolute -bottom-0.5 left-0 h-px w-0 bg-brand-black transition-all duration-300 group-hover:w-full" />
-								</Link>
-							))}
+										<motion.span
+											initial={{ opacity: 0, x: -10 }}
+											animate={isInView ? { opacity: 1, x: 0 } : {}}
+											transition={{
+												duration: 0.4,
+												ease,
+												delay: 0.5 + i * 0.05,
+											}}
+											className="relative z-10"
+										>
+											{link.label}
+										</motion.span>
+										<span className="absolute -bottom-0.5 left-0 h-px w-0 bg-brand-black transition-all duration-300 group-hover:w-full" />
+									</Link>
+								),
+							)}
 						</div>
 					</motion.div>
 
@@ -150,7 +125,7 @@ export function Footer() {
 							Connect
 						</h3>
 						<div className="flex flex-col gap-3">
-							{socialLinks.map((link, i) => (
+							{SOCIAL_LINKS.map((link, i) => (
 								<Link
 									key={link.label}
 									href={link.href}
@@ -192,7 +167,11 @@ export function Footer() {
 								<motion.span
 									className="h-2 w-2 rounded-full bg-green-500"
 									animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
-									transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+									transition={{
+										duration: 2,
+										repeat: Infinity,
+										ease: "easeInOut",
+									}}
 								/>
 								<span className="text-[10px] text-brand-gray">Available</span>
 							</div>
