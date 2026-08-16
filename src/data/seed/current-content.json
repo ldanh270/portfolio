@@ -1,0 +1,1699 @@
+{
+  "schemaVersion": 1,
+  "source": "static-portfolio",
+  "copy": {
+    "global": {
+      "metadata": {
+        "title": "Home — Le Duc Anh",
+        "description": "Full-stack software engineer specializing in building scalable, modern applications with a strong eye for interface detail, product clarity and long-term maintainability.",
+        "icon": "/logo.svg"
+      },
+      "header": {
+        "primaryNavigationAriaLabel": "Primary navigation",
+        "getInTouch": "Get in touch",
+        "menu": "Menu",
+        "contact": "Contact"
+      },
+      "footer": {
+        "brandDescription": "Building scalable products with precise editorial interfaces.",
+        "navigation": "Navigation",
+        "connect": "Connect",
+        "location": "Location",
+        "locationLines": [
+          "Da Nang",
+          "Vietnam"
+        ],
+        "availability": "Available",
+        "copyrightSuffix": "All Rights Reserved",
+        "craftedWith": "Crafted with Precision"
+      }
+    },
+    "home": {
+      "metadata": {
+        "title": "Home — Le Duc Anh",
+        "description": "Software engineer and designer in Da Nang building scalable products with precise editorial interfaces."
+      },
+      "hero": {
+        "nameLines": [
+          "Le Duc",
+          "Anh"
+        ],
+        "akaLabel": "Aka:",
+        "handle": "ldanh270",
+        "role": "Software Engineer / Context Engineer",
+        "description": "I build scalable, modern applications with a strong eye for interface detail, product clarity and long-term maintainability.",
+        "location": "Da Nang, Vietnam",
+        "scrollLabel": "Scroll"
+      },
+      "projects": {
+        "marquee": "Our work.",
+        "label": "Selected projects",
+        "description": "Crafted ideas, real impact. A curated selection where design, engineering, and strategy meet.",
+        "viewAllLabel": "View all projects →"
+      },
+      "services": {
+        "marquee": "Services.",
+        "viewAllLabel": "See all SERVICES →"
+      }
+    },
+    "about": {
+      "metadata": {
+        "title": "About — Le Duc Anh",
+        "description": "About Le Duc Anh, software engineer and designer in Da Nang, Vietnam."
+      },
+      "marquee": "About me.",
+      "hero": {
+        "headline": "Software engineer building scalable, high-impact products based on strong algorithms foundation.",
+        "cta": "Let's work together →",
+        "paragraphs": [
+          "I'm Le Duc Anh, a software engineer based in Da Nang, Vietnam. I bridge the gap between robust backend engineering and thoughtful interface design.",
+          "I got into programming through competitive coding — spending weekends grinding algorithms, graph problems, and optimisation challenges. That foundation gave me something most developers don't have: the ability to think before I write a single line.",
+          "Today I build full-stack products — web, mobile, and AI-powered systems — for clients who need things done right the first time.",
+          "I don't do cookie-cutter. Every project starts with understanding the problem, then I build the simplest solution that works at scale.",
+          "With experience across the full stack, I specialise in architecting performant applications that hold up under real-world conditions. Every project starts with understanding people — their goals, constraints, and workflows."
+        ]
+      },
+      "skills": {
+        "heading": "Skills",
+        "description": "Fullstack engineering toolkit for product interfaces, server systems, mobile builds, AI workflows, and deployment."
+      },
+      "timeline": {
+        "eyebrow": "Career Timeline",
+        "heading": "Journey",
+        "description": "Bridging the gap between university classrooms and production environments. Discover the milestones that shape my career evolution."
+      },
+      "certificates": {
+        "eyebrow": "Verified Credentials",
+        "heading": "Certificates",
+        "description": "Transforming academic knowledge into verified expertise. Explore the credentials that mark my evolution as a developer."
+      },
+      "awards": {
+        "eyebrow": "Recognition",
+        "heading": "Awards",
+        "description": "Milestones of recognition across competitions, academics, and open-source contributions that fuel my drive to build better software."
+      }
+    },
+    "services": {
+      "metadata": {
+        "title": "Services — Le Duc Anh",
+        "description": "Strategy, design, full-stack development, mobile, consulting and ongoing support. Clean process. Reliable delivery."
+      },
+      "marquee": "Our work.",
+      "sections": {
+        "services": {
+          "label": "What I offer",
+          "description": "From idea to execution — smart digital solutions tailored to your goals."
+        },
+        "techStack": {
+          "label": "Tools of the trade",
+          "description": "Technologies I rely on to ship fast, maintainable, production-ready software."
+        },
+        "approach": {
+          "label": "How I work",
+          "description": "A structured process that turns ambiguous ideas into reliable, scalable products."
+        },
+        "faq": {
+          "label": "Common questions",
+          "description": "Answers to what most clients ask before we get started."
+        }
+      }
+    },
+    "work": {
+      "metadata": {
+        "title": "Work — Le Duc Anh",
+        "description": "Selected engineering and design projects by Le Duc Anh."
+      },
+      "marquee": "Our work.",
+      "section": {
+        "label": "All projects",
+        "description": "A curated selection of work where engineering, design, and strategy deliver real-world impact."
+      }
+    },
+    "contact": {
+      "metadata": {
+        "title": "Contact — Le Duc Anh",
+        "description": "Contact Le Duc Anh for engineering, design, consulting, and product development work."
+      },
+      "marquee": "Get in touch.",
+      "eyebrow": "Contact",
+      "headline": "Let's build something great together.",
+      "form": {
+        "fields": {
+          "name": "Name",
+          "email": "Email",
+          "phone": "Phone",
+          "title": "Project Title / Subject",
+          "message": "Tell me about your project"
+        },
+        "submit": "Send message",
+        "processing": "Processing...",
+        "successTitle": "Message sent",
+        "successDescription": "I'll get back to you soon.",
+        "errorTitle": "Failed to send message.",
+        "fallbackError": "Please try again.",
+        "unexpectedTitle": "An unexpected error occurred"
+      },
+      "validation": {
+        "nameMin": "Name must be at least 2 characters",
+        "nameMax": "Name must be less than 50 characters",
+        "email": "Please enter a valid email address",
+        "phoneMin": "Phone number must be at least 10 digits",
+        "phoneMax": "Phone number too long",
+        "titleMin": "Title must be at least 3 characters",
+        "titleMax": "Title too long",
+        "messageMin": "Message must be at least 10 characters",
+        "messageMax": "Message must be less than 1000 characters"
+      }
+    },
+    "workDetail": {
+      "fallbackMetadataTitle": "Work — Le Duc Anh",
+      "header": {
+        "projectLabel": "Project",
+        "yearLabel": "Year",
+        "roleLabel": "Role",
+        "technologiesLabel": "Technologies",
+        "aboutLabel": "About this project"
+      },
+      "sections": {
+        "overview": "Overview",
+        "role": "My Role",
+        "features": "Key Features",
+        "featureLabel": "Feature",
+        "techStack": "Tech Stack",
+        "challengeSolution": "Challenge & Solution",
+        "challenge": "The Challenge",
+        "solution": "The Solution",
+        "results": "Results",
+        "impact": "Impact",
+        "lessons": "Lessons Learned",
+        "screenshots": "Screenshots",
+        "screenshotInstruction": "Swipe or use the arrows.",
+        "links": "Links"
+      },
+      "interaction": {
+        "view": "View",
+        "readCaseStudy": "Read case study",
+        "relatedWork": "Related Work",
+        "moreCaseStudies": "More case studies",
+        "contents": "Contents",
+        "previousScreenshot": "Previous screenshot",
+        "nextScreenshot": "Next screenshot",
+        "defaultScreenshotTitle": "Screenshot",
+        "defaultScreenshotDescription": "Project interface screenshot.",
+        "defaultLoading": "Loading..."
+      }
+    },
+    "cta": {
+      "eyebrow": "Ready to build?",
+      "headlineLines": [
+        "Let's work",
+        "together."
+      ],
+      "button": "Get in touch ↗"
+    }
+  },
+  "site": {
+    "profile": {
+      "name": "Le Duc Anh",
+      "shortName": "LDA",
+      "email": "ducanhle.dn@gmail.com",
+      "location": "Da Nang, Vietnam"
+    },
+    "tags": [
+      "Web Development",
+      "Mobile Apps",
+      "UI/UX Design",
+      "Scalable Systems",
+      "Full-Stack Development",
+      "Software Engineering"
+    ],
+    "socialLinks": [
+      {
+        "label": "Email",
+        "value": "ducanhle.dn@gmail.com",
+        "href": "mailto:ducanhle.dn@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "value": "ldanh270",
+        "href": "https://github.com/ldanh270"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "ldanh270",
+        "href": "https://www.linkedin.com/in/ldanh270"
+      }
+    ],
+    "navigation": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Works",
+        "href": "/work"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      }
+    ]
+  },
+  "about": {
+    "stats": [
+      {
+        "number": 4,
+        "suffix": "+",
+        "label": "Years Learning"
+      },
+      {
+        "number": 10,
+        "suffix": "+",
+        "label": "Projects Built"
+      },
+      {
+        "number": 9,
+        "suffix": "",
+        "label": "Certifications"
+      },
+      {
+        "number": 5,
+        "suffix": "+",
+        "label": "Technologies"
+      }
+    ],
+    "skills": {
+      "Frontend": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion"
+      ],
+      "Backend": [
+        "Express.js",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis"
+      ],
+      "Mobile": [
+        "React Native",
+        "Expo",
+        "Flutter"
+      ],
+      "DevOps": [
+        "Docker",
+        "CI/CD",
+        "Nginx",
+        "Git"
+      ],
+      "Tools": [
+        "Figma",
+        "Postman",
+        "VS Code",
+        "Notion"
+      ]
+    },
+    "careerEntries": [
+      {
+        "type": "education",
+        "start": "2020",
+        "end": "2023",
+        "title": "High School Student",
+        "place": "Hoang Hoa Tham High School Da Nang",
+        "description": "Advanced math class. Coursework in physics, computer science, and English. Graduated with honors.",
+        "lane": 0
+      },
+      {
+        "type": "experience",
+        "start": "2026",
+        "end": "Now",
+        "title": "Full-stack Developer",
+        "place": "OUTFIZ",
+        "description": "Production frontend work across real product flows, interface details, and feature delivery.",
+        "lane": 1
+      },
+      {
+        "type": "education",
+        "start": "2023",
+        "end": "Now",
+        "title": "University Student - Software Engineering",
+        "place": "FPT University Da Nang",
+        "description": "Comprehensive software engineering curriculum. Coursework in data structures, algorithms, databases, and web development.",
+        "lane": 2
+      },
+      {
+        "type": "experience",
+        "start": "2026",
+        "end": "Now",
+        "title": "Freelance Software Developer",
+        "place": "VieTech Solutions",
+        "description": "Full-stack development for various clients, delivering tailored software solutions to meet specific business needs.",
+        "lane": 3
+      }
+    ],
+    "timelineYears": [
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026",
+      "Now"
+    ],
+    "yearWidth": 350,
+    "certificates": [
+      {
+        "label": "02/2025",
+        "title": "AI for Everyone",
+        "description": "The meaning behind common AI terminology, including neural networks, machine learning, deep learning, and data science.",
+        "tags": [
+          "AI/ML",
+          "Generative AI",
+          "Data Ethics",
+          "Artificial Intelligence",
+          "Business Ethics",
+          "Technology Strategies",
+          "Business Intelligence"
+        ],
+        "url": "https://www.coursera.org/account/accomplishments/verify/TNLHD0SMK05P",
+        "issuer": "DeepLearning.AI"
+      },
+      {
+        "label": "03/2025",
+        "title": "Academic Skills for University Success",
+        "description": "Build Learning Skills to Excel at University. Learn to solve problems, think critically, and communicate effectively in your university courses.",
+        "tags": [
+          "Critical Thinking",
+          "Analytical Skills",
+          "Research",
+          "Information Management",
+          "Systems Thinking",
+          "Logical Reasoning",
+          "Problem Solving"
+        ],
+        "url": "https://coursera.org/share/e21300c8c048091947ec95f08708a001",
+        "issuer": "The University of Sydney Business School"
+      },
+      {
+        "label": "06/2025",
+        "title": "Web Design for Everybody: Basics of Web Development & Coding",
+        "description": "Learn to Design and Create Websites. Build a responsive and accessible web portfolio using HTML5, CSS3, and JavaScript.",
+        "tags": [
+          "Web Design",
+          "Event-Driven Programming",
+          "User Interface (UI)",
+          "Usability",
+          "JavaScript",
+          "Web Applications",
+          "HTML5",
+          "Cascading Style Sheets (CSS)",
+          "Wireframing",
+          "Bootstrap (Front-End Framework)",
+          "Web Content Accessibility Guidelines",
+          "Web Development Tools",
+          "Web Content"
+        ],
+        "url": "https://www.coursera.org/account/accomplishments/specialization/certificate/463Z20U8VUU2",
+        "issuer": "University of Michigan"
+      },
+      {
+        "label": "12/2025",
+        "title": "Google Certified Educator Level 1 & 2",
+        "description": "For educators who are super users and enthusiasts of Google’s tools in the classroom, this Level 2 certification validates advanced technology implementation skills.",
+        "tags": [
+          "Google Tools",
+          "Education Technology",
+          "Classroom Integration",
+          "Digital Literacy"
+        ],
+        "url": "https://edu.google.accredible.com/d771e24f-f83f-496d-9538-a3442e886cd6#acc.ClpJu2fL",
+        "issuer": "Google for Education"
+      },
+      {
+        "label": "01/2026",
+        "title": "Generative AI in Software Development",
+        "description": "Discuss the principles, applications, and role of Generative AI in automating repetitive tasks in software development.",
+        "tags": [
+          "Generative AI",
+          "Prompt Engineering",
+          "Software Development Tools",
+          "AI Enablement",
+          "Strategic Decision-Making",
+          "LLM Application",
+          "ChatGPT",
+          "Artificial Intelligence",
+          "Digital Transformation",
+          "Debugging"
+        ],
+        "url": "https://www.coursera.org/account/accomplishments/verify/2CIWJBYR7YH3",
+        "issuer": "Amazon"
+      },
+      {
+        "label": "01/2026",
+        "title": "Software Engineering: Modeling Software Systems using UML",
+        "description": "Discuss the principles, applications, and role of Generative AI in automating repetitive tasks in software development.",
+        "tags": [
+          "Project Planning",
+          "Software Engineering",
+          "Object Oriented Design",
+          "Unified Modeling Language (UML)",
+          "Systems Design",
+          "Project Management",
+          "Software Design",
+          "System Development",
+          "Software Architecture",
+          "Quality Assurance",
+          "Process Driven Development",
+          "Software Development Life Cycle (SDLC)"
+        ],
+        "url": "https://www.coursera.org/account/accomplishments/verify/B02GH2J0LJBS",
+        "issuer": "The Hong Kong University of Science and Technology"
+      },
+      {
+        "label": "01/2026",
+        "title": "Software Engineering: Implementation and Testing",
+        "description": "Discuss the principles, applications, and role of Generative AI in automating repetitive tasks in software development.",
+        "tags": [
+          "Requirements Analysis",
+          "Software Development",
+          "Integration Testing",
+          "Unified Modeling Language (UML)",
+          "White-Box Testing",
+          "System Testing",
+          "Acceptance Testing",
+          "Software Development Methodologies",
+          "Test Cases",
+          "Software Engineering",
+          "Software Development Life Cycle (SDLC)",
+          "Configuration Management"
+        ],
+        "url": "https://www.coursera.org/account/accomplishments/verify/OVCD5P8A4A0H",
+        "issuer": "The Hong Kong University of Science and Technology"
+      },
+      {
+        "label": "01/2026",
+        "title": "Software Engineering: Software Design and Project Management",
+        "description": "Discuss the principles, applications, and role of Generative AI in automating repetitive tasks in software development.",
+        "tags": [
+          "Project Planning",
+          "Software Engineering",
+          "Object Oriented Design",
+          "Unified Modeling Language (UML)",
+          "Systems Design",
+          "Project Management",
+          "Software Design",
+          "System Development",
+          "Software Architecture",
+          "Quality Assurance",
+          "Process Driven Development",
+          "Software Development Life Cycle (SDLC)"
+        ],
+        "url": "https://www.coursera.org/account/accomplishments/verify/GU5ZRUURCN4Q",
+        "issuer": "The Hong Kong University of Science and Technology"
+      },
+      {
+        "label": "02/2026",
+        "title": "Gemini Certified Faculty",
+        "description": "A Google Certified Gemini Faculty member can articulate and demonstrate foundational knowledge of generative AI concepts and the core features and capabilities of Gemini within the educational context.",
+        "tags": [
+          "Generative AI",
+          "Google Gemini",
+          "Education Technology",
+          "AI in Education"
+        ],
+        "url": "https://edu.google.accredible.com/50922889-7d59-4f25-93bf-8fde89a93eb7",
+        "issuer": "Google for Education"
+      }
+    ],
+    "awards": [
+      {
+        "title": "City-level Excellent Student Contest in Informatics 2020 (Grade C3)",
+        "position": "Third Prize",
+        "date": "2020",
+        "description": "Competed against top high-school students citywide in algorithmic problem-solving. Tasks covered graph theory, dynamic programming, and greedy strategies under strict time limits.",
+        "category": "Algorithm Competition",
+        "tags": [
+          "C++",
+          "Algorithm",
+          "Graph Theory",
+          "Dynamic Programming"
+        ]
+      },
+      {
+        "title": "City-level Informatics Contest",
+        "position": "Third Prize",
+        "date": "2020",
+        "description": "Solved a set of challenging competitive programming problems focused on data structures and efficient search techniques. Strengthened foundational skills in time-complexity optimization.",
+        "category": "Algorithm Competition",
+        "tags": [
+          "Data Structures",
+          "Binary Search",
+          "Sorting",
+          "C++"
+        ]
+      },
+      {
+        "title": "Central Highlands & Central Vietnam Informatics Olympic – 3rd Edition",
+        "position": "Third Prize",
+        "date": "2022",
+        "description": "Regional-scale olympiad bringing together the strongest student programmers from central Vietnam. Tackled advanced problems involving number theory, combinatorics, and segment trees across two contest rounds.",
+        "category": "Regional Olympiad",
+        "tags": [
+          "Number Theory",
+          "Combinatorics",
+          "Segment Tree",
+          "Competitive Programming"
+        ]
+      },
+      {
+        "title": "City-level Youth Informatics Contest – 25th Edition",
+        "position": "Third Prize",
+        "date": "2022",
+        "description": "Annual city contest with a legacy of 25 editions. Demonstrated consistent growth in competitive programming with problems spanning string processing, recursion, and brute-force optimization.",
+        "category": "Algorithm Competition",
+        "tags": [
+          "String Processing",
+          "Recursion",
+          "Optimization",
+          "Problem Solving"
+        ]
+      },
+      {
+        "title": "D3 Regional Round – National Youth Informatics Contest - 29th Edition",
+        "position": "Consolation Prize",
+        "date": "2023",
+        "description": "Participated in the regional qualifying round of Vietnam's most prestigious youth informatics contest. Gained valuable experience competing at national-level difficulty with problems in graph algorithms and advanced DP.",
+        "category": "National Contest",
+        "tags": [
+          "National Level",
+          "Graph Algorithms",
+          "Advanced DP",
+          "C++"
+        ]
+      },
+      {
+        "title": "D3 City-level Youth Informatics Contest - 28th Edition",
+        "position": "Second Prize",
+        "date": "2023",
+        "description": "Achieved runner-up position among city participants. Excelled in problems requiring creative algorithmic design, including shortest-path variants and tree-based computations.",
+        "category": "Algorithm Competition",
+        "tags": [
+          "Shortest Path",
+          "Tree Algorithms",
+          "Algorithm Design",
+          "Silver Medal"
+        ]
+      },
+      {
+        "title": "Provincial Science and Technology Contest for High School Students",
+        "position": "Third Prize",
+        "date": "2023",
+        "description": "Presented a research project applying technology to solve real-world problems. Combined software development skills with scientific methodology to deliver a working prototype judged by academic professionals.",
+        "category": "Science & Technology",
+        "tags": [
+          "Research",
+          "Prototype",
+          "Innovation",
+          "Scientific Method"
+        ]
+      },
+      {
+        "title": "City-level Informatics Excellent Student Contest",
+        "position": "Consolation Prize",
+        "date": "2023",
+        "description": "Competed in an elite-tier contest reserved for top-performing informatics students. Problems demanded deep understanding of computational geometry and advanced data structures.",
+        "category": "Algorithm Competition",
+        "tags": [
+          "Computational Geometry",
+          "Advanced Data Structures",
+          "Elite Tier"
+        ]
+      },
+      {
+        "title": "NAI Challenge Cup – Hue ICT Challenge",
+        "position": "Third Prize",
+        "date": "2023",
+        "description": "Inter-city ICT challenge hosted in Hue, combining algorithmic contests with practical software development tasks. Balanced speed-coding with solution architecture under competition pressure.",
+        "category": "ICT Challenge",
+        "tags": [
+          "ICT",
+          "Speed Coding",
+          "Software Development",
+          "Inter-City"
+        ]
+      },
+      {
+        "title": "D2 Central Highlands & Central Vietnam Informatics Olympiad – 4th Edition",
+        "position": "Bronze Medal",
+        "date": "2023",
+        "description": "Earned a bronze medal in the upgraded D2 division of the regional olympiad. Faced harder problem sets involving heavy implementation, math-based algorithms, and multi-step reasoning under a 5-hour session.",
+        "category": "Regional Olympiad",
+        "tags": [
+          "Bronze Medal",
+          "Heavy Implementation",
+          "Math Algorithms",
+          "5-Hour Contest"
+        ]
+      },
+      {
+        "title": "City-level Science and Technology Contest",
+        "position": "Third Prize",
+        "date": "2023",
+        "description": "Developed and presented a technology-driven solution addressing local community needs. Project evaluated on innovation, feasibility, and technical execution by a panel of industry and academic judges.",
+        "category": "Science & Technology",
+        "tags": [
+          "Community Impact",
+          "Feasibility",
+          "Technical Execution",
+          "Presentation"
+        ]
+      }
+    ]
+  },
+  "services": {
+    "services": [
+      {
+        "id": "strategy",
+        "number": "01",
+        "title": "Strategy & Architecture",
+        "description": "Navigate technical complexity with confidence. Architectural guidance and product strategy tailored to your scale and business goals.",
+        "tags": [
+          "System Design",
+          "Tech Stack",
+          "Scalability"
+        ]
+      },
+      {
+        "id": "ui-ux",
+        "number": "02",
+        "title": "UI / UX Design",
+        "description": "Where form meets function. Clean, intuitive interfaces that connect with users and elevate your brand identity.",
+        "tags": [
+          "Figma",
+          "Wireframes",
+          "Design Systems"
+        ]
+      },
+      {
+        "id": "fullstack",
+        "number": "03",
+        "title": "Full-Stack Development",
+        "description": "From frontend precision to backend power. Modern, scalable web solutions optimised for performance and long-term maintainability.",
+        "tags": [
+          "React",
+          "Next.js",
+          "Node.js",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "id": "mobile",
+        "number": "04",
+        "title": "Mobile Development",
+        "description": "Cross-platform mobile applications with React Native. Polished experiences for iOS and Android from a single codebase.",
+        "tags": [
+          "React Native",
+          "Expo",
+          "iOS",
+          "Android"
+        ]
+      },
+      {
+        "id": "consulting",
+        "number": "05",
+        "title": "Consulting",
+        "description": "Clear, practical guidance on design, tech stack decisions, and product direction to help your team move with confidence.",
+        "tags": [
+          "Code Review",
+          "Architecture",
+          "Team Coaching"
+        ]
+      },
+      {
+        "id": "support",
+        "number": "06",
+        "title": "Ongoing Support",
+        "description": "Beyond launch, I stay by your side — fixing bugs, shipping updates, and scaling features as your product grows.",
+        "tags": [
+          "Maintenance",
+          "Monitoring",
+          "Feature Updates"
+        ]
+      }
+    ],
+    "approachSteps": [
+      {
+        "id": "discovery",
+        "number": "01",
+        "title": "Discovery & Research",
+        "description": "Every project starts with listening. I dig into your goals, users, and constraints before a single line of code is written.",
+        "duration": "1–2 weeks",
+        "deliverables": [
+          "Project brief",
+          "User personas",
+          "Technical requirements"
+        ]
+      },
+      {
+        "id": "design",
+        "number": "02",
+        "title": "Design & Prototype",
+        "description": "Fast, iterative wireframes and high-fidelity prototypes that validate ideas early — saving cost and avoiding wrong turns.",
+        "duration": "2–3 weeks",
+        "deliverables": [
+          "Wireframes",
+          "Hi-fi prototypes",
+          "Design system"
+        ]
+      },
+      {
+        "id": "build",
+        "number": "03",
+        "title": "Build & Test",
+        "description": "Clean, documented, tested code. Built with scalability in mind — CI/CD, automated testing, and code reviews in every delivery.",
+        "duration": "4–8 weeks",
+        "deliverables": [
+          "Production codebase",
+          "Test suite",
+          "CI/CD pipeline"
+        ]
+      },
+      {
+        "id": "launch",
+        "number": "04",
+        "title": "Launch & Monitor",
+        "description": "Smooth deployment with real-time monitoring. Your product goes live confidently, with alerts in place before your users notice.",
+        "duration": "1 week",
+        "deliverables": [
+          "Live deployment",
+          "Monitoring setup",
+          "Performance report"
+        ]
+      },
+      {
+        "id": "iterate",
+        "number": "05",
+        "title": "Iterate & Scale",
+        "description": "Products are never finished. I help teams move fast on improvements using data, feedback, and measurable goals.",
+        "duration": "Ongoing",
+        "deliverables": [
+          "Sprint roadmap",
+          "Feature releases",
+          "Analytics insights"
+        ]
+      }
+    ],
+    "techStacks": [
+      {
+        "id": "frontend",
+        "category": "Frontend",
+        "tools": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion"
+        ]
+      },
+      {
+        "id": "backend",
+        "category": "Backend",
+        "tools": [
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "Redis",
+          "Prisma"
+        ]
+      },
+      {
+        "id": "mobile",
+        "category": "Mobile",
+        "tools": [
+          "React Native",
+          "Expo",
+          "Reanimated",
+          "Zustand"
+        ]
+      },
+      {
+        "id": "devops",
+        "category": "DevOps",
+        "tools": [
+          "Docker",
+          "GitHub Actions",
+          "Vercel",
+          "Supabase",
+          "AWS"
+        ]
+      }
+    ],
+    "testimonials": [
+      {
+        "id": "t1",
+        "quote": "Duc Anh delivered a full redesign of our dashboard in under three weeks. The attention to detail and interaction quality was beyond what we expected.",
+        "author": "Nguyen Minh Khoa",
+        "role": "Product Lead",
+        "company": "OUTFIZ"
+      },
+      {
+        "id": "t2",
+        "quote": "Working with Duc Anh felt like having a co-founder who actually ships. He understood our vision immediately and built exactly what we needed.",
+        "author": "Tran Thi Bao Chau",
+        "role": "Founder",
+        "company": "VieTech Solutions"
+      },
+      {
+        "id": "t3",
+        "quote": "The codebase he left us is clean, well-documented, and our entire team can actually work with it. That's rare.",
+        "author": "Le Van Thanh",
+        "role": "Engineering Manager",
+        "company": "Freelance Client"
+      }
+    ],
+    "faqs": [
+      {
+        "id": "faq-1",
+        "question": "What types of projects do you take on?",
+        "answer": "I work on web apps, mobile apps, SaaS products, and design systems. Projects range from greenfield builds to improving existing codebases. I'm most effective when brought in early — before the architecture is locked in."
+      },
+      {
+        "id": "faq-2",
+        "question": "How does the engagement typically work?",
+        "answer": "Most projects start with a discovery call to understand goals and constraints. From there I'll propose a scope, timeline, and rate. I work in focused sprints with regular check-ins — no black boxes, no surprises."
+      },
+      {
+        "id": "faq-3",
+        "question": "Do you work with early-stage startups?",
+        "answer": "Yes. I enjoy working with early-stage teams where product direction is still taking shape. I can help you move fast without accumulating tech debt that slows you down six months later."
+      },
+      {
+        "id": "faq-4",
+        "question": "Can you take over an existing codebase?",
+        "answer": "Absolutely. I'll start with a technical audit to understand the current state, identify risks, and plan a path forward. Inheriting legacy code is not a problem — I've done it often."
+      },
+      {
+        "id": "faq-5",
+        "question": "What does ongoing support look like?",
+        "answer": "After launch, I offer retainer-based support covering bug fixes, performance monitoring, feature additions, and dependency updates. Think of it as keeping a senior engineer on speed dial."
+      }
+    ]
+  },
+  "projects": [
+    {
+      "slug": "kiro",
+      "number": "05",
+      "title": "Kiro",
+      "summary": "Contribution to Kiro, an agentic IDE and CLI for spec-driven development, hooks, powers, MCP integrations, and codebase-aware AI workflows.",
+      "description": "Kiro is an agentic development environment from kirodotdev that helps developers move from prototype to production through structured specs, natural-language coding assistance, automation hooks, steering files, MCP servers, and powers.",
+      "tags": [
+        "TypeScript",
+        "AI",
+        "Developer Tools",
+        "MCP",
+        "CLI"
+      ],
+      "year": "2026",
+      "role": "Open Source Contributor",
+      "link": "https://github.com/kirodotdev/Kiro",
+      "image": "/images/works/kiro/banner.png",
+      "content": {
+        "overview": "Kiro is a developer tool built around spec-driven AI workflows. It offers a desktop IDE and CLI, with features that turn prompts into structured implementation plans, automate repeated tasks, and bring project-specific context into agent behavior.",
+        "roleDetail": "Contributed to the public repository as part of open-source development. The portfolio value is the exposure to agentic developer-tool workflows, issue-driven collaboration, and the product patterns behind specs, hooks, steering context, MCP servers, and powers.",
+        "features": [
+          {
+            "title": "Spec-Driven Development",
+            "description": "Structured specs break feature work into requirements, design direction, and implementation tasks."
+          },
+          {
+            "title": "Agentic Chat",
+            "description": "Natural-language coding assistant works with codebase context instead of isolated prompts."
+          },
+          {
+            "title": "Automation Hooks",
+            "description": "Hooks respond to file changes and development events to automate repetitive engineering work."
+          },
+          {
+            "title": "Steering Files",
+            "description": "Project-specific markdown instructions guide agent behavior and keep team conventions close to the code."
+          },
+          {
+            "title": "MCP Integrations",
+            "description": "Model Context Protocol support connects external tools and data sources to the development workflow."
+          },
+          {
+            "title": "Powers",
+            "description": "On-demand specialized context and tools extend agent capabilities for domain-specific work."
+          }
+        ],
+        "techStack": [
+          {
+            "category": "Product",
+            "tools": [
+              "Kiro IDE",
+              "Kiro CLI",
+              "Specs",
+              "Hooks",
+              "Steering"
+            ]
+          },
+          {
+            "category": "Agent Platform",
+            "tools": [
+              "Agentic Chat",
+              "MCP Servers",
+              "Powers",
+              "Codebase Context"
+            ]
+          },
+          {
+            "category": "Contribution",
+            "tools": [
+              "GitHub Issues",
+              "Open Source Workflow",
+              "TypeScript"
+            ]
+          }
+        ],
+        "challengeSolution": {
+          "challenge": "AI coding tools need more than chat. Developers need repeatable plans, project-specific rules, automation triggers, privacy-conscious workflows, and integration points for external context.",
+          "solution": "Kiro approaches the problem as a full developer environment: specs structure the work, steering files guide behavior, hooks automate repeated tasks, MCP connects external systems, and powers provide targeted capabilities when needed."
+        },
+        "lessons": [
+          "Agentic developer tools become more reliable when planning artifacts are explicit and versionable.",
+          "Project-level instructions are a product feature, not just prompt text.",
+          "Good AI tooling reduces context switching by meeting developers inside their normal IDE and CLI workflows."
+        ],
+        "links": [
+          {
+            "label": "GitHub Repository",
+            "href": "https://github.com/kirodotdev/Kiro",
+            "type": "github"
+          },
+          {
+            "label": "My Contribution Issue",
+            "href": "https://github.com/kirodotdev/Kiro/issues/2946",
+            "type": "case-study"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "youth-for-change",
+      "number": "02",
+      "title": "Youth for Change",
+      "summary": "SDG-focused landing page, learning hub, and Notion-powered blog platform for the Youth for Change initiative at UD-UFLS.",
+      "description": "Youth for Change is a Next.js platform for communicating the 17 United Nations Sustainable Development Goals through a landing page, SDG learning pages, team storytelling, a flipbook, and a Notion-backed blog system.",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Notion",
+        "Tailwind CSS",
+        "SEO"
+      ],
+      "year": "2026",
+      "role": "Frontend Developer",
+      "link": "https://youth-for-change-mu.vercel.app/",
+      "image": "/images/works/youth-for-change/banner.png",
+      "content": {
+        "overview": "Youth for Change turns SDG education into a structured digital experience. The homepage introduces the initiative, the SDG section explains all 17 goals with official color mapping, and the blog system lets the team publish updates from Notion without changing code.",
+        "roleDetail": "Built the Next.js application structure, reusable UI sections, SDG data model, Notion content pipeline, blog routes, theme behavior, and responsive layouts. The work balanced editorial clarity with maintainable frontend architecture.",
+        "features": [
+          {
+            "title": "SDG Landing Experience",
+            "description": "Homepage with hero slider, SDG carousel, impact statistics, latest posts, sticky navigation, and mission-oriented sections."
+          },
+          {
+            "title": "Notion Blog CMS",
+            "description": "Notion API integration maps database pages into typed blog cards and detail pages with markdown conversion."
+          },
+          {
+            "title": "Static Blog Detail Pages",
+            "description": "Blog posts generate static params and metadata for fast loading, shareable pages, and better search visibility."
+          },
+          {
+            "title": "SDG Filtering",
+            "description": "Blog list supports SDG badge filters through URL query state so readers can explore content by goal."
+          },
+          {
+            "title": "Design System",
+            "description": "Typography, brand colors, light/dark mode, and official UN SDG colors are centralized in documented style files and CSS tokens."
+          },
+          {
+            "title": "Team and Flipbook Pages",
+            "description": "About page presents project members and mission, while the flipbook route embeds external campaign material."
+          }
+        ],
+        "techStack": [
+          {
+            "category": "Application",
+            "tools": [
+              "Next.js 16",
+              "React 19",
+              "TypeScript",
+              "App Router"
+            ]
+          },
+          {
+            "category": "Content",
+            "tools": [
+              "Notion API",
+              "notion-to-md",
+              "next-mdx-remote",
+              "date-fns"
+            ]
+          },
+          {
+            "category": "Interface",
+            "tools": [
+              "Tailwind CSS v4",
+              "Radix UI",
+              "lucide-react",
+              "framer-motion",
+              "next-themes"
+            ]
+          }
+        ],
+        "challengeSolution": {
+          "challenge": "The site had to feel like a campaign platform, a learning hub, and a blog at the same time. Content needed to be easy for non-developers to update while still supporting SEO, SDG filtering, official color usage, and consistent responsive layouts.",
+          "solution": "Used Notion as the editorial source, converted pages into typed blog models, and kept SDG metadata centralized. The frontend uses reusable sections and token-driven styling so campaign pages, SDG cards, and blog content stay visually aligned."
+        },
+        "results": [
+          {
+            "metric": "SDGs Covered",
+            "value": "17"
+          },
+          {
+            "metric": "Core Routes",
+            "value": "5"
+          },
+          {
+            "metric": "CMS Source",
+            "value": "1"
+          },
+          {
+            "metric": "Theme Modes",
+            "value": "2"
+          }
+        ],
+        "lessons": [
+          "Editorial platforms stay maintainable when content, metadata, and visual tokens are separate concerns.",
+          "URL-based filters make content discovery shareable and easier to reason about than hidden component state.",
+          "Documenting typography and color decisions reduces design drift as new pages are added."
+        ],
+        "screenshots": [
+          {
+            "title": "SDG Homepage",
+            "description": "Campaign landing page with rotating stories, SDG carousel, impact metrics, and recent Notion posts.",
+            "image": "/images/works/youth-for-change/home-section.png",
+            "variant": "system"
+          },
+          {
+            "title": "Blog Detail",
+            "description": "SEO-ready article page with cover image, breadcrumbs, SDG badge, metadata, and markdown content.",
+            "image": "/images/works/youth-for-change/blog-details.png",
+            "variant": "dashboard"
+          },
+          {
+            "title": "About Page",
+            "description": "Informational page about the organization, its mission, and team members.",
+            "image": "/images/works/youth-for-change/about.png",
+            "variant": "dashboard"
+          },
+          {
+            "title": "Flipbook Page",
+            "description": "Interactive flipbook for showcasing campaign materials and impact stories.",
+            "image": "/images/works/youth-for-change/flipbook.png",
+            "variant": "dashboard"
+          },
+          {
+            "title": "SDG Homepage",
+            "description": "Campaign landing page with rotating stories, SDG carousel, impact metrics, and recent Notion posts.",
+            "image": "/images/works/youth-for-change/home-section.png",
+            "variant": "dashboard"
+          },
+          {
+            "title": "SDGs Categories",
+            "description": "Dedicated pages for each SDG with official color mapping, detailed descriptions, and related content.",
+            "image": "/images/works/youth-for-change/sdgs.png",
+            "variant": "commerce"
+          }
+        ],
+        "links": [
+          {
+            "label": "GitHub Repository",
+            "href": "https://github.com/ldanh270/youth-for-change",
+            "type": "github"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "smart-pc-store",
+      "number": "01",
+      "title": "Smart PC Store",
+      "summary": "Full-stack PC hardware commerce platform with admin operations, JWT auth, QR checkout, analytics, AI chat, and price forecasting.",
+      "description": "Smart PC Store is a complete e-commerce system for PC components and gaming gear. The platform combines a Next.js storefront, a Java Jakarta EE backend, and a Python AI microservice for product advice and price prediction.",
+      "tags": [
+        "Next.js",
+        "Java",
+        "PostgreSQL",
+        "FastAPI",
+        "AI"
+      ],
+      "year": "2026",
+      "role": "Lead Developer, Project Manager, Code Reviewer",
+      "link": "https://smartpcstore.vercel.app/",
+      "image": "/images/works/smart-pc-store/banner.png",
+      "content": {
+        "overview": "Smart PC Store was built as a production-style commerce platform for PC components, gaming gear, suppliers, stock movement, and order management. The system is split into focused services: a modern customer/admin frontend, an enterprise Java REST API, and an AI server that enriches the buying experience with market-aware recommendations and price forecasts.",
+        "roleDetail": "Led the project direction, backend architecture, frontend integration, code review, and delivery planning. The work included defining API boundaries, shaping the admin workflows, implementing authentication flows, coordinating AI integration, and keeping the multi-repo system deployable and documented.",
+        "features": [
+          {
+            "title": "Customer Storefront",
+            "description": "Product catalog, product detail pages, cart flow, checkout, QR payment path, and account pages built with Next.js App Router and React 19."
+          },
+          {
+            "title": "Admin Operations",
+            "description": "Admin panel for products, categories, orders, users, suppliers, stock imports, and operational analytics."
+          },
+          {
+            "title": "JWT Authentication",
+            "description": "Access-token and refresh-token flow with Axios interceptors, silent refresh, and race-condition-safe token rotation."
+          },
+          {
+            "title": "Enterprise Backend API",
+            "description": "Jakarta EE backend with layered controllers, services, DAOs, DTOs, JPA/Hibernate entities, RBAC, and PostgreSQL persistence."
+          },
+          {
+            "title": "AI Shopping Assistant",
+            "description": "FastAPI microservice that answers product questions, reads product data, and returns suggested products for the storefront chat widget."
+          },
+          {
+            "title": "Price Forecasting",
+            "description": "Forecast endpoint that uses supplier quotation history and Markov-style prediction to power 7-day price trend charts."
+          }
+        ],
+        "techStack": [
+          {
+            "category": "Frontend",
+            "tools": [
+              "Next.js 16",
+              "React 19",
+              "TypeScript",
+              "Tailwind CSS v4",
+              "shadcn/ui",
+              "TanStack Query",
+              "Zustand",
+              "Recharts"
+            ]
+          },
+          {
+            "category": "Backend",
+            "tools": [
+              "Java 17",
+              "Jakarta EE",
+              "Hibernate",
+              "PostgreSQL",
+              "Maven",
+              "Tomcat",
+              "JWT",
+              "Docker"
+            ]
+          },
+          {
+            "category": "AI Service",
+            "tools": [
+              "Python",
+              "FastAPI",
+              "Supabase",
+              "OpenAI-compatible API",
+              "FPT Cloud AI",
+              "NumPy",
+              "Vercel"
+            ]
+          }
+        ],
+        "challengeSolution": {
+          "challenge": "The project needed to support both customer shopping flows and internal inventory operations while also connecting a separate AI service to live product and supplier-pricing data. Keeping authentication, admin CRUD, checkout, analytics, and AI responses consistent across three repositories was the main complexity.",
+          "solution": "Separated the system by responsibility: Next.js owns UX and client state, Jakarta EE owns commerce rules and persistence, and FastAPI owns AI chat plus forecasting. The frontend talks to stable domain services, the backend exposes role-aware REST endpoints, and the AI server periodically syncs product and price-history data for grounded recommendations."
+        },
+        "results": [
+          {
+            "metric": "Repos",
+            "value": "3"
+          },
+          {
+            "metric": "Admin Domains",
+            "value": "6"
+          },
+          {
+            "metric": "Backend Layers",
+            "value": "5"
+          },
+          {
+            "metric": "Forecast Window",
+            "value": "7"
+          }
+        ],
+        "lessons": [
+          "Multi-repo products need clear ownership boundaries early; otherwise frontend, backend, and AI changes become tightly coupled.",
+          "Admin workflows are easier to maintain when every domain owns a narrow service, store, and type contract.",
+          "AI features work better as product infrastructure when they return structured data, not only natural-language answers."
+        ],
+        "screenshots": [
+          {
+            "title": "About Page",
+            "image": "/images/works/smart-pc-store/about.png",
+            "description": "Informational page about the store, its mission, and the team behind it.",
+            "variant": "commerce"
+          },
+          {
+            "title": "User Cart",
+            "description": "Shopping cart interface for managing selected items, quantities, and checkout process.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/cart.png"
+          },
+          {
+            "title": "Product Details",
+            "description": "Comprehensive view of a product's specifications, reviews, and availability.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/product-details.png"
+          },
+          {
+            "title": "Categories",
+            "description": "Browse products by category, with filtering and sorting options.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/categories.png"
+          },
+          {
+            "title": "Home Section 1",
+            "description": "Initial view of the homepage with featured products and promotions.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/home-section-1.png"
+          },
+          {
+            "title": "Home Section 2",
+            "description": "Secondary view of the homepage with additional featured products and promotions.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/home-section-2.png"
+          },
+          {
+            "title": "My Orders",
+            "description": "View and manage your order history and details.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/my-orders.png"
+          },
+          {
+            "title": "Online Payment",
+            "description": "Secure online payment processing for completed orders.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/online-payment.png"
+          },
+          {
+            "title": "Profile",
+            "description": "Manage your account settings and personal information.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/profile.png"
+          },
+          {
+            "title": "Admin Category",
+            "description": "Manage product categories in the admin panel.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/admin/category.png"
+          },
+          {
+            "title": "Admin Dashboard",
+            "description": "View and manage the overall store performance and analytics.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/admin/dashboard.png"
+          },
+          {
+            "title": "Admin Orders Management",
+            "description": "View and manage orders in the admin panel.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/admin/order.png"
+          },
+          {
+            "title": "Admin Products Management",
+            "description": "View and manage products in the admin panel.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/admin/product.png"
+          },
+          {
+            "title": "Admin Suppliers Management",
+            "description": "View and manage suppliers in the admin panel.",
+            "variant": "commerce",
+            "image": "/images/works/smart-pc-store/admin/suppliers.png"
+          }
+        ],
+        "links": [
+          {
+            "label": "Backend Repository",
+            "href": "https://github.com/ldanh270/smart-pc-store",
+            "type": "github"
+          },
+          {
+            "label": "Frontend Repository",
+            "href": "https://github.com/ldanh270/smart-pc-store-frontend",
+            "type": "github"
+          },
+          {
+            "label": "AI Repository",
+            "href": "https://github.com/ldanh270/smart-pc-store-ai",
+            "type": "github"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "movie-on",
+      "number": "04",
+      "title": "MovieOn",
+      "summary": "Movie browsing interface built with Next.js 15, Supabase, Tailwind CSS v4, semantic theme tokens, and accessible UI primitives.",
+      "description": "MovieOn is a modern movie web interface focused on theming, accessibility, and clean frontend architecture. It uses Next.js App Router, TypeScript, Tailwind CSS v4, optimized fonts, and a Supabase-ready dependency stack.",
+      "tags": [
+        "Next.js",
+        "Supabase",
+        "TypeScript",
+        "Tailwind CSS",
+        "Design System"
+      ],
+      "year": "2025",
+      "role": "Fullstack Developer",
+      "link": "https://github.com/ldanh270/movie-on",
+      "image": "/images/works/movie-on/banner.png",
+      "content": {
+        "overview": "MovieOn explores a cinematic browsing experience with a strong foundation for theme switching, reusable tokens, optimized typography, and future content integration. The README emphasizes design-system quality as much as page implementation.",
+        "roleDetail": "Built the frontend architecture, theme provider, Tailwind token system, font setup, and reusable UI direction. The project was structured to make visual iteration fast without scattering colors or typography across components.",
+        "features": [
+          {
+            "title": "Semantic Color Tokens",
+            "description": "Background, foreground, primary, muted, card, border, and focus-ring variants are centralized in Tailwind CSS v4 theme definitions."
+          },
+          {
+            "title": "Optimized Typography",
+            "description": "Next.js font optimization wires Oswald, Source Sans 3, and Montserrat Alternates into CSS variables."
+          },
+          {
+            "title": "Modern App Router",
+            "description": "Next.js App Router structure keeps root layout, page composition, theme providers, and global styles predictable."
+          },
+          {
+            "title": "Accessible Primitives",
+            "description": "Radix UI primitives support dialogs, dropdowns, avatars, labels, popovers, and slots for accessible interaction patterns."
+          },
+          {
+            "title": "Supabase-Ready Stack",
+            "description": "Supabase client dependency is included for database-backed movie content, auth, or serverless data features."
+          }
+        ],
+        "techStack": [
+          {
+            "category": "Framework",
+            "tools": [
+              "Next.js 15",
+              "React 19",
+              "TypeScript",
+              "App Router"
+            ]
+          },
+          {
+            "category": "Styling",
+            "tools": [
+              "Tailwind CSS v4",
+              "CSS Variables",
+              "next-themes",
+              "tw-animate-css"
+            ]
+          },
+          {
+            "category": "UI and Data",
+            "tools": [
+              "Radix UI",
+              "lucide-react",
+              "Sonner",
+              "Supabase",
+              "Embla Carousel"
+            ]
+          }
+        ],
+        "challengeSolution": {
+          "challenge": "Movie interfaces can quickly become visually inconsistent when theme colors, display fonts, and interactive states are handled component by component. The project needed a clean base for cinematic UI without sacrificing accessibility or developer experience.",
+          "solution": "Built the UI around semantic theme tokens, class-based dark mode, optimized font variables, and reusable primitives. This keeps the visual language centralized while allowing pages and components to remain simple."
+        },
+        "lessons": [
+          "Theme systems should start with semantic intent, not raw color names.",
+          "Font roles are easier to maintain when headings, body, and accents map to explicit CSS variables.",
+          "Small UI projects still benefit from production-grade structure when they are meant to grow."
+        ],
+        "screenshots": [
+          {
+            "title": "Home Page",
+            "description": "Cinematic browsing experience with centralized theme tokens, optimized fonts, and accessible UI patterns.",
+            "image": "/images/works/movie-on/full_home.png",
+            "variant": "system"
+          },
+          {
+            "title": "Discover Page",
+            "description": "Movie discovery interface with filterable categories, reusable card components, and consistent theming.",
+            "image": "/images/works/movie-on/discover.png",
+            "variant": "system"
+          },
+          {
+            "title": "Movie Details Page",
+            "description": "Individual movie view with detailed information, cast, and crew sections.",
+            "image": "/images/works/movie-on/movie-watch.png",
+            "variant": "system"
+          },
+          {
+            "title": "Category Details Page",
+            "description": "View movies within a specific category with detailed information and filtering options.",
+            "image": "/images/works/movie-on/category-details.png",
+            "variant": "system"
+          },
+          {
+            "title": "Bookmark Page",
+            "description": "View and manage saved movies with detailed information and filtering options.",
+            "image": "/images/works/movie-on/bookmark.png",
+            "variant": "system"
+          },
+          {
+            "title": "Feedback Page",
+            "description": "Provide feedback about the application with detailed information and filtering options.",
+            "image": "/images/works/movie-on/feedback.png",
+            "variant": "system"
+          }
+        ],
+        "links": [
+          {
+            "label": "GitHub Repository",
+            "href": "https://github.com/ldanh270/movie-on",
+            "type": "github"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "smart-glass",
+      "number": "03",
+      "title": "Smart Glass",
+      "summary": "Realtime smart-glass system with an ESP32 OLED display pipeline and a TypeScript WebSocket server for live translation streams.",
+      "description": "Smart Glass combines embedded display firmware and a Node.js backend to support low-latency text streaming for wearable translation scenarios. The IoT side handles queueing, buffer management, and OLED scrolling; the server owns HTTP state and WebSocket delivery.",
+      "tags": [
+        "ESP32",
+        "C++",
+        "TypeScript",
+        "WebSocket",
+        "IoT"
+      ],
+      "year": "2026",
+      "role": "IoT & Backend Developer",
+      "link": "https://github.com/ldanh270/smart-glass-iot",
+      "image": "/images/works/smart-glass/banner.png",
+      "content": {
+        "overview": "Smart Glass focuses on realtime text visualization for wearable or near-eye display use cases. The embedded app receives incoming text chunks, queues them safely, renders readable text on an OLED display, and scrolls long messages smoothly. The backend provides REST endpoints and a WebSocket channel for live translation and navigation data.",
+        "roleDetail": "Built the embedded display service, queue-driven rendering loop, OLED scrolling behavior, and backend WebSocket lifecycle. The work required balancing readable UX on constrained hardware with reliable low-latency server communication.",
+        "features": [
+          {
+            "title": "Realtime Text Ingestion",
+            "description": "Incoming text is accepted through a push API, buffered through a queue, and consumed on a controlled display loop."
+          },
+          {
+            "title": "OLED Scroll Renderer",
+            "description": "Long messages are measured in pixels and rendered as a seamless horizontal scrolling loop with configurable gap spacing."
+          },
+          {
+            "title": "Bounded Display Buffer",
+            "description": "Sliding-window trimming keeps the display buffer within memory limits while preserving recent readable content."
+          },
+          {
+            "title": "ESP32 PlatformIO Build",
+            "description": "Firmware targets a Freenove ESP32-S3 WROOM board with Arduino, Adafruit GFX, SSD1306, ArduinoJson, and ArduinoWebsockets."
+          },
+          {
+            "title": "WebSocket Translation Channel",
+            "description": "Express server attaches a WebSocket server at /ws and initializes translation handling for each connection."
+          },
+          {
+            "title": "Graceful Server Shutdown",
+            "description": "Shutdown handler closes active WebSocket clients, the WebSocket server, and the HTTP server to avoid orphaned connections."
+          }
+        ],
+        "techStack": [
+          {
+            "category": "Firmware",
+            "tools": [
+              "C++",
+              "PlatformIO",
+              "Arduino",
+              "ESP32-S3",
+              "Adafruit GFX",
+              "Adafruit SSD1306"
+            ]
+          },
+          {
+            "category": "Backend",
+            "tools": [
+              "Node.js",
+              "TypeScript",
+              "Bun",
+              "Express",
+              "ws",
+              "Socket.IO",
+              "dotenv"
+            ]
+          },
+          {
+            "category": "Realtime",
+            "tools": [
+              "WebSocket",
+              "Picovoice Cheetah",
+              "Google Cloud Speech",
+              "Axios",
+              "Multer"
+            ]
+          }
+        ],
+        "challengeSolution": {
+          "challenge": "Wearable displays have tight memory, timing, and readability constraints. Incoming translation text can arrive faster than the display should update, and long sentences must remain readable on a small OLED without flicker or heap pressure.",
+          "solution": "Decoupled producers from rendering with a queue, used fixed pop and render intervals, kept the text buffer bounded, and measured pixel width before enabling scrolling. On the server, WebSocket connection handling is isolated from REST state and includes explicit cleanup paths."
+        },
+        "results": [
+          {
+            "metric": "Repos",
+            "value": "2"
+          },
+          {
+            "metric": "Display Mode",
+            "value": "OLED"
+          },
+          {
+            "metric": "Realtime Channel",
+            "value": "WS"
+          },
+          {
+            "metric": "Board Target",
+            "value": "ESP32"
+          }
+        ],
+        "lessons": [
+          "Embedded UI needs timing discipline; rendering on every incoming message creates flicker and unnecessary CPU load.",
+          "Bounded buffers and explicit queue drops are better than hidden memory growth on constrained hardware.",
+          "Realtime servers should close sockets intentionally during shutdown, especially when devices reconnect automatically."
+        ],
+        "screenshots": [
+          {
+            "title": "Circuit Diagram",
+            "description": "Wiring layout for the ESP32 microcontroller, OLED display, and power management components.",
+            "image": "/images/works/smart-glass/circuit.png",
+            "variant": "system"
+          },
+          {
+            "title": "Flow Diagram",
+            "description": "Data flow between the translation source, Node.js server, WebSocket channel, and ESP32 display service.",
+            "image": "/images/works/smart-glass/flow.png",
+            "variant": "dashboard"
+          },
+          {
+            "title": "Hardware Assembly",
+            "description": "Visual representation of the physical assembly of the smart glass device.",
+            "image": "/images/works/smart-glass/hardware.png",
+            "variant": "dashboard"
+          }
+        ],
+        "links": [
+          {
+            "label": "IoT Repository",
+            "href": "https://github.com/ldanh270/smart-glass-iot",
+            "type": "github"
+          },
+          {
+            "label": "Server Repository",
+            "href": "https://github.com/ldanh270/smart-glass-server",
+            "type": "github"
+          }
+        ]
+      }
+    }
+  ],
+  "workDetailSectionOrder": [
+    {
+      "type": "overview",
+      "label": "Overview",
+      "id": "overview"
+    },
+    {
+      "type": "roleDetail",
+      "label": "My Role",
+      "id": "role"
+    },
+    {
+      "type": "features",
+      "label": "Key Features",
+      "id": "features"
+    },
+    {
+      "type": "techStack",
+      "label": "Tech Stack",
+      "id": "tech-stack"
+    },
+    {
+      "type": "challengeSolution",
+      "label": "Challenge & Solution",
+      "id": "challenge-solution"
+    },
+    {
+      "type": "results",
+      "label": "Results",
+      "id": "results"
+    },
+    {
+      "type": "lessons",
+      "label": "Lessons",
+      "id": "lessons"
+    },
+    {
+      "type": "screenshots",
+      "label": "Screenshots",
+      "id": "screenshots"
+    },
+    {
+      "type": "links",
+      "label": "Links",
+      "id": "links"
+    }
+  ],
+  "posts": [],
+  "assets": {
+    "logo": "/logo.svg",
+    "avatar": "/avatar.png",
+    "workPlaceholder": "/work-placeholder.svg"
+  }
+}

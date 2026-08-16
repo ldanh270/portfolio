@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "eslint"
+		"lint": "eslint",
+		"content:export": "bun scripts/export-current-content.ts"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",
