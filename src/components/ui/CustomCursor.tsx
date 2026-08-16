@@ -17,8 +17,8 @@ const interactiveSelector = "a, button, [data-cursor], [role='button'], img";
 export function CustomCursor() {
 	const cursorX = useMotionValue(-100);
 	const cursorY = useMotionValue(-100);
-	const smoothX = useSpring(cursorX, { stiffness: 300, damping: 28, mass: 0.5 });
-	const smoothY = useSpring(cursorY, { stiffness: 300, damping: 28, mass: 0.5 });
+	const shadowX = useSpring(cursorX, { stiffness: 120, damping: 25, mass: 1 });
+	const shadowY = useSpring(cursorY, { stiffness: 120, damping: 25, mass: 1 });
 
 	const [cursorLabel, setCursorLabel] = useState("");
 	const [variant, setVariant] = useState<CursorVariant>("default");
@@ -62,7 +62,7 @@ export function CustomCursor() {
 				const cursorAttr = interactive.getAttribute("data-cursor");
 
 				if (cursorAttr) {
-					setCursorLabel(cursorAttr);
+					setCursorLabel(cursorAttr.toLowerCase() === "view" ? "" : cursorAttr);
 					setVariant("link");
 				} else if (
 					interactive.tagName === "BUTTON" ||
@@ -71,7 +71,7 @@ export function CustomCursor() {
 					setCursorLabel("Click");
 					setVariant("button");
 				} else if (interactive.tagName === "A") {
-					setCursorLabel("View");
+					setCursorLabel("");
 					setVariant("link");
 				} else if (interactive.tagName === "IMG") {
 					setCursorLabel("Zoom");
@@ -130,42 +130,42 @@ export function CustomCursor() {
 
 	const cursorConfig = {
 		default: {
-			width: 20,
-			height: 20,
+			width: 12,
+			height: 12,
 			borderRadius: "50%",
-			backgroundColor: "#0a0a0a",
+			backgroundColor: "rgba(10, 10, 10, 0.78)",
 			border: "none",
 			scale: 1,
 		},
 		link: {
-			width: 80,
-			height: 80,
+			width: 56,
+			height: 56,
 			borderRadius: "50%",
-			backgroundColor: "rgba(10, 10, 10, 0.05)",
-			border: "2px solid #0a0a0a",
+			backgroundColor: "rgba(10, 10, 10, 0.025)",
+			border: "1px solid rgba(10, 10, 10, 0.35)",
 			scale: 1,
 		},
 		button: {
-			width: 100,
-			height: 100,
+			width: 64,
+			height: 64,
 			borderRadius: "50%",
-			backgroundColor: "rgba(10, 10, 10, 0.05)",
-			border: "2px solid #0a0a0a",
+			backgroundColor: "rgba(10, 10, 10, 0.025)",
+			border: "1px solid rgba(10, 10, 10, 0.35)",
 			scale: 1,
 		},
 		image: {
-			width: 120,
-			height: 120,
+			width: 76,
+			height: 76,
 			borderRadius: "50%",
-			backgroundColor: "rgba(10, 10, 10, 0.08)",
-			border: "2px dashed #0a0a0a",
+			backgroundColor: "rgba(10, 10, 10, 0.04)",
+			border: "1px dashed rgba(10, 10, 10, 0.4)",
 			scale: 1,
 		},
 		drag: {
-			width: 60,
-			height: 60,
+			width: 44,
+			height: 44,
 			borderRadius: "50%",
-			backgroundColor: "#0a0a0a",
+			backgroundColor: "rgba(10, 10, 10, 0.78)",
 			border: "none",
 			scale: 0.8,
 		},
@@ -190,7 +190,7 @@ export function CustomCursor() {
 						translateY: "-50%",
 					}}
 				>
-					<div className="h-2 w-2 rounded-full bg-brand-black/30" />
+					<div className="h-1.5 w-1.5 rounded-full bg-brand-black/20" />
 				</motion.div>
 			))}
 
@@ -199,14 +199,14 @@ export function CustomCursor() {
 				{isPressed && (
 					<motion.div
 						key="ripple"
-						className="pointer-events-none fixed left-0 top-0 z-9996 hidden rounded-full border-2 border-brand-black/20 md:block"
+						className="pointer-events-none fixed left-0 top-0 z-9996 hidden rounded-full border border-brand-black/15 md:block"
 						initial={{ width: 0, height: 0, opacity: 1 }}
-						animate={{ width: 200, height: 200, opacity: 0 }}
+						animate={{ width: 140, height: 140, opacity: 0 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.6, ease: "easeOut" }}
 						style={{
-							x: smoothX,
-							y: smoothY,
+							x: cursorX,
+							y: cursorY,
 							translateX: "-50%",
 							translateY: "-50%",
 						}}
@@ -217,7 +217,7 @@ export function CustomCursor() {
 			{/* Main Cursor with Magnetic Effect */}
 			<motion.div
 				aria-hidden="true"
-				className="pointer-events-none fixed left-0 top-0 z-9999 hidden items-center justify-center mix-blend-difference md:flex"
+				className="pointer-events-none fixed left-0 top-0 z-9999 hidden items-center justify-center md:flex"
 				animate={{
 					width: config.width,
 					height: config.height,
@@ -236,8 +236,8 @@ export function CustomCursor() {
 					scale: { duration: 0.1 },
 				}}
 				style={{
-					x: smoothX,
-					y: smoothY,
+					x: cursorX,
+					y: cursorY,
 					translateX: `calc(-50% + ${magneticOffset.x}px)`,
 					translateY: `calc(-50% + ${magneticOffset.y}px)`,
 				}}
@@ -263,11 +263,7 @@ export function CustomCursor() {
 				aria-hidden="true"
 				className="pointer-events-none fixed left-0 top-0 z-9999 hidden md:block"
 				animate={{
-					scale:
-						variant === "default" ?
-							isPressed ? 1.5
-							:	1
-						:	0,
+					scale: isPressed ? 1.5 : 1,
 					opacity: isVisible ? 1 : 0,
 				}}
 				transition={{
@@ -277,13 +273,13 @@ export function CustomCursor() {
 					opacity: { duration: 0.2 },
 				}}
 				style={{
-					x: smoothX,
-					y: smoothY,
+					x: cursorX,
+					y: cursorY,
 					translateX: "-50%",
 					translateY: "-50%",
 				}}
 			>
-				<div className="h-1.5 w-1.5 rounded-full bg-brand-black" />
+				<div className="h-1 w-1 rounded-full bg-brand-black" />
 			</motion.div>
 
 			{/* Trailing Glow Effect */}
@@ -291,12 +287,12 @@ export function CustomCursor() {
 				aria-hidden="true"
 				className="pointer-events-none fixed left-0 top-0 z-9998 hidden md:block"
 				animate={{
-					scale: variant === "default" ? 1 : 1.8,
+					scale: variant === "default" ? 0.8 : 1.25,
 					opacity:
 						isVisible ?
 							variant === "default" ?
-								0.1
-							:	0.15
+								0.06
+							:	0.1
 						:	0,
 				}}
 				transition={{
@@ -307,23 +303,23 @@ export function CustomCursor() {
 					opacity: { duration: 0.3 },
 				}}
 				style={{
-					x: smoothX,
-					y: smoothY,
+					x: shadowX,
+					y: shadowY,
 					translateX: "-50%",
 					translateY: "-50%",
 				}}
 			>
-				<div className="h-16 w-16 rounded-full bg-brand-black/10 blur-xl" />
+				<div className="h-12 w-12 rounded-full bg-brand-black/10 blur-lg" />
 			</motion.div>
 
 			{/* Outer Ring on Hover */}
 			<motion.div
 				aria-hidden="true"
-				className="pointer-events-none fixed left-0 top-0 z-9998 hidden rounded-full border border-brand-black/20 md:block"
+				className="pointer-events-none fixed left-0 top-0 z-9998 hidden rounded-full border border-brand-black/15 md:block"
 				animate={{
-					width: variant !== "default" ? config.width + 20 : 0,
-					height: variant !== "default" ? config.height + 20 : 0,
-					opacity: variant !== "default" && isVisible ? 0.4 : 0,
+					width: variant !== "default" ? config.width + 12 : 0,
+					height: variant !== "default" ? config.height + 12 : 0,
+					opacity: variant !== "default" && isVisible ? 0.24 : 0,
 					rotate: variant !== "default" ? 360 : 0,
 				}}
 				transition={{
@@ -334,8 +330,8 @@ export function CustomCursor() {
 					opacity: { duration: 0.2 },
 				}}
 				style={{
-					x: smoothX,
-					y: smoothY,
+					x: cursorX,
+					y: cursorY,
 					translateX: `calc(-50% + ${magneticOffset.x}px)`,
 					translateY: `calc(-50% + ${magneticOffset.y}px)`,
 				}}
