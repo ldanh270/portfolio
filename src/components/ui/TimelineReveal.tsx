@@ -39,7 +39,7 @@ export function TimelineReveal({ children, className }: TimelineRevealProps) {
 			variants={timelineContainer}
 			initial="hidden"
 			whileInView="show"
-			viewport={{ once: true, margin: "-12% 0px -12% 0px" }}
+			viewport={{ once: false, margin: "-12% 0px -12% 0px" }}
 			className={className}
 		>
 			{children}

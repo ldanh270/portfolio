@@ -31,7 +31,7 @@ export function StaggerList({ children, className }: StaggerProps) {
 			variants={container}
 			initial="hidden"
 			whileInView="show"
-			viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+			viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
 			className={`grid grid-auto-rows ${className ?? ""}`}
 		>
 			{children}

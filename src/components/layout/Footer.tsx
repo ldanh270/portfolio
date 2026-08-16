@@ -12,7 +12,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Footer() {
 	const footerRef = useRef<HTMLElement>(null);
-	const isInView = useInView(footerRef, { once: true, margin: "-100px" });
+	const isInView = useInView(footerRef, { once: false, margin: "-100px" });
 
 	return (
 		<footer
@@ -42,7 +42,7 @@ export function Footer() {
 					{/* Logo & Brand */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 						transition={{ duration: 0.6, ease, delay: 0.4 }}
 						className="lg:col-span-4"
 					>
@@ -80,7 +80,7 @@ export function Footer() {
 					{/* Navigation Links */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 						transition={{ duration: 0.6, ease, delay: 0.5 }}
 						className="lg:col-span-3"
 					>
@@ -97,7 +97,7 @@ export function Footer() {
 									>
 										<motion.span
 											initial={{ opacity: 0, x: -10 }}
-											animate={isInView ? { opacity: 1, x: 0 } : {}}
+											animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
 											transition={{
 												duration: 0.4,
 												ease,
@@ -117,7 +117,7 @@ export function Footer() {
 					{/* Social Links */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 						transition={{ duration: 0.6, ease, delay: 0.6 }}
 						className="lg:col-span-3"
 					>
@@ -135,7 +135,7 @@ export function Footer() {
 								>
 									<motion.span
 										initial={{ opacity: 0, x: -10 }}
-										animate={isInView ? { opacity: 1, x: 0 } : {}}
+										animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
 										transition={{ duration: 0.4, ease, delay: 0.6 + i * 0.05 }}
 										className="relative z-10 flex items-center gap-2"
 									>
@@ -153,7 +153,7 @@ export function Footer() {
 					{/* Location & Availability */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 						transition={{ duration: 0.6, ease, delay: 0.7 }}
 						className="lg:col-span-2"
 					>
@@ -182,7 +182,7 @@ export function Footer() {
 				{/* Bottom Section - Copyright & Year */}
 				<motion.div
 					initial={{ opacity: 0 }}
-					animate={isInView ? { opacity: 1 } : {}}
+					animate={isInView ? { opacity: 1 } : { opacity: 0 }}
 					transition={{ duration: 0.8, ease, delay: 0.8 }}
 					className="flex flex-col items-center justify-between gap-4 border-t border-brand-border pt-8 sm:flex-row"
 				>

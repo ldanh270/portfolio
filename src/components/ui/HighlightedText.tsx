@@ -23,7 +23,7 @@ export function HighlightedText({
 	highlightColor = "var(--color-brand-black)",
 	delay = 0.2,
 	duration = 0.8,
-	once = true,
+	once = false,
 }: HighlightedTextProps) {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once, amount: 0.5 });

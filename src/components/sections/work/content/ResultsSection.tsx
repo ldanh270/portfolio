@@ -69,7 +69,7 @@ const ResultMetricRow = ({ item, index, motionEnabled }: ResultMetricRowProps) =
 		<motion.article
 			initial={motionEnabled ? { opacity: 0, y: 24, filter: "blur(6px)" } : { opacity: 1 }}
 			whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-			viewport={{ once: true, margin: "-10% 0px" }}
+			viewport={{ once: false, margin: "-10% 0px" }}
 			transition={{
 				duration: motionEnabled ? 0.7 : 0,
 				delay: motionEnabled ? index * RESULT_STAGGER_DELAY : 0,

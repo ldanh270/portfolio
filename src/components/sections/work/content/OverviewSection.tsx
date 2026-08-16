@@ -31,7 +31,7 @@ export function OverviewSection({ data }: OverviewSectionProps) {
 									shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }
 								}
 								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true, margin: "-5% 0px -5% 0px" }}
+								viewport={{ once: false, margin: "-5% 0px -5% 0px" }}
 								transition={{
 									duration: shouldReduceMotion ? 0 : 0.5,
 									delay: shouldReduceMotion ? 0 : i * 0.018,

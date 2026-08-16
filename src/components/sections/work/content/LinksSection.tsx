@@ -41,7 +41,7 @@ export function LinksSection({ data }: LinksSectionProps) {
 							className="group relative inline-flex items-center gap-2 overflow-hidden border border-brand-border px-5 py-3 font-mono text-xs uppercase tracking-widest text-brand-black transition-colors duration-300 hover:border-brand-black hover:bg-brand-black hover:text-brand-white"
 							initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -10 }}
 							whileInView={{ opacity: 1, x: 0 }}
-							viewport={{ once: true }}
+							viewport={{ once: false }}
 							transition={{
 								duration: shouldReduceMotion ? 0 : 0.45,
 								delay: shouldReduceMotion ? 0 : i * 0.07,

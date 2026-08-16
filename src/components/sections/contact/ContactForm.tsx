@@ -63,7 +63,7 @@ export function ContactForm() {
 		<motion.form
 			initial="hidden"
 			whileInView="visible"
-			viewport={{ once: true }}
+			viewport={{ once: false }}
 			variants={{
 				visible: {
 					transition: {

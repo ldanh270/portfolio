@@ -9,18 +9,13 @@ export function useInViewAnimation<T extends HTMLElement>() {
 	useEffect(() => {
 		const node = ref.current;
 
-		if (!node || isVisible) {
+		if (!node) {
 			return;
 		}
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
-				if (!entry.isIntersecting) {
-					return;
-				}
-
-				setIsVisible(true);
-				observer.disconnect();
+				setIsVisible(entry.isIntersecting);
 			},
 			{ threshold: 0.1 },
 		);

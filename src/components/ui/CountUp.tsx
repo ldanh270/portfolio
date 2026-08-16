@@ -13,24 +13,26 @@ type CountUpProps = {
 export function CountUp({ end, duration = 1800, suffix = "", className }: CountUpProps) {
 	const [count, setCount] = useState(0);
 	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, margin: "-60px" });
+	const isInView = useInView(ref, { once: false, margin: "-60px" });
 
 	useEffect(() => {
 		if (!isInView) return;
 
-		let start = 0;
-		const step = end / (duration / 16);
-		const timer = setInterval(() => {
-			start += step;
-			if (start >= end) {
-				setCount(end);
-				clearInterval(timer);
-			} else {
-				setCount(Math.floor(start));
-			}
-		}, 16);
+		const startedAt = performance.now();
+		let animationFrame = 0;
 
-		return () => clearInterval(timer);
+		const animateCount = (timestamp: number) => {
+			const progress = Math.min((timestamp - startedAt) / duration, 1);
+			setCount(progress === 1 ? end : Math.floor(progress * end));
+
+			if (progress < 1) {
+				animationFrame = requestAnimationFrame(animateCount);
+			}
+		};
+
+		animationFrame = requestAnimationFrame(animateCount);
+
+		return () => cancelAnimationFrame(animationFrame);
 	}, [isInView, end, duration]);
 
 	return (
@@ -38,7 +40,7 @@ export function CountUp({ end, duration = 1800, suffix = "", className }: CountU
 			ref={ref}
 			className={className}
 		>
-			{count}
+			{isInView ? count : 0}
 			{suffix}
 		</span>
 	);

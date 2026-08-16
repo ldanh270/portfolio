@@ -11,7 +11,7 @@ export function RevealLine({ className }: { className?: string }) {
 		<motion.div
 			initial={shouldReduceMotion ? { scaleX: 1 } : { scaleX: 0, originX: 0 }}
 			whileInView={{ scaleX: 1 }}
-			viewport={{ once: true, margin: "-80px" }}
+			viewport={{ once: false, margin: "-80px" }}
 			transition={{ duration: shouldReduceMotion ? 0 : 1, ease }}
 			className={`h-px bg-brand-border ${className ?? ""}`}
 		/>
