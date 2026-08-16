@@ -91,6 +91,15 @@ src/
    RESEND_API_KEY=
    UPSTASH_REDIS_REST_URL=
    UPSTASH_REDIS_REST_TOKEN=
+
+   MONGODB_URI=
+   MONGODB_DB_NAME=portfolio
+   ADMIN_SESSION_SECRET=
+   ADMIN_BOOTSTRAP_EMAIL=
+   ADMIN_BOOTSTRAP_PASSWORD=
+   CLOUDINARY_CLOUD_NAME=
+   CLOUDINARY_API_KEY=
+   CLOUDINARY_API_SECRET=
    ```
 
 3. **Development:**
@@ -99,6 +108,13 @@ src/
    npm run build     # Production build
    npm run lint      # Code style check
    ```
+
+4. **Admin setup:**
+   ```bash
+   bun run content:seed
+   bun run admin:seed
+   ```
+   Open `/admin/login` after setting the MongoDB, session, and bootstrap admin variables. The public site remains on its static data source until the DB parity migration is explicitly enabled.
 
 ---
 
