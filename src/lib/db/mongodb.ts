@@ -18,3 +18,11 @@ export async function getDatabase(): Promise<Db> {
 	const { databaseName } = getMongoConfig();
 	return (await clientPromise).db(databaseName);
 }
+
+export async function closeDatabase(): Promise<void> {
+	const clientPromise = globalMongo.portfolioMongoClientPromise;
+	globalMongo.portfolioMongoClientPromise = undefined;
+	if (!clientPromise) return;
+	const client = await clientPromise.catch(() => null);
+	if (client) await client.close();
+}
