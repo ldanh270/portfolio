@@ -108,7 +108,7 @@ const RelatedWorkCard = ({
 				}
 				whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
 				whileHover={motionEnabled ? "hover" : undefined}
-				viewport={{ once: true, margin: "-10% 0px" }}
+				viewport={{ once: false, margin: "-10% 0px" }}
 				transition={{
 					duration: motionEnabled ? 0.7 : 0,
 					delay: motionEnabled ? index * 0.08 : 0,
@@ -235,7 +235,7 @@ export function NextProjectSection(props: NextProjectSectionProps) {
 						motionEnabled ? { opacity: 0, y: 18, filter: "blur(6px)" } : { opacity: 1 }
 					}
 					whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-					viewport={{ once: true, margin: "-10% 0px" }}
+					viewport={{ once: false, margin: "-10% 0px" }}
 					transition={{ duration: motionEnabled ? 0.65 : 0, ease }}
 					className="mb-10 flex flex-col justify-between gap-6 border-b border-brand-border pb-8 sm:flex-row sm:items-end"
 				>

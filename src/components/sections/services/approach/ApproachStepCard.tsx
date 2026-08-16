@@ -54,7 +54,7 @@ export function ApproachStepCard({ step, index, isLast }: ApproachStepCardProps)
 		<motion.article
 			initial={motionEnabled ? { opacity: 0, y: 24, filter: "blur(6px)" } : { opacity: 1 }}
 			whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-			viewport={{ once: true, margin: "-10% 0px" }}
+			viewport={{ once: false, margin: "-10% 0px" }}
 			transition={{ duration: motionEnabled ? 0.7 : 0, delay: index * 0.08, ease }}
 			className={`relative ${isLast ? "" : "pb-6"}`}
 		>

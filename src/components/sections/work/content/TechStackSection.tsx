@@ -36,7 +36,7 @@ export function TechStackSection({ data }: TechStackSectionProps) {
 												shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.88 }
 											}
 											whileInView={{ opacity: 1, scale: 1 }}
-											viewport={{ once: true }}
+											viewport={{ once: false }}
 											transition={{
 												duration: shouldReduceMotion ? 0 : 0.3,
 												delay: shouldReduceMotion ? 0 : ci * 0.08 + ti * 0.04,

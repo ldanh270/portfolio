@@ -32,7 +32,7 @@ export function ChallengeSolutionSection({ data }: ChallengeSolutionSectionProps
 								:	{ opacity: 0, y: 30, filter: "blur(8px)" }
 							}
 							whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-							viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+							viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
 							transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease }}
 						>
 							{data.challenge}
@@ -58,7 +58,7 @@ export function ChallengeSolutionSection({ data }: ChallengeSolutionSectionProps
 								:	{ opacity: 0, y: 30, filter: "blur(8px)" }
 							}
 							whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-							viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+							viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
 							transition={{
 								duration: shouldReduceMotion ? 0 : 0.9,
 								delay: 0.15,

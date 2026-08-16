@@ -25,7 +25,7 @@ export function RoleDetailSection({ data }: RoleDetailSectionProps) {
 								className="border-l-2 border-brand-black pl-6"
 								initial={shouldReduceMotion ? { scaleY: 1 } : { scaleY: 0, originY: 0 }}
 								whileInView={{ scaleY: 1 }}
-								viewport={{ once: true }}
+								viewport={{ once: false }}
 								transition={{ duration: shouldReduceMotion ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }}
 							>
 								<p className="max-w-[60ch] text-base leading-8 text-[#444]">{data}</p>
