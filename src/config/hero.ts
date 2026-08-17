@@ -5,6 +5,7 @@ export const HERO_PARTICLE = {
 	lumaCutoff: 0.94,
 	maxStagger: 0.4,
 	narrowPortraitScale: 0.85,
+	opacityBoost: 1.35,
 	planeSize: 5.2,
 	pointDensity: 0.92,
 	sampleSize: 192,

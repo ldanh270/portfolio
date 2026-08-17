@@ -85,6 +85,7 @@ const FRAGMENT_SHADER = /* glsl */ `
   varying float vDark;
   varying float vFade;
   varying float vSettled;
+  uniform float uOpacityBoost;
 
   void main() {
     vec2 point = gl_PointCoord - 0.5;
@@ -93,6 +94,7 @@ const FRAGMENT_SHADER = /* glsl */ `
     float alpha = circle * mix(0.35, 1.0, smoothstep(0.0, 0.25, vDark));
     alpha *= mix(0.2, 1.0, vFade);
     alpha *= mix(0.28, 1.0, vSettled);
+    alpha = min(1.0, alpha * uOpacityBoost);
     if (alpha < 0.01) discard;
     gl_FragColor = vec4(0.04, 0.04, 0.04, alpha);
   }
@@ -351,6 +353,7 @@ function createUniforms() {
   return {
     uFit: { value: 1 },
     uMouse: { value: new THREE.Vector2(100, 100) },
+    uOpacityBoost: { value: HERO_PARTICLE.opacityBoost },
     uOffsetX: { value: 0 },
     uOffsetY: { value: 0 },
     uProgress: { value: 0 },
