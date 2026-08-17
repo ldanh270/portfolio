@@ -1,14 +1,15 @@
 "use client";
 
-import { SERVICES } from "@/data/services";
+import { SERVICES, type Service } from "@/data/services";
 import ServiceCard from "./service/ServiceCard";
 
 type ServiceGridProps = {
 	limit?: number;
+	services?: Service[];
 };
 
-export function ServiceGrid({ limit }: ServiceGridProps) {
-	const visible = typeof limit === "number" ? SERVICES.slice(0, limit) : SERVICES;
+export function ServiceGrid({ limit, services = SERVICES }: ServiceGridProps) {
+	const visible = typeof limit === "number" ? services.slice(0, limit) : services;
 
 	return (
 		<div className="border-t border-brand-border">

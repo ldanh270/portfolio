@@ -5,6 +5,19 @@
 	--white: #fafaf8;
 	--gray: #888888;
 	--border: 1px solid rgba(10, 10, 10, 0.12);
+	--admin-background: #0a0a0a;
+	--admin-surface: #171717;
+	--admin-surface-hover: #262626;
+	--admin-border: #262626;
+	--admin-border-strong: #404040;
+	--admin-text: #f5f5f5;
+	--admin-text-strong: #d4d4d4;
+	--admin-text-muted: #a3a3a3;
+	--admin-text-subtle: #737373;
+	--admin-danger: #f87171;
+	--admin-action: #f5f5f5;
+	--admin-action-text: #0a0a0a;
+	--admin-action-hover: #ffffff;
 	--black: #0a0a0a;
 	--white: #fafaf8;
 	--gray: #888888;
@@ -47,6 +60,74 @@ body {
 * {
 	cursor: none !important;
 	cursor: none !important;
+}
+
+.admin-page,
+.admin-page * {
+	cursor: auto !important;
+}
+
+.admin-page a,
+.admin-page button,
+.admin-page label {
+	cursor: pointer !important;
+}
+
+.admin-background {
+	background-color: var(--admin-background);
+}
+
+.admin-surface {
+	background-color: var(--admin-surface);
+}
+
+.admin-surface-hover:hover {
+	background-color: var(--admin-surface-hover);
+}
+
+.admin-border {
+	border-color: var(--admin-border);
+}
+
+.admin-border-strong {
+	border-color: var(--admin-border-strong);
+}
+
+.admin-border-hover:hover {
+	border-color: var(--admin-text-subtle);
+}
+
+.admin-text {
+	color: var(--admin-text);
+}
+
+.admin-text-strong {
+	color: var(--admin-text-strong);
+}
+
+.admin-text-muted {
+	color: var(--admin-text-muted);
+}
+
+.admin-text-subtle {
+	color: var(--admin-text-subtle);
+}
+
+.admin-text-hover:hover {
+	color: var(--admin-text);
+}
+
+.admin-danger {
+	color: var(--admin-danger);
+}
+
+.admin-action {
+	background-color: var(--admin-action);
+	color: var(--admin-action-text);
+}
+
+.admin-action:hover {
+	background-color: var(--admin-action-hover);
 }
 
 ::-webkit-scrollbar {
@@ -131,6 +212,29 @@ body {
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
+}
+
+.admin-input {
+	width: 100%;
+	border: 1px solid var(--admin-border-strong);
+	background: var(--admin-surface);
+	padding: 0.75rem;
+	color: var(--admin-text);
+	outline: none;
+}
+
+.admin-input:focus {
+	border-color: var(--admin-text-muted);
+}
+
+.admin-editor {
+	border-color: var(--admin-border);
+	background: var(--admin-background);
+	color: var(--admin-text-strong);
+}
+
+.admin-editor:focus {
+	border-color: var(--admin-text-subtle);
 }
 
 [data-sonner-toaster] {

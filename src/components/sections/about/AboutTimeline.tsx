@@ -5,8 +5,9 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { TimelineReveal, TimelineRevealLine } from "@/components/ui/TimelineReveal";
 import { CAREER_ENTRIES, TIMELINE_YEARS, YEAR_WIDTH } from "@/data/about.ts";
 import TimelineLane from "./timeline/TimelineLane.tsx";
+import type { AboutContent } from "@/types/content";
 
-export function AboutTimeline() {
+export function AboutTimeline({ entries = CAREER_ENTRIES, years = TIMELINE_YEARS, yearWidth = YEAR_WIDTH }: { entries?: AboutContent["careerEntries"]; years?: string[]; yearWidth?: number }) {
 	return (
 		<section className="relative border-b border-brand-border px-6 py-18 sm:px-12">
 			<TimelineReveal>
@@ -33,7 +34,7 @@ export function AboutTimeline() {
 				<div
 					className="relative overflow-x-auto overflow-y-hidden no-scrollbar"
 					style={{
-						minHeight: `${CAREER_ENTRIES.length}px`,
+						minHeight: `${entries.length}px`,
 						WebkitOverflowScrolling: "touch",
 					}}
 				>
@@ -43,16 +44,16 @@ export function AboutTimeline() {
 						drag="x"
 						dragConstraints={{
 							left: -(
-								(TIMELINE_YEARS.length - 1) * YEAR_WIDTH -
-								TIMELINE_YEARS.length * 48 * 2
+							(years.length - 1) * yearWidth -
+							years.length * 48 * 2
 							),
 							right: 0,
 						}}
 						dragElastic={0.08}
 						className="relative cursor-grab active:cursor-grabbing flex-none"
 						style={{
-							minHeight: `${CAREER_ENTRIES.length * 66 + 180}px`,
-							width: `${TIMELINE_YEARS.length * YEAR_WIDTH}px`,
+							minHeight: `${entries.length * 66 + 180}px`,
+							width: `${years.length * yearWidth}px`,
 							flexShrink: 0,
 							display: "block",
 						}}
@@ -60,14 +61,14 @@ export function AboutTimeline() {
 						<div
 							className="absolute left-0 top-0"
 							style={{
-								minHeight: `${CAREER_ENTRIES.length * 66 + 180}px`,
+								minHeight: `${entries.length * 66 + 180}px`,
 								display: "grid",
-								gridTemplateColumns: `repeat(${TIMELINE_YEARS.length}, ${YEAR_WIDTH}px)`,
+								gridTemplateColumns: `repeat(${years.length}, ${yearWidth}px)`,
 								gridTemplateRows: 1,
-								width: `${TIMELINE_YEARS.length * YEAR_WIDTH}px`,
+								width: `${years.length * yearWidth}px`,
 							}}
 						>
-							{TIMELINE_YEARS.map((year) => (
+							{years.map((year) => (
 								<div
 									key={year}
 									className="relative h-full border-l border-dashed border-brand-border first:border-l-0"
@@ -80,7 +81,7 @@ export function AboutTimeline() {
 						</div>
 
 						<div className="absolute left-0 right-0 top-24">
-							{CAREER_ENTRIES.map((entry) => (
+							{entries.map((entry) => (
 								<TimelineLane
 									key={`${entry.type}-${entry.start}-${entry.title}`}
 									entry={entry}

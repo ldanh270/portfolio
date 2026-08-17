@@ -4,8 +4,9 @@ import { useState } from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import AwardRow from "@/components/sections/about/award/AwardRow";
 import { AWARDS } from "@/data/about";
+import type { AboutContent } from "@/types/content";
 
-export default function AboutAwards() {
+export default function AboutAwards({ awards = AWARDS }: { awards?: AboutContent["awards"] }) {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	function handleToggle(index: number) {
@@ -37,7 +38,7 @@ export default function AboutAwards() {
 
 			{/* Award List */}
 			<div className="border-t border-brand-border">
-				{AWARDS.map((award, index) => (
+				{awards.map((award, index) => (
 					<AwardRow
 						key={`${award.title}-${award.date}`}
 						award={award}
