@@ -3,8 +3,16 @@ import { WorkList } from "@/components/sections/work/WorkList";
 import { MarqueeText } from "@/components/ui/MarqueeText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { FadeIn } from "@/components/ui/FadeIn";
+import type { Project } from "@/data/projects";
 
-export function HomeWorks() {
+type HomeWorksProps = {
+	projects?: Project[];
+	label?: string;
+	description?: string;
+	viewAllLabel?: string;
+};
+
+export function HomeWorks({ projects, label = "Selected projects", description = "Crafted ideas, real impact. A curated selection where design, engineering, and strategy meet.", viewAllLabel = "View all projects →" }: HomeWorksProps) {
 	return (
 		<section>
 			<FadeIn y={18}>
@@ -20,12 +28,9 @@ export function HomeWorks() {
 				delay={0.1}
 				y={18}
 			>
-				<SectionLabel
-					label="Selected projects"
-					description="Crafted ideas, real impact. A curated selection where design, engineering, and strategy meet."
-				/>
+						<SectionLabel label={label} description={description} />
 			</FadeIn>
-			<WorkList limit={3} />
+			<WorkList projects={projects} limit={3} />
 			<FadeIn
 				delay={0.25}
 				y={16}
@@ -35,7 +40,7 @@ export function HomeWorks() {
 						href="/work"
 						className="border-b border-brand-black pb-1 font-display text-sm font-bold uppercase tracking-wide"
 					>
-						View all projects →
+						{viewAllLabel}
 					</Link>
 				</div>
 			</FadeIn>

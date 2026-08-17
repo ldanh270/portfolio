@@ -7,8 +7,22 @@ import { useRef } from "react";
 import { HeroCanvas } from "@/components/three/HeroCanvas";
 import { RevealText } from "@/components/ui/RevealText";
 import { SOCIAL_LINKS } from "@/data/site";
+import type { HomeCopy } from "@/types/content";
 
-export function Hero() {
+type HeroProps = {
+	hero?: HomeCopy["hero"];
+	socialLinks?: Array<{ label: string; value: string; href: string }>;
+};
+
+const defaultHero: HomeCopy["hero"] = {
+	nameLines: ["Le Duc", "Anh"],
+	handle: "ldanh270",
+	role: "Software Engineer / Context Engineer",
+	description: "I build scalable, modern applications with a strong eye for interface detail, product clarity and long-term maintainability.",
+	location: "Da Nang, Vietnam",
+};
+
+export function Hero({ hero = defaultHero, socialLinks = [...SOCIAL_LINKS] }: HeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({
@@ -37,16 +51,14 @@ export function Hero() {
 
       <div className="relative z-10 ml-auto max-w-7xl text-right">
         <h1 className="font-display text-[clamp(4.8rem,11vw,12rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.08em]">
-          <RevealText className="block">Le Duc</RevealText>
-          <RevealText className="block" delay={0.3}>
-            Anh
-          </RevealText>
+		  <RevealText className="block">{hero.nameLines[0]}</RevealText>
+		  <RevealText className="block" delay={0.3}>{hero.nameLines[1] ?? ""}</RevealText>
         </h1>
         <div className="mt-4 flex items-center justify-end gap-5 font-mono text-[0.65rem] font-bold uppercase leading-none tracking-tight">
           <span>
             Aka:
             <br />
-            ldanh270
+            {hero.handle}
           </span>
           <span className="text-5xl leading-none">✱</span>
         </div>
@@ -54,15 +66,15 @@ export function Hero() {
 
       <div className="relative left-0 z-10 mt-12 max-w-xs sm:absolute sm:left-12 sm:top-[28%] sm:mt-0 lg:left-16">
         <h2 className="mb-4 text-xl font-medium tracking-[-0.04em]">
-          Software Engineer / Context Engineer
+          {hero.role}
         </h2>
         <p className="text-sm leading-7 text-brand-black/65">
-          I build scalable, modern applications with a strong eye for interface detail, product clarity and long-term maintainability.
+          {hero.description}
         </p>
       </div>
 
       <div className="absolute bottom-8 right-6 z-10 text-right font-mono text-[0.65rem] uppercase leading-6 tracking-tight text-brand-black/65 sm:right-12 lg:right-16">
-        {SOCIAL_LINKS.map((link) => (
+        {socialLinks.map((link) => (
           <Link
             key={link.label}
             href={link.href}
@@ -73,7 +85,7 @@ export function Hero() {
             {link.label}
           </Link>
         ))}
-        <p className="mt-3">Da Nang, Vietnam</p>
+        <p className="mt-3">{hero.location}</p>
       </div>
 
       <div className="absolute bottom-8 left-6 z-10 flex items-center gap-4 sm:left-12 lg:left-16">

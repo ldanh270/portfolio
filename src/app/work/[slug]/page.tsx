@@ -7,20 +7,19 @@ import { ReadingProgress } from "@/components/sections/work/content/ReadingProgr
 import { TableOfContents } from "@/components/sections/work/content/TableOfContents";
 import { NextProjectSection } from "@/components/sections/work/NextProjectSection";
 import { SECTION_ORDER } from "@/data/work-details";
-import { PROJECTS } from "@/data/projects";
 import { hasData } from "@/lib/utils";
+import { getPortfolioContent } from "@/lib/content/portfolio-content";
 
 type WorkDetailPageProps = {
 	params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-	return PROJECTS.map((project) => ({ slug: project.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: WorkDetailPageProps): Promise<Metadata> {
 	const { slug } = await params;
-	const project = PROJECTS.find((item) => item.slug === slug);
+	const { projects } = await getPortfolioContent();
+	const project = projects.find((item) => item.slug === slug);
 
 	if (!project) {
 		return { title: "Work — Le Duc Anh" };
@@ -34,15 +33,16 @@ export async function generateMetadata({ params }: WorkDetailPageProps): Promise
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 	const { slug } = await params;
-	const projectIndex = PROJECTS.findIndex((item) => item.slug === slug);
-	const project = PROJECTS[projectIndex];
+	const { projects } = await getPortfolioContent();
+	const projectIndex = projects.findIndex((item) => item.slug === slug);
+	const project = projects[projectIndex];
 
 	if (!project) {
 		notFound();
 	}
 
 	const relatedProjects = Array.from({ length: 3 }, (_, index) => {
-		return PROJECTS[(projectIndex + index + 1) % PROJECTS.length];
+		return projects[(projectIndex + index + 1) % projects.length];
 	});
 
 	const activeSections =

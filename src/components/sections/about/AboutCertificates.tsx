@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import CertificateCard from "@/components/sections/about/certificates/CertificateCard";
 import { CERTIFICATES } from "@/data/about";
+import type { AboutContent } from "@/types/content";
 
 const CARD_W = 550;
 const CARD_W_MOBILE = 320;
 const ROWS = 2;
 const GAP = 32;
 
-export default function AboutCertificates() {
+export default function AboutCertificates({ certificates = CERTIFICATES }: { certificates?: AboutContent["certificates"] }) {
 	const [isDragging, setIsDragging] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [containerWidth, setContainerWidth] = useState(0);
@@ -26,7 +27,7 @@ export default function AboutCertificates() {
 		return () => ro.disconnect();
 	}, []);
 
-	const cols = Math.ceil(CERTIFICATES.length / ROWS);
+	const cols = Math.ceil(certificates.length / ROWS);
 	const gridW = cols * CARD_W + (cols - 1) * GAP;
 	const dragLeft = containerWidth > 0 && gridW > containerWidth ? -(gridW - containerWidth) : 0;
 
@@ -76,7 +77,7 @@ export default function AboutCertificates() {
 						className="grid grid-flow-col grid-rows-2"
 						style={{ gap: GAP, gridAutoColumns: CARD_W }}
 					>
-						{CERTIFICATES.map((cert) => (
+						{certificates.map((cert) => (
 							<div
 								key={cert.title}
 								className={`min-w-0 ${isDragging ? "pointer-events-none" : ""}`}
@@ -98,7 +99,7 @@ export default function AboutCertificates() {
 					className="flex"
 					style={{ gap: GAP }}
 				>
-					{CERTIFICATES.map((cert) => (
+					{certificates.map((cert) => (
 						<div
 							key={cert.title}
 							className="flex-none"

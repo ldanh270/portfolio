@@ -1,9 +1,10 @@
 import { PROJECTS } from "@/data/projects";
+import type { Project } from "@/data/projects";
 import { WorkItem } from "@/components/sections/work/WorkItem";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-export function WorkList({ limit }: { limit?: number }) {
-	const visibleProjects = typeof limit === "number" ? PROJECTS.slice(0, limit) : PROJECTS;
+export function WorkList({ projects = PROJECTS, limit }: { projects?: Project[]; limit?: number }) {
+	const visibleProjects = typeof limit === "number" ? projects.slice(0, limit) : projects;
 
 	return (
 		<div>

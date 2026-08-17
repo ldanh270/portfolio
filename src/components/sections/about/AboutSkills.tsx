@@ -4,10 +4,10 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { StaggerItem, StaggerList } from "@/components/ui/StaggerList";
 import { SKILLS } from "@/data/about";
 import SkillRow from "@/components/sections/about/skills/SkillRow";
+import type { AboutContent } from "@/types/content";
 
-const skillGroups = Object.entries(SKILLS);
-
-export default function AboutSkills() {
+export default function AboutSkills({ skills, description = "Fullstack engineering toolkit for product interfaces, server systems, mobile builds, AI workflows, and deployment." }: { skills?: AboutContent["skills"]; description?: string }) {
+	const skillGroups = Object.entries(skills ?? SKILLS);
 	return (
 		<section className="grid border-b border-brand-border px-6 py-14 sm:px-12 lg:grid-cols-[0.4fr_1fr] lg:gap-20">
 			<FadeIn
@@ -18,8 +18,7 @@ export default function AboutSkills() {
 					Skills
 				</h2>
 				<p className="mt-8 max-w-[18rem] font-mono text-[10px] uppercase leading-5 tracking-tight text-brand-gray">
-					Fullstack engineering toolkit for product interfaces, server systems, mobile
-					builds, AI workflows, and deployment.
+					{description}
 				</p>
 			</FadeIn>
 

@@ -3,11 +3,12 @@
 import { CountUp } from "@/components/ui/CountUp";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { STATS } from "@/data/about";
+import type { AboutContent } from "@/types/content";
 
-export function AboutGrid() {
+export function AboutGrid({ stats = [...STATS] }: { stats?: AboutContent["stats"] }) {
 	return (
 		<div className="grid border-b border-brand-border sm:grid-cols-2 lg:grid-cols-4">
-			{STATS.map(({ number, suffix, label }, index) => (
+			{stats.map(({ number, suffix, label }, index) => (
 				<FadeIn
 					key={label}
 					delay={index * 0.08}
