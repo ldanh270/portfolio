@@ -39,7 +39,7 @@ export function AdminShell({ admin, children }: AdminShellProps) {
 	});
 
 	return (
-		<div className="admin-background admin-text min-h-screen">
+		<div className="admin-background admin-text min-h-screen overflow-x-hidden">
 			<div className="mx-auto flex min-h-screen max-w-[1600px] flex-col lg:flex-row">
 				<aside className="admin-border flex flex-col border-b lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:shrink-0 lg:border-r lg:border-b-0">
 					<div className="p-4 sm:p-6">

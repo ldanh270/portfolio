@@ -63,7 +63,7 @@ export function CloudinaryUpload({ onUploaded }: CloudinaryUploadProps) {
 
 	return (
 		<div>
-			<label className="admin-border-strong admin-border-hover admin-text-strong inline-flex cursor-pointer items-center border px-3 py-2 text-xs transition">
+			<label className="admin-border-strong admin-border-hover admin-text-strong inline-flex min-h-11 cursor-pointer items-center border px-3 py-2 text-xs transition">
 				<input type="file" accept="image/*" onChange={handleChange} disabled={uploadMutation.isPending} className="sr-only" />
 				{uploadMutation.isPending ? "Uploading..." : "Upload to Cloudinary"}
 			</label>
