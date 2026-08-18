@@ -37,11 +37,11 @@ export function AdminPostsClient() {
 
 	return (
 		<div className="space-y-6">
-			<div className="flex items-end justify-between gap-4">
-				<div><p className="admin-text-subtle font-mono text-xs uppercase tracking-[0.2em]">Editorial</p><h1 className="mt-2 text-3xl font-semibold">Blog posts</h1></div>
-				<Link href="/admin/posts/new" className="admin-action px-4 py-3 text-sm font-semibold">New post</Link>
+			<div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+				<div className="min-w-0"><p className="admin-text-subtle font-mono text-xs uppercase tracking-[0.2em]">Editorial</p><h1 className="mt-2 text-[clamp(1.875rem,5vw,2.25rem)] font-semibold tracking-tight">Blog posts</h1></div>
+				<Link href="/admin/posts/new" className="admin-action inline-flex min-h-11 w-full items-center justify-center px-4 py-3 text-sm font-semibold sm:w-fit">New post</Link>
 			</div>
-			{error && <p className="admin-danger text-sm">{error}</p>}
+			{error && <p role="alert" className="admin-danger admin-border border px-4 py-3 text-sm">{error}</p>}
 			<div className="admin-border overflow-x-auto rounded-sm border" aria-busy={postsQuery.isPending || deleteMutation.isPending}>
 				<table className="w-full min-w-[44rem] text-left text-sm">
 					<thead className="admin-border admin-text-subtle border-b text-xs uppercase tracking-widest"><tr><th className="px-4 py-3">Title</th><th className="px-4 py-3">Status</th><th className="px-4 py-3">Updated</th><th className="px-4 py-3" /></tr></thead>

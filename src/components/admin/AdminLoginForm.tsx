@@ -49,7 +49,7 @@ export function AdminLoginForm() {
 					value={email}
 					onChange={(event) => setEmail(event.target.value)}
 					disabled={loginMutation.isPending}
-					className="admin-input"
+					className="admin-input min-h-11"
 				/>
 			</label>
 			<label className="block text-sm">
@@ -61,7 +61,7 @@ export function AdminLoginForm() {
 					value={password}
 					onChange={(event) => setPassword(event.target.value)}
 					disabled={loginMutation.isPending}
-					className="admin-input"
+					className="admin-input min-h-11"
 				/>
 			</label>
 			{error && <p className="admin-danger text-sm">{error}</p>}
@@ -69,7 +69,7 @@ export function AdminLoginForm() {
 				type="submit"
 				aria-busy={loginMutation.isPending}
 				disabled={loginMutation.isPending}
-				className="admin-action w-full px-4 py-3 text-sm font-semibold transition disabled:cursor-wait disabled:opacity-50"
+				className="admin-action min-h-11 w-full px-4 py-3 text-sm font-semibold transition disabled:cursor-wait disabled:opacity-50"
 			>
 				{loginMutation.isPending ? "Signing in..." : "Sign in"}
 			</button>

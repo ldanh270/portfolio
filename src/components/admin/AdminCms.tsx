@@ -101,7 +101,7 @@ function ProjectEditor({ project, onChange }: { project: Project; onChange: (pro
 					</div>
 					<CmsListEditor<ResultMetric> items={content.results ?? []} fields={[{ key: "metric", label: "Metric" }, { key: "value", label: "Value" }]} emptyItem={{ metric: "", value: "" }} addLabel="Add result" onChange={(results) => updateContent({ ...content, results })} getTitle={(item) => item.metric || "Untitled result"} />
 					<div className="space-y-3">
-						{(content.lessons ?? []).map((lesson, index) => <div key={index} className="flex items-end gap-3"><div className="min-w-0 flex-1"><CmsField label={`Lesson ${index + 1}`} kind="textarea" value={lesson} onChange={(value) => updateContent({ ...content, lessons: updateItem(content.lessons ?? [], index, value) })} /></div><button type="button" onClick={() => updateContent({ ...content, lessons: (content.lessons ?? []).filter((_, itemIndex) => itemIndex !== index) })} className="admin-danger cursor-pointer pb-3 text-xs hover:underline">Remove</button></div>)}
+						{(content.lessons ?? []).map((lesson, index) => <div key={index} className="flex flex-col gap-2 sm:flex-row sm:items-end sm:gap-3"><div className="min-w-0 flex-1"><CmsField label={`Lesson ${index + 1}`} kind="textarea" value={lesson} onChange={(value) => updateContent({ ...content, lessons: updateItem(content.lessons ?? [], index, value) })} /></div><button type="button" onClick={() => updateContent({ ...content, lessons: (content.lessons ?? []).filter((_, itemIndex) => itemIndex !== index) })} className="admin-danger inline-flex min-h-11 items-center justify-center text-xs hover:underline sm:min-h-0 sm:pb-3">Remove</button></div>)}
 						<button type="button" onClick={() => updateContent({ ...content, lessons: [...(content.lessons ?? []), ""] })} className="admin-border-strong admin-text-strong cursor-pointer border px-3 py-2 text-xs transition hover:border-white hover:text-white">Add lesson</button>
 					</div>
 					<CmsListEditor<ProjectScreenshot> items={(content.screenshots ?? []).filter((item): item is ProjectScreenshot => typeof item !== "string")} fields={[{ key: "title", label: "Screenshot title" }, { key: "description", label: "Description" }, { key: "image", label: "Image URL" }, { key: "variant", label: "Layout variant" }]} emptyItem={{ title: "", description: "", image: "", variant: "system" }} addLabel="Add screenshot" onChange={(screenshots) => updateContent({ ...content, screenshots })} getTitle={(item) => item.title || "Untitled screenshot"} />
@@ -206,7 +206,7 @@ function SkillsEditor({ about, onChange }: { about: AboutContent; onChange: (ski
 				<div key={group} className="grid gap-3 md:grid-cols-[0.35fr_1fr_auto] md:items-end">
 					<CmsField label="Group" value={group} onChange={(value) => onChange(Object.fromEntries(entries.map(([key, current], itemIndex) => itemIndex === index ? [value, current] : [key, current])))} />
 					<CmsTagsField label="Skills" values={items} onChange={(values) => onChange(Object.fromEntries(entries.map(([key, current], itemIndex) => itemIndex === index ? [key, values] : [key, current])))} />
-					<button type="button" onClick={() => onChange(Object.fromEntries(entries.filter((_, itemIndex) => itemIndex !== index)))} className="admin-danger cursor-pointer pb-3 text-xs hover:underline">Remove</button>
+					<button type="button" onClick={() => onChange(Object.fromEntries(entries.filter((_, itemIndex) => itemIndex !== index)))} className="admin-danger inline-flex min-h-11 items-center justify-center text-xs hover:underline sm:min-h-0 sm:pb-3">Remove</button>
 				</div>
 			))}
 			<button type="button" onClick={() => onChange({ ...about.skills, [`Group ${entries.length + 1}`]: [] })} className="admin-border-strong admin-text-strong cursor-pointer border px-3 py-2 text-xs transition hover:border-white hover:text-white">Add skill group</button>
@@ -230,7 +230,7 @@ function AboutTab({ content, setContent }: { content: CmsContent; setContent: (c
 					<CmsField label="Skills description" kind="textarea" value={getString(skillsCopy, ["description"])} onChange={(value) => setCopy(["about", "skills", "description"], value)} />
 				</div>
 				<div className="mt-4 space-y-3">
-					{getStringArray(heroCopy, ["paragraphs"]).map((paragraph, index) => <div key={index} className="flex items-end gap-3"><div className="min-w-0 flex-1"><CmsField label={`Hero paragraph ${index + 1}`} kind="textarea" value={paragraph} onChange={(value) => setCopy(["about", "hero", "paragraphs"], updateItem(getStringArray(heroCopy, ["paragraphs"]), index, value))} /></div><button type="button" onClick={() => setCopy(["about", "hero", "paragraphs"], getStringArray(heroCopy, ["paragraphs"]).filter((_, itemIndex) => itemIndex !== index))} className="admin-danger cursor-pointer pb-3 text-xs hover:underline">Remove</button></div>)}
+					{getStringArray(heroCopy, ["paragraphs"]).map((paragraph, index) => <div key={index} className="flex flex-col gap-2 sm:flex-row sm:items-end sm:gap-3"><div className="min-w-0 flex-1"><CmsField label={`Hero paragraph ${index + 1}`} kind="textarea" value={paragraph} onChange={(value) => setCopy(["about", "hero", "paragraphs"], updateItem(getStringArray(heroCopy, ["paragraphs"]), index, value))} /></div><button type="button" onClick={() => setCopy(["about", "hero", "paragraphs"], getStringArray(heroCopy, ["paragraphs"]).filter((_, itemIndex) => itemIndex !== index))} className="admin-danger inline-flex min-h-11 items-center justify-center text-xs hover:underline sm:min-h-0 sm:pb-3">Remove</button></div>)}
 					<button type="button" onClick={() => setCopy(["about", "hero", "paragraphs"], [...getStringArray(heroCopy, ["paragraphs"]), ""])} className="admin-border-strong admin-text-strong cursor-pointer border px-3 py-2 text-xs transition hover:border-white hover:text-white">Add paragraph</button>
 				</div>
 			</CmsSection>
@@ -344,10 +344,10 @@ export function AdminCms({ initialContent, initialTab = "overview", showTabs = t
 					<p className="admin-text-subtle font-mono text-xs uppercase tracking-[0.2em]">Portfolio CMS</p>
 					{!showTabs && <><span className="admin-text-subtle">/</span><Link href="/admin/home" className="admin-text-muted text-xs hover:text-white">All sections</Link></>}
 				</div>
-				<h1 className="mt-2 text-3xl font-semibold">Manage {activeLabel}</h1>
+				<h1 className="mt-2 text-[clamp(1.875rem,5vw,2.25rem)] font-semibold tracking-tight">Manage {activeLabel}</h1>
 				<p className="admin-text-muted mt-3 max-w-3xl text-sm leading-6">Edit every frontend section from structured forms. Add items, update copy, reorder lists and save directly to the live content store.</p>
 			</header>
-			{showTabs && <div className="admin-border overflow-x-auto border-b">
+			{showTabs && <div className="admin-border no-scrollbar overflow-x-auto border-b">
 				<nav className="flex min-w-max gap-1" aria-label="CMS sections">
 					{tabs.map((tab) => <CmsTab key={tab.key} label={tab.label} active={activeTab === tab.key} count={tab.key === "projects" ? content.projects.length : tab.key === "services" ? content.services.services.length : tab.key === "tools" ? content.services.techStacks.length : tab.key === "about" ? content.about.certificates.length : undefined} onClick={() => { setActiveTab(tab.key); setMessage(null); }} />)}
 				</nav>
@@ -374,13 +374,13 @@ function ProjectsTab({ content, setContent }: { content: CmsContent; setContent:
 
 	return (
 		<div className="grid gap-5 xl:grid-cols-[18rem_1fr]">
-			<CmsSection title="Projects" description="Choose a project to edit its card and full case study. Changes save together to preserve ordering." action={<button type="button" onClick={addProject} className="admin-action inline-flex cursor-pointer items-center gap-2 px-3 py-2 text-xs font-semibold"><span aria-hidden="true">+</span> New project</button>}>
+			<CmsSection title="Projects" description="Choose a project to edit its card and full case study. Changes save together to preserve ordering." action={<button type="button" onClick={addProject} className="admin-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 px-3 py-2 text-xs font-semibold sm:w-fit"><span aria-hidden="true">+</span> New project</button>}>
 				<div className="space-y-2">
-					{content.projects.map((project) => <button key={project.slug} type="button" onClick={() => setSelectedSlug(project.slug)} className={`block w-full cursor-pointer border p-3 text-left transition ${selectedProject?.slug === project.slug ? "admin-border-strong admin-surface-hover text-white" : "admin-border admin-text-muted hover:text-white"}`}><span className="font-mono text-[10px]">{project.number}</span><span className="mt-1 block text-sm font-semibold">{project.title}</span><span className="admin-text-subtle mt-1 block truncate text-xs">/{project.slug}</span></button>)}
+					{content.projects.map((project) => <button key={project.slug} type="button" onClick={() => setSelectedSlug(project.slug)} className={`block min-h-11 w-full cursor-pointer border p-3 text-left transition ${selectedProject?.slug === project.slug ? "admin-border-strong admin-surface-hover text-white" : "admin-border admin-text-muted hover:text-white"}`}><span className="font-mono text-[10px]">{project.number}</span><span className="mt-1 block truncate text-sm font-semibold">{project.title}</span><span className="admin-text-subtle mt-1 block truncate text-xs">/{project.slug}</span></button>)}
 					{content.projects.length === 0 && <p className="admin-text-subtle text-sm">No projects yet.</p>}
 				</div>
 			</CmsSection>
-			{selectedProject ? <div><div className="mb-3 flex justify-end"><button type="button" onClick={() => { const next = content.projects.filter((project) => project.slug !== selectedProject.slug); updateProjects(next); setSelectedSlug(next[0]?.slug ?? ""); }} className="admin-danger cursor-pointer text-xs hover:underline">Remove this project</button></div><ProjectEditor project={selectedProject} onChange={(project) => { updateProjects(content.projects.map((item) => item.slug === selectedProject.slug ? project : item)); setSelectedSlug(project.slug); }} /></div> : <CmsSection title="Select a project"><p className="admin-text-muted text-sm">Create a project to start editing its case study.</p></CmsSection>}
+			{selectedProject ? <div><div className="mb-3 flex justify-end"><button type="button" onClick={() => { const next = content.projects.filter((project) => project.slug !== selectedProject.slug); updateProjects(next); setSelectedSlug(next[0]?.slug ?? ""); }} className="admin-danger inline-flex min-h-11 items-center text-xs hover:underline">Remove this project</button></div><ProjectEditor project={selectedProject} onChange={(project) => { updateProjects(content.projects.map((item) => item.slug === selectedProject.slug ? project : item)); setSelectedSlug(project.slug); }} /></div> : <CmsSection title="Select a project"><p className="admin-text-muted text-sm">Create a project to start editing its case study.</p></CmsSection>}
 		</div>
 	);
 }

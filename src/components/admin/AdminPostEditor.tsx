@@ -71,15 +71,15 @@ export function AdminPostEditor({ post }: AdminPostEditorProps) {
 	}
 
 	return (
-		<div className="max-w-4xl space-y-6">
+		<div className="w-full max-w-4xl space-y-6">
 			<div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
 				<div>
 					<p className="admin-text-subtle font-mono text-xs uppercase tracking-[0.2em]">Blog editor</p>
-					<h1 className="mt-2 text-3xl font-semibold">{post ? "Edit post" : "New post"}</h1>
+					<h1 className="mt-2 text-[clamp(1.875rem,5vw,2.25rem)] font-semibold tracking-tight">{post ? "Edit post" : "New post"}</h1>
 				</div>
-				{message && <p className="admin-text-muted text-sm">{message}</p>}
+				{message && <p role="status" className="admin-text-muted admin-border w-fit border px-3 py-2 text-xs">{message}</p>}
 			</div>
-			<div className="admin-border admin-surface grid gap-5 rounded-sm border p-5">
+			<div className="admin-border admin-surface grid gap-5 rounded-sm border p-4 sm:p-6">
 				<label className="text-sm"><span className="admin-text-muted mb-2 block">Title</span><input value={form.title} onChange={(event) => updateField("title", event.target.value)} className="admin-input" /></label>
 				<label className="text-sm"><span className="admin-text-muted mb-2 block">Slug</span><input value={form.slug} onChange={(event) => updateField("slug", event.target.value)} className="admin-input" /></label>
 				<label className="text-sm"><span className="admin-text-muted mb-2 block">Excerpt</span><textarea value={form.excerpt} onChange={(event) => updateField("excerpt", event.target.value)} className="admin-input min-h-24" /></label>
@@ -89,9 +89,9 @@ export function AdminPostEditor({ post }: AdminPostEditorProps) {
 				</div>
 				<div className="text-sm"><span className="admin-text-muted mb-2 block">Cover image URL</span><input value={coverUrl} onChange={(event) => setCoverUrl(event.target.value)} className="admin-input" /><div className="mt-3"><CloudinaryUpload onUploaded={({ url, publicId }) => { setCoverUrl(url); setCoverPublicId(publicId); }} /></div></div>
 				<label className="text-sm"><span className="admin-text-muted mb-2 block">Cover alt text</span><input value={coverAlt} onChange={(event) => setCoverAlt(event.target.value)} className="admin-input" /></label>
-				<label className="text-sm"><span className="admin-text-muted mb-2 block">Body (Markdown)</span><textarea value={form.body} onChange={(event) => updateField("body", event.target.value)} className="admin-input min-h-[30rem] font-mono text-xs leading-6" /></label>
+				<label className="text-sm"><span className="admin-text-muted mb-2 block">Body (Markdown)</span><textarea value={form.body} onChange={(event) => updateField("body", event.target.value)} className="admin-input min-h-[22rem] font-mono text-xs leading-6 sm:min-h-[30rem]" /></label>
 				<label className="text-sm"><span className="admin-text-muted mb-2 block">Published at</span><input type="datetime-local" value={toDateTimeLocal(form.publishedAt)} onChange={(event) => updateField("publishedAt", event.target.value ? new Date(event.target.value).toISOString() : null)} className="admin-input" /></label>
-				<button type="button" onClick={handleSave} disabled={saveMutation.isPending} className="admin-action w-fit px-5 py-3 text-sm font-semibold disabled:cursor-wait disabled:opacity-50">{saveMutation.isPending ? "Saving..." : "Save post"}</button>
+				<button type="button" onClick={handleSave} disabled={saveMutation.isPending} className="admin-action inline-flex min-h-11 w-full items-center justify-center px-5 py-3 text-sm font-semibold sm:w-fit disabled:cursor-wait disabled:opacity-50">{saveMutation.isPending ? "Saving..." : "Save post"}</button>
 			</div>
 		</div>
 	);
