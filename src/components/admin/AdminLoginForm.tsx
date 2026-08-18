@@ -1,36 +1,41 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+
+type LoginCredentials = { email: string; password: string };
+
+async function loginAdmin({ email, password }: LoginCredentials): Promise<void> {
+	const response = await fetch("/api/admin/login", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ email, password }),
+	});
+	if (!response.ok) {
+		const body = (await response.json()) as { error?: string };
+		throw new Error(body.error ?? "Unable to sign in");
+	}
+}
 
 export function AdminLoginForm() {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>(null);
-	const [isSubmitting, setIsSubmitting] = useState(false);
-
-	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-		setError(null);
-		setIsSubmitting(true);
-		try {
-			const response = await fetch("/api/admin/login", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ email, password }),
-			});
-			if (!response.ok) {
-				const body = (await response.json()) as { error?: string };
-				throw new Error(body.error ?? "Unable to sign in");
-			}
+	const loginMutation = useMutation({
+		mutationFn: loginAdmin,
+		onSuccess: () => {
 			router.replace("/admin");
 			router.refresh();
-		} catch (submitError) {
-			setError(submitError instanceof Error ? submitError.message : "Unable to sign in");
-		} finally {
-			setIsSubmitting(false);
-		}
+		},
+		onError: (submitError) => setError(submitError.message),
+	});
+
+	function handleSubmit(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		setError(null);
+		loginMutation.mutate({ email, password });
 	}
 
 	return (
@@ -43,7 +48,8 @@ export function AdminLoginForm() {
 					required
 					value={email}
 					onChange={(event) => setEmail(event.target.value)}
-					className="admin-input"
+					disabled={loginMutation.isPending}
+					className="admin-input min-h-11"
 				/>
 			</label>
 			<label className="block text-sm">
@@ -54,16 +60,18 @@ export function AdminLoginForm() {
 					required
 					value={password}
 					onChange={(event) => setPassword(event.target.value)}
-					className="admin-input"
+					disabled={loginMutation.isPending}
+					className="admin-input min-h-11"
 				/>
 			</label>
 			{error && <p className="admin-danger text-sm">{error}</p>}
 			<button
 				type="submit"
-				disabled={isSubmitting}
-				className="admin-action w-full px-4 py-3 text-sm font-semibold transition disabled:cursor-wait disabled:opacity-50"
+				aria-busy={loginMutation.isPending}
+				disabled={loginMutation.isPending}
+				className="admin-action min-h-11 w-full px-4 py-3 text-sm font-semibold transition disabled:cursor-wait disabled:opacity-50"
 			>
-				{isSubmitting ? "Signing in..." : "Sign in"}
+				{loginMutation.isPending ? "Signing in..." : "Sign in"}
 			</button>
 		</form>
 	);

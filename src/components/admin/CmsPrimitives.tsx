@@ -19,7 +19,7 @@ export function CmsField({ label, value, kind = "text", placeholder, onChange }:
 		placeholder,
 		onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
 			onChange(event.target.value),
-		className: "admin-input mt-2 text-sm",
+		className: "admin-input mt-2 min-h-11 text-sm",
 	};
 
 	return (
@@ -65,7 +65,8 @@ export function CmsTab({ active, label, count, onClick }: { active: boolean; lab
 		<button
 			type="button"
 			onClick={onClick}
-			className={`inline-flex shrink-0 items-center gap-2 border-b-2 px-3 py-3 text-sm transition ${active ? "border-white text-white" : "border-transparent admin-text-muted hover:border-neutral-600 hover:text-white"}`}
+			aria-pressed={active}
+			className={`inline-flex min-h-11 shrink-0 items-center gap-2 border-b-2 px-3 py-3 text-sm transition ${active ? "border-white text-white" : "border-transparent admin-text-muted hover:border-neutral-600 hover:text-white"}`}
 		>
 			{label}
 			{typeof count === "number" && <span className="admin-text-subtle font-mono text-[10px]">{String(count).padStart(2, "0")}</span>}
@@ -119,8 +120,8 @@ export function CmsListEditor<T extends object>({ items, fields, emptyItem, addL
 			{items.map((item, index) => (
 				<div key={index} className="admin-border rounded-sm border p-4">
 					<div className="mb-4 flex items-center justify-between gap-3">
-						<p className="admin-text-strong text-xs font-semibold">{getTitle?.(item, index) ?? `Item ${index + 1}`}</p>
-						<button type="button" onClick={() => removeItem(index)} className="admin-danger inline-flex cursor-pointer items-center gap-1 text-xs hover:underline">
+						<p className="admin-text-strong min-w-0 truncate text-xs font-semibold">{getTitle?.(item, index) ?? `Item ${index + 1}`}</p>
+						<button type="button" onClick={() => removeItem(index)} className="admin-danger inline-flex min-h-11 cursor-pointer items-center gap-1 text-xs hover:underline">
 							<Trash2 size={13} aria-hidden="true" /> Remove
 						</button>
 					</div>
@@ -137,7 +138,7 @@ export function CmsListEditor<T extends object>({ items, fields, emptyItem, addL
 					</div>
 				</div>
 			))}
-			<button type="button" onClick={() => onChange([...items, { ...emptyItem }])} className="admin-border-strong admin-text-strong inline-flex cursor-pointer items-center gap-2 border px-3 py-2 text-xs transition hover:border-white hover:text-white">
+			<button type="button" onClick={() => onChange([...items, { ...emptyItem }])} className="admin-border-strong admin-text-strong inline-flex min-h-11 cursor-pointer items-center gap-2 border px-3 py-2 text-xs transition hover:border-white hover:text-white">
 				<Plus size={14} aria-hidden="true" /> {addLabel}
 			</button>
 		</div>
@@ -146,9 +147,9 @@ export function CmsListEditor<T extends object>({ items, fields, emptyItem, addL
 
 export function CmsSaveButton({ isSaving, message, onClick }: { isSaving: boolean; message: string | null; onClick: () => void }) {
 	return (
-		<div className="flex flex-wrap items-center justify-end gap-3 border-t admin-border pt-5">
+		<div className="sticky bottom-0 z-20 -mx-4 flex flex-col items-stretch justify-end gap-3 border-t admin-border bg-[var(--admin-background)]/95 px-4 py-4 backdrop-blur sm:-mx-6 sm:flex-row sm:items-center sm:px-6 lg:-mx-10 lg:px-10">
 			{message && <p className="admin-text-muted text-xs">{message}</p>}
-			<button type="button" onClick={onClick} disabled={isSaving} className="admin-action inline-flex cursor-pointer items-center gap-2 px-4 py-3 text-sm font-semibold transition disabled:cursor-wait disabled:opacity-50">
+			<button type="button" onClick={onClick} disabled={isSaving} aria-busy={isSaving} className="admin-action inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition disabled:cursor-wait disabled:opacity-50">
 				{isSaving ? "Saving..." : "Save changes"}
 			</button>
 		</div>
