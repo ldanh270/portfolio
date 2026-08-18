@@ -1,5 +1,6 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import Link from "next/link";
 import type { Award, CareerEntry, Certification } from "@/data/about";
@@ -12,6 +13,7 @@ import { CmsField, CmsListEditor, CmsSaveButton, CmsSection, CmsTagsField, CmsTa
 export type CmsTabKey = "overview" | "home" | "projects" | "services" | "tools" | "about" | "contact" | "work";
 type SaveKey = keyof CmsContent;
 type EditableRecord = Record<string, unknown>;
+type SaveCmsContentVariables = { keys: SaveKey[]; content: CmsContent };
 
 const tabs: Array<{ key: CmsTabKey; label: string }> = [
 	{ key: "overview", label: "Overview" },
@@ -56,6 +58,11 @@ function updateItem<T>(items: T[], index: number, patch: Partial<T>): T[] {
 
 function getProjectContent(project: Project): ProjectContent {
 	return project.content ?? {};
+}
+
+async function saveCmsContent({ keys, content }: SaveCmsContentVariables): Promise<void> {
+	const responses = await Promise.all(keys.map((key) => fetch(key === "projects" ? "/api/admin/projects" : `/api/admin/content/${key}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(key === "projects" ? { projects: content.projects } : { data: content[key] }) })));
+	if (responses.some((response) => !response.ok)) throw new Error("Save failed");
 }
 
 function ProjectEditor({ project, onChange }: { project: Project; onChange: (project: Project) => void }) {
@@ -303,22 +310,17 @@ function WorkTab({ content, setContent }: { content: CmsContent; setContent: (co
 export function AdminCms({ initialContent, initialTab = "overview", showTabs = true }: { initialContent: CmsContent; initialTab?: CmsTabKey; showTabs?: boolean }) {
 	const [activeTab, setActiveTab] = useState<CmsTabKey>(initialTab);
 	const [content, setContent] = useState<CmsContent>(initialContent);
-	const [isSaving, setIsSaving] = useState(false);
 	const [message, setMessage] = useState<string | null>(null);
+	const saveMutation = useMutation({
+		mutationFn: saveCmsContent,
+		onSuccess: () => setMessage("Changes saved"),
+		onError: () => setMessage("Save failed. Check the fields and try again."),
+	});
 	const activeLabel = tabs.find((tab) => tab.key === activeTab)?.label ?? "CMS";
 
-	async function save(keys: SaveKey[]) {
-		setIsSaving(true);
+	function save(keys: SaveKey[]) {
 		setMessage(null);
-		try {
-			const responses = await Promise.all(keys.map((key) => fetch(key === "projects" ? "/api/admin/projects" : `/api/admin/content/${key}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(key === "projects" ? { projects: content.projects } : { data: content[key] }) })));
-			if (responses.some((response) => !response.ok)) throw new Error("Save failed");
-			setMessage("Changes saved");
-		} catch {
-			setMessage("Save failed. Check the fields and try again.");
-		} finally {
-			setIsSaving(false);
-		}
+		saveMutation.mutate({ keys, content });
 	}
 
 	function renderTab() {
@@ -351,7 +353,7 @@ export function AdminCms({ initialContent, initialTab = "overview", showTabs = t
 				</nav>
 			</div>}
 			{renderTab()}
-			<CmsSaveButton isSaving={isSaving} message={message} onClick={() => save(saveKeys)} />
+			<CmsSaveButton isSaving={saveMutation.isPending} message={message} onClick={() => save(saveKeys)} />
 		</div>
 	);
 }

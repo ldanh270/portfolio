@@ -1,5 +1,6 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
 import { ChangeEvent, useState } from "react";
 
 type UploadResult = {
@@ -20,16 +21,9 @@ type CloudinaryUploadProps = {
 };
 
 export function CloudinaryUpload({ onUploaded }: CloudinaryUploadProps) {
-	const [isUploading, setIsUploading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
-
-	async function handleChange(event: ChangeEvent<HTMLInputElement>) {
-		const file = event.target.files?.[0];
-		if (!file) return;
-		setError(null);
-		setIsUploading(true);
-
-		try {
+	const uploadMutation = useMutation({
+		mutationFn: async (file: File) => {
 			const signatureResponse = await fetch("/api/admin/media/signature", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -44,38 +38,34 @@ export function CloudinaryUpload({ onUploaded }: CloudinaryUploadProps) {
 			body.append("signature", signature.signature);
 			body.append("folder", signature.folder);
 
-			const uploadResponse = await fetch(
-				`https://api.cloudinary.com/v1_1/${signature.cloudName}/image/upload`,
-				{ method: "POST", body },
-			);
+			const uploadResponse = await fetch(`https://api.cloudinary.com/v1_1/${signature.cloudName}/image/upload`, { method: "POST", body });
 			if (!uploadResponse.ok) throw new Error("Cloudinary upload failed");
 			const upload = (await uploadResponse.json()) as UploadResult;
 			const mediaResponse = await fetch("/api/admin/media", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					publicId: upload.public_id,
-					url: upload.secure_url,
-					alt: file.name,
-					folder: signature.folder,
-					resourceType: "image",
-				}),
+				body: JSON.stringify({ publicId: upload.public_id, url: upload.secure_url, alt: file.name, folder: signature.folder, resourceType: "image" }),
 			});
 			if (!mediaResponse.ok) throw new Error("Media metadata save failed");
-			onUploaded({ url: upload.secure_url, publicId: upload.public_id });
-		} catch (uploadError) {
-			setError(uploadError instanceof Error ? uploadError.message : "Upload failed");
-		} finally {
-			setIsUploading(false);
-			event.target.value = "";
-		}
+			return { url: upload.secure_url, publicId: upload.public_id };
+		},
+		onSuccess: onUploaded,
+		onError: (uploadError) => setError(uploadError.message),
+	});
+
+	function handleChange(event: ChangeEvent<HTMLInputElement>) {
+		const file = event.target.files?.[0];
+		if (!file) return;
+		event.target.value = "";
+		setError(null);
+		uploadMutation.mutate(file);
 	}
 
 	return (
 		<div>
 			<label className="admin-border-strong admin-border-hover admin-text-strong inline-flex cursor-pointer items-center border px-3 py-2 text-xs transition">
-				<input type="file" accept="image/*" onChange={handleChange} disabled={isUploading} className="sr-only" />
-				{isUploading ? "Uploading..." : "Upload to Cloudinary"}
+				<input type="file" accept="image/*" onChange={handleChange} disabled={uploadMutation.isPending} className="sr-only" />
+				{uploadMutation.isPending ? "Uploading..." : "Upload to Cloudinary"}
 			</label>
 			{error && <p className="admin-danger mt-2 text-xs">{error}</p>}
 		</div>

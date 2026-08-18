@@ -121,6 +121,30 @@ body {
 	color: var(--admin-danger);
 }
 
+@keyframes loading-shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+@keyframes loading-progress {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(300%);
+	}
+}
+
+.loading-shimmer {
+	background: linear-gradient(90deg, var(--admin-surface) 25%, var(--admin-surface-hover) 50%, var(--admin-surface) 75%);
+	background-size: 200% 100%;
+	animation: loading-shimmer 1.4s ease-in-out infinite;
+}
+
 .admin-action {
 	background-color: var(--admin-action);
 	color: var(--admin-action-text);
@@ -304,6 +328,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
 	.portfolio-toast {
 		transition: none;
+	}
+
+	.loading-shimmer {
+		animation: none;
+	}
+
+	.loading-progress {
+		animation: none;
 	}
 }
 
