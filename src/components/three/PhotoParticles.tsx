@@ -47,6 +47,7 @@ const VERTEX_SHADER = /* glsl */ `
 
   varying float vDark;
   varying float vFade;
+  varying float vInfluence;
   varying float vSettled;
 
   void main() {
@@ -60,9 +61,8 @@ const VERTEX_SHADER = /* glsl */ `
 
     vec2 mouseDelta = pointPosition.xy - uMouse;
     float distanceToMouse = max(length(mouseDelta), 0.001);
-    float influence = (1.0 - smoothstep(0.0, uRadius, distanceToMouse)) * easedProgress;
+    float influence = max(0.0, 1.0 - distanceToMouse / uRadius) * easedProgress;
     pointPosition.xy += normalize(mouseDelta) * influence * uPush;
-    pointPosition.z += influence * uPush * 1.35;
 
     pointPosition.z += sin(uTime * 0.6 + pointPosition.x * 1.4) *
       cos(uTime * 0.45 + pointPosition.y * 1.2) * 0.07;
@@ -77,6 +77,7 @@ const VERTEX_SHADER = /* glsl */ `
 
     vDark = tone;
     vFade = fade;
+    vInfluence = influence;
     vSettled = easedProgress;
   }
 `;
@@ -84,7 +85,9 @@ const VERTEX_SHADER = /* glsl */ `
 const FRAGMENT_SHADER = /* glsl */ `
   varying float vDark;
   varying float vFade;
+  varying float vInfluence;
   varying float vSettled;
+  uniform float uHoverOpacityFloor;
   uniform float uOpacityBoost;
 
   void main() {
@@ -94,6 +97,7 @@ const FRAGMENT_SHADER = /* glsl */ `
     float alpha = circle * mix(0.35, 1.0, smoothstep(0.0, 0.25, vDark));
     alpha *= mix(0.2, 1.0, vFade);
     alpha *= mix(0.28, 1.0, vSettled);
+    alpha *= mix(1.0, uHoverOpacityFloor, vInfluence);
     alpha = min(1.0, alpha * uOpacityBoost);
     if (alpha < 0.01) discard;
     gl_FragColor = vec4(0.04, 0.04, 0.04, alpha);
@@ -352,13 +356,14 @@ function disposeGeometry(geometry: THREE.BufferGeometry) {
 function createUniforms() {
   return {
     uFit: { value: 1 },
+    uHoverOpacityFloor: { value: HERO_PARTICLE.hoverOpacityFloor },
     uMouse: { value: new THREE.Vector2(100, 100) },
     uOpacityBoost: { value: HERO_PARTICLE.opacityBoost },
     uOffsetX: { value: 0 },
     uOffsetY: { value: 0 },
     uProgress: { value: 0 },
-    uPush: { value: 0.55 },
-    uRadius: { value: 1.5 },
+    uPush: { value: HERO_PARTICLE.hoverPush },
+    uRadius: { value: HERO_PARTICLE.hoverRadius },
     uScale: { value: 500 },
     uSize: {
       value: (HERO_PARTICLE.planeSize / HERO_PARTICLE.sampleSize) *
