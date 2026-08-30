@@ -36,7 +36,7 @@ export default async function AboutPage() {
 			<AboutGrid stats={content.about.stats} />
 			<AboutSkills skills={content.about.skills} description={copy.skills.description} />
 			<RevealLine />
-			<AboutTimeline entries={content.about.careerEntries} years={content.about.timelineYears} yearWidth={content.about.yearWidth} />
+			<AboutTimeline entries={content.about.careerEntries} now={new Date().toISOString()} years={content.about.timelineYears} yearWidth={content.about.yearWidth} />
 			<AboutCertificates certificates={content.about.certificates} />
 			<AboutAwards awards={content.about.awards} />
 		</PageFade>

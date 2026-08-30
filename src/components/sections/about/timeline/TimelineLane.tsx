@@ -1,8 +1,9 @@
 import { TimelineRevealItem } from "@/components/ui/TimelineReveal.tsx";
-import { type CareerEntry, TIMELINE_YEARS, YEAR_WIDTH } from "@/data/about.ts";
+import { type CareerEntry } from "@/data/about.ts";
 import { motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic.js";
 import { CSSProperties, useRef, useState } from "react";
+import { getTimelineOffset, type TimelineScale } from "./timelineScale.ts";
 
 const TimelinePopup = dynamic(() => import("./TimelinePopup"), {
 	ssr: false,
@@ -36,25 +37,14 @@ const labelVariants = {
 	hover: { x: 4 },
 };
 
-export default function TimelineLane({ entry }: { entry: CareerEntry }) {
+export default function TimelineLane({ entry, scale }: { entry: CareerEntry; scale: TimelineScale }) {
 	const triggerRef = useRef<HTMLDivElement>(null);
 	const [isHovered, setIsHovered] = useState(false);
 	const shouldReduceMotion = useReducedMotion();
 	const motionEnabled = !shouldReduceMotion;
 
-	const getStartOffset = (year: string): number => {
-		const index = TIMELINE_YEARS.indexOf(year);
-		return index >= 0 ? index * YEAR_WIDTH : 0;
-	};
-
-	const getEndOffset = (year: string): number => {
-		const index = TIMELINE_YEARS.indexOf(year);
-		return index >= 0 ? index * YEAR_WIDTH : TIMELINE_YEARS.length * YEAR_WIDTH;
-	};
-
-	const getLaneWidth = (entry: CareerEntry) => {
-		return `${getEndOffset(entry.end) - getStartOffset(entry.start)}px`;
-	};
+	const startOffset = getTimelineOffset(entry.start, scale);
+	const endOffset = getTimelineOffset(entry.end, scale);
 
 	return (
 		<>
@@ -63,9 +53,9 @@ export default function TimelineLane({ entry }: { entry: CareerEntry }) {
 				className="group absolute z-10 h-11 hover:z-50 focus-within:z-50"
 				style={
 					{
-						left: `${getStartOffset(entry.start)}px`,
+						left: `${startOffset}px`,
 						top: `${entry.lane * 4.25}rem`,
-						width: getLaneWidth(entry),
+						width: `${endOffset - startOffset}px`,
 					} as CSSProperties
 				}
 				onMouseEnter={() => setIsHovered(true)}

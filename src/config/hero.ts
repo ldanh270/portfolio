@@ -3,7 +3,7 @@ export const HERO_PARTICLE = {
 	assembleSeconds: 2.6,
 	dissolveFrom: 0.76,
 	hoverOpacityFloor: 0.55,
-	hoverPush: 0.28,
+	hoverPush: 0.2,
 	hoverRadius: 0.75,
 	lumaCutoff: 0.94,
 	maxStagger: 0.4,
