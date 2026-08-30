@@ -9,10 +9,10 @@ interface Particle {
 	id: number;
 	x: number;
 	y: number;
-	opacity: number;
 }
 
 const interactiveSelector = "a, button, [data-cursor], [role='button'], img";
+const PARTICLE_LIFETIME_MS = 650;
 
 export function CustomCursor() {
 	const cursorX = useMotionValue(-100);
@@ -26,12 +26,18 @@ export function CustomCursor() {
 	const [particles, setParticles] = useState<Particle[]>([]);
 	const [isPressed, setIsPressed] = useState(false);
 	const particleIdRef = useRef(0);
-
-	// Magnetic effect
-	const [magneticOffset, setMagneticOffset] = useState({ x: 0, y: 0 });
+	const particleTimeoutsRef = useRef(new Set<ReturnType<typeof setTimeout>>());
+	const magneticX = useMotionValue(0);
+	const magneticY = useMotionValue(0);
 
 	useEffect(() => {
-		let animationFrame: number;
+		const particleTimeouts = particleTimeoutsRef.current;
+		const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 768px)");
+		const updateCursorAvailability = () => {
+			document.documentElement.classList.toggle("custom-cursor-active", finePointerQuery.matches);
+		};
+		updateCursorAvailability();
+		finePointerQuery.addEventListener("change", updateCursorAvailability);
 
 		const onMouseMove = (event: MouseEvent) => {
 			const target = event.target as Element | null;
@@ -51,12 +57,11 @@ export function CustomCursor() {
 
 				if (distance < 100) {
 					const pullStrength = 0.3;
-					setMagneticOffset({
-						x: -distanceX * pullStrength,
-						y: -distanceY * pullStrength,
-					});
+					magneticX.set(-distanceX * pullStrength);
+					magneticY.set(-distanceY * pullStrength);
 				} else {
-					setMagneticOffset({ x: 0, y: 0 });
+					magneticX.set(0);
+					magneticY.set(0);
 				}
 
 				const cursorAttr = interactive.getAttribute("data-cursor");
@@ -83,7 +88,8 @@ export function CustomCursor() {
 			} else {
 				setCursorLabel("");
 				setVariant("default");
-				setMagneticOffset({ x: 0, y: 0 });
+				magneticX.set(0);
+				magneticY.set(0);
 			}
 
 			// Particle trail
@@ -92,9 +98,13 @@ export function CustomCursor() {
 					id: particleIdRef.current++,
 					x: event.clientX,
 					y: event.clientY,
-					opacity: 1,
 				};
 				setParticles((prev) => [...prev.slice(-8), newParticle]);
+				const timeout = setTimeout(() => {
+					setParticles((current) => current.filter((particle) => particle.id !== newParticle.id));
+					particleTimeouts.delete(timeout);
+				}, PARTICLE_LIFETIME_MS);
+				particleTimeouts.add(timeout);
 			}
 		};
 
@@ -109,24 +119,18 @@ export function CustomCursor() {
 		document.addEventListener("mouseenter", onMouseEnter);
 		document.addEventListener("mouseleave", onMouseLeave);
 
-		// Fade out particles
-		const fadeParticles = () => {
-			setParticles((prev) =>
-				prev.map((p) => ({ ...p, opacity: p.opacity - 0.05 })).filter((p) => p.opacity > 0),
-			);
-			animationFrame = requestAnimationFrame(fadeParticles);
-		};
-		animationFrame = requestAnimationFrame(fadeParticles);
-
 		return () => {
 			window.removeEventListener("mousemove", onMouseMove);
 			window.removeEventListener("mousedown", onMouseDown);
 			window.removeEventListener("mouseup", onMouseUp);
 			document.removeEventListener("mouseenter", onMouseEnter);
 			document.removeEventListener("mouseleave", onMouseLeave);
-			cancelAnimationFrame(animationFrame);
+			finePointerQuery.removeEventListener("change", updateCursorAvailability);
+			document.documentElement.classList.remove("custom-cursor-active");
+			particleTimeouts.forEach(clearTimeout);
+			particleTimeouts.clear();
 		};
-	}, [cursorX, cursorY]);
+	}, [cursorX, cursorY, magneticX, magneticY]);
 
 	const cursorConfig = {
 		default: {
@@ -180,7 +184,7 @@ export function CustomCursor() {
 				<motion.div
 					key={particle.id}
 					className="pointer-events-none fixed left-0 top-0 z-9997 hidden md:block"
-					initial={{ scale: 1, opacity: particle.opacity }}
+					initial={{ scale: 1, opacity: 1 }}
 					animate={{ scale: 0, opacity: 0 }}
 					transition={{ duration: 0.6, ease: "easeOut" }}
 					style={{
@@ -238,8 +242,10 @@ export function CustomCursor() {
 				style={{
 					x: cursorX,
 					y: cursorY,
-					translateX: `calc(-50% + ${magneticOffset.x}px)`,
-					translateY: `calc(-50% + ${magneticOffset.y}px)`,
+					marginLeft: magneticX,
+					marginTop: magneticY,
+					translateX: "-50%",
+					translateY: "-50%",
 				}}
 			>
 				<AnimatePresence mode="wait">
@@ -332,8 +338,10 @@ export function CustomCursor() {
 				style={{
 					x: cursorX,
 					y: cursorY,
-					translateX: `calc(-50% + ${magneticOffset.x}px)`,
-					translateY: `calc(-50% + ${magneticOffset.y}px)`,
+					marginLeft: magneticX,
+					marginTop: magneticY,
+					translateX: "-50%",
+					translateY: "-50%",
 				}}
 			/>
 		</>

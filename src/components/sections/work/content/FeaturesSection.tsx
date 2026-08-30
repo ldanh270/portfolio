@@ -122,7 +122,7 @@ export function FeaturesSection({ data }: FeaturesSectionProps) {
 	return (
 		<div className="border-b border-brand-border py-16 sm:py-20">
 			<div className="mx-auto grid max-w-5xl gap-10 px-6 sm:px-8 lg:grid-cols-[180px_1fr] lg:gap-16 lg:px-12">
-				<FadeIn>
+				<FadeIn className="min-w-0">
 					<div className="lg:sticky lg:top-24">
 						<p className="font-mono text-xs uppercase tracking-widest text-brand-gray">
 							Key Features
@@ -134,7 +134,7 @@ export function FeaturesSection({ data }: FeaturesSectionProps) {
 					</div>
 				</FadeIn>
 
-				<div className="space-y-4">
+				<div className="min-w-0 space-y-4">
 					{data.map((feature, i) => (
 						<FeatureRow
 							key={feature.title}

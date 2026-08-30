@@ -18,6 +18,9 @@ const itemVariants = {
 	},
 };
 
+const fieldClassName =
+	"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm placeholder:text-brand-gray transition-colors focus:border-brand-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black disabled:opacity-50";
+
 export function ContactForm() {
 	const {
 		register,
@@ -34,6 +37,7 @@ export function ContactForm() {
 			phone: "",
 			title: "",
 			message: "",
+			website: "",
 		},
 	});
 
@@ -75,6 +79,19 @@ export function ContactForm() {
 			className="grid gap-6 px-6 py-16 sm:px-12"
 			onSubmit={handleSubmit(onSubmit)}
 		>
+			<div
+				aria-hidden="true"
+				className="absolute -left-[9999px] h-px w-px overflow-hidden"
+			>
+				<label htmlFor="website">Website</label>
+				<input
+					{...register("website")}
+					id="website"
+					tabIndex={-1}
+					autoComplete="off"
+				/>
+			</div>
+
 			{/* Name Field */}
 			<motion.div variants={itemVariants}>
 				<label
@@ -86,15 +103,17 @@ export function ContactForm() {
 				<input
 					{...register("name")}
 					id="name"
+					aria-invalid={Boolean(errors.name)}
+					aria-describedby={errors.name ? "name-error" : undefined}
 					className={cn(
-						"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
+						fieldClassName,
 						errors.name && "border-red-500 focus:border-red-500",
 					)}
 					placeholder="Name"
 					disabled={isSubmitting}
 				/>
 				{errors.name && (
-					<p className="mt-1 text-[10px] text-red-500">{errors.name.message}</p>
+					<p id="name-error" role="alert" className="mt-1 text-[10px] text-red-500">{errors.name.message}</p>
 				)}
 			</motion.div>
 
@@ -111,15 +130,17 @@ export function ContactForm() {
 						{...register("email")}
 						id="email"
 						type="email"
+						aria-invalid={Boolean(errors.email)}
+						aria-describedby={errors.email ? "email-error" : undefined}
 						className={cn(
-							"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
+							fieldClassName,
 							errors.email && "border-red-500 focus:border-red-500",
 						)}
 						placeholder="Email"
 						disabled={isSubmitting}
 					/>
 					{errors.email && (
-						<p className="mt-1 text-[10px] text-red-500">{errors.email.message}</p>
+						<p id="email-error" role="alert" className="mt-1 text-[10px] text-red-500">{errors.email.message}</p>
 					)}
 				</motion.div>
 
@@ -135,15 +156,17 @@ export function ContactForm() {
 						{...register("phone")}
 						id="phone"
 						type="tel"
+						aria-invalid={Boolean(errors.phone)}
+						aria-describedby={errors.phone ? "phone-error" : undefined}
 						className={cn(
-							"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
+							fieldClassName,
 							errors.phone && "border-red-500 focus:border-red-500",
 						)}
 						placeholder="Phone"
 						disabled={isSubmitting}
 					/>
 					{errors.phone && (
-						<p className="mt-1 text-[10px] text-red-500">{errors.phone.message}</p>
+						<p id="phone-error" role="alert" className="mt-1 text-[10px] text-red-500">{errors.phone.message}</p>
 					)}
 				</motion.div>
 			</div>
@@ -159,15 +182,17 @@ export function ContactForm() {
 				<input
 					{...register("title")}
 					id="title"
+					aria-invalid={Boolean(errors.title)}
+					aria-describedby={errors.title ? "title-error" : undefined}
 					className={cn(
-						"w-full border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
+						fieldClassName,
 						errors.title && "border-red-500 focus:border-red-500",
 					)}
 					placeholder="Project Title / Subject"
 					disabled={isSubmitting}
 				/>
 				{errors.title && (
-					<p className="mt-1 text-[10px] text-red-500">{errors.title.message}</p>
+					<p id="title-error" role="alert" className="mt-1 text-[10px] text-red-500">{errors.title.message}</p>
 				)}
 			</motion.div>
 
@@ -182,15 +207,18 @@ export function ContactForm() {
 				<textarea
 					{...register("message")}
 					id="message"
+					aria-invalid={Boolean(errors.message)}
+					aria-describedby={errors.message ? "message-error" : undefined}
 					className={cn(
-						"min-h-40 w-full resize-none border-b border-brand-border bg-transparent py-4 font-display text-sm outline-none placeholder:text-brand-gray transition-colors focus:border-brand-black disabled:opacity-50",
+						"min-h-40 resize-none",
+						fieldClassName,
 						errors.message && "border-red-500 focus:border-red-500",
 					)}
 					placeholder="Tell me about your project"
 					disabled={isSubmitting}
 				/>
 				{errors.message && (
-					<p className="mt-1 text-[10px] text-red-500">{errors.message.message}</p>
+					<p id="message-error" role="alert" className="mt-1 text-[10px] text-red-500">{errors.message.message}</p>
 				)}
 			</motion.div>
 

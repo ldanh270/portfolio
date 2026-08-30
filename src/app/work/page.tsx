@@ -19,7 +19,7 @@ export default async function WorkPage() {
 	return (
 		<main className="pt-16">
 			<FadeIn y={18}>
-				<PageMarqueeText text={copy.marquee} />
+				<PageMarqueeText text={copy.marquee} heading="Selected work" />
 			</FadeIn>
 			<FadeIn
 				delay={0.1}

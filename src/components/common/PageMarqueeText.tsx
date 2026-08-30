@@ -6,6 +6,7 @@ type PageMarqueeTextProps = {
 	speed?: number;
 	direction?: "left" | "right";
 	outlined?: boolean;
+	heading?: string;
 };
 
 export default function PageMarqueeText({
@@ -14,16 +15,20 @@ export default function PageMarqueeText({
 	speed,
 	direction,
 	outlined,
+	heading,
 }: PageMarqueeTextProps) {
 	return (
 		<section className="border-y border-brand-border py-8">
-			<MarqueeText
-				text={text}
-				size={size}
-				speed={speed}
-				direction={direction}
-				outlined={outlined}
-			/>
+			{heading && <h1 className="sr-only">{heading}</h1>}
+			<div aria-hidden={Boolean(heading)}>
+				<MarqueeText
+					text={text}
+					size={size}
+					speed={speed}
+					direction={direction}
+					outlined={outlined}
+				/>
+			</div>
 		</section>
 	);
 }

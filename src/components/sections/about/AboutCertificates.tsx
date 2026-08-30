@@ -36,10 +36,10 @@ export default function AboutCertificates({ certificates = CERTIFICATES }: { cer
 	return (
 		<section className="relative border-b border-brand-border px-6 py-18 sm:px-12">
 			{/* Header */}
-			<header className="mb-14 grid gap-6 lg:grid-cols-[1fr_0.36fr]">
+			<header className="mb-14 grid min-w-0 gap-6 lg:grid-cols-[1fr_0.36fr]">
 				<FadeIn
 					y={20}
-					className="order-2 w-full max-w-2xl lg:order-1 lg:ml-auto lg:self-end"
+					className="order-2 min-w-0 w-full max-w-2xl lg:order-1 lg:ml-auto lg:self-end"
 				>
 					<p className="text-sm leading-8 text-[#444] lg:text-right">
 						Transforming academic knowledge into verified expertise. Explore the
@@ -48,12 +48,12 @@ export default function AboutCertificates({ certificates = CERTIFICATES }: { cer
 				</FadeIn>
 				<FadeIn
 					y={24}
-					className="order-1 lg:order-2"
+					className="order-1 min-w-0 lg:order-2"
 				>
 					<p className="mb-5 font-mono text-[10px] uppercase leading-5 tracking-[0.24em] text-brand-gray lg:text-right">
 						Verified Credentials
 					</p>
-					<h2 className="text-[clamp(2.6rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.07em] lg:text-right">
+					<h2 className="max-w-full text-[clamp(1.5rem,7.5vw,3rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.07em] lg:text-[clamp(2.6rem,6vw,5.5rem)] lg:text-right">
 						Certificates
 					</h2>
 				</FadeIn>

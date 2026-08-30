@@ -14,14 +14,13 @@ export function ContentRenderer({ content }: ContentRendererProps) {
 	return (
 		<>
 			{activeSections.map((config) => {
-				const Component = config.component;
-				const data = content[config.type];
 				return (
 					<section
 						key={config.type}
 						id={config.id}
 					>
-						<Component data={data} />
+						<h2 className="sr-only">{config.label}</h2>
+						{config.render(content)}
 					</section>
 				);
 			})}

@@ -68,7 +68,9 @@ export function Header() {
 
 			<div
 				id="mobile-menu"
-				className={`fixed right-0 top-16 h-[calc(100vh-4rem)] w-72 border-l border-brand-border bg-brand-white p-8 transition-transform duration-300 md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+				aria-hidden={!isOpen}
+				inert={!isOpen}
+				className={`fixed right-0 top-16 h-[calc(100vh-4rem)] w-72 border-l border-brand-border bg-brand-white p-8 md:hidden ${isOpen ? "block" : "hidden"}`}
 			>
 				<div className="flex flex-col gap-6">
 					{[...NAV_LINKS, { label: "Contact", href: "/contact" }].map((link) => (

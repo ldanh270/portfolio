@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import { createElement, type ReactNode } from "react";
 import type { ProjectContent } from "../components/sections/work/content/types";
 import { OverviewSection } from "../components/sections/work/content/OverviewSection";
 import { RoleDetailSection } from "../components/sections/work/content/RoleDetailSection";
@@ -16,8 +16,7 @@ export type SectionConfig = {
 	type: SectionType;
 	label: string;
 	id: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	component: ComponentType<{ data: any }>;
+	render: (content: ProjectContent) => ReactNode;
 };
 
 // Order controls render order + TOC order
@@ -26,54 +25,54 @@ export const SECTION_ORDER: SectionConfig[] = [
 		type: "overview",
 		label: "Overview",
 		id: "overview",
-		component: OverviewSection,
+		render: (content) => createElement(OverviewSection, { data: content.overview! }),
 	},
 	{
 		type: "roleDetail",
 		label: "My Role",
 		id: "role",
-		component: RoleDetailSection,
+		render: (content) => createElement(RoleDetailSection, { data: content.roleDetail! }),
 	},
 	{
 		type: "features",
 		label: "Key Features",
 		id: "features",
-		component: FeaturesSection,
+		render: (content) => createElement(FeaturesSection, { data: content.features! }),
 	},
 	{
 		type: "techStack",
 		label: "Tech Stack",
 		id: "tech-stack",
-		component: TechStackSection,
+		render: (content) => createElement(TechStackSection, { data: content.techStack! }),
 	},
 	{
 		type: "challengeSolution",
 		label: "Challenge & Solution",
 		id: "challenge-solution",
-		component: ChallengeSolutionSection,
+		render: (content) => createElement(ChallengeSolutionSection, { data: content.challengeSolution! }),
 	},
 	{
 		type: "results",
 		label: "Results",
 		id: "results",
-		component: ResultsSection,
+		render: (content) => createElement(ResultsSection, { data: content.results! }),
 	},
 	{
 		type: "lessons",
 		label: "Lessons",
 		id: "lessons",
-		component: LessonsSection,
+		render: (content) => createElement(LessonsSection, { data: content.lessons! }),
 	},
 	{
 		type: "screenshots",
 		label: "Screenshots",
 		id: "screenshots",
-		component: ScreenshotsSection,
+		render: (content) => createElement(ScreenshotsSection, { data: content.screenshots! }),
 	},
 	{
 		type: "links",
 		label: "Links",
 		id: "links",
-		component: LinksSection,
+		render: (content) => createElement(LinksSection, { data: content.links! }),
 	},
 ];

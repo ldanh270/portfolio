@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import type { AdminContentKey } from "@/config/admin";
 import { requireApiAdmin } from "@/lib/auth/guards";
 import { getContentDocument, upsertContentDocument } from "@/lib/db/content-repository";
-import { ContentKeySchema, ContentUpdateSchema } from "@/lib/validations/admin";
+import { ContentKeySchema } from "@/lib/validations/admin";
+import { ContentUpdateEnvelopeSchema, parseContentDocument } from "@/lib/validations/content";
 
 type RouteContext = {
 	params: Promise<{ key: string }>;
@@ -28,8 +28,9 @@ export async function PUT(request: Request, context: RouteContext) {
 	if (!parsedKey.success) return NextResponse.json({ error: "Unknown content key" }, { status: 404 });
 
 	try {
-		const body = ContentUpdateSchema.parse(await request.json());
-		await upsertContentDocument(parsedKey.data as AdminContentKey, body.data);
+		const body = ContentUpdateEnvelopeSchema.parse(await request.json());
+		const data = parseContentDocument(parsedKey.data, body.data);
+		await upsertContentDocument(parsedKey.data, data);
 		return NextResponse.json({ ok: true });
 	} catch (error) {
 		console.error("Content update failed", error);

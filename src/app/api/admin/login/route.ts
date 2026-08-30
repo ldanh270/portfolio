@@ -1,17 +1,21 @@
 import { NextResponse } from "next/server";
+import { ADMIN_LOGIN_WINDOW_MS } from "@/config/admin";
 import { canAttemptLogin } from "@/lib/auth/rate-limit";
 import { createAdminSession, setSessionCookie } from "@/lib/auth/session";
 import { findAdminByEmail } from "@/lib/auth/admin-repository";
 import { verifyPassword } from "@/lib/auth/password";
+import { getClientIdentifier } from "@/lib/security/client-identifier";
 import { AdminLoginSchema } from "@/lib/validations/admin";
 
 export async function POST(request: Request) {
-	const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-	if (!canAttemptLogin(ip)) {
-		return NextResponse.json({ error: "Too many login attempts" }, { status: 429 });
-	}
-
 	try {
+		const identifier = getClientIdentifier(request.headers);
+		if (!(await canAttemptLogin(identifier))) {
+			return NextResponse.json(
+				{ error: "Too many login attempts" },
+				{ status: 429, headers: { "Retry-After": String(ADMIN_LOGIN_WINDOW_MS / 1000) } },
+			);
+		}
 		const body = await request.json();
 		const parsed = AdminLoginSchema.safeParse(body);
 		if (!parsed.success) {
