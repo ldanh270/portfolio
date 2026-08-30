@@ -9,6 +9,7 @@ import { SECTION_ORDER } from "@/data/work-details";
 import { getContentDocument } from "@/lib/db/content-repository";
 import { listProjects, serializeProject } from "@/lib/db/project-repository";
 import { mergeDefaults } from "@/lib/content/merge-defaults";
+import { parseContentDocument } from "@/lib/validations/content";
 import type { CmsContent } from "@/types/content";
 
 const fallbackContent: CmsContent = {
@@ -23,7 +24,7 @@ const fallbackContent: CmsContent = {
 async function readDocument<T>(key: keyof Omit<CmsContent, "projects">, fallback: T): Promise<T> {
 	try {
 		const document = await getContentDocument(key);
-		return mergeDefaults(fallback, document?.data);
+		return parseContentDocument(key, mergeDefaults(fallback, document?.data)) as T;
 	} catch {
 		return fallback;
 	}

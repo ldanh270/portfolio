@@ -23,7 +23,7 @@ export default async function ServicesPage() {
 	return (
 		<PageFade className="pt-16">
 			{/* Marquee header */}
-			<PageMarqueeText text={copy.marquee} />
+			<PageMarqueeText text={copy.marquee} heading="Services" />
 
 			{/* Services Grid */}
 			<SectionLabel label={copy.sections.services.label} description={copy.sections.services.description} />

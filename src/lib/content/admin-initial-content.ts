@@ -4,6 +4,7 @@ import { PROJECTS } from "@/data/projects";
 import { getContentDocument } from "@/lib/db/content-repository";
 import { listProjects, serializeProject } from "@/lib/db/project-repository";
 import { mergeDefaults } from "@/lib/content/merge-defaults";
+import { parseContentDocument } from "@/lib/validations/content";
 import type { CmsContent } from "@/types/content";
 
 const fallbackContent: Omit<CmsContent, "projects"> = {
@@ -16,7 +17,10 @@ const fallbackContent: Omit<CmsContent, "projects"> = {
 
 async function getDocumentData<T>(key: AdminContentKey, fallback: T): Promise<T> {
 	try {
-		return mergeDefaults(fallback, (await getContentDocument(key))?.data);
+		return parseContentDocument(
+			key,
+			mergeDefaults(fallback, (await getContentDocument(key))?.data),
+		) as T;
 	} catch {
 		return fallback;
 	}

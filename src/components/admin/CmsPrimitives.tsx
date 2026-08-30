@@ -1,9 +1,9 @@
 "use client";
 
 import { Plus, Trash2 } from "lucide-react";
-import type { ReactNode } from "react";
+import { type ReactNode, useId } from "react";
 
-export type CmsFieldKind = "text" | "textarea" | "number" | "tags";
+export type CmsFieldKind = "text" | "textarea" | "number" | "tags" | "month" | "monthOrNow";
 
 type CmsFieldProps = {
 	label: string;
@@ -14,13 +14,36 @@ type CmsFieldProps = {
 };
 
 export function CmsField({ label, value, kind = "text", placeholder, onChange }: CmsFieldProps) {
+	const fieldId = useId();
+	const stringValue = String(value ?? "");
+	const isOngoing = kind === "monthOrNow" && stringValue.trim().toLowerCase() === "now";
+	const monthValue = /^\d{4}$/.test(stringValue) ? `${stringValue}-01` : stringValue;
 	const commonProps = {
-		value: String(value ?? ""),
+		value: kind === "month" || kind === "monthOrNow" ? monthValue : stringValue,
 		placeholder,
 		onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
 			onChange(event.target.value),
 		className: "admin-input mt-2 min-h-11 text-sm",
 	};
+
+	if (kind === "monthOrNow") {
+		return (
+			<div className="text-sm">
+				<label htmlFor={fieldId} className="admin-text-muted">{label}</label>
+				<div className="flex items-stretch gap-2">
+					<input {...commonProps} id={fieldId} type="month" value={isOngoing ? "" : monthValue} disabled={isOngoing} />
+					<button
+						type="button"
+						aria-pressed={isOngoing}
+						onClick={() => onChange(isOngoing ? "" : "Now")}
+						className={`admin-border-strong mt-2 min-h-11 shrink-0 border px-3 text-xs transition ${isOngoing ? "admin-action" : "admin-text-muted admin-surface-hover"}`}
+					>
+						Ongoing
+					</button>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<label className="block text-sm">
@@ -28,7 +51,7 @@ export function CmsField({ label, value, kind = "text", placeholder, onChange }:
 			{kind === "textarea" ? (
 				<textarea {...commonProps} rows={4} />
 			) : (
-				<input {...commonProps} type={kind === "number" ? "number" : "text"} />
+				<input {...commonProps} type={kind === "number" ? "number" : kind === "month" ? "month" : "text"} />
 			)}
 		</label>
 	);

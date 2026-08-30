@@ -2,12 +2,24 @@
 
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { TimelineReveal, TimelineRevealLine } from "@/components/ui/TimelineReveal";
+import { TimelineReveal } from "@/components/ui/TimelineReveal";
 import { CAREER_ENTRIES, TIMELINE_YEARS, YEAR_WIDTH } from "@/data/about.ts";
 import TimelineLane from "./timeline/TimelineLane.tsx";
+import { createTimelineScale } from "./timeline/timelineScale.ts";
 import type { AboutContent } from "@/types/content";
 
-export function AboutTimeline({ entries = CAREER_ENTRIES, years = TIMELINE_YEARS, yearWidth = YEAR_WIDTH }: { entries?: AboutContent["careerEntries"]; years?: string[]; yearWidth?: number }) {
+
+type AboutTimelineProps = {
+	entries?: AboutContent["careerEntries"];
+	now?: string;
+	years?: string[];
+	yearWidth?: number;
+};
+
+export function AboutTimeline({ entries = CAREER_ENTRIES, now = new Date().toISOString(), years = TIMELINE_YEARS, yearWidth = YEAR_WIDTH }: AboutTimelineProps) {
+	const scale = createTimelineScale(years, yearWidth, new Date(now));
+	const dragLimit = Math.max(0, scale.currentOffset - scale.ticks.length * 48 * 2);
+
 	return (
 		<section className="relative border-b border-brand-border px-6 py-18 sm:px-12">
 			<TimelineReveal>
@@ -38,43 +50,40 @@ export function AboutTimeline({ entries = CAREER_ENTRIES, years = TIMELINE_YEARS
 						WebkitOverflowScrolling: "touch",
 					}}
 				>
-					<div className="pointer-events-none absolute inset-x-0 top-10 h-px bg-brand-border" />
-					<TimelineRevealLine className="pointer-events-none absolute inset-x-0 top-10 h-px bg-brand-black" />
 					<motion.div
 						drag="x"
 						dragConstraints={{
-							left: -(
-							(years.length - 1) * yearWidth -
-							years.length * 48 * 2
-							),
+							left: -dragLimit,
 							right: 0,
 						}}
 						dragElastic={0.08}
 						className="relative cursor-grab active:cursor-grabbing flex-none"
 						style={{
 							minHeight: `${entries.length * 66 + 180}px`,
-							width: `${years.length * yearWidth}px`,
+							width: `${scale.totalWidth}px`,
 							flexShrink: 0,
 							display: "block",
 						}}
 					>
 						<div
+							className="pointer-events-none absolute left-0 top-10 h-px bg-brand-black"
+							style={{ width: `${scale.currentOffset}px` }}
+						/>
+						<div
 							className="absolute left-0 top-0"
 							style={{
 								minHeight: `${entries.length * 66 + 180}px`,
-								display: "grid",
-								gridTemplateColumns: `repeat(${years.length}, ${yearWidth}px)`,
-								gridTemplateRows: 1,
-								width: `${years.length * yearWidth}px`,
+								width: `${scale.totalWidth}px`,
 							}}
 						>
-							{years.map((year) => (
+							{scale.ticks.map((tick) => (
 								<div
-									key={year}
-									className="relative h-full border-l border-dashed border-brand-border first:border-l-0"
+									key={tick.label}
+									className="absolute top-0 h-full border-l border-dashed border-brand-border first:border-l-0"
+									style={{ left: `${tick.offset}px` }}
 								>
 									<span className="absolute top-0 font-mono text-[10px] uppercase tracking-widest text-brand-gray">
-										{year}
+										{tick.label}
 									</span>
 								</div>
 							))}
@@ -85,6 +94,7 @@ export function AboutTimeline({ entries = CAREER_ENTRIES, years = TIMELINE_YEARS
 								<TimelineLane
 									key={`${entry.type}-${entry.start}-${entry.title}`}
 									entry={entry}
+									scale={scale}
 								/>
 							))}
 						</div>

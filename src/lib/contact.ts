@@ -1,8 +1,17 @@
 "use server";
 
 import { SITE } from "@/data/site";
+import { headers } from "next/headers";
 import { Resend } from "resend";
+import {
+	CONTACT_EMAIL_FROM,
+	CONTACT_RATE_LIMIT_MAX_ATTEMPTS,
+	CONTACT_RATE_LIMIT_WINDOW_MS,
+} from "@/config/contact";
 import { redis } from "@/lib/redis";
+import { getClientIdentifier, hashIdentifier } from "@/lib/security/client-identifier";
+import { escapeHtml } from "@/lib/security/html";
+import { checkRateLimit } from "@/lib/security/rate-limit";
 import { ContactSchema, type ContactInput } from "@/lib/validations/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -22,11 +31,34 @@ export async function sendEmail(data: ContactInput) {
 		};
 	}
 
-	const validatedData = validation.data;
+	const { website, ...validatedData } = validation.data;
+	if (website) return { success: true };
+
+	const requestHeaders = await headers();
+	const clientIdentifier = getClientIdentifier(requestHeaders);
+	const rateLimitIdentifier =
+		clientIdentifier === "unknown" ? hashIdentifier(validatedData.email.toLowerCase()) : clientIdentifier;
 	const timestamp = new Date().toISOString();
 	const inquiryId = `inquiry:${timestamp}:${validatedData.email}`;
 
 	try {
+		const canSend = await checkRateLimit({
+			namespace: "contact",
+			identifier: rateLimitIdentifier,
+			limit: CONTACT_RATE_LIMIT_MAX_ATTEMPTS,
+			windowMs: CONTACT_RATE_LIMIT_WINDOW_MS,
+		});
+		if (!canSend) {
+			return { success: false, error: "Too many messages. Please try again later." };
+		}
+
+		const safeData = {
+			name: escapeHtml(validatedData.name),
+			title: escapeHtml(validatedData.title),
+			email: escapeHtml(validatedData.email),
+			phone: escapeHtml(validatedData.phone),
+			message: escapeHtml(validatedData.message),
+		};
 		// 2. Parallel Operations using Promise.allSettled
 		// We execute DB save and Email send concurrently to reduce TTI
 		const [dbResult, emailResult] = await Promise.allSettled([
@@ -38,18 +70,18 @@ export async function sendEmail(data: ContactInput) {
 
 			// Task B: Send Email (Non-critical / Graceful degradation)
 			resend.emails.send({
-				from: "Portfolio Contact <onboarding@resend.dev>",
+				from: CONTACT_EMAIL_FROM,
 				to: [SITE.email],
 				replyTo: validatedData.email,
 				subject: `New Inquiry: ${validatedData.title}`,
 				html: `
-          <div style="font-family: sans-serif; color: #0a0a0a0a;">
-            <h2>New Inquiry from ${validatedData.name}</h2>
-            <p><strong>Title:</strong> ${validatedData.title}</p>
-            <p><strong>Email:</strong> ${validatedData.email}</p>
-            <p><strong>Phone:</strong> ${validatedData.phone}</p>
-            <hr />
-            <p style="white-space: pre-wrap;">${validatedData.message}</p>
+						<div style="font-family: sans-serif; color: #0a0a0a;">
+							<h2>New Inquiry from ${safeData.name}</h2>
+							<p><strong>Title:</strong> ${safeData.title}</p>
+							<p><strong>Email:</strong> ${safeData.email}</p>
+							<p><strong>Phone:</strong> ${safeData.phone}</p>
+							<hr />
+							<p style="white-space: pre-wrap;">${safeData.message}</p>
           </div>
         `,
 			}),

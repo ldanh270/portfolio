@@ -8,10 +8,6 @@ export const AdminLoginSchema = z.object({
 
 export const ContentKeySchema = z.enum(ADMIN_CONTENT_KEYS);
 
-export const ContentUpdateSchema = z.object({
-	data: z.union([z.record(z.string(), z.unknown()), z.array(z.unknown())]),
-});
-
 const ProjectSchema = z
 	.object({
 		slug: z.string().min(1),
