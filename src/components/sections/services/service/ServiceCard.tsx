@@ -110,7 +110,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
 												key={tag}
 												className="border border-brand-border bg-brand-white px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-brand-gray"
 												variants={{
-													rest: { opacity: 0.82 },
+													rest: { opacity: 1 },
 													hover: { opacity: 1 },
 												}}
 												transition={{

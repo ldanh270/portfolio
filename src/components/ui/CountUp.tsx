@@ -40,7 +40,7 @@ export function CountUp({ end, duration = 1800, suffix = "", className }: CountU
 			ref={ref}
 			className={className}
 		>
-			{isInView ? count : 0}
+			{isInView ? count : end}
 			{suffix}
 		</span>
 	);

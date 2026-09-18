@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { NAV_LINKS, SITE } from "@/data/site";
-import Image from "next/image";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { ArrowUpRight } from "lucide-react";
 
@@ -17,12 +16,12 @@ export function Header() {
 				aria-label="Primary navigation"
 			>
 				<Link href="/">
-					<Image
+					<img
 						src="/logo.svg"
-						loading="eager"
 						alt={SITE.name}
-						width={60}
-						height={60}
+						width={48}
+						height={48}
+						className="h-11 w-11 object-contain"
 					/>
 				</Link>
 

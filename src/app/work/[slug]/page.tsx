@@ -41,9 +41,8 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 		notFound();
 	}
 
-	const relatedProjects = Array.from({ length: 3 }, (_, index) => {
-		return projects[(projectIndex + index + 1) % projects.length];
-	});
+	const otherProjects = projects.filter((item) => item.slug !== slug);
+	const relatedProjects = otherProjects.slice(0, 3);
 
 	const activeSections =
 		project.content ?
@@ -135,7 +134,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 			)}
 
 			{/* Related Work */}
-			<NextProjectSection projects={relatedProjects} />
+			{relatedProjects.length > 0 && <NextProjectSection projects={relatedProjects} />}
 		</main>
 	);
 }

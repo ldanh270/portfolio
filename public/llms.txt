@@ -1,0 +1,25 @@
+# Le Duc Anh — Portfolio & Engineering Case Studies
+
+> Full-stack software engineer specializing in building scalable, modern applications with a strong eye for interface detail, product clarity, and long-term maintainability. Based in Da Nang, Vietnam.
+
+## Main Navigation
+- [Home](https://leducanh.dev/): Introduction, featured works, technical overview, and bio.
+- [Work](https://leducanh.dev/work): Engineering case studies, production projects, and open-source contributions.
+- [Services](https://leducanh.dev/services): Web and mobile development, software architecture, UI/UX design, and technical consulting.
+- [About](https://leducanh.dev/about): Professional background, timeline, skills, awards, and certifications.
+- [Contact](https://leducanh.dev/contact): Get in touch for project inquiries, consulting, and collaboration.
+
+## Featured Projects
+- [Kiro Case Study](https://leducanh.dev/work/kiro): Contribution to Kiro, an agentic IDE and CLI for spec-driven development, hooks, and MCP integrations.
+- [Personal Portfolio](https://leducanh.dev/work): High-performance editorial portfolio built with Next.js 16, Turbopack, Tailwind CSS, Framer Motion, and serverless MongoDB/Redis.
+
+## Technical Expertise
+- Frontend: TypeScript, React, Next.js, Tailwind CSS, Framer Motion, Three.js / React Three Fiber.
+- Backend & Data: Node.js, Next.js Server Actions & Route Handlers, MongoDB, Upstash Redis, Resend.
+- Architecture: Serverless architectures, rate-limiting, fail-safe resilience, SEO, responsive & accessible design.
+
+## Contact & Profiles
+- Email: ducanhle.dn@gmail.com
+- GitHub: https://github.com/ldanh270
+- LinkedIn: https://www.linkedin.com/in/ldanh270
+- Location: Da Nang, Vietnam

@@ -139,7 +139,10 @@ export default function AwardRow({
 							className="overflow-hidden"
 						>
 							<div className="relative z-10 grid gap-4 px-2 pb-8 sm:grid-cols-[auto_1fr] sm:gap-10 sm:px-4">
-								<span className="hidden font-mono text-4xl font-light tracking-tight text-transparent sm:block">
+								<span
+									aria-hidden="true"
+									className="hidden font-mono text-4xl font-light tracking-tight invisible sm:block"
+								>
 									{formatIndex(index)}
 								</span>
 

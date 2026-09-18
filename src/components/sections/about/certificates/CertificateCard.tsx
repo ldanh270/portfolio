@@ -86,7 +86,7 @@ export default function CertificateCard({
 						<motion.span
 							key={t}
 							variants={{
-								rest: { y: 0, opacity: 0.78 },
+								rest: { y: 0, opacity: 1 },
 								hover: { y: -2, opacity: 1 },
 							}}
 							transition={{ duration: 0.22, delay: index * 0.02, ease }}

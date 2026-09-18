@@ -13,10 +13,15 @@ function createClient(): Promise<MongoClient> {
 }
 
 export async function getDatabase(): Promise<Db> {
-	const clientPromise = globalMongo.portfolioMongoClientPromise ?? createClient();
-	globalMongo.portfolioMongoClientPromise = clientPromise;
+	if (!globalMongo.portfolioMongoClientPromise) {
+		globalMongo.portfolioMongoClientPromise = createClient().catch((error) => {
+			globalMongo.portfolioMongoClientPromise = undefined;
+			throw error;
+		});
+	}
 	const { databaseName } = getMongoConfig();
-	return (await clientPromise).db(databaseName);
+	const client = await globalMongo.portfolioMongoClientPromise;
+	return client.db(databaseName);
 }
 
 export async function closeDatabase(): Promise<void> {

@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/data/site";
-import Image from "next/image";
 import { HighlightedText } from "@/components/ui/HighlightedText";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { CTAContact } from "./footer/CTAContact.tsx";
+import { CTAContact } from "./footer/CTAContact";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -55,12 +54,12 @@ export function Footer() {
 								transition={{ duration: 0.3, ease }}
 								className="mb-4"
 							>
-								<Image
+								<img
 									src="/logo.svg"
-									loading="eager"
 									alt={SITE.name}
-									width={56}
-									height={56}
+									width={48}
+									height={48}
+									className="h-11 w-11 object-contain"
 								/>
 							</motion.div>
 						</Link>

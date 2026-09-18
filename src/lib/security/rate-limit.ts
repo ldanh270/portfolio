@@ -39,13 +39,28 @@ function checkMemoryRateLimit(options: RateLimitOptions): boolean {
 	return record.count <= options.limit;
 }
 
+const REDIS_TIMEOUT_MS = 1500;
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
+	let timer: NodeJS.Timeout | undefined;
+	const timeout = new Promise<never>((_, reject) => {
+		timer = setTimeout(() => reject(new Error("Redis operation timed out")), timeoutMs);
+	});
+	return Promise.race([promise, timeout]).finally(() => {
+		if (timer) clearTimeout(timer);
+	});
+}
+
 export async function checkRateLimit(options: RateLimitOptions): Promise<boolean> {
 	try {
 		const bucket = Math.floor(Date.now() / options.windowMs);
 		const key = `rate-limit:${options.namespace}:${options.identifier}:${bucket}`;
-		const attemptCount = await redis.incr(key);
+		const attemptCount = await withTimeout(redis.incr(key), REDIS_TIMEOUT_MS);
 		if (attemptCount === 1) {
-			await redis.expire(key, Math.ceil(options.windowMs / 1000) + 1);
+			await withTimeout(
+				redis.expire(key, Math.ceil(options.windowMs / 1000) + 1),
+				REDIS_TIMEOUT_MS,
+			);
 		}
 		return attemptCount <= options.limit;
 	} catch (error) {
