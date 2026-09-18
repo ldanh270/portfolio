@@ -62,11 +62,16 @@ export async function sendEmail(data: ContactInput) {
 		// 2. Parallel Operations using Promise.allSettled
 		// We execute DB save and Email send concurrently to reduce TTI
 		const [dbResult, emailResult] = await Promise.allSettled([
-			// Task A: Save to Database (Critical)
-			redis.hset(inquiryId, {
-				...validatedData,
-				createdAt: timestamp,
-			}),
+			// Task A: Save to Database (Non-blocking backup)
+			Promise.race([
+				redis.hset(inquiryId, {
+					...validatedData,
+					createdAt: timestamp,
+				}),
+				new Promise<never>((_, reject) =>
+					setTimeout(() => reject(new Error("Redis backup timed out")), 2000),
+				),
+			]),
 
 			// Task B: Send Email (Non-critical / Graceful degradation)
 			resend.emails.send({

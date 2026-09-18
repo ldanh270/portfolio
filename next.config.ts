@@ -26,6 +26,14 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
 	reactCompiler: true,
 	poweredByHeader: false,
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "res.cloudinary.com",
+			},
+		],
+	},
 	async headers() {
 		return [{ source: "/(.*)", headers: securityHeaders }];
 	},

@@ -1,0 +1,10 @@
+# Allow all search engines and AI crawlers
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+Disallow: /api/cron
+
+# AI Agents and LLMs
+# https://llmstxt.org/
+# llms.txt provides structured context for AI agents

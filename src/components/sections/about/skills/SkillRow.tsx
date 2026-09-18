@@ -30,7 +30,7 @@ const titleVariants = {
 };
 
 const chipVariants = {
-	rest: { y: 0, opacity: 0.78 },
+	rest: { y: 0, opacity: 1 },
 	hover: { y: -2, opacity: 1 },
 };
 

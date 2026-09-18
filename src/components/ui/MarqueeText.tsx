@@ -29,7 +29,10 @@ export function MarqueeText({
 	const items = Array.from({ length: 8 }, (_, index) => index);
 
 	return (
-		<div className={cn("overflow-hidden whitespace-nowrap", className)}>
+		<div
+			className={cn("overflow-hidden whitespace-nowrap", className)}
+			aria-hidden="true"
+		>
 			<div
 				className={cn(
 					"flex w-max",

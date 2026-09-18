@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { ContactSchema, type ContactInput } from "@/lib/validations/contact";
-import { sendEmail } from "@/lib/contact.ts";
+import { sendEmail } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
 const itemVariants = {
