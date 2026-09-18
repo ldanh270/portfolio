@@ -88,14 +88,19 @@ export async function sendEmail(data: ContactInput) {
 		]);
 
 		// 3. Evaluate results
-		if (dbResult.status === "rejected") {
-			console.error("Critical Failure: DB Save failed", dbResult.reason);
-			return { success: false, error: "System busy. Please try again later." };
+		const isDbSaved = dbResult.status === "fulfilled";
+		const isEmailSent = emailResult.status === "fulfilled";
+
+		if (!isDbSaved) {
+			console.warn("Soft Failure: Redis DB backup failed", dbResult.reason);
+		}
+		if (!isEmailSent) {
+			console.warn("Soft Failure: Email delivery failed", emailResult.reason);
 		}
 
-		if (emailResult.status === "rejected") {
-			// Log error quietly but return success as data is safely in DB
-			console.warn("Soft Failure: Email delivery failed", emailResult.reason);
+		if (!isDbSaved && !isEmailSent) {
+			console.error("Critical Failure: Both DB save and email delivery failed");
+			return { success: false, error: "System busy. Please try again later." };
 		}
 
 		return { success: true };
