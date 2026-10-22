@@ -124,15 +124,6 @@ body {
 	}
 }
 
-@keyframes loading-progress {
-	0% {
-		transform: translateX(-100%);
-	}
-	100% {
-		transform: translateX(300%);
-	}
-}
-
 .loading-shimmer {
 	background: linear-gradient(90deg, var(--admin-surface) 25%, var(--admin-surface-hover) 50%, var(--admin-surface) 75%);
 	background-size: 200% 100%;
@@ -163,19 +154,23 @@ body {
 
 @keyframes marquee {
 	from {
-		transform: translateX(0);
+		transform: translate3d(0, 0, 0);
 	}
 	to {
-		transform: translateX(-50%);
+		transform: translate3d(-50%, 0, 0);
 	}
 }
 
 .animate-marquee {
 	animation: marquee var(--marquee-speed, 30s) linear infinite;
+	will-change: transform;
+	backface-visibility: hidden;
 }
 
 .animate-marquee-reverse {
 	animation: marquee var(--marquee-speed, 30s) linear infinite reverse;
+	will-change: transform;
+	backface-visibility: hidden;
 }
 
 .text-outline {

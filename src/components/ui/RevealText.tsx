@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 import type { ReactNode } from "react";
 
 type RevealTextProps = {
@@ -10,28 +10,31 @@ type RevealTextProps = {
 	children: ReactNode;
 };
 
-const ease = [0.22, 1, 0.36, 1] as const;
+// Punchy tech-precision ease (expo.out equivalent)
+const techEase = [0.16, 1, 0.3, 1] as const;
 
 export function RevealText({ delay = 0, className, children }: RevealTextProps) {
 	const shouldReduceMotion = useReducedMotion();
-	const [isReady, setIsReady] = useState(false);
-
-	useEffect(() => {
-		const raf = requestAnimationFrame(() => {
-			setIsReady(true);
-		});
-		return () => cancelAnimationFrame(raf);
-	}, []);
+	const ref = useRef<HTMLSpanElement>(null);
+	const isInView = useInView(ref, { once: false, margin: "-40px" });
 
 	return (
-		<span className={`inline-block overflow-hidden ${className ?? ""}`}>
+		<span ref={ref} className={`inline-block overflow-hidden ${className ?? ""}`}>
 			<motion.span
 				className="inline-block"
-				initial={shouldReduceMotion ? { opacity: 1 } : { y: "115%", rotate: 2, opacity: 0 }}
+				initial={shouldReduceMotion ? { opacity: 1, y: "0%" } : { y: "105%", opacity: 0 }}
 				animate={
-					shouldReduceMotion || isReady ? { y: "0%", rotate: 0, opacity: 1 } : undefined
+					shouldReduceMotion
+						? { opacity: 1, y: "0%" }
+						: isInView
+							? { y: "0%", opacity: 1 }
+							: { y: "105%", opacity: 0 }
 				}
-				transition={{ duration: shouldReduceMotion ? 0 : 0.9, ease, delay }}
+				transition={{
+					duration: shouldReduceMotion ? 0 : 0.45,
+					ease: techEase,
+					delay: isInView ? delay : 0,
+				}}
 			>
 				{children}
 			</motion.span>

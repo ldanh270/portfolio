@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/common/SmoothScroll";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { PageLoader } from "@/components/ui/PageLoader";
 import { PageTransition } from "@/components/ui/PageTransition";
 
 type SiteChromeProps = {
@@ -19,6 +20,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
 
 	return (
 		<SmoothScroll>
+			<PageLoader />
 			<CustomCursor />
 			<Header />
 			<PageTransition>{children}</PageTransition>
