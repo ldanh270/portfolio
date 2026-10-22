@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { SITE } from "@/data/site";
 
 type LoadingStateProps = {
 	label?: string;
@@ -22,36 +21,47 @@ export function LoadingState({ label = "Loading", className }: LoadingStateProps
 	);
 }
 
+export function CenterLoader({
+	className,
+}: {
+	className?: string;
+}) {
+	return (
+		<div
+			role="status"
+			aria-label="Loading"
+			className={cn("relative grid size-16 place-items-center select-none", className)}
+		>
+			<span
+				aria-hidden="true"
+				className="absolute inset-0 rounded-full border border-brand-black/15"
+			/>
+			<span
+				aria-hidden="true"
+				className="absolute inset-0 rounded-full border-2 border-transparent border-t-brand-black animate-spin"
+			/>
+			<svg
+				width="28"
+				height="28"
+				viewBox="0 0 128 128"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				className="size-7 text-brand-black"
+				aria-hidden="true"
+			>
+				<path
+					d="M13.5416 51.68V68.78H35.6956V76H4.04164V51.68H13.5416ZM66.2993 51.68C69.7193 51.68 72.544 52.0093 74.7733 52.668C77.0026 53.3267 78.7506 54.226 80.0173 55.366C81.284 56.506 82.1706 57.8107 82.6773 59.28C83.2093 60.724 83.4753 62.244 83.4753 63.84C83.4753 65.436 83.184 66.9687 82.6013 68.438C82.0186 69.882 81.056 71.174 79.7133 72.314C78.396 73.454 76.6353 74.3533 74.4313 75.012C72.2526 75.6707 69.542 76 66.2993 76H38.9393V51.68H66.2993ZM48.4393 68.4H65.9193C67.338 68.4 68.5413 68.3113 69.5293 68.134C70.5173 67.9313 71.3026 67.64 71.8853 67.26C72.4933 66.88 72.924 66.4113 73.1773 65.854C73.456 65.2713 73.5953 64.6 73.5953 63.84C73.5953 63.08 73.456 62.4213 73.1773 61.864C72.924 61.2813 72.4933 60.8 71.8853 60.42C71.3026 60.04 70.5173 59.7613 69.5293 59.584C68.5413 59.3813 67.338 59.28 65.9193 59.28H48.4393V68.4ZM91.4244 72.314V66.614H117.416V72.314H91.4244ZM82.9124 76L99.2144 51.68H109.778L126.232 76H115.782L101.684 54.226H107.346L93.3624 76H82.9124Z"
+					fill="currentColor"
+				/>
+			</svg>
+		</div>
+	);
+}
+
 export function PageLoading() {
 	return (
-		<div className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-brand-white px-6 py-10 text-brand-black">
-			<div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-brand-border" />
-			<div className="absolute inset-x-6 top-8 flex justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-brand-gray sm:inset-x-10">
-				<span>{SITE.shortName} / Portfolio</span>
-				<span>01 / 01</span>
-			</div>
-
-			<div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
-				<div className="relative grid size-36 place-items-center sm:size-48">
-					<div className="absolute inset-0 rounded-full border border-brand-border" />
-					<div className="absolute inset-3 rounded-full border border-dashed border-brand-black/25 animate-[spin_8s_linear_infinite]" />
-					<div className="absolute inset-8 rounded-full border-2 border-brand-black/10 border-t-brand-black animate-spin sm:inset-12" />
-					<span className="font-mono text-xs font-bold tracking-[0.24em]">{SITE.shortName}</span>
-				</div>
-
-				<h1 className="mt-10 text-[clamp(4rem,14vw,10rem)] font-extrabold uppercase leading-[0.78] tracking-[-0.09em] text-outline">
-					Loading
-				</h1>
-				<LoadingState label="Preparing interface" className="mt-10" />
-				<div className="mt-6 h-px w-full max-w-xs overflow-hidden bg-brand-border">
-					<div className="loading-progress h-full w-1/3 bg-brand-black animate-[loading-progress_1.8s_ease-in-out_infinite]" />
-				</div>
-			</div>
-
-			<div className="absolute inset-x-6 bottom-8 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-brand-gray sm:inset-x-10">
-				<span>Interface booting</span>
-				<span className="hidden sm:inline">{SITE.name}</span>
-			</div>
+		<div className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-brand-white text-brand-black">
+			<CenterLoader />
 		</div>
 	);
 }
