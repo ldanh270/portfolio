@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/data/site";
+import { NAV_LINKS, SOCIAL_LINKS } from "@/data/site";
+import { BrandMark } from "@/components/ui/BrandMark";
 import { HighlightedText } from "@/components/ui/HighlightedText";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -54,11 +55,8 @@ export function Footer() {
 								transition={{ duration: 0.3, ease }}
 								className="mb-4"
 							>
-								<img
-									src="/logo.svg"
-									alt={SITE.name}
-									width={48}
-									height={48}
+								<BrandMark
+									size={44}
 									className="h-11 w-11 object-contain"
 								/>
 							</motion.div>

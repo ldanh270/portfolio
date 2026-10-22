@@ -5,6 +5,7 @@ import { useState } from "react";
 import { NAV_LINKS, SITE } from "@/data/site";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { ArrowUpRight } from "lucide-react";
+import { BrandMark } from "@/components/ui/BrandMark";
 
 export function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +16,9 @@ export function Header() {
 				className="flex h-full items-center justify-between px-6 sm:px-12"
 				aria-label="Primary navigation"
 			>
-				<Link href="/">
-					<img
-						src="/logo.svg"
-						alt={SITE.name}
-						width={48}
-						height={48}
+				<Link href="/" aria-label={SITE.name}>
+					<BrandMark
+						size={44}
 						className="h-11 w-11 object-contain"
 					/>
 				</Link>

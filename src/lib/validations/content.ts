@@ -1,5 +1,3 @@
-import "server-only";
-
 import { z } from "zod";
 import type { AdminContentKey } from "@/config/admin";
 import type { CmsContent } from "@/types/content";
