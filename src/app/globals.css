@@ -163,19 +163,23 @@ body {
 
 @keyframes marquee {
 	from {
-		transform: translateX(0);
+		transform: translate3d(0, 0, 0);
 	}
 	to {
-		transform: translateX(-50%);
+		transform: translate3d(-50%, 0, 0);
 	}
 }
 
 .animate-marquee {
 	animation: marquee var(--marquee-speed, 30s) linear infinite;
+	will-change: transform;
+	backface-visibility: hidden;
 }
 
 .animate-marquee-reverse {
 	animation: marquee var(--marquee-speed, 30s) linear infinite reverse;
+	will-change: transform;
+	backface-visibility: hidden;
 }
 
 .text-outline {

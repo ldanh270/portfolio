@@ -3,6 +3,10 @@
 import Lenis from "@studio-freight/lenis";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
 	const lenisRef = useRef<Lenis | null>(null);
@@ -16,17 +20,22 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 		}
 
 		const lenis = new Lenis({
-			lerp: 0.08,
-			wheelMultiplier: 0.85,
-			touchMultiplier: 1.1,
+			lerp: 0.09,
+			wheelMultiplier: 0.95,
+			touchMultiplier: 1.15,
 			smoothWheel: true,
 		});
-		let frame = 0;
 
-		const raf = (time: number) => {
-			lenis.raf(time);
-			frame = requestAnimationFrame(raf);
+		lenisRef.current = lenis;
+
+		lenis.on("scroll", ScrollTrigger.update);
+
+		const ticker = (time: number) => {
+			lenis.raf(time * 1000);
 		};
+
+		gsap.ticker.add(ticker);
+		gsap.ticker.lagSmoothing(500, 33);
 
 		const onClick = (event: MouseEvent) => {
 			const link = (event.target as Element | null)?.closest<HTMLAnchorElement>(
@@ -47,13 +56,11 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 			lenis.scrollTo(target, { offset: -64 });
 		};
 
-		lenisRef.current = lenis;
-		frame = requestAnimationFrame(raf);
 		document.addEventListener("click", onClick);
 
 		return () => {
 			document.removeEventListener("click", onClick);
-			cancelAnimationFrame(frame);
+			gsap.ticker.remove(ticker);
 			lenis.destroy();
 			lenisRef.current = null;
 		};
@@ -61,6 +68,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
 	useEffect(() => {
 		lenisRef.current?.scrollTo(0, { immediate: true });
+		setTimeout(() => {
+			ScrollTrigger.refresh();
+		}, 100);
 	}, [pathname]);
 
 	return <>{children}</>;
